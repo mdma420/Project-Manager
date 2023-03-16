@@ -1,0 +1,36 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.2",
+    "handlebars-helpers": "^0.10.0",
+    "morgan": "^1.10.0",
+    "node-sass": "^8.0.0",
+    "nodemon": "^2.0.21"
+  },
+  "name": "project-manager",
+  "description": "The school’s financial management.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect src/index",
+    "watch": "node-sass --watch src/resources/scss/app.scss src/public/css/app.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdma420/Project-Manager.git"
+  },
+  "keywords": [
+    "Group",
+    "43",
+    "manager",
+    "of",
+    "assets"
+  ],
+  "author": "Group 43",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdma420/Project-Manager/issues"
+  },
+  "homepage": "https://github.com/mdma420/Project-Manager#readme"
+}
