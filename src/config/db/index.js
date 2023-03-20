@@ -1,11 +1,14 @@
-async function connect()  {
-    try {
-        await mongoose.connect(
-            "mongodb+srv://duoc6694:jJw8rmJmvkZzgIna@viggacv.qxmduwf.mongodb.net/ManagementSchool"
-        );
-        console.log('Truy cap  database thanh cong')
-    } catch(error){
-    console.log('Truy cap  database thanh cong')
-}}
+const mongoose = require("mongoose");
 
-module.exports  =  {connect}
+async function connect() {
+  try {
+    await mongoose.connect(
+      "mongodb+srv://QuyNPGCS190822:Q8no0QKAGmvJD4Em@cluster0.qnytwdq.mongodb.net/Final-Project"
+    );
+    console.log("Truy cap  database thanh cong");
+  } catch (error) {
+    console.log("Truy cap  database thanh cong");
+  }
+}
+
+module.exports = {connect};
