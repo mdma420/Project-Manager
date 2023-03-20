@@ -1,1 +1,55 @@
-<h1> aaaaaa</h1>
+<div class="about-login">
+  {{!-- <img class="logo-school" src="https://assets.foleon.com/eu-west-2/uploads-7e3kk3/48044/foleon_logo_lon_kent_white.f0e5fd02e287.png" alt="my logo"> --}}
+  <div class="main-login">
+    <form method="POST" action="/login/apilogin">
+      <span class="login-title">Login</span>
+          {{#if msg}}<p class="login-error">{{msg}}</p>{{/if}}
+      <div class="check-who">
+        <input type="radio" id="student" name="occupation" value="student" required>
+        <label for="student">Student</label>
+
+        <input type="radio" id="teacher" name="occupation" value="teacher" required>
+        <label for="teacher">Teacher</label>
+
+        <input type="radio" id="manager" name="occupation" value="manager" required>
+        <label for="manager">Manager</label>
+      </div>
+      <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" type="user" name="username" placeholder="Enter your username" required>
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <div class="password-field">
+          <input id="password" type="password" type="password" name="password" placeholder="Enter your password" required>
+          <span class="toggle-password" onclick="showPassword()">
+            <i class="bi bi-eye"></i>
+          </span>
+        </div>
+     </div>
+
+      <div>
+          <input type="checkbox" name="remember" id="">
+          <label for="remember">Remember</label>
+       </div>
+      {{!-- <div>
+          <a href="">forgot the password?</a>
+      </div> --}}
+      <button>Submit</button>
+    </form>
+  </div>
+</div>
+
+<script>
+ function showPassword(){
+    var show = document.getElementById('password')
+      if(show.type === 'password'){
+        show.type = 'text'
+        document.querySelector('.icon-password').innerHTML = '<i class="bi bi-eye"></i>';
+      }
+      else{
+        show.type = 'password'
+        document.querySelector('.icon-password').innerHTML = '<i class="bi bi-eye"></i>';
+      }
+  }
+</script>
