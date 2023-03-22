@@ -13,4 +13,10 @@ router.get(
   tuitionController.collecttuition
 );
 
+// In hoa don PDF
+router.get(
+  "/managmentttuition/collecttuition/exportPDF",
+  tuitionController.exportPDF
+);
+
 module.exports = router;

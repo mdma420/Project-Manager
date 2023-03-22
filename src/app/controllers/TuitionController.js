@@ -1,6 +1,13 @@
 const Tuition = require("../models/tuition");
 const {mongooseToObject} = require("../../util/mongoose");
+const {mutipleMongooseToObject} = require("../../util/mongoose");
 const Student = require("../models/student");
+const ejs = require("ejs");
+const pdf = require("html-pdf");
+const fs = require("fs");
+const path = require("path");
+const {options} = require("../../routes/tuition");
+const {response} = require("express");
 
 class TuitionController {
   //[GET] Tuition
@@ -89,6 +96,44 @@ class TuitionController {
   //[GET] collect tuition
   collecttuition(req, res, next) {
     res.render("collecttuition");
+  }
+
+  //[GET] invoice printing
+  async exportPDF(req, res, next) {
+    try {
+      const tuition = await Tuition.find();
+      const data = {
+        tuition: tuition,
+      };
+      const filePathName = path.resolve(
+        __dirname,
+        "../../resources/views/exportPDF.hbs"
+      );
+      const htmlString = fs.readFileSync(filePathName).toString();
+      let option = {
+        format: "Letter",
+      };
+      const ejsData = ejs.render(htmlString, data);
+      console.log(ejsData);
+      pdf.create(ejsData, option).toFile("tuition.pdf", (err, response) => {
+        if (err) console.log(err);
+        const filePath = path.resolve(__dirname, "../../../tuition.pdf");
+
+        fs.readFile(filePath, (err, file) => {
+          if (err) {
+            console.log(err);
+            return res.status(500).send("could not dowload file");
+          }
+
+          res.set("Content-Type", "application/pdf");
+          res.set("Content-Disposition", 'attachment;filename="tuition.pdf"');
+
+          res.send(file);
+        });
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 }
 
