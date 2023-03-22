@@ -1,5 +1,13 @@
 <a>aaaaaaaaaaaaaaa</a>
+{{!-- <form method="POST" action="/tuition/sreach/{{Key}}">
+<div>
+    <label for={{Key}}>sreach</label>
+    <input type="text" id={{Key}} name={{Key}} placeholder="Enter key" required>
+    <button>Submit</button>
+</div>
+</form> --}}
 {{#each tuition}}
+<div>
 <a>{{this.code}}</a>
 <a>{{this.name}}</a>
 <a>{{this.science}}</a>
@@ -8,4 +16,7 @@
 <a>{{this.tuitionOneUnit}}</a>
 <a>{{this.totalTuition}}</a>
 <a>{{this.status}}</a>
+</div>
 {{/each}}
+<a href="/">Back</a>
+

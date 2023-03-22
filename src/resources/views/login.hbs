@@ -1,10 +1,12 @@
+
+
 <div class="about-login">
   {{!-- <img class="logo-school" src="https://assets.foleon.com/eu-west-2/uploads-7e3kk3/48044/foleon_logo_lon_kent_white.f0e5fd02e287.png" alt="my logo"> --}}
   <div class="main-login">
     <form method="POST" action="/login/apilogin">
       <span class="login-title">Login</span>
           {{#if msg}}<p class="login-error">{{msg}}</p>{{/if}}
-      <div class="check-who">
+      {{!-- <div class="check-who">
         <input type="radio" id="student" name="occupation" value="student" required>
         <label for="student">Student</label>
 
@@ -13,7 +15,7 @@
 
         <input type="radio" id="manager" name="occupation" value="manager" required>
         <label for="manager">Manager</label>
-      </div>
+      </div> --}}
       <div>
         <label for="username">Username</label>
         <input type="text" id="username" type="user" name="username" placeholder="Enter your username" required>

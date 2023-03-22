@@ -1,5 +1,6 @@
 const Tuition = require("../models/tuition");
 const {mongooseToObject} = require("../../util/mongoose");
+const Student = require("../models/student");
 
 class TuitionController {
   //[GET] Tuition
@@ -42,8 +43,8 @@ class TuitionController {
 
   //[GET] Sreach
   sreach(req, res, next) {
-    var name = req.params.key;
-    Tuition.find({code: name} && {name: name})
+    var Key = req.params.key;
+    Tuition.find({code: Key} && {name: Key})
       .then((tuition) => {
         tuition = tuition.map((tuition) => tuition.toObject());
         res.render("tuition", {
@@ -52,7 +53,42 @@ class TuitionController {
           title: "Tuition",
         });
       })
+      // .then((tuition) => res.redirect("/tuition"))
       .catch(next);
+  }
+
+  //[GET] Tuition Student
+  student(req, res, next) {
+    Student.find()
+      .then((student) => {
+        student = student.map((student) => student.toObject());
+        res.render("managementtuition", {
+          student,
+          user: req.user,
+          title: "managementtuition",
+        });
+      })
+      .catch(next);
+  }
+
+  //[GET] Sreach Student
+  sreachStudent(req, res, next) {
+    var name = req.params.key;
+    Student.find({codeStudent: name})
+      .then((student) => {
+        student = student.map((student) => student.toObject());
+        res.render("managementtuition", {
+          student,
+          user: req.user,
+          title: "managementtuition",
+        });
+      })
+      .catch(next);
+  }
+
+  //[GET] collect tuition
+  collecttuition(req, res, next) {
+    res.render("collecttuition");
   }
 }
 
