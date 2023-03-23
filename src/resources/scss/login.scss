@@ -24,10 +24,9 @@
     // align-items: center;
     height: 800px;
     background: url("https://duhoc.online/wp-content/uploads/2016/12/du-hoc-dai-hoc-greenwich.jpg") center / cover no-repeat;
-    position: relative;
+    position: absolute;
   }
   .logo-school{
-    position: absolute;
     margin-left: 132px;
     width: 648px;
     height: 242px;
@@ -35,7 +34,6 @@
   }
   .about-login:before {
     content: "";
-    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -53,7 +51,6 @@
     background-color: #fff;
     box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
     border-radius: 10px;
-    position: relative;
     z-index: 2;
     transform: translateY(-50px);
     animation: slide-down 0.5s ease-in-out forwards;
@@ -132,11 +129,10 @@
     text-decoration: underline;
   }
   .password-field {
-    position: relative;
+    
   }
   
   .toggle-password i.bi {
-    position: absolute;
     top: 20%;
     right: 17px;
     // transform: translateY(-50%);

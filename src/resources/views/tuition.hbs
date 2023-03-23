@@ -1,12 +1,90 @@
-<a>aaaaaaaaaaaaaaa</a>
-{{!-- <form method="POST" action="/tuition/sreach/{{Key}}">
-<div>
-    <label for={{Key}}>sreach</label>
-    <input type="text" id={{Key}} name={{Key}} placeholder="Enter key" required>
-    <button>Submit</button>
+<div class="main__List_tuition">
+    <div class="table__List-fees">
+        <div class="search__List-fees">
+          <input type="text" id="search-code" placeholder="Search by code">
+          <select id="search-course">
+              <option value="">Course</option>
+              <option value="math">Math</option>
+              <option value="history">History</option>
+              <option value="science">Science</option>
+          </select>
+          <select id="search-status">
+              <option value="">Status</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+          </select>          
+          <button id="button-form__search">Search</button>
+        </div>
+             <div class="button__List-fees">
+                 <button id="add-subject">Thêm mới</button>
+                 <button>Ngừng áp dụng</button>
+                 <button>Xuất file</button>
+                <div id="add-new-subject" style="display: none;">
+                  <label for="code-input">Code :</label>
+                  <input type="text" id="code-input" placeholder="Code">
+                  <label for="course-input">Course :</label>
+                  <input type="text" id="course-input" placeholder="Course">
+                  <label for="subject-input">Subject :</label>
+                  <input type="text" id="subject-input" placeholder="Subject">
+                  <label for="semester-input">Semester :</label>
+                  <input type="text" id="semester-input" placeholder="Semester">
+                  <label for="unit-input">Unit :</label>
+                  <input type="text" id="unit-input" placeholder="Unit">
+                  <label for="cost-input">Cost :</label>
+                  <input type="text" id="cost-input" placeholder="Course costs">
+                  <label for="payment-input">Payment :</label>
+                  <input type="text" id="payment-input" placeholder="All-course payment">
+                  <label for="status-input">Status :</label>
+                  <input type="text" id="status-input" placeholder="Status">
+                  <button id="add-button">Add</button>
+                 </div>
+             </div>    
+        <h2>Management of tuition</h2>
+
+        <div class="table__List-fees-stats">
+    <table>
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Cousre</th>
+                <th>Subject</th>
+                <th>Semester</th>
+                <th>Unit</th>
+                <th>Course costs</th>
+                <th>All-course payment</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+    <div class="pagination__List-fees">
+    <a href="#">&laquo;</a>
+    <a href="#" class="active">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">&raquo;</a>
+  </div>
 </div>
-</form> --}}
-{{#each tuition}}
+
+    </div>
+</div>
+
+
+<script>
+    var addNewButton = document.getElementById("add-subject");
+  var addNewForm = document.getElementById("add-new-subject");
+  
+  addNewButton.addEventListener("click", function() {
+    if (addNewForm.style.display === "none") {
+      addNewForm.style.display = "block";
+    } else {
+      addNewForm.style.display = "none";
+    }
+  });
+
+</script>
+{{!-- {{#each tuition}}
 <div>
 <a>{{this.code}}</a>
 <a>{{this.name}}</a>
@@ -18,5 +96,4 @@
 <a>{{this.status}}</a>
 </div>
 {{/each}}
-<a href="/">Back</a>
-
+<a href="/">Back</a> --}}
