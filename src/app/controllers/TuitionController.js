@@ -48,7 +48,7 @@ class TuitionController {
     // });
   }
 
-  //[GET] Sreach
+  //[POST] Sreach
   sreach(req, res, next) {
     var Key = req.params.key;
     Tuition.find({code: Key} && {name: Key})
@@ -64,7 +64,7 @@ class TuitionController {
       .catch(next);
   }
 
-  //[GET] Tuition Student
+  //[GET] management Tuition Student
   student(req, res, next) {
     Student.find()
       .then((student) => {
@@ -78,7 +78,7 @@ class TuitionController {
       .catch(next);
   }
 
-  //[GET] Sreach Student
+  //[POST] Sreach Student
   sreachStudent(req, res, next) {
     var name = req.params.key;
     Student.find({codeStudent: name})
@@ -93,28 +93,47 @@ class TuitionController {
       .catch(next);
   }
 
-  //[GET] collect tuition
+  //[GET] Collect Tuition
   collecttuition(req, res, next) {
     res.render("collecttuition");
   }
 
-  //[GET] invoice printing
+  //[GET] Invoice
+  invoice(req, res, next) {
+    Tuition.find({})
+      .then((tuition) => {
+        tuition = tuition.map((tuition) => tuition.toObject());
+        res.render("invoice", {
+          tuition,
+          user: req.user,
+          title: "invoice",
+        });
+        // console.log(student);
+      })
+      .catch(next);
+  }
+
+  //[POST] Invoice Printing
   async exportPDF(req, res, next) {
     try {
       const tuition = await Tuition.find();
       const data = {
         tuition: tuition,
       };
+      const student = await Student.find();
+      const dataS = {
+        student: student,
+      };
       const filePathName = path.resolve(
         __dirname,
-        "../../resources/views/exportPDF.hbs"
+        "../../resources/views/invoice.hbs"
       );
       const htmlString = fs.readFileSync(filePathName).toString();
       let option = {
         format: "Letter",
       };
-      const ejsData = ejs.render(htmlString, data);
-      console.log(ejsData);
+      const ejsData = ejs.render(htmlString, data, dataS);
+      // console.log(ejsData);
       pdf.create(ejsData, option).toFile("tuition.pdf", (err, response) => {
         if (err) console.log(err);
         const filePath = path.resolve(__dirname, "../../../tuition.pdf");
@@ -134,6 +153,11 @@ class TuitionController {
     } catch (error) {
       console.log(error.message);
     }
+  }
+
+  //[GET] Send Email
+  sendMail(req, res, next) {
+    res.render("sendMail");
   }
 }
 

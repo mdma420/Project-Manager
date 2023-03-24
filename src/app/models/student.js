@@ -12,6 +12,7 @@ const Student = new Schema({
   tuition: String,
   status: String,
   tuitionCollectionDate: Date,
+  emailStudent: String,
 });
 
 module.exports = mongoose.model("Student", Student);
