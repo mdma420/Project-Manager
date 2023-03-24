@@ -5,49 +5,38 @@
 }
 header {
     height: 100vh;
-    background: url("https://duhoc.online/wp-content/uploads/2016/12/du-hoc-dai-hoc-greenwich.jpg") center / cover no-repeat;
+    background: url("http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg") center / cover no-repeat;
 }
-.form-header {
+nav {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+.header-list{
     display: flex;
     background-color: rgb(238, 155, 54);
 }
 h1 {
     display: flex;
     justify-content: center;
-    top: 80px;
-    left: 30px;
     font-size: 50px;
     color:black;
-    width: 255px;
+    position:absolute;
 }
 
 .show-list {
     display: flex;
-    align-items: baseline;
-    height: 80px;
-    margin-left: 70px;
+    align-items: center;
+    height: 77px;
     font-size: 20px;
-    width: 100%;
+    width: 90%;
+    position: relative; 
+    justify-content: flex-start;
+    flex-direction: row;
 }
-.home-header {
-    display: flex;
-    width: 15%;
-}
-.drop-down__Tuition,
-.drop-down__Salary {
-    display: flex;
-    width: 220px;
-    margin-top: 26px;
-}
-.drop-down__Setting {
-    margin-left: 50px;
-}
-.drop-down__Announcement {
-    
-    margin-left: 20px;
-}
-.drop-down__Account {
-    margin-left: 140px;
+
+.drop-down__header {
+    width: 20%;
 }
 
 .Tuition-show,
@@ -59,11 +48,11 @@ h1 {
     flex-direction:  column;
     margin-top: 50px;
 }
-.drop-down__Tuition:hover .Tuition-show,
-.drop-down__Salary:hover .Salary-show,
-.drop-down__Announcement:hover .Announcement-show,
-.drop-down__Setting:hover .Setting-show,
-.drop-down__Account:hover .Account-show {
+.drop-down__header:hover .Tuition-show,
+.drop-down__header:hover .Salary-show,
+.drop-down__header:hover .Announcement-show,
+.drop-down__header:hover .Setting-show,
+.drop-down__header:hover .Account-show {
     display:flex;
 }
 .Tuition-show li,
@@ -73,8 +62,6 @@ h1 {
 .Account-show li {
     list-style-type: none;
     background-color: rgb(54, 55, 59);
-    margin-left: -104px;
-    width: 270px;
     display: flex;
 }
 .Tuition-show a,
@@ -84,9 +71,9 @@ h1 {
 .Account-show a {
     text-decoration: none;
     color: lavender;
-    margin-left: 30px;
-    font-size: 20px;
-    
+    justify-content: flex-start;
+    font-size: 15px;
+    display: contents;
 }
 
 
