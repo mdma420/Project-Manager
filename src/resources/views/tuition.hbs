@@ -17,27 +17,43 @@
         </div>
              <div class="button__List-fees">
                  <button id="add-subject">Thêm mới</button>
-                 <button>Ngừng áp dụng</button>
-                 <button>Xuất file</button>
-                <div id="add-new-subject" style="display: none;">
+               <div class="form__List-fees">
+                <div id="add-new-subject">
+<div id="form__type">                 
                   <label for="code-input">Code :</label>
                   <input type="text" id="code-input" placeholder="Code">
+</div>
+<div id="form__type">
                   <label for="course-input">Course :</label>
                   <input type="text" id="course-input" placeholder="Course">
+</div>
+<div id="form__type">
                   <label for="subject-input">Subject :</label>
                   <input type="text" id="subject-input" placeholder="Subject">
+</div>
+<div id="form__type">
                   <label for="semester-input">Semester :</label>
                   <input type="text" id="semester-input" placeholder="Semester">
+</div>
+<div id="form__type">
                   <label for="unit-input">Unit :</label>
                   <input type="text" id="unit-input" placeholder="Unit">
+</div>
+<div id="form__type">
                   <label for="cost-input">Cost :</label>
                   <input type="text" id="cost-input" placeholder="Course costs">
+</div>
+<div id="form__type">
                   <label for="payment-input">Payment :</label>
                   <input type="text" id="payment-input" placeholder="All-course payment">
+ </div>                
+<div id="form__type">
                   <label for="status-input">Status :</label>
                   <input type="text" id="status-input" placeholder="Status">
+ </div>               
                   <button id="add-button">Add</button>
                  </div>
+                </div>
              </div>    
         <h2>Management of tuition</h2>
 
@@ -77,7 +93,7 @@
   
   addNewButton.addEventListener("click", function() {
     if (addNewForm.style.display === "none") {
-      addNewForm.style.display = "block";
+      addNewForm.style.display = "flex";
     } else {
       addNewForm.style.display = "none";
     }
