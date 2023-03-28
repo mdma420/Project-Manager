@@ -1,18 +1,25 @@
 .main__List_tuition {
-    position: absolute;
-    background-color: rgb(136, 142, 142);
-    left: 26%;
-    top: 130px;
-    width: 73%;
-    height: 90%;
+    background: url("http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg") center / cover no-repeat;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.table__List-fees {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(transparent-background.png);
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 80%;
+    height: 80%;
+    border-radius: 25px;
 }
 .search__List-fees {
     display: flex;
     height: 100px;
     width: 70%;
     align-items: baseline;
-    margin-top: -5px;
-    margin-left: 15%;
 }
 .search__List-fees input,
 .search__List-fees select,
@@ -21,3 +28,16 @@
     border-radius: 15px;
     margin-left: 10px;
 }
+
+#add-new-subject {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+button#add-subject {
+  width: fit-content;
+  display: flex;
+}
+  
