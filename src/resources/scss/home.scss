@@ -3,110 +3,75 @@
     margin: 0;
     box-sizing: border-box;
 }
-.home__page {
-    height: 100vh;
-}
-.header {
-    background-color: #74747e;
-    width: 25%;
-    height: 110%;
-    justify-content: space-around;
+
+nav {
     display: flex;
-    color:rgb(14, 15, 15);
-    position:relative;
+    justify-content: space-between;
+  }
+  
+.header-list{
+    display: flex;
+    background-color: rgb(238, 155, 54);
 }
 h1 {
     display: flex;
     justify-content: center;
-    background-color: rgb(238, 155, 54);
-    position: absolute;
-    left: 0px;
-    width: 100%;
-    height: 60px;
+    font-size: 50px;
+    color:black;
+    position:absolute;
 }
-.header-list {
+
+.show-list {
     display: flex;
-    position: absolute;
-    top: 80px;
-    left: 30px;
-    font-size: 25px;
-    color: antiquewhite;
-}
-.home-header {
-    height: 50px;
-}
-.drop-down__Tuition,
-.drop-down__Salary,
-.drop-down__Announcement,
-.drop-down__Setting {
-    height: 90px;
-    display: inline-block;
+    align-items: center;
+    height: 77px;
+    font-size: 20px;
     width: 90%;
+    position: relative; 
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.drop-down__header {
+    width: 20%;
 }
 
 .Tuition-show,
 .Salary-show,
 .Announcement-show,
-.Setting-show {
+.Setting-show,
+.Account-show {
     display: none;
-    
+    flex-direction:  column;
+    margin-top: 50px;
 }
-.drop-down__Tuition:hover .Tuition-show,
-.drop-down__Salary:hover .Salary-show,
-.drop-down__Announcement:hover .Announcement-show,
-.drop-down__Setting:hover .Setting-show {
-    display:block;
+.drop-down__header:hover .Tuition-show,
+.drop-down__header:hover .Salary-show,
+.drop-down__header:hover .Announcement-show,
+.drop-down__header:hover .Setting-show,
+.drop-down__header:hover .Account-show {
+    display:flex;
 }
 .Tuition-show li,
 .Salary-show li,
 .Announcement-show li,
-.Setting-show li {
+.Setting-show li,
+.Account-show li {
     list-style-type: none;
     background-color: rgb(54, 55, 59);
-    margin-left: -31px;
-    width: 121%;
+    display: flex;
 }
 .Tuition-show a,
 .Salary-show a,
 .Announcement-show a,
-.Setting-show a {
+.Setting-show a,
+.Account-show a {
     text-decoration: none;
     color: lavender;
-    margin-left: 30px;
-    font-size: 20px;
-    
-}
-.user {
-    position: absolute;
-    color: rgb(30, 30, 29);
-    background-color: rgb(238, 155, 54);
-    height: 60px;
-    left: 360px;
-    width: 300%;
-    font-size: 25px;
-    text-align: center;
-    right: 0;
-    top: 0;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-.Account-show {
-    list-style-type: none;
-    margin-left: 75%;
-    margin-top: -44px;
-}
-// .Account-show ul {
-//     margin-top: -44px;
-// }
-.Account-show li {
-    margin-left: 100px;
-}
-.Account-show a {
-    color:rgb(14, 15, 15);
-    text-decoration: none;
+    justify-content: flex-start;
     font-size: 15px;
-    margin-top: 10px;
-    display: inline-block;
+    display: contents;
 }
+
 
 

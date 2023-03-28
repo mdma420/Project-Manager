@@ -5,7 +5,7 @@ const tuitionController = require("../app/controllers/TuitionController");
 // tuition
 router.get("/", tuitionController.tuition);
 router.post("/createTuition", tuitionController.createTuition);
-router.post("/sreach/:key", tuitionController.sreach);
+router.get("/sreach/:key", tuitionController.sreach);
 // management tuition
 router.get("/managementtuition", tuitionController.student);
 router.post("/managementtuition/:key", tuitionController.sreachStudent);

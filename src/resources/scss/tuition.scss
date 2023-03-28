@@ -1,0 +1,23 @@
+.main__List_tuition {
+    position: absolute;
+    background-color: rgb(136, 142, 142);
+    left: 26%;
+    top: 130px;
+    width: 73%;
+    height: 90%;
+}
+.search__List-fees {
+    display: flex;
+    height: 100px;
+    width: 70%;
+    align-items: baseline;
+    margin-top: -5px;
+    margin-left: 15%;
+}
+.search__List-fees input,
+.search__List-fees select,
+.search__List-fees button {
+    padding: 12px;
+    border-radius: 15px;
+    margin-left: 10px;
+}

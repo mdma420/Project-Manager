@@ -9,6 +9,7 @@ const User = new Schema(
     fullname: String,
     email: String,
     phone: String,
+    role: String,
   },
   {
     collection: "user",

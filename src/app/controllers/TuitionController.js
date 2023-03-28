@@ -13,11 +13,13 @@ class TuitionController {
   //[GET] Tuition
   tuition(req, res, next) {
     // res.render("tuition");
+    var Key = req.params.key;
     Tuition.find({})
       .then((tuition) => {
         tuition = tuition.map((tuition) => tuition.toObject());
         res.render("tuition", {
           tuition,
+          Key,
           user: req.user,
           title: "Tuition",
         });
@@ -48,14 +50,15 @@ class TuitionController {
     // });
   }
 
-  //[POST] Sreach
+  //[GET] Sreach
   sreach(req, res, next) {
     var Key = req.params.key;
-    Tuition.find({code: Key} && {name: Key})
+    Tuition.find({name: Key})
       .then((tuition) => {
         tuition = tuition.map((tuition) => tuition.toObject());
         res.render("tuition", {
           tuition,
+          Key,
           user: req.user,
           title: "Tuition",
         });

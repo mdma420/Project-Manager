@@ -1,15 +1,111 @@
-<a>aaaaaaaaaaaaaaa</a>
-{{#each tuition}}
-<div>
-<a>{{this.code}}</a>
-<a>{{this.name}}</a>
-<a>{{this.science}}</a>
-<a>{{this.time}}</a>
-<a>{{this.unit}}</a>
-<a>{{this.tuitionOneUnit}}</a>
-<a>{{this.totalTuition}}</a>
-<a>{{this.status}}</a>
+<div class="main__List_tuition">
+    <div class="table__List-fees">
+        <div class="search__List-fees">
+          <form action="/tuition/sreach/{{Key}}" method="get">
+          <input type="text" {{!-- id="{{Key}}"  name="{{Key}}" --}}   placeholder="Search by code">
+          {{!-- <select id="search-course">
+              <option value="">Course</option>
+              <option value="math">Math</option>
+              <option value="history">History</option>
+              <option value="science">Science</option>
+          </select>
+          <select id="search-status">
+              <option value="">Status</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+          </select>           --}}
+          <button type="submit" id="button-form__search">Search</button>
+          </form>
+        </div>
+             <div class="button__List-fees">
+                 <button id="add-subject">Thêm mới</button>
+                 <button>Ngừng áp dụng</button>
+                 <button>Xuất file</button>
+                <div id="add-new-subject" style="display: none;">
+                  <form method="post" action="/tuition/createTuition">
+                  <label for="code">Code :</label>
+                  <input type="text" id="code" name="code" placeholder="Code">
+
+                  <label for="name">Course :</label>
+                  <input type="text" id="name" name="name" placeholder="Course">
+
+                  <label for="science">Subject :</label>
+                  <input type="text" id="science" name="science" placeholder="Subject">
+
+                  <label for="time">Semester :</label>
+                  <input type="text" id="time" name="time" placeholder="Semester">
+
+                  <label for="unit">Unit :</label>
+                  <input type="text" id="unit" name="unit" placeholder="Unit">
+
+                  <label for="tuitionOneUnit">Cost :</label>
+                  <input type="text" id="tuitionOneUnit" name="tuitionOneUnit" placeholder="Course costs">
+
+                  <label for="totalTuition">Payment :</label>
+                  <input type="text" id="totalTuition" name="totalTuition" placeholder="All-course payment">
+
+                  <label for="status">Status :</label>
+                  <input type="text" id="status" name="status" placeholder="Status">
+
+                  <button type="submit" id="add-button">Add</button>
+                  </form>
+                 </div>
+             </div>    
+        <h2>Management of tuition</h2>
+
+        <div class="table__List-fees-stats">
+    <table>
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Cousre</th>
+                <th>Subject</th>
+                <th>Semester</th>
+                <th>Unit</th>
+                <th>Course costs</th>
+                <th>All-course payment</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+          {{#each tuition}}
+          <tr>
+            <td>{{this.code}}</td>
+            <td>{{this.name}}</td>
+            <td>{{this.science}}</td>
+            <td>{{this.time}}</td>
+            <td>{{this.unit}}</td>
+            <td>{{this.tuitionOneUnit}}</td>
+            <td>{{this.totalTuition}}</td>
+            <td>{{this.status}}</td>
+          </tr>
+        </tbody>
+        {{/each}}
+    </table>
+    <div class="pagination__List-fees">
+    <a href="#">&laquo;</a>
+    <a href="#" class="active">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">&raquo;</a>
+  </div>
 </div>
-{{/each}}
-<a href="/">Back</a>
+
+    </div>
+</div>
+
+
+<script>
+    var addNewButton = document.getElementById("add-subject");
+  var addNewForm = document.getElementById("add-new-subject");
+  
+  addNewButton.addEventListener("click", function() {
+    if (addNewForm.style.display === "none") {
+      addNewForm.style.display = "block";
+    } else {
+      addNewForm.style.display = "none";
+    }
+  });
+
+</script>
 

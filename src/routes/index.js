@@ -3,6 +3,7 @@ const homeRouter = require("./home");
 const registerRouter = require("./register");
 const tuitionRouter = require("./tuition");
 const salaryRouter = require("./salary");
+const {checkLogin} = require("../util/authonize");
 
 function route(app) {
   app.use("/login", loginRouter);
