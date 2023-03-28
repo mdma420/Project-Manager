@@ -1,4 +1,103 @@
-<a>aaaaaaaaaaaaaaaa</a>
+<div class="main__Management_tuition">
+    <div class="table__Management-fees">
+      <div class="session__Management-fees">
+            <label for="session">Session :</label>
+            <select id="management-session">
+              <option value="">...</option>
+              <option value="">2020-2021</option>
+              <option value="">2021-2022</option>
+              <option value="">2022-2023</option>
+              <option value="">2023-2024</option>
+            </select>       
+        </div>
+        <h2>Student list</h2>
+        <div class="search__Management-fees">
+          <input type="text" id="management-code" placeholder="Search by code">
+          <select id="management-course">
+              <option value="">Course</option>
+              <option value="math">Math</option>
+              <option value="history">History</option>
+              <option value="science">Science</option>
+          </select>
+          <select id="management-status">
+              <option value="">Status</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+          </select>
+          <select id="management-class">
+              <option value="">Class</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+          </select>              
+          <button id="button-management__search">Search</button>
+        </div>
+        <div class="table__Management-fees">
+  <table>
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Course</th>
+        <th>Status</th>
+        <th>Class</th>
+        <th>Fee 1</th>
+        <th>Fee 2</th>
+        <th>Fee 3</th>
+        <th>Fee 4</th>
+        <th>Fee 5</th>
+        <th>Fee 6</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>001</td>
+        <td>John</td>
+        <td>Math</td>
+        <td>Active</td>
+        <td>Class A</td>
+        <td>$100</td>
+        <td>$150</td>
+        <td>$200</td>
+        <td>$250</td>
+        <td>$300</td>
+        <td>$350</td>
+        <td>
+            <div class="options-icon">&#8942;
+                <div class="options">
+                  <ul>
+                    <li onclick="goToPage()">Thu học phí</li>
+                    <li>Option 2</li>
+                    <li>Option 3</li>
+                  </ul>
+                </div>
+            </div>
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+
+    </div> 
+</div>
+<script>
+// Lấy tất cả các phần tử có class "options-icon"
+const optionsIcons = document.querySelectorAll('.options-icon');
+
+// Thêm sự kiện "click" vào từng phần tử
+optionsIcons.forEach(icon => {
+  icon.addEventListener('click', () => {
+    const options = document.querySelector('.options');
+    options.classList.add('show-options');
+  });
+});
+function goToPage() {
+    window.location.href = "/tuition/managmenttuition/collecttuition/invoice";
+  }
+</script>
+
+{{!-- <a>aaaaaaaaaaaaaaaa</a>
 {{#each student}}
 <div>
     <a>{{this.codeStudent}}</a>
@@ -13,4 +112,4 @@
 </dIv>
 <div>
 <a href="/">Back</a>
-</div>
+</div> --}}

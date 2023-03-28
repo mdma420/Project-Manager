@@ -1,0 +1,85 @@
+.main__Management_tuition {
+    background: url("http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg") center / cover no-repeat;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  .table__Management-fees {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(transparent-background.png);
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 80%;
+    height: 100%;
+    border-radius: 25px;
+    box-sizing: border-box;
+  }
+  .session__Management-fees {
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+    font-size: 20px;
+  }
+  .session__Management-fees label {
+    width: 10%;
+  }
+  .session__Management-fees select {
+    border-radius: 10px;
+    font-size: 20px;
+  }
+  .search__Management-fees {
+    display: flex;
+    height: 20%;
+    width: 50%;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+  
+  .search__Management-fees input,
+  .search__Management-fees select,
+  .search__Management-fees button {
+    padding: 12px;
+    border-radius: 15px;
+  }
+  .table__Management-fees table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .table__Management-fees th,
+  .table__Management-fees td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .table__Management-fees th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  .options {
+    display: none;
+  }
+  
+  .show-options {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .options ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .options ul li {
+  }
+  

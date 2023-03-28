@@ -1,9 +1,18 @@
 <div class="main__List_tuition">
     <div class="table__List-fees">
+      <div class="session__List-fees">
+            <label for="session">Session :</label>
+            <select id="search-session">
+              <option value="">...</option>
+              <option value="">2020-2021</option>
+              <option value="">2021-2022</option>
+              <option value="">2022-2023</option>
+              <option value="">2023-2024</option>
+          </select>       
+          </div>
         <div class="search__List-fees">
-          <form action="/tuition/sreach/{{Key}}" method="get">
-          <input type="text" {{!-- id="{{Key}}"  name="{{Key}}" --}}   placeholder="Search by code">
-          {{!-- <select id="search-course">
+          <input type="text" id="search-code" placeholder="Search by code">
+          <select id="search-course">
               <option value="">Course</option>
               <option value="math">Math</option>
               <option value="history">History</option>
@@ -13,51 +22,58 @@
               <option value="">Status</option>
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
-          </select>           --}}
-          <button type="submit" id="button-form__search">Search</button>
-          </form>
+          </select>          
+          <button id="button-form__search">Search</button>
         </div>
              <div class="button__List-fees">
-                 <button id="add-subject">Thêm mới</button>
-                 <button>Ngừng áp dụng</button>
-                 <button>Xuất file</button>
-                <div id="add-new-subject" style="display: none;">
+          
+               <div class="form__List-fees">
+                <button id="add-subject">Thêm mới</button>
+                <div id="add-new-subject">
                   <form method="post" action="/tuition/createTuition">
+                  <div id="form__type" class="form-row">  
                   <label for="code">Code :</label>
                   <input type="text" id="code" name="code" placeholder="Code">
-
+                  </div>
+                  <div id="form__type" class="form-row">  
                   <label for="name">Course :</label>
                   <input type="text" id="name" name="name" placeholder="Course">
-
+                  </div>
+                  <div id="form__type" class="form-row">  
                   <label for="science">Subject :</label>
                   <input type="text" id="science" name="science" placeholder="Subject">
-
+                  </div>
+                  <div id="form__type" class="form-row">  
                   <label for="time">Semester :</label>
                   <input type="text" id="time" name="time" placeholder="Semester">
-
+                  </div>
+                  <div id="form__type" class="form-row">  
                   <label for="unit">Unit :</label>
                   <input type="text" id="unit" name="unit" placeholder="Unit">
-
+                  </div>
+                  <div id="form__type" class="form-row">  
                   <label for="tuitionOneUnit">Cost :</label>
                   <input type="text" id="tuitionOneUnit" name="tuitionOneUnit" placeholder="Course costs">
-
+                  </div>
+                  <div id="form__type" class="form-row">  
                   <label for="totalTuition">Payment :</label>
                   <input type="text" id="totalTuition" name="totalTuition" placeholder="All-course payment">
-
+                  </div>
+                  <div id="form__type" class="form-row">  
                   <label for="status">Status :</label>
                   <input type="text" id="status" name="status" placeholder="Status">
-
+                  </div>
+                  <div id="form__type" class="form-row">  
                   <button type="submit" id="add-button">Add</button>
+                  </div>
                   </form>
                  </div>
-                </div>
-             </div>    
-        <h2>Management of tuition</h2>
-
-        <div class="table__List-fees-stats">
+              </div>
+                <div class="table__List-show">
+          <h2>Management of tuition</h2>
     <table>
         <thead>
-            <tr>
+              <tr>
                 <th>Code</th>
                 <th>Cousre</th>
                 <th>Subject</th>
@@ -69,7 +85,7 @@
             </tr>
         </thead>
         <tbody id="table-body">
-          {{#each tuition}}
+         {{#each tuition}}
           <tr>
             <td>{{this.code}}</td>
             <td>{{this.name}}</td>
@@ -81,18 +97,11 @@
             <td>{{this.status}}</td>
           </tr>
         </tbody>
-        {{/each}}
+        {{/each}}  
     </table>
-    <div class="pagination__List-fees">
-    <a href="#">&laquo;</a>
-    <a href="#" class="active">1</a>
-    <a href="#">2</a>
-    <a href="#">3</a>
-    <a href="#">&raquo;</a>
-  </div>
-</div>
-
+      </div>
     </div>
+  </div>       
 </div>
 
 
@@ -106,7 +115,15 @@
     } else {
       addNewForm.style.display = "none";
     }
+    
   });
 
-</script>
+  var addNewButton = document.getElementById("add-subject");
+var addNewForm = document.getElementById("add-new-subject");
 
+addNewButton.addEventListener("click", function() {
+  addNewForm.classList.toggle("show");
+});
+
+
+</script>
