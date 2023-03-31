@@ -82,10 +82,7 @@
     </div> 
 </div>
 <script>
-// Lấy tất cả các phần tử có class "options-icon"
 const optionsIcons = document.querySelectorAll('.options-icon');
-
-// Thêm sự kiện "click" vào từng phần tử
 optionsIcons.forEach(icon => {
   icon.addEventListener('click', () => {
     const options = document.querySelector('.options');
@@ -93,7 +90,7 @@ optionsIcons.forEach(icon => {
   });
 });
 function goToPage() {
-    window.location.href = "/tuition/managmenttuition/collecttuition/invoice";
+    window.location.href = "/tuition/managmenttuition/collecttuition";
   }
 </script>
 

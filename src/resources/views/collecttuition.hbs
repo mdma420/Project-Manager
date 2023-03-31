@@ -1,8 +1,143 @@
-<a>aaaaaa</a>
-<div>
-    <a href="/tuition/managementtuition">back</a>
+<div class="main__Collect_tuition">
+    <div class="table__Collect-tuition">
+      <div class="form__Info-student" >  
+        <div class="card__Info-student">
+          <h2>Thông tin học viên</h2>
+           <div class="form__card">
+             <p>Họ và tên:</p>
+             <p>Nguyễn Văn A</p>
+           </div>
+           <div class="form__card">
+             <p>Họ và tên:</p>
+             <p>Nguyễn Văn A</p>
+           </div>
+           <div class="form__card">
+             <p>Ngày sinh:</p>
+             <p>01/01/2000</p>
+           </div>
+           <div class="form__card">
+             <p>Khoa-khối:</p>
+             <p>create web</p>
+           </div>
+           <div class="form__card">
+             <p>Email:</p>
+             <p>nguyenvana@gmail.com</p>
+           </div>
+           <div class="form__card">
+             <p>Số điện thoại:</p>
+             <p>0123456789</p>
+           </div>
+           <div class="form__card">
+             <p>Lớp học:</p>
+             <p>12A1</p>
+           </div>
+         </div>
+         <div class="form__Registered-subject">
+            <h2>Danh sách những môn học đã đăng ký</h2>
+            <div class="list__Registered-select">
+            <label for="session">Session :</label>
+            <select id="registered-session">
+              <option value="">...</option>
+              <option value="">2020-2021</option>
+              <option value="">2021-2022</option>
+              <option value="">2022-2023</option>
+              <option value="">2023-2024</option>
+            </select>
+             <label for="semester">Semester :</label>
+            <select id="registered-semester">
+              <option value="">...</option>
+              <option value="">1st semester</option>
+              <option value="">2nd semester</option>
+            </select>           
+        </div>
+                <div class="table__Registered-subject">
+  <table>
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Code Subject</th>
+        <th>Name of subject</th>
+        <th>Semester</th>
+        <th>Unit</th>
+        <th>Course costs</th>
+        <th>Start day</th>
+        <th>End day</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>001</td>
+        <td>John</td>
+        <td>Create Web</td>
+        <td>3</td>
+        <td>Credits</td>
+        <td>$100</td>
+        <td>1/2/2023</td>
+        <td>1/5/2023</td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+        </div>
+        </div>
+        <div class="form__Receipt-tuition">
+  <h2>Phiếu thu học phí</h2>
+  <div class="form__Show-receipt">
+  <div class="form__card-receipt">
+    <label for="receipt-code">Mã phiếu thu:</label>
+    <input type="text" id="receipt-code" name="receipt-code">
+  </div>
+  <div class="form__card-receipt">
+    <label for="student-name">Họ và tên học viên:</label>
+    <input type="text" id="student-name" name="student-name">
+  </div>
+  <div class="form__card-receipt">
+    <label for="class">Lớp học:</label>
+    <input type="text" id="class" name="class">
+  </div>
+  <div class="form__card-receipt">
+    <label for="session">Học kỳ:</label>
+    <select id="session" name="session">
+      <option value="">...</option>
+      <option value="2020-2021">2020-2021</option>
+      <option value="2021-2022">2021-2022</option>
+      <option value="2022-2023">2022-2023</option>
+      <option value="2023-2024">2023-2024</option>
+    </select>
+  </div>
+  <div class="form__card-receipt">
+    <label for="total-credit">Tổng số tín chỉ:</label>
+    <input type="text" id="total-credit" name="total-credit">
+  </div>
+  <div class="form__card-receipt">
+    <label for="total-cost">Tổng học phí:</label>
+    <input type="text" id="total-cost" name="total-cost">
+  </div>
+  <div class="form__card-receipt">
+    <label for="paid">Đã đóng:</label>
+    <input type="text" id="paid" name="paid">
+  </div>
+  <div class="form__card-receipt">
+    <label for="payment-method">Hình thức thanh toán:</label>
+    <input type="text" id="payment-method" name="payment-method">
+  </div>
+  <div class="form__card-receipt">
+    <label for="payment-date">Ngày thanh toán:</label>
+    <input type="text" id="payment-date" name="payment-date">
+  </div>
+  <div class="form__card-receipt">
+    <label for="surcharge">Phụ thu (ghi chú):</label>
+    <input type="text" id="surcharge" name="surcharge">
+  </div>
+  </div>
 </div>
 
+    </div>
+</div>
+{{!-- <div>
+    <a href="/tuition/managementtuition">back</a>
+</div>
 <div>
     <a href="/tuition/managmenttuition/collecttuition/invoice">invoice</a>
-</div>
+</div> --}}

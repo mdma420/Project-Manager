@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 .main__List_tuition {
   background: url("http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg") center/cover no-repeat;
   width: 100%;
@@ -197,6 +198,147 @@ button#add-button {
   display: flex;
   align-items: center;
   flex-direction: column; }
+
+.main__Collect_tuition {
+  background: url("http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg") center/cover no-repeat;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1000px; }
+
+.table__Collect-tuition {
+  display: flex;
+  background-image: url(transparent-background.png);
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 80%;
+  height: 100%;
+  border-radius: 25px;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  flex-direction: column; }
+
+.card__Info-student {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+  height: 60%;
+  background-color: cornsilk;
+  border-radius: 10px; }
+
+.card__Info-student h2 {
+  display: flex;
+  align-items: center;
+  height: 40px; }
+
+.form__Info-student {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  font-size: 15px;
+  height: 70%; }
+
+.form__card {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  height: 35px; }
+
+.form__card p {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center; }
+
+.form__Registered-subject h2 {
+  height: 65px;
+  font-size: 30px;
+  display: flex;
+  align-items: center; }
+
+.table__Registered-subject {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  height: 100%; }
+
+.table__Registered-subject table {
+  border-collapse: collapse;
+  width: 100%; }
+
+.table__Registered-subject th,
+.table__Registered-subject td {
+  border: 1px solid #0c0b0b;
+  padding: 8px;
+  text-align: left; }
+
+.table__Registered-subject th {
+  background-color: #f2f2f2;
+  font-weight: bold; }
+
+.form__Registered-subject {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 65%;
+  align-items: center;
+  height: 60%;
+  background-color: cornsilk;
+  border-radius: 10px; }
+
+.list__Registered-select {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 40%;
+  font-size: 20px; }
+
+.list__Registered-select label {
+  width: 15%; }
+
+.list__Registered-select select {
+  border-radius: 10px;
+  font-size: 20px; }
+
+.form__Receipt-tuition {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  background-color: cornsilk;
+  border-radius: 10px; }
+
+.form__Show-receipt {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
+  height: 77%; }
+
+.form__card-receipt {
+  width: 45%;
+  display: flex;
+  height: 15%;
+  font-size: 20px; }
+
+.form__Show-receipt label {
+  flex: 1 0 50%;
+  display: flex;
+  align-items: center; }
+
+.form__Show-receipt input, .form__Show-receipt select {
+  flex: 1 0 50%;
+  margin: 10px;
+  height: 25px;
+  border-radius: 5px; }
 
 * {
   padding: 0;
