@@ -37,29 +37,30 @@
       <tr>
         <th>Code</th>
         <th>Name</th>
-        <th>Course</th>
-        <th>Status</th>
         <th>Class</th>
-        <th>Fee 1</th>
-        <th>Fee 2</th>
-        <th>Fee 3</th>
-        <th>Fee 4</th>
+        <th>Science</th>
+        <th>Phone</th>
+        <th>Day Add mission</th>
+        <th>Tuition</th>
+        <th>Status</th>
+        <th>Day tuition collection</th>
         <th>Fee 5</th>
         <th>Fee 6</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
+      {{#each student}}
       <tr>
-        <td>001</td>
-        <td>John</td>
-        <td>Math</td>
-        <td>Active</td>
-        <td>Class A</td>
-        <td>$100</td>
-        <td>$150</td>
-        <td>$200</td>
-        <td>$250</td>
+        <td>{{this.codeStudent}}</td>
+        <td>{{this.name}}</td>
+        <td>{{this.class}}</td>
+        <td>{{this.science}}</td>
+        <td>{{this.phone}}</td>
+        <td>{{this.dayAdmission}}</td>
+        <td>{{this.tuition}}</td>
+        <td>{{this.status}}</td>
+        <td>{{this.tuitionCollectionDate}}</td>
         <td>$300</td>
         <td>$350</td>
         <td>
@@ -73,6 +74,7 @@
                 </div>
             </div>
         </td>
+        {{/each}}
       </tr>
       
     </tbody>
@@ -93,23 +95,6 @@ optionsIcons.forEach(icon => {
   });
 });
 function goToPage() {
-    window.location.href = "/tuition/managmenttuition/collecttuition/invoice";
+    window.location.href = "/tuition/managmenttuition/collecttuition";
   }
 </script>
-
-{{!-- <a>aaaaaaaaaaaaaaaa</a>
-{{#each student}}
-<div>
-    <a>{{this.codeStudent}}</a>
-    <a>{{this.name}}</a>
-</div>
-{{/each}}
-<div>
-    <a href="/tuition/managmenttuition/collecttuition">Collecttuition</a>
-</div>
-<dIv>
-    <a href="/tuition/managmenttuition/sendMail">Send Mail</a>
-</dIv>
-<div>
-<a href="/">Back</a>
-</div> --}}

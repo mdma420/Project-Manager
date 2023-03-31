@@ -17,7 +17,7 @@ function route(app) {
 
   app.use("/tuition", tuitionRouter);
 
-  app.use("/salary", salaryRouter);
+  app.use("/teacher", salaryRouter);
 
   app.use("/setting", settingRouter);
 }

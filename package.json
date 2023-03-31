@@ -13,6 +13,7 @@
     "mongoose": "^7.0.2",
     "morgan": "^1.10.0",
     "node-sass": "^8.0.0",
+    "nodemailer": "^6.9.1",
     "nodemon": "^2.0.22",
     "npm-watch": "^0.11.0"
   },
@@ -41,5 +42,8 @@
   "bugs": {
     "url": "https://github.com/mdma420/Project-Manager/issues"
   },
-  "homepage": "https://github.com/mdma420/Project-Manager#readme"
+  "homepage": "https://github.com/mdma420/Project-Manager#readme",
+  "devDependencies": {
+    "helper-moment": "^0.2.0"
+  }
 }
