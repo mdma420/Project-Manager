@@ -120,18 +120,16 @@
     <input type="text" id="paid" name="paid">
   </div>
   <div class="form__card-receipt">
-    <label for="payment-method">Hình thức thanh toán:</label>
-    <input type="text" id="payment-method" name="payment-method">
-  </div>
-  <div class="form__card-receipt">
-    <label for="payment-date">Ngày thanh toán:</label>
-    <input type="text" id="payment-date" name="payment-date">
-  </div>
-  <div class="form__card-receipt">
-    <label for="surcharge">Phụ thu (ghi chú):</label>
-    <input type="text" id="surcharge" name="surcharge">
+    <label for="method">Phương thức thanh toán:</label>
+            <select id="method" name="method">
+                <option value="cash">Tiền mặt</option>
+                <option value="bank">Chuyển khoản ngân hàng</option>
+            </select>
   </div>
   </div>
+  <form action="/tuition/managmenttuition/collecttuition/invoice">
+  <button type="submit">Sprint card</button>
+  </form>
 </div>
 
     </div>
