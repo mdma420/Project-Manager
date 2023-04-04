@@ -2,27 +2,29 @@ const {Router} = require("express");
 const express = require("express");
 const router = express.Router();
 const tuitionController = require("../app/controllers/TuitionController");
-// tuition
+// Management tuition
 router.get("/", tuitionController.tuition);
 router.post("/createTuition", tuitionController.createTuition);
 router.get("/sreach/:key", tuitionController.sreach);
-// management tuition
+// Management student
 router.get("/managementtuition", tuitionController.student);
 router.post("/managementtuition/:key", tuitionController.sreachStudent);
 router.get(
-  "/managmenttuition/collecttuition",
+  "/managmenttuition/collecttuition/:id",
   tuitionController.collecttuition
 );
+// Management report tuition
+router.get("/reportTuition", tuitionController.report);
 
-// gui thong bao ve mail
+// Send Mail
 router.get("/managmenttuition/sendMail", tuitionController.sendMail);
+router.post("/managmenttuition/sendMail/send", tuitionController.send);
 
-// xem hoa don
+// Management Invoice
 router.get(
-  "/managmenttuition/collecttuition/invoice",
+  "/managmenttuition/collecttuition/:id/invoice",
   tuitionController.invoice
 );
-// In hoa don PDF
 router.post(
   "/managmenttuition/collecttuition/invoice/exportPDF",
   tuitionController.exportPDF

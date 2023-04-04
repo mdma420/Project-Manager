@@ -13,6 +13,7 @@ class RegisterController {
     var fullname = req.body.fullname;
     var email = req.body.email;
     var phone = req.body.phone;
+    var role = req.body.role;
 
     UserModel.findOne({
       username: username,
@@ -21,7 +22,7 @@ class RegisterController {
         console.log(data);
         if (data) {
           const message = "Account already exists!";
-          const url = "/user?" + querystring.stringify({message: message});
+          const url = "/login?" + querystring.stringify({message: message});
           res.redirect(url);
         } else {
           UserModel.findOne({
@@ -31,7 +32,7 @@ class RegisterController {
               if (data) {
                 const message = "Account already exists!";
                 const url =
-                  "/user?" + querystring.stringify({message: message});
+                  "/login?" + querystring.stringify({message: message});
                 res.redirect(url);
               } else {
                 // console.log("da toi day");
@@ -44,9 +45,10 @@ class RegisterController {
                     fullname: fullname,
                     email: email,
                     phone: phone,
+                    role: role,
                   });
                 });
-                return res.redirect("/user");
+                return res.redirect("/login");
               }
             })
             .catch((err) => {
