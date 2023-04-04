@@ -101,17 +101,30 @@ class TuitionController {
   }
 
   //[GET] Collect Tuition
-  collecttuition(req, res, next) {
-    res.render("collecttuition");
+  async collecttuition(req, res, next) {
+    // res.render("collecttuition");
+    const tuition = await Tuition.find();
+    // console.log(tuition);
+    Student.findById(req.params.id)
+      .then((student) => {
+        // student = student.map((student) => student.toObject());
+        res.render("collecttuition", {
+          student: mongooseToObject(student),
+          tuition: mutipleMongooseToObject(tuition),
+          user: req.user,
+          title: "collecttuition",
+        });
+      })
+      .catch(next);
   }
 
   //[GET] Invoice
   invoice(req, res, next) {
-    Tuition.find({})
-      .then((tuition) => {
-        tuition = tuition.map((tuition) => tuition.toObject());
+    Student.findById(req.params.id)
+      .then((student) => {
+        // tuition = tuition.map((tuition) => tuition.toObject());
         res.render("invoice", {
-          tuition,
+          student: mongooseToObject(student),
           user: req.user,
           title: "invoice",
         });

@@ -10,7 +10,7 @@ router.get("/sreach/:key", tuitionController.sreach);
 router.get("/managementtuition", tuitionController.student);
 router.post("/managementtuition/:key", tuitionController.sreachStudent);
 router.get(
-  "/managmenttuition/collecttuition",
+  "/managmenttuition/collecttuition/:id",
   tuitionController.collecttuition
 );
 // Management report tuition
@@ -22,7 +22,7 @@ router.post("/managmenttuition/sendMail/send", tuitionController.send);
 
 // Management Invoice
 router.get(
-  "/managmenttuition/collecttuition/invoice",
+  "/managmenttuition/collecttuition/:id/invoice",
   tuitionController.invoice
 );
 router.post(

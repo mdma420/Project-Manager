@@ -2,6 +2,10 @@ const Teacher = require("../models/teacher");
 const Salary = require("../models/salary");
 const Tablesalary = require("../models/tablesalary");
 const Salarycontract = require("../models/salarycontract");
+const {
+  mutipleMongooseToObject,
+  MongooseToObject,
+} = require("../../util/mongoose");
 
 const querystring = require("querystring");
 
@@ -66,7 +70,7 @@ class salaryController {
       tablesalary = tablesalary.map((tablesalary) => tablesalary.toObject());
       res.render("reportSalary", {
         tablesalary,
-        salarycontract,
+        salarycontract: mutipleMongooseToObject(salarycontract),
         teacher,
         title: "Report Salary",
       });
