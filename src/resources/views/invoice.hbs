@@ -1,9 +1,63 @@
-<form action="/tuition/managmenttuition/collecttuition/invoice/exportPDF" method="post">
-<a>Hoa Don Thanh Toan Hoc Phi</a>
+<div class="main__Invoice">
+    <div class="form__Invoice">
+		<div class="show__Infor-company">
+			<div class="show__Adress">
+				<h2>Trung Tâm Mê Lập Trình</h1>
+				<h3>958 Lac Long Quan F8 Tan Binh HCM</h3>
+                <h3>Website</h3>
+			</div>
+			<div class="show__Code-bill">
+                 <h3>Mã hóa đơn:</h3>
+				 <h3>Ký hiệu:</h3>
+			</div>
+		</div>
+		<div class="table__Info-bill">
+			<h2>Biên lai thu học phí</h2>
+			<div class="show__Info-bill">
+				<div class="form-bill">
+            <label for="name">Họ và tên:</label>
+            <input type="text"  name="name">
+			</div>
+			<div class="form-bill">
+            <label for="email">Email:</label>
+            <input type="email"  name="email">
+			</div>
+			<div class="form-bill">
+            <label for="fee">Số tiền:</label>
+            <input type="text"  name="fee">
+			</div>
+			<div class="form-bill">
+            <label for="method">Phương thức thanh toán:</label>
+            <input type="text" name="method">
+			</div>
+			<div class="form-bill">
+            <label for="reason">Lý do thu:</label>
+            <input type="text"  name="reason">
+			</div>
+		</div>
+	<div class="show__Signature">
+		  <div class="form__Signature">
+			<h3>Ngày...Tháng...Năm...</h3>
+		  <h2>Người thu tiền</h2>
+          <h3>(Ký và ghi rõ họ tên)</h3>
+        </div>
+		<div class="form__Signature">
+			<h3>Ngày...Tháng...Năm...</h3>
+		  <h2>Người nộp tiền</h2>
+          <h3>(Ký và ghi rõ họ tên)</h3>
+        </div>
+	</div>
+	</div>
+</div>
+
+
+
+{{!-- <form action="/tuition/managmenttuition/collecttuition/invoice/exportPDF" method="post">
+<a>Hoa Don Thanh Toan Hoc Phi</a>xc,a,/;,
 {{!-- {{#each tuition}}
 <a>{{tuition.name}}</a>
 {{/each}} --}}
-<button type="submit">In</button>
-</form>
+{{!-- <button type="submit">In</button>
+</form> --}} 
 
 

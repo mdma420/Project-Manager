@@ -226,3 +226,106 @@
   height: 25px;
   border-radius: 5px;
 }
+.form__Receipt-tuition button {
+  display:flex;
+  background-color:#eac291;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+// css bill invoice
+
+.main__Invoice {
+  background: url("http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg") center / cover no-repeat;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.form__Invoice {
+display: flex;
+flex-direction: column;
+align-items: center;
+background-image: url(transparent-background.png);
+background-color: rgba(247, 242, 242, 0.935);
+width: 80%;
+height: 100%;
+border-radius: 25px;
+box-sizing: border-box;
+}
+.show__Infor-company {
+  display: flex;
+  flex-direction: row;
+  height: 25%;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+}
+.show__Adress {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+.show__Adress h3 {
+  font-size: 13px;
+}
+.show__Code-bill {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+.show__Code-bill h3 {
+  font-size: 15px;
+}
+.table__Info-bill {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 90%;
+  align-items: center;
+}
+.table__Info-bill h2 {
+  height: 10%;
+}
+.show__Info-bill {
+  width: 100%;
+  height: 50%;
+}
+.form-bill {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 12%;
+}
+.form-bill label {
+  width: 20%;
+}
+.form-bill input {
+  display: flex;
+  height: 80%;
+  border: none;
+  background-color: inherit;
+  width: 85%;
+}
+.show__Signature {
+  display: flex;
+  flex-direction: row;
+  width: 65%;
+  justify-content: center;
+  height: 60%;
+}
+.form__Signature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+}
+.form__Signature h3 {
+  font-size: 12px;
+  height: 10%;
+}
+.form__Signature h2 {
+  height: 20%;
+}
+
