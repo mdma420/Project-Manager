@@ -1,5 +1,6 @@
 <div class="main__Management_tuition">
     <div class="table__Management-fees">
+      
       <div class="session__Management-fees">
             <label for="session">Session :</label>
             <select id="management-session">
@@ -31,6 +32,20 @@
           </select>              
           <button id="button-management__search">Search</button>
         </div>
+        <div class="editor" style="display: none;">
+  <h3>Gửi thông báo</h3>
+  <div class="form-noti">
+    <label for="content">Content:</label>
+    <input type="text" name="content">
+    <label for="send-mail">To:</label>
+    <input type="text" name="send-mail">
+  </div>
+  <button id="italicBtn"><i>I</i></button>
+  <button id="underlineBtn"><u>U</u></button>
+  <textarea id="textInput"></textarea>
+  <button id="sendBtn">Send</button>
+  <button id="cancelBtn">Cancel</button>
+</div>
         <div class="table__Management-fees">
   <table>
     <thead>
@@ -68,20 +83,24 @@
                 <div class="options">
                   <ul>
                     <li onclick="goToPage()">Thu học phí</li>
-                    <li onclick="goToMail()">Send Mail</li>
-                    <li>Option 3</li>
+                    <li id="compose-email">Send Mail</li>
+                    <li onclick="goToHistory()">History</li>
                   </ul>
                 </div>
             </div>
         </td>
-        {{/each}}
+        
       </tr>
+      {{/each}}
       
     </tbody>
   </table>
 </div>
 
     </div> 
+    
+
+    
 </div>
 <script>
 const optionsIcons = document.querySelectorAll('.options-icon');
@@ -94,7 +113,64 @@ optionsIcons.forEach(icon => {
 function goToPage() {
     window.location.href = "/tuition/managmenttuition/collecttuition/6423f6366d8d3aa5779d4de0";
   }
-function goToMail() {
-  window.location.href = "/tuition//managmenttuition/sendMail"
+  function goToHistory() {
+    window.location.href = "/tuition//managmenttuition/sendMail";
+  }
+  function cancel() {
+  var result = confirm("Bạn có chắc muốn hủy không?");
+  if (result) {
+    window.location.href = "/tuition/managementtuition";
+  }
 }
+
+document.getElementById("cancelBtn").onclick = cancel;
+
+
 </script>
+<script>
+const composeBtn = document.getElementById('compose-email');
+  const editor = document.querySelector('.editor');
+  // Lấy các nút chức năng
+  const italicBtn = document.getElementById('italicBtn');
+  const textInput = document.getElementById('textInput');
+  const sendBtn = document.getElementById('sendBtn');
+  const cancelBtn = document.getElementById('cancelBtn');
+  const underlineBtn = document.getElementById('underlineBtn');
+
+composeBtn.addEventListener('click', () => {
+  editor.style.display = 'block';
+});
+
+italicBtn.addEventListener('click', () => {
+  document.execCommand('italic', false, null);
+  
+  textInput.focus();
+});
+
+underlineBtn.addEventListener('click', () => {
+  document.execCommand('underline', false, null);
+  
+  textInput.focus();
+});
+
+sendBtn.addEventListener('click', () => {
+  const to = toInput.value;
+  const content = textInput.value;
+  console.log(`Sending email to ${to}: ${content}`);
+  // Add your code here to send the email
+});
+
+cancelBtn.addEventListener('click', () => {
+  toInput.value = '';
+  contentInput.value = '';
+  textInput.value = '';
+  editor.style.display = 'none';
+});
+
+textInput.addEventListener('input', () => {
+  localStorage.setItem('editorContent', textInput.value);
+});
+
+
+</script>
+
