@@ -1,0 +1,106 @@
+.main__Teacher {
+    background: url("http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg") center / cover no-repeat;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.table__Teacher-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(transparent-background.png);
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 80%;
+    height: 100%;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+.form__Info-teacher {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    font-size: 15px;
+    height: 70%;
+}
+.card__Info-teacher {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    height: 60%;
+    background-color: cornsilk;
+    border-radius: 10px;
+}
+.form__Level-history {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 65%;
+    align-items: center;
+    height: 60%;
+    background-color: cornsilk;
+    border-radius: 10px;
+}
+.show__Level-history {
+    width: 80%;
+    height: 100%;
+}
+.show__Level-history table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.show__Level-history th,
+.show__Level-history td {
+  border: 1px solid #0c0b0b;
+  padding: 8px;
+  text-align: left;
+}
+
+.show__Level-history th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+.form__Role-history {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+    align-items: center;
+    height: 60%;
+    background-color: cornsilk;
+    border-radius: 10px;
+}
+.show_Role-history {
+    width: 80%;
+    height: 100%;
+}
+.show__Role-history table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.show__Role-history th,
+.show__Role-history td {
+  border: 1px solid #0c0b0b;
+  padding: 8px;
+  text-align: left;
+}
+
+.show__Role-history th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+.chart__Tuition {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 65%;
+    align-items: center;
+    height: 60%;
+    background-color: cornsilk;
+    border-radius: 10px;
+}
