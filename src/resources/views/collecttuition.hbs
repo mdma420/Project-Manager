@@ -2,21 +2,21 @@
     <div class="table__Collect-tuition">
       <div class="form__Info-student" >  
         <div class="card__Info-student">
-          <h2>Thông tin học viên</h2>
+          <h2>Student Information</h2>
             <div class="form__card">
-             <p>MSSV:</p>
+             <p>Code Student:</p>
              <p>{{student.codeStudent}}</p>
            </div>
            <div class="form__card">
-             <p>Họ và tên:</p>
+             <p>Name:</p>
              <p>{{student.name}}</p>
            </div>
            <div class="form__card">
-             <p>lớp:</p>
-             <p>{{student.class}}A</p>
+             <p>Class:</p>
+             <p>{{student.class}}</p>
            </div>
            <div class="form__card">
-             <p>Khoa-khối:</p>
+             <p>Science:</p>
              <p>{{student.science}}</p>
            </div>
            <div class="form__card">
@@ -24,16 +24,16 @@
              <p>{{student.emailStudent}}</p>
            </div>
            <div class="form__card">
-             <p>Số điện thoại:</p>
+             <p>Phone:</p>
              <p>{{student.phone}}</p>
            </div>
            <div class="form__card">
-             <p>Ngày Nhập Học</p>
-             <p>{{student.dayAdmission}}</p>
+             <p>Day Admission:</p>
+             <p>{{moment student.dayAdmission format ="DD MMM YYYY"}}</p>
            </div>
          </div>
          <div class="form__Registered-subject">
-            <h2>Danh sách những môn học đã đăng ký</h2>
+            <h2>List of registered courses</h2>
             <div class="list__Registered-select">
             <label for="session">Session :</label>
             <select id="registered-session">
@@ -83,22 +83,22 @@
         </div>
         </div>
         <div class="form__Receipt-tuition">
-  <h2>Phiếu thu học phí</h2>
+  <h2>Invoice</h2>
   <div class="form__Show-receipt">
   <div class="form__card-receipt">
-    <label for="receipt-code">Mã phiếu thu:</label>
-    <input type="text" id="receipt-code" name="receipt-code">
+    <label for="receipt-code">Code Bill:</label>
+    <input type="text" id="receipt-code" value="IN{{student.codeStudent}}" name="receipt-code">
   </div>
   <div class="form__card-receipt">
-    <label for="student-name">Họ và tên học viên:</label>
-    <input type="text" id="student-name" name="student-name">
+    <label for="student-name">Student name:</label>
+    <input type="text" id="student-name" value="{{student.name}}" name="student-name">
   </div>
   <div class="form__card-receipt">
-    <label for="class">Lớp học:</label>
-    <input type="text" id="class" name="class">
+    <label for="class">class:</label>
+    <input type="text" id="class" value="{{student.class}}" name="class">
   </div>
   <div class="form__card-receipt">
-    <label for="session">Học kỳ:</label>
+    <label for="session">Semester:</label>
     <select id="session" name="session">
       <option value="">...</option>
       <option value="2020-2021">2020-2021</option>
@@ -108,22 +108,22 @@
     </select>
   </div>
   <div class="form__card-receipt">
-    <label for="total-credit">Tổng số tín chỉ:</label>
-    <input type="text" id="total-credit" name="total-credit">
+    <label for="total-credit">Total Science:</label>
+    <input type="text" id="total-credit" value="1" name="total-credit">
   </div>
   <div class="form__card-receipt">
-    <label for="total-cost">Tổng học phí:</label>
+    <label for="total-cost">Total Tuition:</label>
     <input type="text" id="total-cost" name="total-cost">
   </div>
   <div class="form__card-receipt">
-    <label for="paid">Đã đóng:</label>
+    <label for="paid">Amount paid:</label>
     <input type="text" id="paid" name="paid">
   </div>
   <div class="form__card-receipt">
-    <label for="method">Phương thức thanh toán:</label>
+    <label for="method">Payment methods:</label>
             <select id="method" name="method">
-                <option value="cash">Tiền mặt</option>
-                <option value="bank">Chuyển khoản ngân hàng</option>
+                <option value="cash">Cash</option>
+                <option value="bank">Bank transfer</option>
             </select>
   </div>
   

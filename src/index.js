@@ -10,7 +10,9 @@ const db = require("./config/db");
 const hbs = handlebars.create({
   extname: ".hbs",
 });
-
+const Handlebars = require("handlebars");
+const MomentHandler = require("handlebars.moment");
+MomentHandler.registerHelpers(Handlebars);
 // method
 app.use(methodOverride("_method"));
 

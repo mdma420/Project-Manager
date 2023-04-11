@@ -56,7 +56,7 @@ class TuitionController {
   // [GET] Sreach Tuition
   sreach(req, res, next) {
     var Key = req.params.key;
-    Tuition.find({name: Key})
+    Tuition.find({science: Key})
       .then((tuition) => {
         tuition = tuition.map((tuition) => tuition.toObject());
         res.render("tuition", {
@@ -103,17 +103,26 @@ class TuitionController {
   //[GET] Collect Tuition
   async collecttuition(req, res, next) {
     // res.render("collecttuition");
-    const tuition = await Tuition.find();
+    // const tuition = await Tuition.find();
     // console.log(tuition);
     Student.findById(req.params.id)
       .then((student) => {
-        // student = student.map((student) => student.toObject());
-        res.render("collecttuition", {
-          student: mongooseToObject(student),
-          tuition: mutipleMongooseToObject(tuition),
-          user: req.user,
-          title: "collecttuition",
+        var studentScience = student.science;
+        Tuition.find({science: studentScience}).then((tuition) => {
+          res.render("collecttuition", {
+            student: mongooseToObject(student),
+            tuition: mutipleMongooseToObject(tuition),
+            user: req.user,
+            title: "collecttuition",
+          });
         });
+        // student = student.map((student) => student.toObject());
+        // res.render("collecttuition", {
+        //   student: mongooseToObject(student),
+        //   tuition: mutipleMongooseToObject(tuition),
+        //   user: req.user,
+        //   title: "collecttuition",
+        // });
       })
       .catch(next);
   }
@@ -177,7 +186,7 @@ class TuitionController {
 
   //[GET] Send Email
   sendMail(req, res, next) {
-    res.render("sendMail");
+    res.render("history");
   }
 
   //[POST] Send Email

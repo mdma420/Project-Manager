@@ -11,24 +11,24 @@
           </select>       
           </div>
         <div class="search__List-fees">
-          <input type="text" id="search-code" placeholder="Search by code">
-          <select id="search-course">
-              <option value="">Course</option>
-              <option value="math">Math</option>
-              <option value="history">History</option>
-              <option value="science">Science</option>
+          {{!-- <input type="text" id="search-code" placeholder="Search by code"> --}}
+          <select id="search-course" onchange="javascript:handleSelect(this)">
+              <option value="">Chose</option>
+              <option value="IT">IT</option>
+              <option value="Design">Design</option>
+              <option value="Business">Business</option>
           </select>
           <select id="search-status">
-              <option value="">Status</option>
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
+              <option value="">Chose</option>
+              <option value="onl">Onl</option>
+              <option value="off">Off</option>
           </select>          
-          <button id="button-form__search">Search</button>
+          {{!-- <button id="button-form__search">Search</button> --}}
         </div>
              <div class="button__List-fees">
           
                <div class="form__List-fees">
-                <button id="add-subject">Thêm mới</button>
+                <button id="add-subject">Create tuition</button>
                 <div id="add-new-subject">
                   <form method="post" action="/tuition/createTuition">
                   <div id="form__type" class="form-row">  
@@ -126,4 +126,8 @@ addNewButton.addEventListener("click", function() {
 });
 
 
+function handleSelect(elm)
+  {
+     window.location = "tuition/sreach/" + elm.value;
+  }
 </script>

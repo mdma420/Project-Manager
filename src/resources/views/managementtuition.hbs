@@ -2,24 +2,24 @@
     <div class="table__Management-fees">
       
       <div class="session__Management-fees">
-            <label for="session">Session :</label>
-            <select id="management-session">
+            {{!-- <label for="session">Session :</label> --}}
+            {{!-- <select id="management-session">
               <option value="">...</option>
               <option value="">2020-2021</option>
               <option value="">2021-2022</option>
               <option value="">2022-2023</option>
               <option value="">2023-2024</option>
-            </select>       
+            </select>        --}}
         </div>
         <h2>Student list</h2>
         <div class="search__Management-fees">
-          <input type="text" id="management-code" placeholder="Search by code">
-          <select id="management-course">
+          {{!-- <input type="text" id="management-code" placeholder="Search by code"> --}}
+          {{!-- <select id="management-course">
               <option value="">Course</option>
               <option value="math">Math</option>
               <option value="history">History</option>
               <option value="science">Science</option>
-          </select>
+          </select> --}}
           <select id="management-status">
               <option value="">Status</option>
               <option value="active">Active</option>
@@ -30,21 +30,23 @@
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
           </select>              
-          <button id="button-management__search">Search</button>
+          {{!-- <button id="button-management__search">Search</button> --}}
         </div>
         <div class="editor" style="display: none;">
+  <form action="/tuition/managmenttuition/sendMail/send" method="post">
   <h3>Gửi thông báo</h3>
   <div class="form-noti">
     <label for="content">Content:</label>
-    <input type="text" name="content">
+    <input type="text" value="{{subject}}" name="content">
     <label for="send-mail">To:</label>
-    <input type="text" name="send-mail">
+    <input type="text" value="{{to}}" name="send-mail">
   </div>
   <button id="italicBtn"><i>I</i></button>
   <button id="underlineBtn"><u>U</u></button>
-  <textarea id="textInput"></textarea>
-  <button id="sendBtn">Send</button>
+  <textarea value="{{html}}" id="textInput"></textarea>
+  <button type="submit" id="sendBtn">Send</button>
   <button id="cancelBtn">Cancel</button>
+  </form>
 </div>
         <div class="table__Management-fees">
   <table>
@@ -59,8 +61,6 @@
         <th>Tuition</th>
         <th>Status</th>
         <th>Day tuition collection</th>
-        <th>Fee 5</th>
-        <th>Fee 6</th>
         <th></th>
       </tr>
     </thead>
@@ -72,12 +72,10 @@
         <td>{{this.class}}</td>
         <td>{{this.science}}</td>
         <td>{{this.phone}}</td>
-        <td>{{this.dayAdmission}}</td>
+        <td>{{moment this.dayAdmission format ="DD MMM YYYY"}}</td>
         <td>{{this.tuition}}</td>
         <td>{{this.status}}</td>
-        <td>{{this.tuitionCollectionDate}}</td>
-        <td>$300</td>
-        <td>$350</td>
+        <td>{{moment this.tuitionCollectionDate format ="DD MMM YYYY"}}</td>
         <td>
             <div class="options-icon">&#8942;
                 <div class="options">
@@ -114,7 +112,7 @@ function goToPage() {
     window.location.href = "/tuition/managmenttuition/collecttuition/6423f6366d8d3aa5779d4de0";
   }
   function goToHistory() {
-    window.location.href = "/tuition//managmenttuition/sendMail";
+    window.location.href = "/tuition/managmenttuition/history";
   }
   function cancel() {
   var result = confirm("Bạn có chắc muốn hủy không?");

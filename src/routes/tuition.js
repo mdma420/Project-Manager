@@ -3,7 +3,6 @@ const express = require("express");
 const router = express.Router();
 const tuitionController = require("../app/controllers/TuitionController");
 // Management tuition
-router.get("/", tuitionController.tuition);
 router.post("/createTuition", tuitionController.createTuition);
 router.get("/sreach/:key", tuitionController.sreach);
 // Management student
@@ -17,7 +16,7 @@ router.get(
 router.get("/reportTuition", tuitionController.report);
 
 // Send Mail
-router.get("/managmenttuition/sendMail", tuitionController.sendMail);
+router.get("/managmenttuition/history", tuitionController.sendMail);
 router.post("/managmenttuition/sendMail/send", tuitionController.send);
 
 // Management Invoice
@@ -29,5 +28,6 @@ router.post(
   "/managmenttuition/collecttuition/invoice/exportPDF",
   tuitionController.exportPDF
 );
+router.get("/", tuitionController.tuition);
 
 module.exports = router;
