@@ -3,6 +3,8 @@ const {mongooseToObject} = require("../../util/mongoose");
 const {mutipleMongooseToObject} = require("../../util/mongoose");
 const Student = require("../models/student");
 const nodemailer = require("nodemailer");
+const Email = require("../models/email");
+const Invoice = require("../models/invoice");
 const ejs = require("ejs");
 const pdf = require("html-pdf");
 const fs = require("fs");
@@ -10,6 +12,7 @@ const path = require("path");
 const {options} = require("../../routes/tuition");
 const {response} = require("express");
 const {text} = require("body-parser");
+const email = require("../models/email");
 
 class TuitionController {
   // Management Tuition
@@ -149,10 +152,17 @@ class TuitionController {
       const data = {
         tuition: tuition,
       };
-      const student = await Student.find();
+      const student = await Student.findById(req.params.id);
       const dataS = {
         student: student,
       };
+      const invoice = new Invoice({
+        name: student.name,
+        email: student.emailStudent,
+        fee: req.body.fee,
+        method: req.body.method,
+      });
+      await invoice.save();
       const filePathName = path.resolve(
         __dirname,
         "../../resources/views/invoice.hbs"
@@ -184,16 +194,50 @@ class TuitionController {
     }
   }
 
-  //[GET] Send Email
-  sendMail(req, res, next) {
-    res.render("history");
+  //[GET] History
+  async history(req, res, next) {
+    const student = await Student.findById(req.params.id);
+    Invoice.find({name: student.name})
+      .then((invoice) => {
+        invoice = invoice.map((invoice) => invoice.toObject());
+        Email.find({emailStudent: student.emailStudent}).then((email) => {
+          email = email.map((email) => email.toObject());
+          res.render("history", {
+            email,
+            invoice,
+            title: "History",
+          });
+        });
+      })
+      .catch(next);
+    // Email.find({emailStudent: student.emailStudent})
+    //   .then((email) => {
+    //     email = email.map((email) => email.toObject());
+    //     res.render("history", {
+    //       email,
+    //       title: "History",
+    //     });
+    //   })
+    //   .catch(next);
   }
 
   //[POST] Send Email
   async send(req, res, next) {
     try {
-      const student = await Student.find();
-      // console.log(student.emailStudent);
+      const student = await Student.findById(req.params.id);
+      const email = new Email({
+        emailStudent: student.emailStudent,
+        subject: req.body.subject,
+        html: req.body.html,
+        createdAt: req.body.createdAt,
+      });
+      // email.push({
+      //   emailStudent: student.emailStudent,
+      //   subject: req.body.subject,
+      //   html: req.body.html,
+      //   createdAt: req.body.createdAt,
+      // });
+      await email.save();
       var transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -204,10 +248,9 @@ class TuitionController {
 
       var mailOptions = {
         from: "npq10102001@gmail.com",
-        to: student,
-        subject: "thong bao hoc phi",
-        text: "hoc phi",
-        html: "thong bao hoc sinh den dong hoc phi",
+        to: student.emailStudent,
+        subject: email.subject,
+        html: email.html,
       };
 
       transporter.sendMail(mailOptions, function (error, info) {

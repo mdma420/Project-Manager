@@ -15,9 +15,10 @@ router.get(
 // Management report tuition
 router.get("/reportTuition", tuitionController.report);
 
+// History
+router.get("/managmenttuition/:id/history", tuitionController.history);
 // Send Mail
-router.get("/managmenttuition/history", tuitionController.sendMail);
-router.post("/managmenttuition/sendMail/send", tuitionController.send);
+router.post("/managmenttuition/:id/sendMail/send", tuitionController.send);
 
 // Management Invoice
 router.get(
@@ -25,7 +26,7 @@ router.get(
   tuitionController.invoice
 );
 router.post(
-  "/managmenttuition/collecttuition/invoice/exportPDF",
+  "/managmenttuition/collecttuition/:id/invoice/exportPDF",
   tuitionController.exportPDF
 );
 router.get("/", tuitionController.tuition);

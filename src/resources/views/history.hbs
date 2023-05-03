@@ -6,7 +6,6 @@
         <table>
             <thead>
                 <tr>
-                    <th>STT</th>
                     <th>Mã phiếu thu</th>
                     <th>Ngày thu</th>
                     <th>Người nộp</th>
@@ -16,15 +15,16 @@
                 </tr>
             </thead>
             <tbody>
+                {{#each invoice}}
                 <tr>
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{this._id}}</td>
+                    <td>{{moment this.createdAt format ="DD MMM YYYY"}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.fee}}</td>
+                    <td>{{this.fee}}</td>
                     <td>xem phiếu thu</td>
                 </tr>
+                {{/each}}
             </tbody>
         </table>
         </div>
@@ -35,7 +35,6 @@
         <table>
             <thead>
                 <tr>
-                    <th>STT</th>
                     <th>Tiêu đề</th>
                     <th>Nội dung</th>
                     <th>Ngày gửi</th>
@@ -44,14 +43,15 @@
                 </tr>
             </thead>
             <tbody>
+                {{#each email}}
                 <tr>
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{this.subject}}</td>
+                    <td>{{this.html}}</td>
+                    <td>{{moment this.createdAt format ="DD MMM YYYY"}}</td>
                     <td></td>
                     <td>xem thông báo</td>
                 </tr>
+                {{/each}}
             </tbody>
         </table>
         </div>

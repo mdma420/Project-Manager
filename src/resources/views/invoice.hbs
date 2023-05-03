@@ -1,4 +1,4 @@
-<form action="/tuition/managmenttuition/collecttuition/invoice/exportPDF" method="post">
+<form action="/tuition/managmenttuition/collecttuition/{{student._id}}/invoice/exportPDF" method="post">
 <div class="main__Invoice">
     <div class="form__Invoice">
 		<div class="show__Infor-company">
@@ -17,19 +17,19 @@
 			<div class="show__Info-bill">
 				<div class="form-bill">
             <label for="name">Name</label>
-            <input type="text"  name="name">
+            <input type="text" value="{{student.name}}" id="name" name="name">
 			</div>
 			<div class="form-bill">
             <label for="email">Email:</label>
-            <input type="email"  name="email">
+            <input type="email" value="{{student.emailStudent}}" id="email" name="email">
 			</div>
 			<div class="form-bill">
             <label for="fee">Payment amount:</label>
-            <input type="text"  name="fee">
+            <input type="text" id="fee" name="fee">
 			</div>
 			<div class="form-bill">
             <label for="method">Payment methods:</label>
-            <input type="text" name="method">
+            <input type="text" id="method" name="method">
 			</div>
 			<div class="form-bill">
             <label for="reason">For</label>

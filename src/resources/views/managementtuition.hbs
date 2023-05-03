@@ -33,20 +33,21 @@
           {{!-- <button id="button-management__search">Search</button> --}}
         </div>
         <div class="editor" style="display: none;">
-  <form action="/tuition/managmenttuition/sendMail/send" method="post">
+  <form action="/tuition/managmenttuition/64197461e07b85ca00cbc585/sendMail/send" method="post">
   <h3>Gửi thông báo</h3>
   <div class="form-noti">
-    <label for="content">Content:</label>
-    <input type="text" value="{{subject}}" name="content">
-    <label for="send-mail">To:</label>
-    <input type="text" value="{{to}}" name="send-mail">
+    <label for="subject">Content:</label>
+    <input type="text" id="subject" name="subject">
+    <label for="emailStudent">To:</label>
+    <input type="text" id="emailStudent" name="emailStudent">
   </div>
   <button id="italicBtn"><i>I</i></button>
   <button id="underlineBtn"><u>U</u></button>
-  <textarea value="{{html}}" id="textInput"></textarea>
+  <textarea id="html" name="html"></textarea>
   <button type="submit" id="sendBtn">Send</button>
-  <button id="cancelBtn">Cancel</button>
   </form>
+  <button id="cancelBtn">Cancel</button>
+  
 </div>
         <div class="table__Management-fees">
   <table>
@@ -109,10 +110,10 @@ optionsIcons.forEach(icon => {
   });
 });
 function goToPage() {
-    window.location.href = "/tuition/managmenttuition/collecttuition/6423f6366d8d3aa5779d4de0";
+    window.location.href = "/tuition/managmenttuition/collecttuition/64197461e07b85ca00cbc585";
   }
   function goToHistory() {
-    window.location.href = "/tuition/managmenttuition/history";
+    window.location.href = "/tuition/managmenttuition/64197461e07b85ca00cbc585/history";
   }
   function cancel() {
   var result = confirm("Bạn có chắc muốn hủy không?");
