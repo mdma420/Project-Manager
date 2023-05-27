@@ -30,8 +30,48 @@ function checkLogin(req, res, next) {
   }
 }
 
+// check manager student
+function checkManagerStudent(req, res, next) {
+  var role = req.user.role;
+  if (role === "ManagerStudent" || role === "Manager" || role === "Admin") {
+    next();
+  } else {
+    return res.redirect("/");
+  }
+}
+
+function checkManagerTeacher(req, res, next) {
+  var role = req.user.role;
+  if (role === "ManagerTeacher" || role === "Manager" || role === "Admin") {
+    next();
+  } else {
+    return res.redirect("/");
+  }
+}
+
+function checkManager(req, res, next) {
+  var role = req.user.role;
+  if (role === "Manager" || role === "Admin") {
+    next();
+  } else {
+    return res.redirect("/");
+  }
+}
+
+function checkAdmin(req, res, next) {
+  var role = req.user.role;
+  if (role === "Admin") {
+    next();
+  } else {
+    return res.redirect("/");
+  }
+}
 // send data
 
 module.exports = {
   checkLogin,
+  checkManagerStudent,
+  checkManagerTeacher,
+  checkManager,
+  checkAdmin,
 };

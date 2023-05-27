@@ -269,7 +269,20 @@ class TuitionController {
   // Management Report Tuition
   //[GET] Report
   report(req, res, next) {
-    res.render("reportTuition");
+    Student.find()
+      .then((student) => {
+        student = student.map((student) => student.toObject());
+        Invoice.find().then((invoice) => {
+          invoice = invoice.map((invoice) => invoice.toObject());
+          res.render("reportTuition", {
+            student,
+            invoice,
+            title: "Report Tuition",
+          });
+        });
+      })
+      .catch(next);
+    // res.render("reportTuition");
   }
 }
 

@@ -4,22 +4,26 @@ const registerRouter = require("./register");
 const tuitionRouter = require("./tuition");
 const salaryRouter = require("./salary");
 const settingRouter = require("./setting");
-const {checkLogin} = require("../util/authonize");
+const {
+  checkLogin,
+  checkManagerStudent,
+  checkManagerTeacher,
+  checkManager,
+  checkAdmin,
+} = require("../util/authonize");
 
 function route(app) {
+  app.use("/tuition", checkLogin, checkManagerStudent, tuitionRouter);
+
+  app.use("/teacher", checkLogin, checkManagerTeacher, salaryRouter);
+
+  app.use("/setting", checkLogin, checkManager, settingRouter);
+
+  app.use("/register", checkLogin, checkAdmin, registerRouter);
+
   app.use("/login", loginRouter);
 
-  app.use("/setting", settingRouter);
-
-  app.use("/register", registerRouter);
-
   app.use("/", homeRouter);
-
-  app.use("/tuition", tuitionRouter);
-
-  app.use("/teacher", salaryRouter);
-
-  app.use("/setting", settingRouter);
 }
 
 module.exports = route;

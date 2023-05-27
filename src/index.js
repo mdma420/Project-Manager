@@ -7,9 +7,7 @@ const app = express();
 const port = 3000;
 const route = require("./routes");
 const db = require("./config/db");
-const hbs = handlebars.create({
-  extname: ".hbs",
-});
+
 const Handlebars = require("handlebars");
 const MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
@@ -23,6 +21,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, "public")));
+
+const hbs = handlebars.create({
+  helpers: require("./util/help"),
+  extname: ".hbs",
+});
 app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resources/views"));

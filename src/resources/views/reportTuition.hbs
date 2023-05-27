@@ -33,26 +33,16 @@
           </tr>
         </thead>
         <tbody>
+          {{#each student}}
           <tr>
             <td rowspan="3">1</td>
             <td rowspan="3">IT</td>
-            <td>ÁDASDA</td>
-            <td>1</td>
+            <td>{{this.class}}</td>
+            <td>{{this.name}}</td>
             <td>100vnd</td>
             <td></td>
           </tr>
-          <tr>
-            <td>adasd</td>
-            <td>2</td>
-            <td>200vnd</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>ádasd</td>
-            <td>3</td>
-            <td>300vnd</td>
-            <td></td>
-          </tr>
+          {{/each}}
         </tbody>
       </table>
       </div>
