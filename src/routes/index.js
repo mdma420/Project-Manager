@@ -21,9 +21,9 @@ function route(app) {
 
   app.use("/register", checkLogin, checkAdmin, registerRouter);
 
-  app.use("/login", loginRouter);
-
   app.use("/", homeRouter);
+
+  app.use("/login", loginRouter);
 }
 
 module.exports = route;

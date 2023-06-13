@@ -7,6 +7,8 @@ const app = express();
 const port = 3000;
 const route = require("./routes");
 const db = require("./config/db");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
 
 const Handlebars = require("handlebars");
 const MomentHandler = require("handlebars.moment");
@@ -21,6 +23,21 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, "public")));
+
+//use cookie parser
+app.use(cookieParser());
+
+// time express-session
+app.use(
+  session({
+    secret: "your-secret-key",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 24 * 60 * 60 * 1000, // Thời gian sống 1 ngày (86400000 miliseconds)
+    },
+  })
+);
 
 const hbs = handlebars.create({
   helpers: require("./util/help"),
