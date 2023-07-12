@@ -4,10 +4,11 @@ const Tablesalary = require("../models/tablesalary");
 const Salarycontract = require("../models/salarycontract");
 const {
   mutipleMongooseToObject,
-  MongooseToObject,
+  mongooseToObject,
 } = require("../../util/mongoose");
 
 const querystring = require("querystring");
+const {error} = require("console");
 
 class salaryController {
   //[GET] Teacher
@@ -34,10 +35,44 @@ class salaryController {
         const teacher = new Teacher(req.body);
         teacher
           .save()
-          .then(() => res.redirect("/salary"))
+          .then(() => res.redirect("/teacher"))
           .catch((error) => {});
       }
     });
+  }
+
+  //[GET] Detail Teacher
+  async detailTeacher(req, res, next) {
+    Teacher.findById(req.params.id).then((teacher) => {
+      res.render("detailTeacher", {
+        teacher: mongooseToObject(teacher),
+        user: req.user,
+        title: "Detail Teacher",
+      });
+    });
+  }
+
+  //[GET] Update Teacher
+  updateTeacher(req, res, next) {
+    Teacher.findById(req.params.id).then((teacher) => {
+      res.render("updateTeacher", {
+        teacher: mongooseToObject(teacher),
+        user: req.user,
+        title: "Update Teacher",
+      });
+    });
+  }
+
+  //[PUT] Update Teacher
+  // update(req, res, next) {
+  //   Teacher.updateOne({_id: req.params.id}, res.body)
+  //     .then(() => res.redirect("/teacher"))
+  //     .catch(error);
+  // }
+
+  //[GET] Table Salary
+  tableSalary(req, res, next) {
+    res.render("tableSalary");
   }
 
   //[GET] Salary

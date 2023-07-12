@@ -26,21 +26,21 @@
           <tr>
             <th>STT</th>
             <th>Khoa-khối</th>
-            <th>Lớp học</th>
             <th>Học viên</th>
+            <th>Email</th>
             <th>Thực thu</th>
-            <th>Chưa thu</th>
+            <th>Mehtod</th>
           </tr>
         </thead>
         <tbody>
-          {{#each student}}
+          {{#each invoice}}
           <tr>
             <td rowspan="3">1</td>
             <td rowspan="3">IT</td>
-            <td>{{this.class}}</td>
             <td>{{this.name}}</td>
-            <td>100vnd</td>
-            <td></td>
+            <td>{{this.email}}</td>
+            <td>{{this.fee}}</td>
+            <td>{{this.method}}</td>
           </tr>
           {{/each}}
         </tbody>
