@@ -2,21 +2,27 @@ const {Router} = require("express");
 const express = require("express");
 const router = express.Router();
 const tuitionController = require("../app/controllers/TuitionController");
+
 // Management tuition
 router.post("/createTuition", tuitionController.createTuition);
-router.get("/sreach/:key", tuitionController.sreach);
+router.get("/sreach", tuitionController.sreach);
+router.get("/sreach1", tuitionController.sreach1);
+
 // Management student
 router.get("/managementtuition", tuitionController.student);
-router.post("/managementtuition/:key", tuitionController.sreachStudent);
+router.get("/managementtuition/sreach", tuitionController.sreachStudent);
+router.get("/managementtuition/sreach1", tuitionController.sreachStudent1);
 router.get(
   "/managmenttuition/collecttuition/:id",
   tuitionController.collecttuition
 );
+
 // Management report tuition
 router.get("/reportTuition", tuitionController.report);
 
 // History
 router.get("/managmenttuition/:id/history", tuitionController.history);
+
 // Send Mail
 router.post("/managmenttuition/:id/sendMail/send", tuitionController.send);
 

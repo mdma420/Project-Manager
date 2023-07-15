@@ -18,13 +18,14 @@ class salaryController {
       teacher = teacher.map((teacher) => teacher.toObject());
       res.render("teacher", {
         teacher,
+        user: req.user,
         title: "Management Teacher",
       });
     });
   }
 
   //[POST] Create Teacher
-  createteacher(req, res, next) {
+  createTeacher(req, res, next) {
     var name = req.body.nameTeacher;
     Teacher.findOne({nameTeacher: name}).then((data) => {
       if (data) {
@@ -39,6 +40,22 @@ class salaryController {
           .catch((error) => {});
       }
     });
+  }
+
+  //[GET] Sreach Teacher
+  sreach(req, res, next) {
+    var Name = req.query.nameTeacher;
+    Teacher.find({nameTeacher: {$regex: Name, $options: "i"}})
+      .then((teacher) => {
+        teacher = teacher.map((teacher) => teacher.toObject());
+        res.render("teacher", {
+          teacher,
+          Name,
+          user: req.user,
+          title: "Management Teacher",
+        });
+      })
+      .catch(next);
   }
 
   //[GET] Detail Teacher
@@ -64,11 +81,11 @@ class salaryController {
   }
 
   //[PUT] Update Teacher
-  // update(req, res, next) {
-  //   Teacher.updateOne({_id: req.params.id}, res.body)
-  //     .then(() => res.redirect("/teacher"))
-  //     .catch(error);
-  // }
+  update(req, res, next) {
+    Teacher.updateOne({_id: req.params.id}, req.body)
+      .then(() => res.redirect("/teacher"))
+      .catch(error);
+  }
 
   //[GET] Table Salary
   tableSalary(req, res, next) {

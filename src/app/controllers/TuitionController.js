@@ -58,13 +58,13 @@ class TuitionController {
 
   // [GET] Sreach Tuition
   sreach(req, res, next) {
-    var Key = req.params.key;
-    Tuition.find({science: Key})
+    var Name = req.query.name;
+    Tuition.find({name: {$regex: Name, $options: "i"}})
       .then((tuition) => {
         tuition = tuition.map((tuition) => tuition.toObject());
         res.render("tuition", {
           tuition,
-          Key,
+          Name,
           user: req.user,
           title: "Tuition",
         });
@@ -73,7 +73,26 @@ class TuitionController {
       .catch(next);
   }
 
-  //Management Student
+  // [GET] Sreach select
+  sreach1(req, res, next) {
+    var Science = req.query.science;
+    var Status = req.query.status;
+    Tuition.find({science: {$regex: Science}})
+      .then((tuition) => {
+        tuition = tuition.map((tuition) => tuition.toObject());
+        res.render("tuition", {
+          tuition,
+          Status,
+          Science,
+          user: req.user,
+          title: "Tuition",
+        });
+      })
+      // .then((tuition) => res.redirect("/tuition"))
+      .catch(next);
+  }
+
+  // Management Student
   //[GET] Student
   student(req, res, next) {
     Student.find()
@@ -88,14 +107,31 @@ class TuitionController {
       .catch(next);
   }
 
-  //[POST] Sreach Student
+  //[GET] Sreach Student
   sreachStudent(req, res, next) {
-    var name = req.params.key;
-    Student.find({codeStudent: name})
+    var Name = req.query.name;
+    Student.find({name: {$regex: Name, $options: "i"}})
       .then((student) => {
         student = student.map((student) => student.toObject());
         res.render("managementtuition", {
           student,
+          Name,
+          user: req.user,
+          title: "managementtuition",
+        });
+      })
+      .catch(next);
+  }
+
+  //[GET] Select Sreach Student
+  sreachStudent1(req, res, next) {
+    var Science = req.query.science;
+    Student.find({science: Science})
+      .then((student) => {
+        student = student.map((student) => student.toObject());
+        res.render("managementtuition", {
+          student,
+          Science,
           user: req.user,
           title: "managementtuition",
         });
