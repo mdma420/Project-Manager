@@ -4,12 +4,13 @@ const router = express.Router();
 const salaryController = require("../app/controllers/SalaryController");
 
 // Management Teacher
+router.put("/:id", salaryController.update);
 router.get("/", salaryController.teacher);
-router.post("/createTeacher", salaryController.createteacher);
+router.post("/createTeacher", salaryController.createTeacher);
+router.get("/sreach", salaryController.sreach);
 router.get("/detailTeacher/:id", salaryController.detailTeacher);
 router.get("/updateTeacher/:id", salaryController.updateTeacher);
 router.get("/tableSalary", salaryController.tableSalary);
-// router.put("/:id", salaryController.update);
 
 // Management Salary
 router.get("/salary", salaryController.salary);

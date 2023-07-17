@@ -1,16 +1,6 @@
 <div class="main__Management_tuition">
     <div class="table__Management-fees">
       
-      <div class="session__Management-fees">
-            {{!-- <label for="session">Session :</label> --}}
-            {{!-- <select id="management-session">
-              <option value="">...</option>
-              <option value="">2020-2021</option>
-              <option value="">2021-2022</option>
-              <option value="">2022-2023</option>
-              <option value="">2023-2024</option>
-            </select>        --}}
-        </div>
         <h2>Student list</h2>
         <div class="search__Management-fees">
           {{!-- <input type="text" id="management-code" placeholder="Search by code"> --}}
@@ -20,16 +10,15 @@
               <option value="history">History</option>
               <option value="science">Science</option>
           </select> --}}
-          <select id="management-status">
-              <option value="">Status</option>
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
-          </select>
-          <select id="management-class">
-              <option value="">Class</option>
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
-          </select>              
+          <form action="/tuition/managementtuition/sreach">          
+            <label for="name">Sreach Student:</label>
+            <input type="text" id="name" name="name">
+          </form>
+          <form action="/tuition/managementtuition/sreach1">          
+            <label for="science">Sreach Science:</label>
+            <input type="option" id="science" name="science">
+            <button type="submit">Sreach</button>
+          </form>             
           {{!-- <button id="button-management__search">Search</button> --}}
         </div>
         <div class="editor" style="display: none;">

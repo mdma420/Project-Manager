@@ -1,29 +1,18 @@
 <div class="main__List_tuition">
     <div class="table__List-fees">
       <div class="session__List-fees">
-            <label for="session">Session :</label>
-            <select id="search-session">
-              <option value="">...</option>
-              <option value="">2020-2021</option>
-              <option value="">2021-2022</option>
-              <option value="">2022-2023</option>
-              <option value="">2023-2024</option>
-          </select>       
-          </div>
+        <form action="/tuition/sreach">
+          <label for="name">sreach tuition</label>
+          <input type="text" id="name" name="name">
+        </form>
+      </div>      
         <div class="search__List-fees">
-          {{!-- <input type="text" id="search-code" placeholder="Search by code"> --}}
-          <select id="search-course" onchange="javascript:handleSelect(this)">
-              <option value="">Chose</option>
-              <option value="IT">IT</option>
-              <option value="Design">Design</option>
-              <option value="Business">Business</option>
-          </select>
-          <select id="search-status" onchange="javascript:handleSelect1(this)" >
-              <option value="">Chose</option>
-              <option value="onl">Onl</option>
-              <option value="off">Off</option>
-          </select>          
-          {{!-- <button id="button-form__search">Search</button> --}}
+          <form action="/tuition/sreach1">          
+            <label for="science">Chose Science</label>
+            <input type="option" id="science" name="science">
+            <button type="submit">Sreach</button>
+          </form>              
+          {{!-- create --}}
         </div>
              <div class="button__List-fees">
           
@@ -71,7 +60,7 @@
               </div>
                 <div class="table__List-show">
           <h2>Management of tuition</h2>
-    <table>
+     <table>
         <thead>
               <tr>
                 <th>Code</th>
@@ -98,10 +87,10 @@
           </tr>
         </tbody>
         {{/each}}  
-    </table>
+      </table>
       </div>
-    </div>
-  </div>       
+     </div>
+    </div>       
 </div>
 
 
@@ -125,9 +114,4 @@ addNewButton.addEventListener("click", function() {
   addNewForm.classList.toggle("show");
 });
 
-
-function handleSelect(elm)
-  {
-     window.location = "tuition/sreach/" + elm.value;
-  }
 </script>
