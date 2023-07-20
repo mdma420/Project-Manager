@@ -10,6 +10,7 @@ router.post("/createTeacher", salaryController.createTeacher);
 router.get("/sreach", salaryController.sreach);
 router.get("/detailTeacher/:id", salaryController.detailTeacher);
 router.get("/updateTeacher/:id", salaryController.updateTeacher);
+router.put("/update/:id", salaryController.update);
 router.get("/tableSalary", salaryController.tableSalary);
 
 // Management Salary

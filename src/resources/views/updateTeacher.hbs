@@ -1,65 +1,59 @@
 <div class="main__updateTeacher">
+  <form method="POST" action="/teacher/update/{{teacher._id}}?_method=PUT">
     <div class="table-inforTeacher">
   <h2>Bảng Thông Tin Giảng Viên</h2>
   <div class="show-update__Teacher">
      <div class="form-updateTeacher">
-    <label for="code-gv">Mã giảng viên:</label>
-    <input type="text" id="code-gv">
+    <label for="codeTeacher">Mã giảng viên:</label>
+    <input type="text" value="{{teacher.codeTeacher}}" id="codeTeacher" name="codeTeacher">
   </div>
   <div class="form-updateTeacher">
-    <label for="ho-ten">Họ và tên:</label>
-    <input type="text" id="ho-ten">
+    <label for="nameTeacher">Họ và tên:</label>
+    <input type="text" value="{{teacher.nameTeacher}}" id="nameTeacher" name="nameTeacher">
   </div>
   <div class="form-updateTeacher">
-    <label for="gioi-tinh">Giới tính:</label>
-    <select id="gioi-tinh">
-      <option value="nam">Nam</option>
-      <option value="nu">Nữ</option>
-    </select>
+    <label for="sex">Giới tính:</label>
+    <input type="text" value="{{teacher.sex}}" id="sex" name="sex">
   </div>
   <div class="form-updateTeacher">
-    <label for="ngay-sinh">Ngày sinh:</label>
-    <input type="date" id="ngay-sinh">
+    <label for="dateOfBirth">Ngày sinh:</label>
+    <input type="date" value="{{teacher.dateOfBirth}}" id="dateOfBirth" name="dateOfBirth">
   </div>
   <div class="form-updateTeacher">
-    <label for="email">Email:</label>
-    <input type="email" id="email">
+    <label for="emailTeacher">Email:</label>
+    <input type="text" value="{{teacher.emailTeacher}}" id="emailTeacher" name="emailTeacher">
   </div>
   <div class="form-updateTeacher">
-    <label for="dien-thoai">Điện thoại:</label>
-    <input type="tel" id="dien-thoai">
+    <label for="phone">Điện thoại:</label>
+    <input type="text" value="{{teacher.phone}}" id="phone" name="phone">
   </div>
   <div class="form-updateTeacher">
-    <label for="dia-chi">Địa chỉ:</label>
-    <input type="text" id="dia-chi">
+    <label for="address">Địa chỉ:</label>
+    <input type="text" value="{{teacher.address}}" id="address" name="address">
   </div>
   <div class="form-updateTeacher">
-    <label for="chuyen-nganh">Tổ bộ môn:</label>
-    <input type="text" id="chuyen-nganh">
+    <label for="subject">Tổ bộ môn:</label>
+    <input type="text" value="{{teacher.subject}}" id="subject" name="subject">
   </div>
   <div class="form-updateTeacher">
-    <label for="bang-cap">Bằng cấp:</label>
-    <input type="text" id="bang-cap">
+    <label for="level">Bằng cấp:</label>
+    <input type="text" value="{{teacher.level}}" id="level" name="level">
   </div>
   <div class="form-updateTeacher">
-    <label for="vi-tri">Chức vụ:</label>
-    <input type="text" id="vi-tri">
+    <label for="position">Chức vụ:</label>
+    <input type="text" value="{{teacher.position}}" id="position" name="position">
   </div>
   <div class="form-updateTeacher">
-    <label for="ngay-bat-dau">Ngày bắt đầu công tác:</label>
-    <input type="date" id="ngay-bat-dau">
+    <label for="dateStartWork">Ngày bắt đầu công tác:</label>
+    <input type="date" value="{{teacher.dateStartWork}}" id="dateStartWork" name="dateStartWork">
   </div>
   <div class="form-updateTeacher">
-    <label for="dia-chi">Dịa chỉ:</label>
-    <input type="text" id="dia-chi">
+    <label for="citizenIdentificationNumber">Số CMND/CCCD:</label>
+    <input type="text" value="{{teacher.citizenIdentificationNumber}}" id="citizenIdentificationNumber" name="citizenIdentificationNumber">
   </div>
   <div class="form-updateTeacher">
-    <label for="cmnd-cccd">Số CMND/CCCD:</label>
-    <input type="text" id="cmnd-cccd">
-  </div>
-  <div class="form-updateTeacher">
-    <label for="noi-cap">Nơi cấp:</label>
-    <input type="text" id="noi-cap">
+    <label for="placeOfIssue">Nơi cấp:</label>
+    <input type="text" value="{{teacher.placeOfIssue}}" id="placeOfIssue" name="placeOfIssue">
   </div>
   </div>
     </div>
@@ -67,40 +61,41 @@
       <h2>Thông tin lương</h2>
       <div class="show-update__Salary">
       <div class="form-updateSalary">
-    <label for="hop-dong">Loại hợp đồng:</label>
-    <select id="hop-dong">
+    <label for="typeOfContract">Loại hợp đồng:</label>
+    <select id="typeOfContract" name="typeOfContract">
       <option value="">A</option>
       <option value="">B</option>
     </select>
   </div>
   <div class="form-updateSalary">
-    <label for="muc-luong">Lương cơ bản:</label>
-    <input type="text" id="muc-luong">
+    <label for="basicSalary">Lương cơ bản:</label>
+    <input type="text" value="{{teacher.basicSalary}}" id="basicSalary" name="basicSalary">
   </div>
   <div class="form-updateSalary">
-    <label for="ngach-hang">Ngạch/Hạng:</label>
-    <input type="text" id="ngach-hang">
+    <label for="glone">Ngạch/Hạng:</label>
+    <input type="text" value="{{teacher.glone}}" id="glone" name="glone">
   </div>
   <div class="form-updateSalary">
-    <label for="ma-ngach">Mã ngạch:</label>
-    <input type="text" id="ma-ngach">
+    <label for="gloneNumber">Mã ngạch:</label>
+    <input type="text" value="{{teacher.gloneNumber}}" id="gloneNumber" name="gloneNumber">
   </div>
   <div class="form-updateSalary">
-    <label for="bac-luong">Bậc lương:</label>
-    <input type="text" id="bac-luong">
+    <label for="salaryScale">Bậc lương:</label>
+    <input type="text" value="{{teacher.salaryScale}}" id="salaryScale" name="salaryScale">
   </div>
   <div class="form-updateSalary">
-    <label for="heso-luong">Hệ số lương:</label>
-    <input type="text" id="heso-luong">
+    <label for="coefficientsSalary">Hệ số lương:</label>
+    <input type="text" value="{{teacher.coefficientsSalary}}" id="coefficientsSalary" name="coefficientsSalary">
   </div>
   <div class="form-updateSalary">
-    <label for="ngay-ap-dung">Ngày áp dụng ngành bậc:</label>
-    <input type="date" id="ngay-ap-dung">
+    <label for="dateApplyGlone">Ngày áp dụng ngành bậc:</label>
+    <input type="date" value="{{teacher.dateApplyGlone}}" id="dateApplyGlone"  name="dateApplyGlone">
   </div>
    </div>
    <div class="button-update">
-    <button type="button" id="update-button">Submit</button>
-    <button type="button" id="cancel-button">Cancel</button>
+    <button type="submit" id="update-button">Submit</button>
+    <button type="button" id="cancel-button" ><a href="/teacher">Cancel</a></button>
   </div>
   </div>
+  </form>
 </div>
