@@ -88,8 +88,15 @@ class salaryController {
   }
 
   //[GET] Table Salary
-  tableSalary(req, res, next) {
-    res.render("tableSalary");
+  async tableSalary(req, res, next) {
+    Teacher.find({}).then((teacher) => {
+      teacher = teacher.map((teacher) => teacher.toObject());
+      res.render("tableSalary", {
+        teacher,
+        user: req.user,
+        title: "Management Teacher",
+      });
+    });
   }
 
   //[GET] Salary

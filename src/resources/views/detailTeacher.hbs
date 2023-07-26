@@ -21,7 +21,7 @@
            </div>
            <div class="form__card-teacher">
              <p>Trình độ đào tạo:</p>
-             <p></p>
+             <p>{{teacher.level}}</p>
            </div>
           </div>
           <div class="form__Level-history">
@@ -42,12 +42,12 @@
             <tbody>
                 <tr>
                     <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>xem phiếu thu</td>
+                    <td>{{teacher.glone}}</td>
+                    <td>{{teacher.gloneNumber}}</td>
+                    <td>{{teacher.salaryScale}}</td>
+                    <td>{{teacher.coefficientsSalary}}</td>
+                    <td>{{teacher.basicSalary}}</td>
+                    <td>{{moment teacher.dateApplyGlone format ="DD MMM YYYY"}}</td>
                 </tr>
             </tbody>
         </table>
@@ -70,7 +70,7 @@
                 <tr>
                     <td>1</td>
                     <td>{{teacher.subject}}</td>
-                    <td></td>
+                    <td>{{moment teacher.dateStartWork format ="DD MMM YYYY"}}</td>
                 </tr>
             </tbody>
         </table>
@@ -80,4 +80,5 @@
                 <h2>Bieu do bien dong luong</h2>
             </div>
     </div>
+    <button type="submit"><a href="/teacher">Back</a></button>
 </div>

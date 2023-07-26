@@ -1,0 +1,27 @@
+<div>
+    <table>
+        <thead>
+            <tr>Code Teacher</tr>
+            <tr>Name Teacher</tr>
+            <tr>Subject</tr>
+            <tr>Position</tr>
+            <tr>Day Work</tr>
+            <tr>Day Off</tr>
+            <tr>Sum Day Work</tr>
+        </thead>
+        {{#each teacher}}
+        <tbody>
+            <td>{{this.codeTeacher}}</td>
+            <td>{{this.nameTeacher}}</td>
+            <td>{{this.subject}}</td>
+            <td>{{this.position}}</td>
+            <td>24</td>
+            <td>0</td>
+            <td>24</td>
+        </tbody>
+        {{/each}}
+    </table>
+</div>
+<div>
+    <Button type="submit"><a href="/teacher">Back</a></Button>
+</div>
