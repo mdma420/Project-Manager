@@ -3,7 +3,7 @@ const homeRouter = require("./home");
 const registerRouter = require("./register");
 const tuitionRouter = require("./tuition");
 const salaryRouter = require("./salary");
-const settingRouter = require("./setting");
+const announcementRouter = require("./announcement");
 const {
   checkLogin,
   checkManagerStudent,
@@ -17,7 +17,7 @@ function route(app) {
 
   app.use("/teacher", checkLogin, checkManagerTeacher, salaryRouter);
 
-  app.use("/setting", checkLogin, checkManager, settingRouter);
+  app.use("/announcement", checkLogin, checkManager, announcementRouter);
 
   app.use("/register", checkLogin, checkAdmin, registerRouter);
 

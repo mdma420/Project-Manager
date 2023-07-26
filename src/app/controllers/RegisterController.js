@@ -1,10 +1,20 @@
+const User = require("../models/user");
 const UserModel = require("../models/user");
 const bcrypt = require("bcrypt");
 const querystring = require("querystring");
 
 class RegisterController {
   // [GET] Register
-  register(req, res, next) {}
+  register(req, res, next) {
+    // res.render("register");
+    User.find({}).then((user) => {
+      user = user.map((user) => user.toObject());
+      res.render("register", {
+        user,
+        title: "Register User",
+      });
+    });
+  }
 
   // [POST] register user
   apiregister(req, res, next) {
@@ -48,7 +58,7 @@ class RegisterController {
                     role: role,
                   });
                 });
-                return res.redirect("/login");
+                return res.redirect("/register");
               }
             })
             .catch((err) => {
