@@ -2,6 +2,10 @@ const User = require("../models/user");
 const UserModel = require("../models/user");
 const bcrypt = require("bcrypt");
 const querystring = require("querystring");
+const {
+  mutipleMongooseToObject,
+  mongooseToObject,
+} = require("../../util/mongoose");
 
 class RegisterController {
   // [GET] Register
@@ -71,6 +75,42 @@ class RegisterController {
         console.error(err);
         res.json("Lỗi kiểm tra tài khoản");
       });
+  }
+
+  // [GET] Update User
+  UpdateUser(req, res, next) {
+    User.findById(req.params.id).then((user) => {
+      res.render("updateUser", {
+        user: mongooseToObject(user),
+        title: "Update User",
+      });
+    });
+  }
+
+  // [PUT] update User
+  async updateUser(req, res, next) {
+    const password = req.body.password;
+    const hash = await bcrypt.hash(password, 10);
+    User.updateOne(
+      {_id: req.params.id},
+      {
+        username: req.body.username,
+        password: hash,
+        fullname: req.body.fullname,
+        email: req.body.email,
+        phone: req.body.phone,
+        role: req.body.role,
+      }
+    )
+      .then(() => res.redirect("/register"))
+      .catch(() => res.redirect("/register"));
+  }
+
+  // [DELETE] delete user
+  deleteUser(req, res, next) {
+    User.deleteOne({_id: req.params.id}, req.body)
+      .then(() => res.redirect("/register"))
+      .catch((error) => {});
   }
 }
 

@@ -1,0 +1,168 @@
+<div>
+    <form method="post" action="/teacher/createTeacher">
+    <div>
+        <label for="codeTeacher">Code Teacher</label>
+        <input type="text" name="codeTeacher" id="codeTeacher">
+    </div>
+    <div>
+        <label for="nameTeacher">Name Teacher</label>
+        <input type="text" name="nameTeacher" id="nameTeacher">
+    </div>
+    <div>
+        <label for="sex">Sex</label>
+        <input type="text" name="sex" id="sex">
+    </div>
+    <div>
+        <label for="dateOfBirth">Date Of Birth</label>
+        <input type="date" name="dateOfBirth" id="dateOfBirth">
+    </div>
+    <div>
+        <label for="emailTeacher">email Teacher</label>
+        <input type="text" name="emailTeacher" id="emailTeacher">
+    </div>
+    <div>
+        <label for="phone">Phone</label>
+        <input type="text" name="phone" id="phone">
+    </div>
+    <div>
+        <label for="subject">Subject</label>
+        <input type="text" name="subject" id="subject">
+    </div>
+    <div>
+        <label for="leve">Leve</label>
+        <input type="text" name="leve" id="leve">
+    </div>
+    <div>
+        <label for="position">Position</label>
+        <input type="text" name="position" id="position">
+    </div>
+    <div>
+        <label for="dateStartWork">Date Start Work</label>
+        <input type="date" name="dateStartWork" id="dateStartWork">
+    </div>
+    <div>
+        <label for="address">Address</label>
+        <input type="text" name="address" id="address">
+    </div>
+    <div>
+        <label for="citizenIdentificationNumber">Citizen Identification Number</label>
+        <input type="text" name="citizenIdentificationNumber" id="citizenIdentificationNumber">
+    </div>
+    <div>
+        <label for="placeOfIssue">Place Of Issue</label>
+        <input type="text" name="placeOfIssue" id="placeOfIssue">
+    </div>
+    <div>onLeave
+        <label for="onLeave">On Leave</label>
+        <input type="text" name="onLeave" id="onLeave">
+    </div>
+    <div>
+        <label for="status">Status</label>
+        <input type="text" name="status" id="status">
+    </div>
+    <div>
+        <label for="typeOfContract">Type Of Contract</label>
+        <input type="text" name="typeOfContract" id="typeOfContract">
+    </div>
+    <div>
+        <label for="basicSalary">Basic Salary</label>
+        <input type="text" name="basicSalary" id="basicSalary">
+    </div>
+    <div>
+        <label for="glone">Glone</label>
+        <input type="text" name="glone" id="glone">
+    </div>
+    <div>
+        <label for="gloneNumber">Glone Number</label>
+        <input type="text" name="gloneNumber" id="gloneNumber">
+    </div>
+    <div>
+        <label for="salaryScale">Salary Scale</label>
+        <input type="text" name="salaryScale" id="salaryScale">
+    </div>
+    <div>
+        <label for="coefficientsSalary">Coefficients Salary</label>
+        <input type="text" name="coefficientsSalary" id="coefficientsSalary">
+    </div>
+    <div>
+        <label for="dateApplyGlone">Date Apply Glone</label>
+        <input type="date" name="dateApplyGlone" id="dateApplyGlone">
+    </div>
+    <div>
+        <button type="submit">Add new teacher</button>
+    </div>
+    </form>
+</div>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Code Teacher</th>
+                <th>Name Teacher</th>
+                <th>Sex</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each teacher}}
+            <tr>
+                <td>{{this.codeTeacher}}</td>
+                <td>{{this.nameTeacher}}</td>
+                <td>{{this.sex}}</td>
+                <td>{{this.emailTeacher}}</td>
+                <td>{{this.phone}}</td>
+                <td>{{this.address}}</td>
+                <td>
+                    <form action="/teacher/deleteTeacher/{{this._id}}?_method=DELETE" method="post">
+                    <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+{{!-- Confirm delete Teacher
+
+<div class="modal fade" id="delete-teacher" tabindex="-1" aria-labelledby="delete-teacher" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="delete-teacher">Delete Teacher</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        are you sure ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button id="btn-delete-teacher" type="button" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{! delete hidden form }}
+<form method="post" name="delete-teacher-form"></form>
+
+<script>
+    document.addEventListener('DOMContentLoad', function() {
+        var TeacherId;
+        var deleteForm = document.forms('delete-teacher-form');
+        var btnDeleteTeacher = document.getElementById('btn-delete-teacher')
+
+        $('#delete-teacher').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            TeacherId = button.data('id');
+        })
+
+        btnDeleteTeacher.onclick = function () {
+            deleteForm.action = '/teacher/deleteTeacher/' + TeacherId + '?_method=DELETE';
+            deleteForm.submit();
+        }
+    })
+</script> --}}

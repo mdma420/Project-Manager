@@ -24,6 +24,18 @@ class salaryController {
     });
   }
 
+  //[GET] Manager Creater Teacher
+  managerCreateTeacher(req, res, next) {
+    Teacher.find({}).then((teacher) => {
+      teacher = teacher.map((teacher) => teacher.toObject());
+      res.render("MCTeacher", {
+        teacher,
+        user: req.user,
+        title: "Management Create Teacher",
+      });
+    });
+  }
+
   //[POST] Create Teacher
   createTeacher(req, res, next) {
     var name = req.body.nameTeacher;
@@ -36,10 +48,17 @@ class salaryController {
         const teacher = new Teacher(req.body);
         teacher
           .save()
-          .then(() => res.redirect("/teacher"))
+          .then(() => res.redirect("/teacher/MCTeacher"))
           .catch((error) => {});
       }
     });
+  }
+
+  //[Delete] Delete Teacher
+  deleteTeacher(req, res, next) {
+    Teacher.deleteOne({_id: req.params.id}, req.body)
+      .then(() => res.redirect("/teacher/MCTeacher"))
+      .catch((error) => {});
   }
 
   //[GET] Sreach Teacher

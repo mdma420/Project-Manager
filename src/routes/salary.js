@@ -6,7 +6,9 @@ const salaryController = require("../app/controllers/SalaryController");
 // Management Teacher
 router.put("/:id", salaryController.update);
 router.get("/", salaryController.teacher);
+router.get("/MCTeacher", salaryController.managerCreateTeacher);
 router.post("/createTeacher", salaryController.createTeacher);
+router.delete("/deleteTeacher/:id", salaryController.deleteTeacher);
 router.get("/sreach", salaryController.sreach);
 router.get("/detailTeacher/:id", salaryController.detailTeacher);
 router.get("/updateTeacher/:id", salaryController.updateTeacher);
