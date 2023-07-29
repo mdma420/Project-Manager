@@ -1,0 +1,31 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Code Student</th>
+                <th>Name Student</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Class</th>
+                <th>Subject</th>
+                <th>html</th>
+                <th>Sent Date</th>
+            </tr>
+        </thead>
+        <tbody> 
+            <tr>
+                <td>{{email.codeStudent}}</td>
+                <td>{{email.nameStudent}}</td>
+                <td>{{email.phone}}</td>
+                <td>{{email.emailStudent}}</td>
+                <td>{{email.class}}</td>
+                <td>{{email.subject}}</td>
+                <td>{{email.html}}</td>
+                <td>{{moment email.createdAt format ="DD MMM YYYY"}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <button><a href="/announcement/forStudent">Back</a></button>
+</div>

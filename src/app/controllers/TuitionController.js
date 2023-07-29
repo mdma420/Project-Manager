@@ -262,6 +262,10 @@ class TuitionController {
     try {
       const student = await Student.findById(req.params.id);
       const email = new Email({
+        codeStudent: student.codeStudent,
+        nameStudent: student.name,
+        phone: student.phone,
+        class: student.class,
         emailStudent: student.emailStudent,
         subject: req.body.subject,
         html: req.body.html,
