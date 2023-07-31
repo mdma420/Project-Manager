@@ -3,7 +3,7 @@
 <div class="about-login">
   {{!-- <img class="logo-school" src="https://assets.foleon.com/eu-west-2/uploads-7e3kk3/48044/foleon_logo_lon_kent_white.f0e5fd02e287.png" alt="my logo"> --}}
   <div class="main-login">
-    <form method="POST" action="/login/apilogin">
+    <form class="form-login" method="POST" action="/login/apilogin">
       <span class="login-title">Login</span>
           {{#if msg}}<p class="login-error">{{msg}}</p>{{/if}}
       {{!-- <div class="check-who">
@@ -16,11 +16,12 @@
         <input type="radio" id="manager" name="occupation" value="manager" required>
         <label for="manager">Manager</label>
       </div> --}}
-      <div>
+      <div class="form-type__login">
+      <div class="type--login">
         <label for="username">Username</label>
         <input type="text" id="username" type="user" name="username" placeholder="Enter your username" required>
       </div>
-      <div>
+      <div class="type--login">
         <label for="password">Password</label>
         <div class="password-field">
           <input id="password" type="password" type="password" name="password" placeholder="Enter your password" required>
@@ -30,15 +31,17 @@
         </div>
      </div>
 
-      <div>
+      <div class="checkbox--login">
           <input type="checkbox" name="remember" id="">
           <label for="remember">Remember</label>
+       </div>
        </div>
       {{!-- <div>
           <a href="">forgot the password?</a>
       </div> --}}
-      <button>Submit</button>
+      
     </form>
+    <button>Submit</button>
   </div>
 </div>
 

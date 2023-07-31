@@ -835,3 +835,76 @@ h1 {
   justify-content: flex-start;
   font-size: 15px;
   display: contents; }
+
+.about-login {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url(http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg) center/cover no-repeat; }
+
+.main-login {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 70%;
+  width: 60%;
+  background-color: white;
+  border-radius: 10px;
+  flex-direction: column; }
+
+.form-login {
+  height: 85%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 80%; }
+
+.form-type__login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 80%; }
+
+.login-title {
+  display: flex;
+  justify-content: center;
+  font-size: 53px;
+  height: 5%; }
+
+.type--login {
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+  height: 30%;
+  font-size: 20px; }
+
+.type--login input,
+.password-field {
+  width: 100%;
+  border-radius: 3px;
+  height: 35px; }
+
+.type--login label {
+  width: 60%;
+  height: 80%;
+  display: flex;
+  align-items: center; }
+
+.checkbox--login input {
+  width: 20%; }
+
+.checkbox--login {
+  height: 20%;
+  display: flex;
+  width: 30%;
+  align-items: center;
+  justify-content: center; }
+
+.main-login button {
+  font-size: 20px;
+  border-radius: 5px;
+  width: 15%; }
