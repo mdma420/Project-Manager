@@ -1,4 +1,8 @@
 <div>
+  <button><a href="/teacher/timesheetsTeacher">Timesheets Teachet</a></button>
+  <button><a href="/teacher/listOnLeaveTeacher">Timesheets Teachet</a></button>
+</div>
+<div>
   <form action="/teacher/sreach">
     <label for="nameTeacher">Sreach Teacher</label>
     <input type="text" id="nameTeacher" name="nameTeacher">
@@ -29,7 +33,7 @@
   <td>{{this.status}}</td>
   <td><a href="teacher/detailTeacher/{{this._id}}">Detail</a></td>
   <td><a href="teacher/updateTeacher/{{this._id}}">Update</a></td>
-  <td><a href="teacher/tableSalary">Table Salary</a></td>
+  <td><a href="teacher/tableSalary/{{this._id}}">Table Salary</a></td>
 </tr>
 {{/each}}
 </tbody>
