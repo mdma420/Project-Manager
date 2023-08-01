@@ -1,1 +1,44 @@
+<div class="main__timesheets">
+<div class="form--timesheets">
+   <div class="search--timesheets">
+    <label for="searchInput">Tìm kiếm giáo viên:</label>
+    <input type="text" id="searchInput" placeholder="Nhập tên giáo viên">
+
+    <label >Hoc Ky:</label>
+    <select >
+        <option>Học kỳ 1</option>
+        <option>Học kỳ 2</option>
+    </select>
+    
+    <label >Tháng:</label>
+    <select>
+        <option>Tháng 1</option>
+        <option>Tháng 2</option>
+        <option>Tháng 3</option>
+    </select>
+</div>
+   <div class="btn--timesheets">
+   <button onclick="searchTeachers()">Tìm kiếm</button>
+   </div>
+   <div class="show--table__timesheets">
+<table id="attendanceTable">
+    <thead>
+        <tr>
+            <th>Mã ngành</th>
+            <th>Tên giáo viên</th>
+            <th>Khoa-Khối</th>
+            <th>Chức vụ</th>
+            <th>Tổng ngày công</th>
+            <th>Nghỉ phép</th>
+            <th>Ngày công thực tế</th>
+            <th>Tổng thời lượng giảng dạy(tiết)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Thêm dữ liệu JavaScript -->
+    </tbody>
+</table>
+</div>
+</div>
 <button><a href="/teacher">Back</a></button>
+</div>
