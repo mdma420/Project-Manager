@@ -107,16 +107,28 @@ class salaryController {
   }
 
   //[GET] Table Salary
-  async tableSalary(req, res, next) {
-    Teacher.find({}).then((teacher) => {
-      teacher = teacher.map((teacher) => teacher.toObject());
+  tableSalary(req, res, next) {
+    Teacher.findById(req.params.id).then((teacher) => {
       res.render("tableSalary", {
-        teacher,
+        teacher: mongooseToObject(teacher),
         user: req.user,
         title: "Management Teacher",
       });
     });
   }
+
+  // [GET] Timesheets Teacher
+  timesheetsTeacher(req, res, next) {
+    res.render("timesheetsTeacher");
+  }
+
+  // [GET] List On Leave Teacher
+  listOnLeaveTeacher(req, res, next) {
+    res.render("listOnLeaveTeacher");
+  }
+
+  //[POST] create Tavle Salary
+  createTableSalary(Req, res, next) {}
 
   //[GET] Salary
   salary(req, res, next) {
