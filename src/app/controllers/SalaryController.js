@@ -1,7 +1,7 @@
 const Teacher = require("../models/teacher");
 const Salary = require("../models/salary");
 const Tablesalary = require("../models/tablesalary");
-const Salarycontract = require("../models/salarycontract");
+const Timesheets = require("../models/timesheets");
 const {
   mutipleMongooseToObject,
   mongooseToObject,
@@ -9,9 +9,10 @@ const {
 
 const querystring = require("querystring");
 const {error} = require("console");
+const timesheets = require("../models/timesheets");
 
 class salaryController {
-  //[GET] Teacher
+  // [GET] Teacher
   teacher(req, res, next) {
     // res.render("teacher");
     Teacher.find({}).then((teacher) => {
@@ -24,7 +25,7 @@ class salaryController {
     });
   }
 
-  //[GET] Manager Creater Teacher
+  // [GET] Manager Creater Teacher
   managerCreateTeacher(req, res, next) {
     Teacher.find({}).then((teacher) => {
       teacher = teacher.map((teacher) => teacher.toObject());
@@ -36,7 +37,7 @@ class salaryController {
     });
   }
 
-  //[POST] Create Teacher
+  // [POST] Create Teacher
   createTeacher(req, res, next) {
     var name = req.body.nameTeacher;
     Teacher.findOne({nameTeacher: name}).then((data) => {
@@ -54,14 +55,14 @@ class salaryController {
     });
   }
 
-  //[Delete] Delete Teacher
+  // [Delete] Delete Teacher
   deleteTeacher(req, res, next) {
     Teacher.deleteOne({_id: req.params.id}, req.body)
       .then(() => res.redirect("/teacher/MCTeacher"))
       .catch((error) => {});
   }
 
-  //[GET] Sreach Teacher
+  // [GET] Sreach Teacher
   sreach(req, res, next) {
     var Name = req.query.nameTeacher;
     Teacher.find({nameTeacher: {$regex: Name, $options: "i"}})
@@ -77,7 +78,7 @@ class salaryController {
       .catch(next);
   }
 
-  //[GET] Detail Teacher
+  // [GET] Detail Teacher
   async detailTeacher(req, res, next) {
     Teacher.findById(req.params.id).then((teacher) => {
       res.render("detailTeacher", {
@@ -88,7 +89,7 @@ class salaryController {
     });
   }
 
-  //[GET] Update Teacher
+  // [GET] Update Teacher
   updateTeacher(req, res, next) {
     Teacher.findById(req.params.id).then((teacher) => {
       res.render("updateTeacher", {
@@ -99,27 +100,48 @@ class salaryController {
     });
   }
 
-  //[PUT] Update Teacher
+  // [PUT] Update Teacher
   update(req, res, next) {
     Teacher.updateOne({_id: req.params.id}, req.body)
       .then(() => res.redirect("/teacher"))
       .catch(error);
   }
 
-  //[GET] Table Salary
+  // [GET] Table Salary
   tableSalary(req, res, next) {
     Teacher.findById(req.params.id).then((teacher) => {
-      res.render("tableSalary", {
-        teacher: mongooseToObject(teacher),
-        user: req.user,
-        title: "Management Teacher",
-      });
+      Timesheets.findOne({codeTeacher: teacher.codeTeacher}, req.body).then(
+        (timesheets) => {
+          res.render("tableSalary", {
+            teacher: mongooseToObject(teacher),
+            timesheets: mongooseToObject(timesheets),
+            user: req.user,
+            title: "Management Teacher",
+          });
+        }
+      );
     });
   }
 
   // [GET] Timesheets Teacher
   timesheetsTeacher(req, res, next) {
-    res.render("timesheetsTeacher");
+    Timesheets.find({}).then((timesheets) => {
+      timesheets = timesheets.map((timesheets) => timesheets.toObject());
+      res.render("timesheetsTeacher", {
+        timesheets,
+        user: req.user,
+        title: "timesheets Teacher",
+      });
+    });
+  }
+
+  // [POST] create Timesheets Teacher
+  createTimesheets(req, res, next) {
+    const timesheets = new Timesheets(req.body);
+    timesheets
+      .save()
+      .then(() => res.redirect("/teacher/timesheetsTeacher"))
+      .catch(next);
   }
 
   // [GET] List On Leave Teacher
@@ -127,10 +149,10 @@ class salaryController {
     res.render("listOnLeaveTeacher");
   }
 
-  //[POST] create Tavle Salary
-  createTableSalary(Req, res, next) {}
+  // [POST] create List On Leave
+  createlistOnLeave(req, res, next) {}
 
-  //[GET] Salary
+  // [GET] Salary
   salary(req, res, next) {
     Salary.find({}).then((salary) => {
       salary = salary.map((salary) => salary.toObject());
@@ -141,7 +163,7 @@ class salaryController {
     });
   }
 
-  //[POST] Create Salary
+  // [POST] Create Salary
   createSalary(req, res, next) {
     const salary = new Salary(req.body);
     salary
@@ -150,24 +172,18 @@ class salaryController {
       .catch(next);
   }
 
-  //[GET] Report Salary
+  // [GET] Report Salary
   async reportSalary(req, res, next) {
-    // res.render("reportSalary");
-    const teacher = await Teacher.find();
-    const salarycontract = await Salarycontract.find();
-    // console.log(salarycontract);
     Tablesalary.find({}).then((tablesalary) => {
       tablesalary = tablesalary.map((tablesalary) => tablesalary.toObject());
       res.render("reportSalary", {
         tablesalary,
-        salarycontract: mutipleMongooseToObject(salarycontract),
-        teacher,
         title: "Report Salary",
       });
     });
   }
 
-  //[POST] Create Report Salary
+  // [POST] Create Report Salary
   createRS(req, res, next) {
     const tablesalary = new Tablesalary(req.body);
     tablesalary

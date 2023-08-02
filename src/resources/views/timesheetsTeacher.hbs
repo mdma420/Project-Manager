@@ -24,21 +24,71 @@
 <table id="attendanceTable">
     <thead>
         <tr>
-            <th>Mã ngành</th>
-            <th>Tên giáo viên</th>
-            <th>Khoa-Khối</th>
-            <th>Chức vụ</th>
-            <th>Tổng ngày công</th>
-            <th>Nghỉ phép</th>
-            <th>Ngày công thực tế</th>
-            <th>Tổng thời lượng giảng dạy(tiết)</th>
+            <th>Code Teacher</th>
+            <th>Name Teacher</th>
+            <th>Subject</th>
+            <th>Position</th>
+            <th>Day Work</th>
+            <th>Day Off</th>
+            <th>Total Day Work</th>
+            <th>Total Teaching Time(tiết)</th>
         </tr>
     </thead>
     <tbody>
-        <!-- Thêm dữ liệu JavaScript -->
+        {{#each timesheets}}
+        <tr>
+            <td>{{this.codeTeacher}}</td>
+            <td>{{this.nameTeacher}}</td>
+            <td>{{this.subject}}</td>
+            <td>{{this.position}}</td>
+            <td>{{this.dayWork}}</td>
+            <td>{{this.dayOff}}</td>
+            <td>{{this.totalDayWork}}</td>
+            <td>{{this.totalTeachingTime}}</td>
+        </tr>
+        {{/each}}
     </tbody>
 </table>
 </div>
+</div>
+<div>
+    <form method="post" action="/teacher/createTimesheets">
+    <div>
+        <label for="codeTeacher">Code Teacher</label>
+        <input type="text" id="codeTeacher" name="codeTeacher">
+    </div>
+    <div>
+        <label for="nameTeacher">Name Teacher</label>
+        <input type="text" id="nameTeacher" name="nameTeacher">
+    </div>
+    <div>
+        <label for="subject">Subjectr</label>
+        <input type="text" id="subject" name="subject">
+    </div>
+    <div>
+        <label for="position">Position</label>
+        <input type="text" id="position" name="position">
+    </div>
+    <div>
+        <label for="dayWork">Day Work</label>
+        <input type="text" id="dayWork" name="dayWork">
+    </div>
+    <div>
+        <label for="dayOff">Day Off</label>
+        <input type="text" id="dayOff" name="dayOff">
+    </div>
+    <div>
+        <label for="totalDayWork">Total Day Work</label>
+        <input type="text" id="totalDayWork" name="totalDayWork">
+    </div>
+    <div>
+        <label for="totalTeachingTime">Total Teaching Time</label>
+        <input type="text" id="totalTeachingTime" name="totalTeachingTime">
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+    </form>
 </div>
 <button><a href="/teacher">Back</a></button>
 </div>

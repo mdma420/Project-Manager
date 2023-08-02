@@ -1,25 +1,33 @@
 <div>
     <table>
         <thead>
-            <tr>Code Teacher</tr>
-            <tr>Name Teacher</tr>
-            <tr>Subject</tr>
-            <tr>Position</tr>
-            <tr>Day Work</tr>
-            <tr>Day Off</tr>
-            <tr>Sum Day Work</tr>
-        </thead>
-        
+            <tr>
+                <th>Code Teacher</th>
+                <th>Name Teacher</th>
+                <th>Subject</th>
+                <th>Position</th>
+                <th>Day Work</th>
+                <th>Day Off</th>
+                <th>Total Day Work</th>
+                <th>Total Teaching Time</th>
+                <th>Coefficients Salary</th>
+                <th>Basic Salary</th>
+            </tr>
+        </thead>        
         <tbody>
-            <td>{{teacher.codeTeacher}}</td>
-            <td>{{teacher.nameTeacher}}</td>
-            <td>{{teacher.subject}}</td>
-            <td>{{teacher.position}}</td>
-            <td>24</td>
-            <td>0</td>
-            <td>24</td>
+            <tr>
+                <td>{{teacher.codeTeacher}}</td>
+                <td>{{teacher.nameTeacher}}</td>
+                <td>{{teacher.subject}}</td>
+                <td>{{teacher.position}}</td>
+                <td>{{timesheets.dayWork}}</td>
+                <td>{{timesheets.dayOff}}</td>
+                <td>{{timesheets.totalDayWork}}</td>
+                <td>{{timesheets.totalTeachingTime}}</td>
+                <td>{{teacher.coefficientsSalary}}</td>
+                <td>{{teacher.basicSalary}}</td>
+            </tr>
         </tbody>
-
     </table>
 </div>
 <div>
