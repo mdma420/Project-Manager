@@ -13,7 +13,7 @@ router.get("/sreach", salaryController.sreach);
 router.get("/detailTeacher/:id", salaryController.detailTeacher);
 router.get("/updateTeacher/:id", salaryController.updateTeacher);
 router.put("/update/:id", salaryController.update);
-router.get("/tableSalary/:id", salaryController.tableSalary);
+router.get("/tableSalaryTeacher/:id", salaryController.tableSalaryTeacher);
 
 // Timesheets and list on leave Teacher
 router.get("/timesheetsTeacher", salaryController.timesheetsTeacher);
@@ -23,10 +23,10 @@ router.post("/createlistOnLeave", salaryController.createlistOnLeave);
 
 // Management Salary
 router.get("/salary", salaryController.salary);
-router.post("/salary/createSalary", salaryController.createSalary);
+router.post("/createSalary", salaryController.createSalary);
 
 // Management Report Salary
 router.get("/reportSalary", salaryController.reportSalary);
-router.post("/reportSalary/createRS", salaryController.createRS);
+router.post("/createRS", salaryController.createRS);
 
 module.exports = router;

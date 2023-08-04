@@ -15,7 +15,8 @@ const {text} = require("body-parser");
 const email = require("../models/email");
 
 class TuitionController {
-  // Management Tuition
+  // -------------------------------------------------------Management Tuition--------------------------------------------------------//
+
   //[GET] Tuition
   tuition(req, res, next) {
     // res.render("tuition");
@@ -92,7 +93,8 @@ class TuitionController {
       .catch(next);
   }
 
-  // Management Student
+  // -----------------------------------------------------Management Student-------------------------------------------------------//
+
   //[GET] Student
   student(req, res, next) {
     Student.find()
@@ -306,7 +308,8 @@ class TuitionController {
     }
   }
 
-  // Management Report Tuition
+  // ------------------------------------------------------------Management Report Tuition---------------------------------------//
+
   //[GET] Report
   report(req, res, next) {
     Student.find()

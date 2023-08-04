@@ -2,6 +2,7 @@ const Teacher = require("../models/teacher");
 const Salary = require("../models/salary");
 const Tablesalary = require("../models/tablesalary");
 const Timesheets = require("../models/timesheets");
+const Onleave = require("../models/onleave");
 const {
   mutipleMongooseToObject,
   mongooseToObject,
@@ -12,6 +13,8 @@ const {error} = require("console");
 const timesheets = require("../models/timesheets");
 
 class salaryController {
+  // ------------------------------------------------------Management Teacher---------------------------------------------------------- //
+
   // [GET] Teacher
   teacher(req, res, next) {
     // res.render("teacher");
@@ -107,21 +110,23 @@ class salaryController {
       .catch(error);
   }
 
-  // [GET] Table Salary
-  tableSalary(req, res, next) {
+  // [GET] Table Salary Teacher
+  tableSalaryTeacher(req, res, next) {
     Teacher.findById(req.params.id).then((teacher) => {
       Timesheets.findOne({codeTeacher: teacher.codeTeacher}, req.body).then(
         (timesheets) => {
-          res.render("tableSalary", {
+          res.render("tableSalaryTeacher", {
             teacher: mongooseToObject(teacher),
             timesheets: mongooseToObject(timesheets),
             user: req.user,
-            title: "Management Teacher",
+            title: "Table Salary Teacher",
           });
         }
       );
     });
   }
+
+  // ---------------------------------------------Timesheets and list on leave Teacher-------------------------------------------------- //
 
   // [GET] Timesheets Teacher
   timesheetsTeacher(req, res, next) {
@@ -146,11 +151,26 @@ class salaryController {
 
   // [GET] List On Leave Teacher
   listOnLeaveTeacher(req, res, next) {
-    res.render("listOnLeaveTeacher");
+    Onleave.find({}).then((onleave) => {
+      onleave = onleave.map((onleave) => onleave.toObject());
+      res.render("listOnLeaveTeacher", {
+        onleave,
+        user: req.user,
+        title: "List On Leave Teacher",
+      });
+    });
   }
 
   // [POST] create List On Leave
-  createlistOnLeave(req, res, next) {}
+  createlistOnLeave(req, res, next) {
+    const onleave = new Onleave(req.body);
+    onleave
+      .save()
+      .then(() => res.redirect("/teacher/listOnLeaveTeacher"))
+      .catch(next);
+  }
+
+  // -----------------------------------------------------------Management Salary----------------------------------------------------- //
 
   // [GET] Salary
   salary(req, res, next) {
@@ -171,6 +191,8 @@ class salaryController {
       .then(() => res.redirect("/teacher/salary"))
       .catch(next);
   }
+
+  // -----------------------------------------------------Management Report Salary------------------------------------------------ //
 
   // [GET] Report Salary
   async reportSalary(req, res, next) {
