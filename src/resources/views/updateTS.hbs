@@ -1,0 +1,56 @@
+<div>
+    <form action="/teacher/updateTS/{{tableSalary._id}}?_method=PUT" method="post">
+    <div>
+        <label for="nameTeacher">Name Salary</label>
+        <input type="text" value="{{tableSalary.nameTeacher}}" id="nameTeacher" name="nameTeacher">
+    </div>
+    <div>
+        <label for="position">Position</label>
+        <input type="text" value="{{tableSalary.position}}" id="position" name="position">
+    </div>
+    <div>
+        <label for="gloneNumber">Glone Number</label>
+        <input type="text" value="{{tableSalary.gloneNumber}}" id="gloneNumber" name="gloneNumber">
+    </div>
+    <div>
+        <label for="coefficientsSalary">Coefficients Salary</label>
+        <input type="text" value="{{tableSalary.coefficientsSalary}}" id="coefficientsSalary" name="coefficientsSalary">
+    </div>
+    <div>
+        <label for="basicSalary">Basic Salary</label>
+        <input type="text" value="{{tableSalary.basicSalary}}" id="basicSalary" name="basicSalary">
+    </div>
+    <div>
+        <label for="dayWork">Day Work</label>
+        <input type="text" value="{{tableSalary.dayWork}}" id="dayWork" name="dayWork">
+    </div>
+    <div>
+        <label for="dayOut">Day Out</label>
+        <input type="text" value="{{tableSalary.dayOut}}" id="dayOut" name="dayOut">
+    </div>
+    <div>
+        <label for="allowance">Allowance</label>
+        <input type="text" value="{{tableSalary.allowance}}" id="allowance" name="allowance">
+    </div>
+    <div>
+        <label for="bonus">Bonus</label>
+        <input type="text" value="{{tableSalary.bonus}}" id="bonus" name="bonus">
+    </div>
+    <div>
+        <label for="exceptSocialInsurance">Except Social Insurance</label>
+        <input type="text" value="{{tableSalary.exceptSocialInsurance}}" id="exceptSocialInsurance" name="exceptSocialInsurance">
+    </div>
+    <div>
+        <label for="totalSalary">Total Salary</label>
+        <input type="text" value="{{tableSalary.totalSalary}}" id="totalSalary" name="totalSalary">
+    </div>
+    <div>
+        <label for="note">note</label>
+        <input type="text" value="{{tableSalary.note}}" id="note" name="note">
+    </div>
+    <div>
+        <button type="submit">Update</button>
+        <button><a href="/teacher/tableSalary/{{tableSalary.idS}}">Back</a></button>
+    </div>
+    </form>
+</div>

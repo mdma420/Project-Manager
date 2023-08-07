@@ -192,6 +192,63 @@ class salaryController {
       .catch(next);
   }
 
+  // [GET] Table Salary
+  tableSalary(req, res, next) {
+    Salary.findById(req.params.id).then((salary) => {
+      Tablesalary.find({idS: salary._id}, req.body).then((tableSalary) => {
+        res.render("tableSalary", {
+          tableSalary: tableSalary.map((tableSalary) => tableSalary.toObject()),
+          salary: mongooseToObject(salary),
+          user: req.user,
+          title: "Table Salary",
+        });
+      });
+    });
+  }
+
+  // [POST] Create Table Salary
+  async createTS(req, res, next) {
+    const idS = await Salary.findById(req.params.id);
+    const tableSalary = new Tablesalary({
+      idS: idS._id,
+      nameTeacher: req.body.nameTeacher,
+      position: req.body.position,
+      gloneNumber: req.body.gloneNumber,
+      coefficientsSalary: req.body.coefficientsSalary,
+      basicSalary: req.body.basicSalary,
+      dayWork: req.body.dayWork,
+      dayOut: req.body.dayOut,
+      allowance: req.body.allowance,
+      bonus: req.body.bonus,
+      exceptSocialInsurance: req.body.exceptSocialInsurance,
+      totalSalary: req.body.totalSalary,
+      note: req.body.note,
+    });
+    tableSalary
+      .save()
+      .then(() => res.redirect("/teacher/tableSalary/" + idS._id))
+      .catch(next);
+  }
+
+  // [GET] Update Table Salary
+  updateTableSalary(req, res, next) {
+    Tablesalary.findById(req.params.id).then((tableSalary) => {
+      res.render("updateTS", {
+        tableSalary: mongooseToObject(tableSalary),
+        user: req.user,
+        title: "Update Tabler Salary",
+      });
+    });
+  }
+
+  // [PUT] Update Table Salary
+  async updateTS(req, res, next) {
+    const TS = await Tablesalary.findById(req.params.id);
+    Tablesalary.updateOne({_id: req.params.id}, req.body)
+      .then(() => res.redirect("/teacher/tableSalary/" + TS.idS))
+      .catch(error);
+  }
+
   // -----------------------------------------------------Management Report Salary------------------------------------------------ //
 
   // [GET] Report Salary

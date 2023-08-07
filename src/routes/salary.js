@@ -24,6 +24,10 @@ router.post("/createlistOnLeave", salaryController.createlistOnLeave);
 // Management Salary
 router.get("/salary", salaryController.salary);
 router.post("/createSalary", salaryController.createSalary);
+router.get("/tableSalary/:id", salaryController.tableSalary);
+router.post("/tableSalary/:id/createTS", salaryController.createTS);
+router.get("/tableSalary/updateTS/:id", salaryController.updateTableSalary);
+router.put("/updateTS/:id", salaryController.updateTS);
 
 // Management Report Salary
 router.get("/reportSalary", salaryController.reportSalary);

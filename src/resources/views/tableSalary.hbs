@@ -1,0 +1,99 @@
+<div>
+    <form action="/teacher/tableSalary/{{salary._id}}/createTS" method="post">
+    <div>
+        <label for="nameTeacher">Name Salary</label>
+        <input type="text" id="nameTeacher" name="nameTeacher">
+    </div>
+    <div>
+        <label for="position">Position</label>
+        <input type="text" id="position" name="position">
+    </div>
+    <div>
+        <label for="gloneNumber">Glone Number</label>
+        <input type="text" id="gloneNumber" name="gloneNumber">
+    </div>
+    <div>
+        <label for="coefficientsSalary">Coefficients Salary</label>
+        <input type="text" id="coefficientsSalary" name="coefficientsSalary">
+    </div>
+    <div>
+        <label for="basicSalary">Basic Salary</label>
+        <input type="text" id="basicSalary" name="basicSalary">
+    </div>
+    <div>
+        <label for="dayWork">Day Work</label>
+        <input type="text" id="dayWork" name="dayWork">
+    </div>
+    <div>
+        <label for="dayOut">Day Out</label>
+        <input type="text" id="dayOut" name="dayOut">
+    </div>
+    <div>
+        <label for="allowance">Allowance</label>
+        <input type="text" id="allowance" name="allowance">
+    </div>
+    <div>
+        <label for="bonus">Bonus</label>
+        <input type="text" id="bonus" name="bonus">
+    </div>
+    <div>
+        <label for="exceptSocialInsurance">Except Social Insurance</label>
+        <input type="text" id="exceptSocialInsurance" name="exceptSocialInsurance">
+    </div>
+    <div>
+        <label for="totalSalary">Total Salary</label>
+        <input type="text" id="totalSalary" name="totalSalary">
+    </div>
+    <div>
+        <label for="note">note</label>
+        <input type="text" id="note" name="note">
+    </div>
+    <div>
+        <button type="submit">Create</button>
+    </div>
+    </form>
+</div>
+<div>
+<table>
+<thead>
+  <tr>
+    <th>Name Teacher</th>
+    <th>Position</th>
+    <th>Glone Number</th>
+    <th>Coefficients Salary</th>
+    <th>Basic Salary</th>
+    <th>Day Work</th>
+    <th>Day Out</th>
+    <th>Allowance</th>
+    <th>Bonus</th>
+    <th>Except Social Insurance</th>
+    <th>Total Salary</th>
+    <th>Note</th>
+    <th>Option</th>
+  </tr>
+</thead>
+<tbody>
+{{#each tableSalary}}
+<tr>
+  <td>{{this.nameTeacher}}</td>
+  <td>{{this.position}}</td>
+  <td>{{this.gloneNumber}}</td>
+  <td>{{this.coefficientsSalary}}</td>
+  <td>{{this.basicSalary}}</td>
+  <td>{{this.dayWork}}</td>
+  <td>{{this.dayOut}}</td>
+  <td>{{this.allowance}}</td>
+  <td>{{this.bonus}}</td>
+  <td>{{this.exceptSocialInsurance}}</td>
+  <td>{{this.totalSalary}}</td>
+  <td>{{this.note}}</td>
+  <td><a href="">Detail</a></td>
+  <td><a href="/teacher/tableSalary/updateTS/{{this._id}}">Update</a></td>
+</tr>
+{{/each}}
+</tbody>
+ </table>
+</div>
+<div>
+    <a href="/teacher/salary">Back</a>
+</div>
