@@ -249,6 +249,17 @@ class salaryController {
       .catch(error);
   }
 
+  // [GET] Detail Table Salary
+  detailTB(req, res, next) {
+    Tablesalary.findById(req.params.id).then((tableSalary) => {
+      res.render("detailTB", {
+        tableSalary: mongooseToObject(tableSalary),
+        user: req.user,
+        title: "Detail Table Salary",
+      });
+    });
+  }
+
   // -----------------------------------------------------Management Report Salary------------------------------------------------ //
 
   // [GET] Report Salary
