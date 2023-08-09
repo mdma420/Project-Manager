@@ -2,6 +2,7 @@ const {Router} = require("express");
 const express = require("express");
 const router = express.Router();
 const tuitionController = require("../app/controllers/TuitionController");
+const {checkLogin, checkManagerStudent} = require("../util/authonize");
 
 // Management tuition
 router.post("/createTuition", tuitionController.createTuition);
@@ -31,6 +32,7 @@ router.get(
   "/managmenttuition/collecttuition/:id/invoice",
   tuitionController.invoice
 );
+// Export PDF
 router.post(
   "/managmenttuition/collecttuition/:id/invoice/exportPDF",
   tuitionController.exportPDF

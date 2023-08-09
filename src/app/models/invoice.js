@@ -7,6 +7,7 @@ const Invoice = new Schema({
   email: String,
   fee: String,
   method: String,
+  for: String,
   createdAt: {type: Date, default: Date.now},
 });
 

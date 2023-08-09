@@ -5,6 +5,7 @@ const Student = require("../models/student");
 const nodemailer = require("nodemailer");
 const Email = require("../models/email");
 const Invoice = require("../models/invoice");
+const puppeteer = require("puppeteer");
 const ejs = require("ejs");
 const pdf = require("html-pdf");
 const fs = require("fs");
@@ -185,51 +186,82 @@ class TuitionController {
 
   //[POST] Invoice Printing
   async exportPDF(req, res, next) {
-    try {
-      const tuition = await Tuition.find();
-      const data = {
-        tuition: tuition,
-      };
-      const student = await Student.findById(req.params.id);
-      const dataS = {
-        student: student,
-      };
-      const invoice = new Invoice({
-        name: student.name,
-        email: student.emailStudent,
-        fee: req.body.fee,
-        method: req.body.method,
-      });
-      await invoice.save();
-      const filePathName = path.resolve(
-        __dirname,
-        "../../resources/views/invoice.hbs"
-      );
-      const htmlString = fs.readFileSync(filePathName).toString();
-      let option = {
-        format: "Letter",
-      };
-      const ejsData = ejs.render(htmlString, data, dataS);
-      // console.log(ejsData);
-      pdf.create(ejsData, option).toFile("tuition.pdf", (err, response) => {
-        if (err) console.log(err);
-        const filePath = path.resolve(__dirname, "../../../tuition.pdf");
+    const student = await Student.findOne({_id: req.params.id});
+    const invoice = new Invoice({
+      idS: student._id,
+      name: student.name,
+      email: student.emailStudent,
+      fee: req.body.fee,
+      method: req.body.method,
+      for: req.body.for,
+    });
+    await invoice.save();
+    const baseUrl = `http://localhost:3000`;
+    const url = `${baseUrl}/tuition/managmenttuition/collecttuition/${req.params.id}/invoice`;
+    const filePath = path.resolve(__dirname, "../../../tuition.pdf");
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
 
-        fs.readFile(filePath, (err, file) => {
-          if (err) {
-            console.log(err);
-            return res.status(500).send("could not dowload file");
-          }
+    await page.goto(url, {waitUntil: "networkidle2"});
+    await page.type("#username", "Admin");
+    await page.type("#password", "123");
+    await page.click("body > div > div > div > form > div > button");
+    await page.waitForTimeout(10000);
+    await page.goto(url);
+    await page.pdf({
+      path: filePath,
+      format: "a4",
+      printBackground: true,
+    });
+    await browser.close();
 
-          res.set("Content-Type", "application/pdf");
-          res.set("Content-Disposition", 'attachment;filename="tuition.pdf"');
+    res.download(filePath);
+    // try {
+    //   const tuition = await Tuition.find();
+    //   const data = {
+    //     tuition: tuition,
+    //   };
+    //   const student = await Student.findOne({_id: req.params.id});
+    //   const dataS = {
+    //     student: student,
+    //   };
+    //   const invoice = new Invoice({
+    //     name: student.name,
+    //     email: student.emailStudent,
+    //     fee: req.body.fee,
+    //     method: req.body.method,
+    //     for: req.body.for,
+    //   });
+    //   await invoice.save();
+    //   const filePathName = path.resolve(
+    //     __dirname,
+    //     "../../resources/views/invoice.hbs"
+    //   );
+    //   const htmlString = fs.readFileSync(filePathName).toString();
+    //   let option = {
+    //     format: "Letter",
+    //   };
+    //   const ejsData = ejs.render(htmlString, data, dataS);
+    //   // console.log(ejsData);
+    //   pdf.create(ejsData, option).toFile("tuition.pdf", (err, response) => {
+    //     if (err) console.log(err);
+    //     const filePath = path.resolve(__dirname, "../../../tuition.pdf");
 
-          res.send(file);
-        });
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
+    //     fs.readFile(filePath, (err, file) => {
+    //       if (err) {
+    //         console.log(err);
+    //         return res.status(500).send("could not dowload file");
+    //       }
+
+    //       res.set("Content-Type", "application/pdf");
+    //       res.set("Content-Disposition", 'attachment;filename="tuition.pdf"');
+
+    //       res.send(file);
+    //     });
+    //   });
+    // } catch (error) {
+    //   console.log(error.message);
+    // }
   }
 
   //[GET] History

@@ -3,6 +3,8 @@ const Salary = require("../models/salary");
 const Tablesalary = require("../models/tablesalary");
 const Timesheets = require("../models/timesheets");
 const Onleave = require("../models/onleave");
+const fs = require("fs");
+const puppeteer = require("puppeteer");
 const {
   mutipleMongooseToObject,
   mongooseToObject,
@@ -11,6 +13,7 @@ const {
 const querystring = require("querystring");
 const {error} = require("console");
 const timesheets = require("../models/timesheets");
+const path = require("path");
 
 class salaryController {
   // ------------------------------------------------------Management Teacher---------------------------------------------------------- //
@@ -258,6 +261,39 @@ class salaryController {
         title: "Detail Table Salary",
       });
     });
+  }
+
+  // [GET] Detail Table Salary
+  invoiceSalary(req, res, next) {
+    Tablesalary.findById(req.params.id).then((tableSalary) => {
+      res.render("invoiceSalary", {
+        tableSalary: mongooseToObject(tableSalary),
+        user: req.user,
+        title: "Detail Table Salary",
+      });
+    });
+  }
+
+  // [POST] export PDF Salary
+  async exportSalary(req, res, next) {
+    const tableSalary = await Tablesalary.findOne({_id: req.params.id});
+
+    const baseUrl = `http://localhost:3000`;
+    const url = `${baseUrl}/teacher/invoiceSalary/${req.params.id}`;
+    const filePath = path.resolve(__dirname, "../../../tableSalary.pdf");
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+
+    await page.goto(url, {waitUntil: "networkidle2"});
+    await page.type("#username", "Admin");
+    await page.type("#password", "123");
+    await page.click("body > div > div > div > form > div > button");
+    await page.waitForTimeout(10000);
+    await page.goto(url);
+    await page.pdf({path: filePath, format: "a4", printBackground: true});
+    await browser.close();
+
+    res.download(filePath);
   }
 
   // -----------------------------------------------------Management Report Salary------------------------------------------------ //

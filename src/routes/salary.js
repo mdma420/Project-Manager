@@ -29,6 +29,8 @@ router.post("/tableSalary/:id/createTS", salaryController.createTS);
 router.get("/tableSalary/updateTS/:id", salaryController.updateTableSalary);
 router.put("/updateTS/:id", salaryController.updateTS);
 router.get("/detailTB/:id", salaryController.detailTB);
+router.get("/invoiceSalary/:id", salaryController.invoiceSalary);
+router.post("/detailTB/:id/exportPDF", salaryController.exportSalary);
 
 // Management Report Salary
 router.get("/reportSalary", salaryController.reportSalary);
