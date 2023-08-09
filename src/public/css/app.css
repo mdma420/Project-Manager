@@ -962,3 +962,9 @@ h1 {
   font-size: 20px;
   border-radius: 5px;
   width: 15%; }
+
+
+@media print{
+  .header-list{display: none !important;}
+  .form__Invoice button{display: none !important;}
+}

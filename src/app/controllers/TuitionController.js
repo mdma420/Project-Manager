@@ -199,19 +199,39 @@ class TuitionController {
     const baseUrl = `http://localhost:3000`;
     const url = `${baseUrl}/tuition/managmenttuition/collecttuition/${req.params.id}/invoice`;
     const filePath = path.resolve(__dirname, "../../../tuition.pdf");
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({headless: false});
     const page = await browser.newPage();
 
-    await page.goto(url, {waitUntil: "networkidle2"});
+    await page.goto(url, {waitUntil: "networkidle0"});
     await page.type("#username", "Admin");
     await page.type("#password", "123");
     await page.click("body > div > div > div > form > div > button");
     await page.waitForTimeout(10000);
     await page.goto(url);
+    await page.waitForSelector(".main__Invoice");
+    const test = await page.$(".main__Invoice");
+    const test2 = await test.boundingBox();
+    await page.addStyleTag({
+      content: ".header-list{display: none !improtant;}",
+    });
+    await page.addStyleTag({
+      content: ".form__Invoice button{display: none !improtant;}",
+    });
+    // await page.addStyleTag({
+    //   content: ".main__Invoice{width: 500%; height: 50vh}",
+    // });
     await page.pdf({
       path: filePath,
+      displayHeaderFooter: false,
+      landscape: false,
       format: "a4",
-      printBackground: true,
+      printBackground: false,
+      clip: {
+        x: test2.x,
+        y: test2.y,
+        width: test2.width,
+        height: test2.height,
+      },
     });
     await browser.close();
 
