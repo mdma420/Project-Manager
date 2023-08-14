@@ -309,22 +309,13 @@ class salaryController {
 
   // [GET] Report Salary
   async reportSalary(req, res, next) {
-    Tablesalary.find({}).then((tablesalary) => {
-      tablesalary = tablesalary.map((tablesalary) => tablesalary.toObject());
+    Salary.find({}).then((salary) => {
+      salary = salary.map((salary) => salary.toObject());
       res.render("reportSalary", {
-        tablesalary,
+        salary,
         title: "Report Salary",
       });
     });
-  }
-
-  // [POST] Create Report Salary
-  createRS(req, res, next) {
-    const tablesalary = new Tablesalary(req.body);
-    tablesalary
-      .save()
-      .then(() => res.redirect("/teacher/reportSalary"))
-      .catch(next);
   }
 }
 

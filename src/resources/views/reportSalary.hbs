@@ -24,6 +24,25 @@
         <!-- Bảng cha (thông tin cả năm) -->
         <h2>Bảng Thông Tin Cả Năm</h2>
         <table id="yearlySalaryTable">
+            <table>
+            <thead>
+                <tr>
+                    <th>Name Salary</th>          
+                    <th>Total Salary Pay</th>
+                    <th>Pay Salary</th>
+                    <th>No Pay Salary</th>                
+                </tr>
+            </thead>
+            <tbody>
+                {{#each salary}}
+                <tr>
+                    <td>{{this.nameSalary}}</td>
+                    <td>{{this.totalSalaryPay}}</td>
+                    <td>{{this.paySalary}}</td>
+                    <td>{{this.noPaySalary}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
             <!-- Nội dung bảng cả năm sẽ được tạo bằng JavaScript -->
         </table>
 

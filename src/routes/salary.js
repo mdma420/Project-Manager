@@ -34,6 +34,5 @@ router.post("/detailTB/:id/exportPDF", salaryController.exportSalary);
 
 // Management Report Salary
 router.get("/reportSalary", salaryController.reportSalary);
-router.post("/createRS", salaryController.createRS);
 
 module.exports = router;
