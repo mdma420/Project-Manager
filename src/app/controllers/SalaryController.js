@@ -281,16 +281,25 @@ class salaryController {
     const baseUrl = `http://localhost:3000`;
     const url = `${baseUrl}/teacher/invoiceSalary/${req.params.id}`;
     const filePath = path.resolve(__dirname, "../../../tableSalary.pdf");
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({headless: false});
     const page = await browser.newPage();
 
-    await page.goto(url, {waitUntil: "networkidle2"});
+    await page.goto(url, {waitUntil: "networkidle0"});
     await page.type("#username", "Admin");
     await page.type("#password", "123");
     await page.click("body > div > div > div > form > div > button");
     await page.waitForTimeout(10000);
     await page.goto(url);
-    await page.pdf({path: filePath, format: "a4", printBackground: true});
+    await page.addStyleTag({
+      content: ".header-list{display: none !improtant;}",
+    });
+    await page.pdf({
+      path: filePath,
+      displayHeaderFooter: false,
+      landscape: false,
+      format: "a4",
+      printBackground: false,
+    });
     await browser.close();
 
     res.download(filePath);
