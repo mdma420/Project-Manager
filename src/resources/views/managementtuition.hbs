@@ -35,9 +35,9 @@
   <textarea id="html" name="html"></textarea>
   <button type="submit" id="sendBtn">Send</button> --}}
   <div class="sendMail">
-    <button onclick="applyBold()">Tô Đậm</button>
-    <button onclick="applyItalic()">In Nghiêng</button>
-    <button onclick="applyUnderline()">Gạch Chân</button>
+    <button onclick="applyBold(event)">Tô Đậm</button>
+    <button onclick="applyItalic(event)">In Nghiêng</button>
+    <button onclick="applyUnderline(event)">Gạch Chân</button>
     <div id="content" contenteditable="true">
       Đây là nội dung bạn muốn soạn thảo.
   </div>
@@ -165,16 +165,19 @@ textInput.addEventListener('input', () => {
 
 </script>
 <script>
-    function applyBold() {
-      document.execCommand("bold", false, null);
-    }
+    function applyBold(event) {
+  event.preventDefault(); // Ngăn trình duyệt thực hiện hành vi mặc định
+  document.execCommand("bold", false, null);
+}
 
-    function applyItalic() {
-      document.execCommand("italic", false, null);
-    }
+function applyItalic(event) {
+  event.preventDefault(); // Ngăn trình duyệt thực hiện hành vi mặc định
+  document.execCommand("italic", false, null);
+}
 
-    function applyUnderline() {
-      document.execCommand("underline", false, null);
-    }
+function applyUnderline(event) {
+  event.preventDefault(); // Ngăn trình duyệt thực hiện hành vi mặc định
+  document.execCommand("underline", false, null);
+}
   </script>
 
