@@ -280,7 +280,10 @@ class salaryController {
 
     const baseUrl = `http://localhost:3000`;
     const url = `${baseUrl}/teacher/invoiceSalary/${req.params.id}`;
-    const filePath = path.resolve(__dirname, "../../../tableSalary.pdf");
+    const filePath = path.resolve(
+      __dirname,
+      "../../../filePDF/tableSalary.pdf"
+    );
     const browser = await puppeteer.launch({headless: false});
     const page = await browser.newPage();
 

@@ -10,6 +10,7 @@ const Email = new Schema({
   emailStudent: String,
   subject: String,
   html: String,
+  file: String,
   createdAt: {type: Date, default: Date.now},
 });
 

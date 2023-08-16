@@ -5,8 +5,7 @@ const {
   mongooseToObject,
   mutipleMongooseToObject,
 } = require("../../util/mongoose");
-const email = require("../models/email");
-const teacher = require("../models/teacher");
+const nodemailer = require("nodemailer");
 
 class SettingController {
   // [GET] instructions all

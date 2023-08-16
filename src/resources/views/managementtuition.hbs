@@ -22,7 +22,7 @@
           {{!-- <button id="button-management__search">Search</button> --}}
         </div>
         <div class="editor" style="display: none;">
-  <form action="/tuition/managmenttuition/64197461e07b85ca00cbc585/sendMail/send" method="post">
+  <form action="/tuition/managmenttuition/64197461e07b85ca00cbc585/sendMail/send" enctype="multipart/form-data" method="post">
   <h3>Gửi thông báo</h3>
   <div class="form-noti">
     <label for="subject">Content:</label>
@@ -40,7 +40,11 @@
     <button onclick="applyUnderline()">Gạch Chân</button>
     <div id="content" contenteditable="true">
       Đây là nội dung bạn muốn soạn thảo.
-    </div>
+  </div>
+  <div>
+    <label for="file">File</label>
+    <input type="file" id="file" name="file">
+  </div>
   </div>
   <button type="submit" id="sendBtn">Send</button>
 

@@ -14,6 +14,7 @@ const {options} = require("../../routes/tuition");
 const {response} = require("express");
 const {text} = require("body-parser");
 const email = require("../models/email");
+const multer = require("multer");
 
 class TuitionController {
   // -------------------------------------------------------Management Tuition--------------------------------------------------------//
@@ -198,7 +199,7 @@ class TuitionController {
     await invoice.save();
     const baseUrl = `http://localhost:3000`;
     const url = `${baseUrl}/tuition/managmenttuition/collecttuition/${req.params.id}/invoice`;
-    const filePath = path.resolve(__dirname, "../../../tuition.pdf");
+    const filePath = path.resolve(__dirname, "../../../filePDF/tuition.pdf");
     const browser = await puppeteer.launch({headless: false});
     const page = await browser.newPage();
 
@@ -323,15 +324,17 @@ class TuitionController {
         emailStudent: student.emailStudent,
         subject: req.body.subject,
         html: req.body.html,
+        file: req.file.path,
         createdAt: req.body.createdAt,
       });
+      await email.save();
       // email.push({
       //   emailStudent: student.emailStudent,
       //   subject: req.body.subject,
       //   html: req.body.html,
       //   createdAt: req.body.createdAt,
       // });
-      await email.save();
+
       var transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -345,6 +348,10 @@ class TuitionController {
         to: student.emailStudent,
         subject: email.subject,
         html: email.html,
+        attachments: {
+          __filename: "File",
+          path: email.file,
+        },
       };
 
       transporter.sendMail(mailOptions, function (error, info) {

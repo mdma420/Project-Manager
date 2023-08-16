@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const tuitionController = require("../app/controllers/TuitionController");
 const {checkLogin, checkManagerStudent} = require("../util/authonize");
+const {upload} = require("../util/data");
 
 // Management tuition
 router.post("/createTuition", tuitionController.createTuition);
@@ -25,7 +26,11 @@ router.get("/reportTuition", tuitionController.report);
 router.get("/managmenttuition/:id/history", tuitionController.history);
 
 // Send Mail
-router.post("/managmenttuition/:id/sendMail/send", tuitionController.send);
+router.post(
+  "/managmenttuition/:id/sendMail/send",
+  upload.single("file"),
+  tuitionController.send
+);
 
 // Management Invoice
 router.get(
