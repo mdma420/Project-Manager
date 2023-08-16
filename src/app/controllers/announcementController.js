@@ -68,7 +68,48 @@ class SettingController {
   }
 
   // [POST] Send Mail Teacher
-  sendMailT(req, res, next) {}
+  async sendMailT(req, res, next) {
+    try {
+      const teacher = await Teacher.findById(req.params.id);
+      const emailTeacher = new EmailT({
+        codeTeacher: teacher.codeTeacher,
+        nameTeacher: teacher.nameTeacher,
+        phone: teacher.phone,
+        subject: teacher.subject,
+        emailTeacher: teacher.emailTeacher,
+        subjectE: req.body.subjectE,
+        html: req.body.html,
+        createdAt: req.body.createdAt,
+      });
+      await emailTeacher.save();
+
+      var transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: "npq10102001@gmail.com",
+          pass: "rrownmqpepzvoylj",
+        },
+      });
+
+      var mailOptions = {
+        from: "npq10102001@gmail.com",
+        to: teacher.emailTeacher,
+        subject: emailTeacher.subjectE,
+        html: emailTeacher.html,
+      };
+
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error.message);
+        } else {
+          console.log("Email send" + info.response);
+          res.redirect("/announcement/forTeacher");
+        }
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 }
 
 module.exports = new SettingController();

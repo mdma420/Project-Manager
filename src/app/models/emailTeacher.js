@@ -8,7 +8,7 @@ const EmailT = new Schema({
   phone: String,
   subject: String,
   emailTeacher: String,
-  subject: String,
+  subjectE: String,
   html: String,
   createdAt: {type: Date, default: Date.now},
 });
