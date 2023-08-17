@@ -821,6 +821,15 @@ textarea::selection {
   width: 100%;
   background-color: gainsboro; }
 
+.main_profileTeacher {
+  background: url("http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg") center/cover no-repeat;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column; }
+
 * {
   padding: 0;
   margin: 0;
@@ -962,9 +971,3 @@ h1 {
   font-size: 20px;
   border-radius: 5px;
   width: 15%; }
-
-
-@media print{
-  .header-list{display: none !important;}
-  .form__Invoice button{display: none !important;}
-}
