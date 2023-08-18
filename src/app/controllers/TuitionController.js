@@ -316,52 +316,136 @@ class TuitionController {
   async send(req, res, next) {
     try {
       const student = await Student.findById(req.params.id);
-      const email = new Email({
-        codeStudent: student.codeStudent,
-        nameStudent: student.name,
-        phone: student.phone,
-        class: student.class,
-        emailStudent: student.emailStudent,
-        subject: req.body.subject,
-        html: req.body.html,
-        file: req.file.path,
-        createdAt: req.body.createdAt,
-      });
-      await email.save();
-      // email.push({
+      if (req.file) {
+        fs.readFile(req.file.path, (err, data) => {
+          if (err) {
+            console.error(err);
+          } else {
+            const email = new Email({
+              codeStudent: student.codeStudent,
+              nameStudent: student.name,
+              phone: student.phone,
+              class: student.class,
+              emailStudent: student.emailStudent,
+              subject: req.body.subject,
+              html: req.body.html,
+              file: req.file.path,
+              createdAt: req.body.createdAt,
+            });
+            email.save();
+
+            var transporter = nodemailer.createTransport({
+              service: "gmail",
+              auth: {
+                user: "npq10102001@gmail.com",
+                pass: "rrownmqpepzvoylj",
+              },
+            });
+
+            var mailOptions = {
+              from: "npq10102001@gmail.com",
+              to: student.emailStudent,
+              subject: email.subject,
+              html: email.html,
+              attachments: {
+                __filename: "File",
+                path: email.file,
+              },
+            };
+
+            transporter.sendMail(mailOptions, function (error, info) {
+              if (error) {
+                console.log(error.message);
+              } else {
+                console.log("Email send" + info.response);
+                res.redirect("/tuition/managementtuition");
+              }
+            });
+          }
+        });
+      } else {
+        const email = new Email({
+          codeStudent: student.codeStudent,
+          nameStudent: student.name,
+          phone: student.phone,
+          class: student.class,
+          emailStudent: student.emailStudent,
+          subject: req.body.subject,
+          html: req.body.html,
+          createdAt: req.body.createdAt,
+        });
+        await email.save();
+
+        var transporter = nodemailer.createTransport({
+          service: "gmail",
+          auth: {
+            user: "npq10102001@gmail.com",
+            pass: "rrownmqpepzvoylj",
+          },
+        });
+
+        var mailOptions = {
+          from: "npq10102001@gmail.com",
+          to: student.emailStudent,
+          subject: email.subject,
+          html: email.html,
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error.message);
+          } else {
+            console.log("Email send" + info.response);
+            res.redirect("/tuition/managementtuition");
+          }
+        });
+      }
+      // const email = new Email({
+      //   codeStudent: student.codeStudent,
+      //   nameStudent: student.name,
+      //   phone: student.phone,
+      //   class: student.class,
       //   emailStudent: student.emailStudent,
       //   subject: req.body.subject,
       //   html: req.body.html,
+      //   file: req.file.path,
       //   createdAt: req.body.createdAt,
       // });
+      // await email.save();
+      // // email.push({
+      // //   emailStudent: student.emailStudent,
+      // //   subject: req.body.subject,
+      // //   html: req.body.html,
+      // //   createdAt: req.body.createdAt,
+      // // });
 
-      var transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: "npq10102001@gmail.com",
-          pass: "rrownmqpepzvoylj",
-        },
-      });
+      // var transporter = nodemailer.createTransport({
+      //   service: "gmail",
+      //   auth: {
+      //     user: "npq10102001@gmail.com",
+      //     pass: "rrownmqpepzvoylj",
+      //   },
+      // });
 
-      var mailOptions = {
-        from: "npq10102001@gmail.com",
-        to: student.emailStudent,
-        subject: email.subject,
-        html: email.html,
-        attachments: {
-          __filename: "File",
-          path: email.file,
-        },
-      };
+      // var mailOptions = {
+      //   from: "npq10102001@gmail.com",
+      //   to: student.emailStudent,
+      //   subject: email.subject,
+      //   html: email.html,
+      //   attachments: {
+      //     __filename: "File",
+      //     path: email.file,
+      //   },
+      // };
 
-      transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-          console.log(error.message);
-        } else {
-          console.log("Email send" + info.response);
-          res.redirect("/tuition/managementtuition");
-        }
-      });
+      // transporter.sendMail(mailOptions, function (error, info) {
+      //   if (error) {
+      //     console.log(error.message);
+      //   } else {
+      //     console.log("Email send" + info.response);
+      //     res.redirect("/tuition/managementtuition");
+      //   }
+      // });
     } catch (error) {
       console.log(error.message);
     }
