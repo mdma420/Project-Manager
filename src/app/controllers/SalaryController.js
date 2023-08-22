@@ -84,6 +84,22 @@ class salaryController {
       .catch(next);
   }
 
+  // [GET] sreach Subject Teacher
+  sreachS(req, res, next) {
+    var Subject = req.query.subject;
+    Teacher.find({subject: {$regex: Subject}})
+      .then((teacher) => {
+        teacher = teacher.map((teacher) => teacher.toObject());
+        res.render("teacher", {
+          teacher,
+          Subject,
+          user: req.user,
+          title: "Management Teacher",
+        });
+      })
+      .catch(next);
+  }
+
   // [GET] Detail Teacher
   async detailTeacher(req, res, next) {
     Teacher.findById(req.params.id).then((teacher) => {

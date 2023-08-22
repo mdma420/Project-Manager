@@ -10,6 +10,7 @@ router.get("/MCTeacher", salaryController.managerCreateTeacher);
 router.post("/createTeacher", salaryController.createTeacher);
 router.delete("/deleteTeacher/:id", salaryController.deleteTeacher);
 router.get("/sreach", salaryController.sreach);
+router.get("/sreachS", salaryController.sreachS);
 router.get("/detailTeacher/:id", salaryController.detailTeacher);
 router.get("/updateTeacher/:id", salaryController.updateTeacher);
 router.put("/update/:id", salaryController.update);

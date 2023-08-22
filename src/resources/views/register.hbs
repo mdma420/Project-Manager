@@ -1,26 +1,28 @@
-<div>
+<div class="main_setting_regisster">
+<div class="form_regisster_q">
+    <h2>Create User</h2>
     <form method="post" action="/register/apiregister">
-    <div>
+    <div class="form_user_q">
         <label for="username">Username</label>
         <input type="text" name="username" id="username">
     </div>
-    <div>
+    <div class="form_user_q">
         <label for="password">Password</label>
         <input type="password" name="password" id="password">
     </div>
-    <div>
+    <div class="form_user_q"> 
         <label for="fullname">Fullname</label>
         <input type="text" name="fullname" id="fullname">
     </div>
-    <div>
+    <div class="form_user_q">
         <label for="email">Email</label>
         <input type="text" name="email" id="email">
     </div>
-    <div>
+    <div class="form_user_q">
         <label for="phone">Phone</label>
         <input type="text" name="phone" id="phone">
     </div>
-    <div>
+    <div class="form_user_q">
         <label for="role">role</label>
         <select name="role" id="role">
             <option>choose role</option>
@@ -30,12 +32,12 @@
             <option value="ManagerTeacher">ManagerTeacher</option>
         </select>
     </div>
-    <div>
+    <div class="btn_create_user_q">
         <button type="submit">Add new user</button>
     </div>
     </form>
 </div>
-<div>
+<div class="form_data_regisster_q">
     <table>
         <thead>
             <tr>
@@ -56,13 +58,14 @@
                 <td>{{this.phone}}</td>
                 <td>{{this.role}}</td>
                 <td>
-                    <button><a href="/register/updateUser/{{this._id}}">Edit User</a></button>
+                    <button class="btn_edit_user"><a href="/register/updateUser/{{this._id}}">Edit User</a></button>
                     <form action="/register/DU/{{this._id}}?_method=DELETE" method="post">
-                        <button type="submit">Delete</button>
+                        <button class="btn_delete_user" type="submit">Delete</button>
                     </form>
                 </td>
             </tr>
             {{/each}}
         </tbody>
     </table>
+</div>
 </div>
