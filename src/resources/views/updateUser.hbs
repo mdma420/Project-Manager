@@ -1,32 +1,35 @@
-<div>
+<div class="main_setting_edit_user">
+<div class="form_edit_user_q">
+    <h2>Edit User</h2>
     <form method="post" action="/register/UU/{{user._id}}?_method=PUT">
-    <div>
+    <div class="form_edit_user_q2">
         <label for="username">Username</label>
         <input type="text" value="{{user.username}}" name="username" id="username">
     </div>
-    <div>
+    <div class="form_edit_user_q2">
         <label for="password">Password</label>
         <input type="password" name="password" id="password">
     </div>
-    <div>
+    <div class="form_edit_user_q2">
         <label for="fullname">Fullname</label>
         <input type="text" value="{{user.fullname}}" name="fullname" id="fullname">
     </div>
-    <div>
+    <div class="form_edit_user_q2">
         <label for="email">Email</label>
         <input type="text" value="{{user.email}}" name="email" id="email">
     </div>
-    <div>
+    <div class="form_edit_user_q2">
         <label for="phone">Phone</label>
         <input type="text" value="{{user.phone}}" name="phone" id="phone">
     </div>
-    <div>
+    <div class="form_edit_user_q2">
         <label for="role">role</label>
         <input type="text" value="{{user.role}}" name="role" id="role">
     </div>
-    <div>
-        <button><a href="/register">Back</a></button>
-        <button type="submit">Add new user</button>
+    <div class="form_btn_edit_user_q">
+        <button id="btn_back_user"><a href="/register">Back</a></button>
+        <button id="btn_edit_user" type="submit">Add new user</button>
     </div>
     </form>
+</div>
 </div>
