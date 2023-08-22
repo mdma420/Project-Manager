@@ -1,5 +1,5 @@
-<div>
-    <div>
+<div class="main__Salary">
+    <div class="show__Salary--teacher">
         <table>
             <thead>
                 <tr>
@@ -29,41 +29,42 @@
             </tbody>
         </table>
     </div>
-    <div>
-        <form method="post" action="/teacher/createSalary">
-            <div>
+    <div class="create__Salary--months">
+        <h2>Create month's salary</h2>
+        <form class="type__create--Salary" method="post" action="/teacher/createSalary" width="100%">
+            <div class="form-createSalary">
                 <label for="codeSalary">Code Salary</label>
                 <input type="text" id="codeSalary" name="codeSalary">
             </div>
-            <div>
+            <div class="form-createSalary">
                 <label for="nameSalary">Name Salary</label>
                 <input type="text" id="nameSalary" name="nameSalary">
             </div>
-            <div>
-                <lael for="salaryPeriod1">From Date</label>
+            <div class="form-createSalary">
+                <label for="salaryPeriod1">From Date</label>
                 <input type="date" id="salaryPeriod1" name="salaryPeriod1">
             </div>
-            <div>
-                <lael for="salaryPeriod2">To day</label>
+            <div class="form-createSalary">
+                <label for="salaryPeriod2">To day</label>
                 <input type="date" id="salaryPeriod2" name="salaryPeriod2">
             </div>
-            <div>
-                <lael for="totalSalaryPay">Total Salary Pay</label>
+            <div class="form-createSalary">
+                <label for="totalSalaryPay">Total Salary Pay</label>
                 <input type="text" id="totalSalaryPay" name="totalSalaryPay">
             </div>
-            <div>
-                <lael for="paySalary">Pay Salary</label>
+            <div class="form-createSalary">
+                <label for="paySalary">Pay Salary</label>
                 <input type="text" id="paySalary" name="paySalary">
             </div>
-            <div>
-                <lael for="noPaySalary">No Pay Salary</label>
+            <div class="form-createSalary">
+                <label for="noPaySalary">No Pay Salary</label>
                 <input type="text" id="noPaySalary" name="noPaySalary">
             </div>
-            <div>
-                <lael for="statusSalary">Status</label>
+            <div class="form-createSalary">
+                <label for="statusSalary">Status</label>
                 <input type="text" id="statusSalary" name="statusSalary">
             </div>
-            <div>
+            <div class="btn-createSalary">
                 <button type="submit">Submit</button>
             </div>
         </form>
