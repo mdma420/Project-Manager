@@ -19,6 +19,7 @@ router.get("/tableSalaryTeacher/:id", salaryController.tableSalaryTeacher);
 // Timesheets and list on leave Teacher
 router.get("/timesheetsTeacher", salaryController.timesheetsTeacher);
 router.post("/createTimesheets", salaryController.createTimesheets);
+router.delete("/deleteTimesheets/:id", salaryController.deleteTimesheets);
 router.get("/listOnLeaveTeacher", salaryController.listOnLeaveTeacher);
 router.post("/createlistOnLeave", salaryController.createlistOnLeave);
 
@@ -32,6 +33,7 @@ router.put("/updateTS/:id", salaryController.updateTS);
 router.get("/detailTB/:id", salaryController.detailTB);
 router.get("/invoiceSalary/:id", salaryController.invoiceSalary);
 router.post("/detailTB/:id/exportPDF", salaryController.exportSalary);
+router.get("/exportExcel/:id", salaryController.exportExcel);
 
 // Management Report Salary
 router.get("/reportSalary", salaryController.reportSalary);

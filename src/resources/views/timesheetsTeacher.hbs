@@ -32,6 +32,7 @@
             <th>Day Off</th>
             <th>Total Day Work</th>
             <th>Total Teaching Time(tiết)</th>
+            <th>Delete Timesheets</th>
         </tr>
     </thead>
     <tbody>
@@ -45,6 +46,11 @@
             <td>{{this.dayOff}}</td>
             <td>{{this.totalDayWork}}</td>
             <td>{{this.totalTeachingTime}}</td>
+            <td>
+                <form action="/teacher/deleteTimesheets/{{this._id}}?_method=DELETE" method="post">
+                <button type="submit">Delete</button>
+                </form>
+            </td>
         </tr>
         {{/each}}
     </tbody>

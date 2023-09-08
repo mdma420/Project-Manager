@@ -10,7 +10,22 @@ const nodemailer = require("nodemailer");
 class SettingController {
   // [GET] instructions all
   announcement(req, res, next) {
-    res.render("announcement");
+    Email.find()
+      .then((email) => {
+        email = email.map((email) => email.toObject());
+        EmailT.find().then((emailTeacher) => {
+          emailTeacher = emailTeacher.map((emailTeacher) =>
+            emailTeacher.toObject()
+          );
+          res.render("announcement", {
+            email,
+            emailTeacher,
+            user: req.user,
+            title: "Announcement",
+          });
+        });
+      })
+      .catch(next);
   }
 
   // [GET] instructions student
@@ -56,10 +71,12 @@ class SettingController {
   async mailTeacher(req, res, next) {
     const teacher = await Teacher.findById(req.params.id);
     console.log(teacher);
-    EmailT.find({nameTeacher: teacher.nameTeacher}).then((emailT) => {
-      emailT = emailT.map((emailT) => emailT.toObject());
+    EmailT.find({nameTeacher: teacher.nameTeacher}).then((emailTeacher) => {
+      emailTeacher = emailTeacher.map((emailTeacher) =>
+        emailTeacher.toObject()
+      );
       res.render("mailTeacher", {
-        emailT,
+        emailTeacher,
         user: req.user,
         title: "Email Teacher",
       });

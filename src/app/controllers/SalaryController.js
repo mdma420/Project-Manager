@@ -4,6 +4,7 @@ const Tablesalary = require("../models/tablesalary");
 const Timesheets = require("../models/timesheets");
 const Onleave = require("../models/onleave");
 const fs = require("fs");
+const excelJs = require("exceljs");
 const puppeteer = require("puppeteer");
 const {
   mutipleMongooseToObject,
@@ -14,6 +15,7 @@ const querystring = require("querystring");
 const {error} = require("console");
 const timesheets = require("../models/timesheets");
 const path = require("path");
+const tablesalary = require("../models/tablesalary");
 
 class salaryController {
   // ------------------------------------------------------Management Teacher---------------------------------------------------------- //
@@ -166,6 +168,13 @@ class salaryController {
       .save()
       .then(() => res.redirect("/teacher/timesheetsTeacher"))
       .catch(next);
+  }
+
+  // [DELETE] delete Timesheets Teacher
+  deleteTimesheets(req, res, next) {
+    Timesheets.deleteOne({_id: req.params.id}, req.body)
+      .then(() => res.redirect("/teacher/timesheetsTeacher"))
+      .catch((error) => {});
   }
 
   // [GET] List On Leave Teacher
@@ -322,6 +331,55 @@ class salaryController {
     await browser.close();
 
     res.download(filePath);
+  }
+
+  // [GET] export Excel Salary
+  async exportExcel(req, res, next) {
+    try {
+      let workbook = new excelJs.Workbook();
+      const worksheet = workbook.addWorksheet("tableSalary");
+      worksheet.columns = [
+        {header: "Name Teacher", key: "nameTeacher", width: 30},
+        {header: "Position", key: "position", width: 30},
+        {header: "Glone Number", key: "gloneNumber", width: 25},
+        {header: "Coefficients Salary", key: "coefficientsSalary", width: 20},
+        {header: "Basic Salary", key: "basicSalary", width: 30},
+        {header: "Day Work", key: "dayWork", width: 30},
+        {header: "Day Out", key: "dayOut", width: 30},
+        {header: "Allowance", key: "allowance", width: 30},
+        {header: "Bonus", key: "bonus", width: 30},
+        {
+          header: "Except Social Insurance",
+          key: "exceptSocialInsurance",
+          width: 30,
+        },
+        {header: "Total Salary", key: "totalSalary", width: 30},
+      ];
+
+      const idSa = req.params.id;
+      const tableSalary = await tablesalary.find({idS: idSa});
+
+      tableSalary.forEach((tableSalary) => {
+        worksheet.addRow(tableSalary);
+      });
+
+      worksheet.getRow(1).eachCell((cell) => {
+        cell.font = {bold: true};
+      });
+
+      res.setHeader(
+        "Content-Type",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      );
+
+      res.setHeader(
+        "Content-Disposition",
+        "attachment;filename-" + "idea.xlsx"
+      );
+      workbook.xlsx.write(res);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // -----------------------------------------------------Management Report Salary------------------------------------------------ //

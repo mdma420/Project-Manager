@@ -1,1 +1,47 @@
- 
+<div>
+    <div>
+        <label for="sreach">Sreach Email</label>
+        <input type="text" id="sreach" name="sreach">
+        <button type="submit">Sreach</button>
+    </div>
+</div>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Sent Date</th>
+                <th>option</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each email}}
+            <tr>
+                <td>{{this.codeStudent}}</td>
+                <td>{{this.nameStudent}}</td>
+                <td>{{this.emailStudent}}</td>
+                <td>{{this.subject}}</td>
+                <td>{{moment this.createdAt format ="DD MMM YYYY"}}</td>
+                <td>
+                    <button><a href="">Detail</a></button>
+                </td>
+            </tr>
+            {{/each}}
+            {{#each emailTeacher}}
+            <tr>
+                <td>{{this.codeTeacher}}</td>
+                <td>{{this.nameTeacher}}</td>
+                <td>{{this.emailTeacher}}</td>
+                <td>{{this.subject}}</td>
+                <td>{{moment this.createdAt format ="DD MMM YYYY"}}</td>
+                <td>
+                    <button><a href="">Detail</a></button>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div> 

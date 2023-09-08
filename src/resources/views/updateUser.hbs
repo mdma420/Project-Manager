@@ -24,11 +24,18 @@
     </div>
     <div class="form_edit_user_q2">
         <label for="role">role</label>
-        <input type="text" value="{{user.role}}" name="role" id="role">
+        <select name="role" id="role">
+            <option>choose role</option>
+            <option value="Admin">Admin</option>
+            <option value="Manager">Manager</option>
+            <option value="ManagerStudent">ManagerStudent</option>
+            <option value="ManagerTeacher">ManagerTeacher</option>
+        </select>
+        {{!-- <input type="text" value="{{user.role}}" name="role" id="role"> --}}
     </div>
     <div class="form_btn_edit_user_q">
         <button id="btn_back_user"><a href="/register">Back</a></button>
-        <button id="btn_edit_user" type="submit">Add new user</button>
+        <button id="btn_edit_user" type="submit">Edit user</button>
     </div>
     </form>
 </div>

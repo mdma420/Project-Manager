@@ -17,7 +17,7 @@ function route(app) {
 
   app.use("/teacher", checkLogin, checkManagerTeacher, salaryRouter);
 
-  app.use("/announcement", checkLogin, checkManager, announcementRouter);
+  app.use("/announcement", checkLogin, announcementRouter);
 
   app.use("/register", checkLogin, checkAdmin, registerRouter);
 

@@ -1,17 +1,42 @@
 const express = require("express");
 const router = express.Router();
 const announcementController = require("../app/controllers/announcementController");
+const {
+  checkManagerStudent,
+  checkManagerTeacher,
+  checkManager,
+} = require("../util/authonize");
 
 // All
-router.get("/", announcementController.announcement);
+router.get("/", checkManager, announcementController.announcement);
 
 // Student
-router.get("/forStudent", announcementController.forStudent);
-router.get("/detailForStudent/:id", announcementController.detailForStudent);
+router.get(
+  "/forStudent",
+  checkManagerStudent,
+  announcementController.forStudent
+);
+router.get(
+  "/detailForStudent/:id",
+  checkManagerStudent,
+  announcementController.detailForStudent
+);
 
 // Teacher
-router.get("/forTeacher", announcementController.forTeacher);
-router.get("/mailTeacher/:id", announcementController.mailTeacher);
-router.post("/sendMailT/:id", announcementController.sendMailT);
+router.get(
+  "/forTeacher",
+  checkManagerTeacher,
+  announcementController.forTeacher
+);
+router.get(
+  "/mailTeacher/:id",
+  checkManagerTeacher,
+  announcementController.mailTeacher
+);
+router.post(
+  "/sendMailT/:id",
+  checkManagerTeacher,
+  announcementController.sendMailT
+);
 
 module.exports = router;
