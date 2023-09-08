@@ -1,7 +1,7 @@
 <div class="main__Report-tuition">
     <div class="table__Report-tuition">
         <h2>Báo cáo học phí</h2>
-        <div class="search__Report-tuition">
+        {{!-- <div class="search__Report-tuition">
       <select id="code-subject">
         <option value="value1">COM 1</option>
         <option value="value2">COM2</option>
@@ -19,28 +19,26 @@
       </select>
       <button type="submit">Tìm kiếm</button>
       <button type="reset">Hoàn tác</button>
-    </div>
+    </div> --}}
         <div class="show__Report-tuition">
             <table>
         <thead>
           <tr>
-            <th>STT</th>
-            <th>Khoa-khối</th>
             <th>Học viên</th>
             <th>Email</th>
             <th>Thực thu</th>
             <th>Mehtod</th>
+            <th>Day</th>
           </tr>
         </thead>
         <tbody>
           {{#each invoice}}
           <tr>
-            <td rowspan="3">1</td>
-            <td rowspan="3">IT</td>
             <td>{{this.name}}</td>
             <td>{{this.email}}</td>
             <td>{{this.fee}}</td>
             <td>{{this.method}}</td>
+            <td>{{moment this.createdAt format ="DD MMM YYYY"}}</td>
           </tr>
           {{/each}}
         </tbody>
