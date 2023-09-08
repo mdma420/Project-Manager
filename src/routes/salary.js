@@ -14,7 +14,6 @@ router.get("/sreachS", salaryController.sreachS);
 router.get("/detailTeacher/:id", salaryController.detailTeacher);
 router.get("/updateTeacher/:id", salaryController.updateTeacher);
 router.put("/update/:id", salaryController.update);
-router.get("/tableSalaryTeacher/:id", salaryController.tableSalaryTeacher);
 
 // Timesheets and list on leave Teacher
 router.get("/timesheetsTeacher", salaryController.timesheetsTeacher);

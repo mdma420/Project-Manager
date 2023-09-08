@@ -131,22 +131,6 @@ class salaryController {
       .catch(error);
   }
 
-  // [GET] Table Salary Teacher
-  tableSalaryTeacher(req, res, next) {
-    Teacher.findById(req.params.id).then((teacher) => {
-      Timesheets.findOne({codeTeacher: teacher.codeTeacher}, req.body).then(
-        (timesheets) => {
-          res.render("tableSalaryTeacher", {
-            teacher: mongooseToObject(teacher),
-            timesheets: mongooseToObject(timesheets),
-            user: req.user,
-            title: "Table Salary Teacher",
-          });
-        }
-      );
-    });
-  }
-
   // ---------------------------------------------Timesheets and list on leave Teacher-------------------------------------------------- //
 
   // [GET] Timesheets Teacher
