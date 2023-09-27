@@ -83,45 +83,105 @@ class SettingController {
     });
   }
 
+  // [GET] Send Mail Teacher
+  async sendMailTeacher(req, res, next) {
+    Teacher.findById(req.params.id).then((teacher) => {
+      res.render("sendMailT", {
+        teacher: mongooseToObject(teacher),
+        user: req.user,
+        title: "Detail Teacher",
+      });
+    });
+  }
+
   // [POST] Send Mail Teacher
   async sendMailT(req, res, next) {
     try {
       const teacher = await Teacher.findById(req.params.id);
-      const emailTeacher = new EmailT({
-        codeTeacher: teacher.codeTeacher,
-        nameTeacher: teacher.nameTeacher,
-        phone: teacher.phone,
-        subject: teacher.subject,
-        emailTeacher: teacher.emailTeacher,
-        subjectE: req.body.subjectE,
-        html: req.body.html,
-        createdAt: req.body.createdAt,
-      });
-      await emailTeacher.save();
+      if (req.file) {
+        fs.readFile(req.file.path, (err, data) => {
+          if (err) {
+            console.error(err);
+          } else {
+            const emailTeacher = new EmailT({
+              codeTeacher: teacher.codeTeacher,
+              nameTeacher: teacher.nameTeacher,
+              phone: teacher.phone,
+              subject: teacher.subject,
+              emailTeacher: teacher.emailTeacher,
+              subject: req.body.subject,
+              html: req.body.html,
+              file: req.file.path,
+              createdAt: req.body.createdAt,
+            });
+            emailTeacher.save();
 
-      var transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: "npq10102001@gmail.com",
-          pass: "rrownmqpepzvoylj",
-        },
-      });
+            var transporter = nodemailer.createTransport({
+              service: "gmail",
+              auth: {
+                user: "npq10102001@gmail.com",
+                pass: "rrownmqpepzvoylj",
+              },
+            });
 
-      var mailOptions = {
-        from: "npq10102001@gmail.com",
-        to: teacher.emailTeacher,
-        subject: emailTeacher.subjectE,
-        html: emailTeacher.html,
-      };
+            var mailOptions = {
+              from: "npq10102001@gmail.com",
+              to: teacher.emailTeacher,
+              subject: emailTeacher.subject,
+              html: emailTeacher.html,
+              attachments: {
+                __filename: "File",
+                path: emailTeacher.file,
+              },
+            };
 
-      transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-          console.log(error.message);
-        } else {
-          console.log("Email send" + info.response);
-          res.redirect("/announcement/forTeacher");
-        }
-      });
+            transporter.sendMail(mailOptions, function (error, info) {
+              if (error) {
+                console.log(error.message);
+              } else {
+                console.log("Email send" + info.response);
+                res.redirect("/announcement/forTeacher");
+              }
+            });
+          }
+        });
+      } else {
+        const emailTeacher = new EmailT({
+          codeTeacher: teacher.codeTeacher,
+          nameTeacher: teacher.nameTeacher,
+          phone: teacher.phone,
+          subject: teacher.subject,
+          emailTeacher: teacher.emailTeacher,
+          subject: req.body.subject,
+          html: req.body.html,
+          createdAt: req.body.createdAt,
+        });
+        emailTeacher.save();
+
+        var transporter = nodemailer.createTransport({
+          service: "gmail",
+          auth: {
+            user: "npq10102001@gmail.com",
+            pass: "rrownmqpepzvoylj",
+          },
+        });
+
+        var mailOptions = {
+          from: "npq10102001@gmail.com",
+          to: teacher.emailTeacher,
+          subject: emailTeacher.subject,
+          html: emailTeacher.html,
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error.message);
+          } else {
+            console.log("Email send" + info.response);
+            res.redirect("/announcement/forTeacher");
+          }
+        });
+      }
     } catch (error) {
       console.log(error.message);
     }

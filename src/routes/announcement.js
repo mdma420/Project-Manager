@@ -33,6 +33,11 @@ router.get(
   checkManagerTeacher,
   announcementController.mailTeacher
 );
+router.get(
+  "/sendMailTeacher/:id",
+  checkManagerTeacher,
+  announcementController.sendMailTeacher
+);
 router.post(
   "/sendMailT/:id",
   checkManagerTeacher,

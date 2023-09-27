@@ -1,0 +1,19 @@
+<div>
+    <form action="/announcement/sendMailT/{{teacher._id}}" method="post">
+    <h3>Send Mail Teacher</h3>
+  <div class="form-noti">
+    <label for="subject">Content:</label>
+    <input type="text" id="subject" name="subject">
+    <label for="emailTeacher">To:</label>
+    <input type="text" value="{{teacher.emailTeacher}}" id="emailTeacher" name="emailTeacher">
+  </div>
+  <textarea id="html" name="html"></textarea>
+  <div>
+    <label for="file">File</label>
+    <input type="file" id="file" name="file">
+  </div>
+  </div>
+  <button><a href="/announcement/forTeacher">Back</a></button>
+  <button type="submit" id="sendBtn">Send</button>
+    </form>
+</div>
