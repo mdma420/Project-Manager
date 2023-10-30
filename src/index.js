@@ -27,6 +27,9 @@ app.use(express.static(path.join(__dirname, "public")));
 //use cookie parser
 app.use(cookieParser());
 
+//connect DB
+db.connect();
+
 // time express-session
 app.use(
   session({
@@ -46,9 +49,6 @@ const hbs = handlebars.create({
 app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resources/views"));
-
-//connect DB
-db.connect();
 
 //route init
 route(app);

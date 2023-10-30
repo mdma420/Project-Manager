@@ -24,61 +24,11 @@
              <p>{{teacher.level}}</p>
            </div>
           </div>
-          <div class="form__Level-history">
-            <h2>Lịch sử cấp bậc</h2>
-                    <div class="show__Level-history">
-        <table>
-            <thead>
-                <tr>
-                    <th>STT</th>
-                    <th>Ngạch/Hạng</th>
-                    <th>Mã ngạch</th>
-                    <th>Bậc lương</th>
-                    <th>Hệ số lươngí</th>
-                    <th>Mức lương</th>
-                    <th>Ngày áp dụng ngạch/hạng</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>{{teacher.glone}}</td>
-                    <td>{{teacher.gloneNumber}}</td>
-                    <td>{{teacher.salaryScale}}</td>
-                    <td>{{teacher.coefficientsSalary}}</td>
-                    <td>{{teacher.basicSalary}}</td>
-                    <td>{{moment teacher.dateApplyGlone format ="DD MMM YYYY"}}</td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
-          </div>
         </div>
         <div class="form__Info-teacher">
-            <div class="form__Role-history">
-            <h2>Lịch sử cấp bậc</h2>
-                    <div class="show__Role-history">
-        <table>
-            <thead>
-                <tr>
-                    <th>Chức vụ</th>
-                    <th>Tổ bộ môn</th>
-                    <th>Ngày áp dụng chức vụ </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>{{teacher.subject}}</td>
-                    <td>{{moment teacher.dateStartWork format ="DD MMM YYYY"}}</td>
-                </tr>
-            </tbody>
-        </table>
+          <div class="chart__Tuition">
+            <h2>Bieu do bien dong luong</h2>
+          </div>
         </div>
-        </div>
-         <div class="chart__Tuition">
-                <h2>Bieu do bien dong luong</h2>
-            </div>
-    </div>
     <button type="submit"><a href="/teacher">Back</a></button>
 </div>

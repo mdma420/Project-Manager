@@ -16,20 +16,15 @@ router.get("/updateTeacher/:id", salaryController.updateTeacher);
 router.put("/update/:id", salaryController.update);
 
 // Timesheets and list on leave Teacher
-router.get("/timesheetsTeacher", salaryController.timesheetsTeacher);
-router.post("/createTimesheets", salaryController.createTimesheets);
-router.delete("/deleteTimesheets/:id", salaryController.deleteTimesheets);
 router.get("/listOnLeaveTeacher", salaryController.listOnLeaveTeacher);
-router.post("/createlistOnLeave", salaryController.createlistOnLeave);
 
 // Management Salary
 router.get("/salary", salaryController.salary);
 router.post("/createSalary", salaryController.createSalary);
 router.get("/tableSalary/:id", salaryController.tableSalary);
-router.post("/tableSalary/:id/createTS", salaryController.createTS);
-router.get("/tableSalary/updateTS/:id", salaryController.updateTableSalary);
-router.put("/updateTS/:id", salaryController.updateTS);
+// router.post("/tableSalary/:id/createTS", salaryController.createTS);
 router.get("/detailTB/:id", salaryController.detailTB);
+// file export
 router.get("/invoiceSalary/:id", salaryController.invoiceSalary);
 router.post("/detailTB/:id/exportPDF", salaryController.exportSalary);
 router.get("/exportExcel/:id", salaryController.exportExcel);

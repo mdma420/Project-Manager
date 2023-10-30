@@ -1,8 +1,6 @@
 const Teacher = require("../models/teacher");
 const Salary = require("../models/salary");
 const Tablesalary = require("../models/tablesalary");
-const Timesheets = require("../models/timesheets");
-const Onleave = require("../models/onleave");
 const fs = require("fs");
 const excelJs = require("exceljs");
 const puppeteer = require("puppeteer");
@@ -13,7 +11,6 @@ const {
 
 const querystring = require("querystring");
 const {error} = require("console");
-const timesheets = require("../models/timesheets");
 const path = require("path");
 const tablesalary = require("../models/tablesalary");
 
@@ -133,53 +130,17 @@ class salaryController {
 
   // ---------------------------------------------Timesheets and list on leave Teacher-------------------------------------------------- //
 
-  // [GET] Timesheets Teacher
-  timesheetsTeacher(req, res, next) {
-    Timesheets.find({}).then((timesheets) => {
-      timesheets = timesheets.map((timesheets) => timesheets.toObject());
-      res.render("timesheetsTeacher", {
-        timesheets,
-        user: req.user,
-        title: "timesheets Teacher",
-      });
-    });
-  }
-
-  // [POST] create Timesheets Teacher
-  createTimesheets(req, res, next) {
-    const timesheets = new Timesheets(req.body);
-    timesheets
-      .save()
-      .then(() => res.redirect("/teacher/timesheetsTeacher"))
-      .catch(next);
-  }
-
-  // [DELETE] delete Timesheets Teacher
-  deleteTimesheets(req, res, next) {
-    Timesheets.deleteOne({_id: req.params.id}, req.body)
-      .then(() => res.redirect("/teacher/timesheetsTeacher"))
-      .catch((error) => {});
-  }
-
   // [GET] List On Leave Teacher
   listOnLeaveTeacher(req, res, next) {
-    Onleave.find({}).then((onleave) => {
-      onleave = onleave.map((onleave) => onleave.toObject());
-      res.render("listOnLeaveTeacher", {
-        onleave,
-        user: req.user,
-        title: "List On Leave Teacher",
-      });
-    });
-  }
-
-  // [POST] create List On Leave
-  createlistOnLeave(req, res, next) {
-    const onleave = new Onleave(req.body);
-    onleave
-      .save()
-      .then(() => res.redirect("/teacher/listOnLeaveTeacher"))
-      .catch(next);
+    // Onleave.find({}).then((onleave) => {
+    //   onleave = onleave.map((onleave) => onleave.toObject());
+    //   res.render("listOnLeaveTeacher", {
+    //     onleave,
+    //     user: req.user,
+    //     title: "List On Leave Teacher",
+    //   });
+    // });
+    res.render("listOnLeaveTeacher");
   }
 
   // -----------------------------------------------------------Management Salary----------------------------------------------------- //
@@ -219,47 +180,28 @@ class salaryController {
   }
 
   // [POST] Create Table Salary
-  async createTS(req, res, next) {
-    const idS = await Salary.findById(req.params.id);
-    const tableSalary = new Tablesalary({
-      idS: idS._id,
-      nameTeacher: req.body.nameTeacher,
-      position: req.body.position,
-      gloneNumber: req.body.gloneNumber,
-      coefficientsSalary: req.body.coefficientsSalary,
-      basicSalary: req.body.basicSalary,
-      dayWork: req.body.dayWork,
-      dayOut: req.body.dayOut,
-      allowance: req.body.allowance,
-      bonus: req.body.bonus,
-      exceptSocialInsurance: req.body.exceptSocialInsurance,
-      totalSalary: req.body.totalSalary,
-      note: req.body.note,
-    });
-    tableSalary
-      .save()
-      .then(() => res.redirect("/teacher/tableSalary/" + idS._id))
-      .catch(next);
-  }
-
-  // [GET] Update Table Salary
-  updateTableSalary(req, res, next) {
-    Tablesalary.findById(req.params.id).then((tableSalary) => {
-      res.render("updateTS", {
-        tableSalary: mongooseToObject(tableSalary),
-        user: req.user,
-        title: "Update Tabler Salary",
-      });
-    });
-  }
-
-  // [PUT] Update Table Salary
-  async updateTS(req, res, next) {
-    const TS = await Tablesalary.findById(req.params.id);
-    Tablesalary.updateOne({_id: req.params.id}, req.body)
-      .then(() => res.redirect("/teacher/tableSalary/" + TS.idS))
-      .catch(error);
-  }
+  // async createTS(req, res, next) {
+  //   const idS = await Salary.findById(req.params.id);
+  //   const tableSalary = new Tablesalary({
+  //     idS: idS._id,
+  //     nameTeacher: req.body.nameTeacher,
+  //     position: req.body.position,
+  //     gloneNumber: req.body.gloneNumber,
+  //     coefficientsSalary: req.body.coefficientsSalary,
+  //     basicSalary: req.body.basicSalary,
+  //     dayWork: req.body.dayWork,
+  //     dayOut: req.body.dayOut,
+  //     allowance: req.body.allowance,
+  //     bonus: req.body.bonus,
+  //     exceptSocialInsurance: req.body.exceptSocialInsurance,
+  //     totalSalary: req.body.totalSalary,
+  //     note: req.body.note,
+  //   });
+  //   tableSalary
+  //     .save()
+  //     .then(() => res.redirect("/teacher/tableSalary/" + idS._id))
+  //     .catch(next);
+  // }
 
   // [GET] Detail Table Salary
   detailTB(req, res, next) {
@@ -325,8 +267,6 @@ class salaryController {
       worksheet.columns = [
         {header: "Name Teacher", key: "nameTeacher", width: 30},
         {header: "Position", key: "position", width: 30},
-        {header: "Glone Number", key: "gloneNumber", width: 25},
-        {header: "Coefficients Salary", key: "coefficientsSalary", width: 20},
         {header: "Basic Salary", key: "basicSalary", width: 30},
         {header: "Day Work", key: "dayWork", width: 30},
         {header: "Day Out", key: "dayOut", width: 30},

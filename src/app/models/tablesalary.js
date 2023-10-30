@@ -6,8 +6,6 @@ const Tablesalary = new Schema({
   idS: String,
   nameTeacher: String,
   position: String,
-  gloneNumber: String,
-  coefficientsSalary: String,
   basicSalary: String,
   dayWork: String,
   dayOut: String,

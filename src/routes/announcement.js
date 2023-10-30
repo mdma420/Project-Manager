@@ -11,14 +11,10 @@ const {
 router.get("/", checkManager, announcementController.announcement);
 
 // Student
-router.get(
-  "/forStudent",
-  checkManagerStudent,
-  announcementController.forStudent
-);
+router.get("/forStudent", checkManager, announcementController.forStudent);
 router.get(
   "/detailForStudent/:id",
-  checkManagerStudent,
+  checkManager,
   announcementController.detailForStudent
 );
 
