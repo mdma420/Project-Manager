@@ -28,14 +28,16 @@
             <thead>
                 <tr>
                     <th>Name Salary</th>          
-                    <th>Salary Period</th>                
+                    <th>Salary Period</th>
+                    <th>Total Salary</th>                
                 </tr>
             </thead>
             <tbody>
-                {{#each salary}}
+                {{#each reportSalary}}
                 <tr>
                     <td>{{this.nameSalary}}</td>
                     <td>{{moment this.salaryPeriod1 format ="DD MMM YYYY"}} - {{moment this.salaryPeriod2 format ="DD MMM YYYY"}}</td>
+                    <td>{{this.totalSalary}}.vnd</td>
                 </tr>
                 {{/each}}
             </tbody>

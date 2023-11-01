@@ -205,62 +205,45 @@ class salaryController {
     const idS = await Salary.findById(req.params.id);
     const t = await Teacher.find();
     const tLeaght = t.length;
-    Tablesalary.findOne();
-    for (var i = 0; i < tLeaght; i++) {
-      const name = t[i].nameTeacher;
-      const position = t[i].position;
-      const basicSalary = Number(t[i].basicSalary);
-      const s = Number(150000);
-      const dwork = Number(30);
-      const dout = Number(0);
-      const allowance = Number(1000000);
-      const exceptSocialInsurance = Number(
-        (basicSalary + s * dwork - s * dout + allowance) * 0.104
-      );
-      // Tablesalary.findOne().then((data) => {
-      //   if (data) {
-      //     res.redirect("/teacher/tableSalary/?" + idS._id);
-      //   } else {}
-      // });
-      const tableSalary = new Tablesalary({
-        idS: idS._id,
-        nameSalary: idS.nameSalary,
-        nameTeacher: name,
-        position: position,
-        basicSalary: basicSalary,
-        dayWork: dwork,
-        dayOut: dout,
-        allowance: allowance,
-        exceptSocialInsurance: exceptSocialInsurance,
-        totalSalary:
-          basicSalary +
-          s * dwork -
-          s * dout +
-          allowance -
-          exceptSocialInsurance,
-      });
-      tableSalary
-        .save()
-        .then(() => res.redirect("/teacher/tableSalary/" + idS._id))
-        .catch(next);
-    }
-
-    // const tableSalary = new Tablesalary({
-    //   idS: idS._id,
-    //   nameTeacher: req.body.nameTeacher,
-    //   position: req.body.position,
-    //   basicSalary: req.body.basicSalary,
-    //   dayWork: req.body.dayWork,
-    //   dayOut: req.body.dayOut,
-    //   allowance: req.body.allowance,
-    //   bonus: req.body.bonus,
-    //   exceptSocialInsurance: req.body.exceptSocialInsurance,
-    //   totalSalary: req.body.totalSalary,
-    // });
-    // tableSalary
-    //   .save()
-    //   .then(() => res.redirect("/teacher/tableSalary/" + idS._id))
-    //   .catch(next);
+    Tablesalary.findOne({idS: idS._id}).then((data) => {
+      if (data) {
+        res.redirect("/teacher/tableSalary/" + idS._id);
+      } else {
+        for (var i = 0; i < tLeaght; i++) {
+          const name = t[i].nameTeacher;
+          const position = t[i].position;
+          const basicSalary = Number(t[i].basicSalary);
+          const s = Number(150000);
+          const dwork = Number(30);
+          const dout = Number(0);
+          const allowance = Number(1000000);
+          const exceptSocialInsurance = Number(
+            (basicSalary + s * dwork - s * dout + allowance) * 0.104
+          );
+          const tableSalary = new Tablesalary({
+            idS: idS._id,
+            nameSalary: idS.nameSalary,
+            nameTeacher: name,
+            position: position,
+            basicSalary: basicSalary,
+            dayWork: dwork,
+            dayOut: dout,
+            allowance: allowance,
+            exceptSocialInsurance: exceptSocialInsurance,
+            totalSalary:
+              basicSalary +
+              s * dwork -
+              s * dout +
+              allowance -
+              exceptSocialInsurance,
+          });
+          tableSalary
+            .save()
+            .then(() => res.redirect("/teacher/tableSalary/" + idS._id))
+            .catch(next);
+        }
+      }
+    });
   }
 
   // [GET] Detail Table Salary
@@ -369,16 +352,43 @@ class salaryController {
 
   // [GET] Report Salary
   async reportSalary(req, res, next) {
-    Salary.find({}).then((salary) => {
-      salary = salary.map((salary) => salary.toObject());
+    ReportSalary.find({}).then((reportSalary) => {
+      reportSalary = reportSalary.map((reportSalary) =>
+        reportSalary.toObject()
+      );
       res.render("reportSalary", {
-        salary,
+        reportSalary,
         title: "Report Salary",
       });
     });
   }
 
-  async createRS(req, res, next) {}
+  async createRS(req, res, next) {
+    const idS = await Salary.findById(req.params.id);
+    const nameSalary = idS.nameSalary;
+    const t = await Tablesalary.find({idS: idS._id});
+    const tLeaght2 = t.length;
+
+    ReportSalary.findOne({nameSalary: nameSalary}).then((data) => {
+      if (data) {
+        res.redirect("/teacher/reportSalary");
+      } else {
+        for (var i = 0; i < 1; i++) {
+          const tableSalary = Number(t[i].totalSalary);
+          const reportSalary = new ReportSalary({
+            nameSalary: nameSalary,
+            salaryPeriod1: idS.salaryPeriod1,
+            salaryPeriod2: idS.salaryPeriod2,
+            totalSalary: tableSalary * tLeaght2,
+          });
+          reportSalary
+            .save()
+            .then(() => res.redirect("/teacher/reportSalary"))
+            .catch(next);
+        }
+      }
+    });
+  }
 }
 
 module.exports = new salaryController();
