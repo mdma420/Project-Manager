@@ -3,28 +3,41 @@
         <table>
             <thead>
                 <tr>
-                    <th>Code Teacher</th>
+                    <th>a</th>
+                    <th>b</th>
+                    <th>c</th>
+                    {{!-- <th>Code Teacher</th>
                     <th>Name Teacher</th>
                     <th>Subject</th>
                     <th>From day</th>
                     <th>To day</th>
-                    <th>Reason</th>
+                    <th>Reason</th> --}}
                 </tr>
             </thead>
             <tbody>
-                {{#each onleave}}
+                {{#each test}}
                 <tr>
-                    <td>{{this.codeTeacher}}</td>
-                    <td>{{this.nameTeacher}}</td>
-                    <td>{{this.subject}}</td>
-                    <td>{{moment this.fromday format ="DD MMM YYYY"}}</td>
-                    <td>{{moment this.today format ="DD MMM YYYY"}}</td>
-                    <td>{{this.reason}}</td>
+                    <td>{{this.a}}</td>
+                    <td>{{this.b}}</td>
+                    <td>{{this.c}}</td>
                 </tr>
                 {{/each}}
             </tbody>
         </table>
     </div>
+    <form action="/teacher/test" method="post">
+    <div>
+        <label for="a">a</label>
+        <input type="number" name="a" id="a">
+    </div>
+    <div>
+        <label for="b">b</label>
+        <input type="number" name="b" id="b">
+    </div>
+    <div>
+        <button type="submit">Create</button>
+    </div>
+    </form>
     <div>
         <button><a href="/teacher">Back</a></button>
     </div>

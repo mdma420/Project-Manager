@@ -25,6 +25,36 @@
            </div>
           </div>
         </div>
+        <div>
+          <table>
+            <thead>
+                <tr>
+                    <th>Name Teacher</th>
+                    <th>Name Salary</th>
+                    <th>Basic Salary</th>
+                    <th>Day Work</th>
+                    <th>Day Out</th>
+                    <th>Allowance</th>
+                    <th>Except Social Insurance</th>
+                    <th>Total Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each tableSalary}}
+                <tr>
+                    <td>{{this.nameTeacher}}</td>
+                    <td>{{this.nameSalary}}</td>
+                    <td>{{this.basicSalary}}</td>
+                    <td>{{this.dayWork}}</td>
+                    <td>{{this.dayOut}}</td>
+                    <td>{{this.allowance}}</td>
+                    <td>{{this.exceptSocialInsurance}}</td>
+                    <td>{{this.totalSalary}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+          </table>
+        </div>
         <div class="form__Info-teacher">
           <div class="chart__Tuition">
             <h2>Bieu do bien dong luong</h2>

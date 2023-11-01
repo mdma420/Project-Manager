@@ -1,6 +1,7 @@
 const Teacher = require("../models/teacher");
 const Salary = require("../models/salary");
 const Tablesalary = require("../models/tablesalary");
+const ReportSalary = require("../models/reportSalary");
 const fs = require("fs");
 const excelJs = require("exceljs");
 const puppeteer = require("puppeteer");
@@ -48,7 +49,8 @@ class salaryController {
     Teacher.findOne({nameTeacher: name}).then((data) => {
       if (data) {
         const message = "Teacher already exists!";
-        const url = "/salary?" + querystring.stringify({message: message});
+        const url =
+          "/teacher/MCTeacher?" + querystring.stringify({message: message});
         res.redirect(url);
       } else {
         const teacher = new Teacher(req.body);
@@ -102,10 +104,14 @@ class salaryController {
   // [GET] Detail Teacher
   async detailTeacher(req, res, next) {
     Teacher.findById(req.params.id).then((teacher) => {
-      res.render("detailTeacher", {
-        teacher: mongooseToObject(teacher),
-        user: req.user,
-        title: "Detail Teacher",
+      var name = teacher.nameTeacher;
+      Tablesalary.find({nameTeacher: name}, req.body).then((tableSalary) => {
+        res.render("detailTeacher", {
+          tableSalary: tableSalary.map((tableSalary) => tableSalary.toObject()),
+          teacher: mongooseToObject(teacher),
+          user: req.user,
+          title: "Detail Teacher",
+        });
       });
     });
   }
@@ -132,16 +138,31 @@ class salaryController {
 
   // [GET] List On Leave Teacher
   listOnLeaveTeacher(req, res, next) {
-    // Onleave.find({}).then((onleave) => {
-    //   onleave = onleave.map((onleave) => onleave.toObject());
+    // Test.find({}).then((test) => {
+    //   test = test.map((test) => test.toObject());
     //   res.render("listOnLeaveTeacher", {
-    //     onleave,
+    //     test,
     //     user: req.user,
     //     title: "List On Leave Teacher",
     //   });
     // });
     res.render("listOnLeaveTeacher");
   }
+
+  // test
+  // test(req, res, next) {
+  //   const a = Number(req.body.a);
+  //   const b = Number(req.body.b);
+  //   const test = new Test({
+  //     a: req.body.a,
+  //     b: req.body.b,
+  //     c: a + b,
+  //   });
+  //   test
+  //     .save()
+  //     .then(() => res.redirect("/teacher/listOnLeaveTeacher"))
+  //     .catch(next);
+  // }
 
   // -----------------------------------------------------------Management Salary----------------------------------------------------- //
 
@@ -180,28 +201,67 @@ class salaryController {
   }
 
   // [POST] Create Table Salary
-  // async createTS(req, res, next) {
-  //   const idS = await Salary.findById(req.params.id);
-  //   const tableSalary = new Tablesalary({
-  //     idS: idS._id,
-  //     nameTeacher: req.body.nameTeacher,
-  //     position: req.body.position,
-  //     gloneNumber: req.body.gloneNumber,
-  //     coefficientsSalary: req.body.coefficientsSalary,
-  //     basicSalary: req.body.basicSalary,
-  //     dayWork: req.body.dayWork,
-  //     dayOut: req.body.dayOut,
-  //     allowance: req.body.allowance,
-  //     bonus: req.body.bonus,
-  //     exceptSocialInsurance: req.body.exceptSocialInsurance,
-  //     totalSalary: req.body.totalSalary,
-  //     note: req.body.note,
-  //   });
-  //   tableSalary
-  //     .save()
-  //     .then(() => res.redirect("/teacher/tableSalary/" + idS._id))
-  //     .catch(next);
-  // }
+  async createTS(req, res, next) {
+    const idS = await Salary.findById(req.params.id);
+    const t = await Teacher.find();
+    const tLeaght = t.length;
+    Tablesalary.findOne();
+    for (var i = 0; i < tLeaght; i++) {
+      const name = t[i].nameTeacher;
+      const position = t[i].position;
+      const basicSalary = Number(t[i].basicSalary);
+      const s = Number(150000);
+      const dwork = Number(30);
+      const dout = Number(0);
+      const allowance = Number(1000000);
+      const exceptSocialInsurance = Number(
+        (basicSalary + s * dwork - s * dout + allowance) * 0.104
+      );
+      // Tablesalary.findOne().then((data) => {
+      //   if (data) {
+      //     res.redirect("/teacher/tableSalary/?" + idS._id);
+      //   } else {}
+      // });
+      const tableSalary = new Tablesalary({
+        idS: idS._id,
+        nameSalary: idS.nameSalary,
+        nameTeacher: name,
+        position: position,
+        basicSalary: basicSalary,
+        dayWork: dwork,
+        dayOut: dout,
+        allowance: allowance,
+        exceptSocialInsurance: exceptSocialInsurance,
+        totalSalary:
+          basicSalary +
+          s * dwork -
+          s * dout +
+          allowance -
+          exceptSocialInsurance,
+      });
+      tableSalary
+        .save()
+        .then(() => res.redirect("/teacher/tableSalary/" + idS._id))
+        .catch(next);
+    }
+
+    // const tableSalary = new Tablesalary({
+    //   idS: idS._id,
+    //   nameTeacher: req.body.nameTeacher,
+    //   position: req.body.position,
+    //   basicSalary: req.body.basicSalary,
+    //   dayWork: req.body.dayWork,
+    //   dayOut: req.body.dayOut,
+    //   allowance: req.body.allowance,
+    //   bonus: req.body.bonus,
+    //   exceptSocialInsurance: req.body.exceptSocialInsurance,
+    //   totalSalary: req.body.totalSalary,
+    // });
+    // tableSalary
+    //   .save()
+    //   .then(() => res.redirect("/teacher/tableSalary/" + idS._id))
+    //   .catch(next);
+  }
 
   // [GET] Detail Table Salary
   detailTB(req, res, next) {
@@ -271,7 +331,6 @@ class salaryController {
         {header: "Day Work", key: "dayWork", width: 30},
         {header: "Day Out", key: "dayOut", width: 30},
         {header: "Allowance", key: "allowance", width: 30},
-        {header: "Bonus", key: "bonus", width: 30},
         {
           header: "Except Social Insurance",
           key: "exceptSocialInsurance",
@@ -318,6 +377,8 @@ class salaryController {
       });
     });
   }
+
+  async createRS(req, res, next) {}
 }
 
 module.exports = new salaryController();

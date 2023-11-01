@@ -17,12 +17,13 @@ router.put("/update/:id", salaryController.update);
 
 // Timesheets and list on leave Teacher
 router.get("/listOnLeaveTeacher", salaryController.listOnLeaveTeacher);
+// router.post("/test", salaryController.test);
 
 // Management Salary
 router.get("/salary", salaryController.salary);
 router.post("/createSalary", salaryController.createSalary);
 router.get("/tableSalary/:id", salaryController.tableSalary);
-// router.post("/tableSalary/:id/createTS", salaryController.createTS);
+router.post("/tableSalary/:id/createTS", salaryController.createTS);
 router.get("/detailTB/:id", salaryController.detailTB);
 // file export
 router.get("/invoiceSalary/:id", salaryController.invoiceSalary);
@@ -31,5 +32,6 @@ router.get("/exportExcel/:id", salaryController.exportExcel);
 
 // Management Report Salary
 router.get("/reportSalary", salaryController.reportSalary);
+router.post("/reportSalary/createRS", salaryController.createRS);
 
 module.exports = router;

@@ -1,5 +1,10 @@
 <div class="main__table--Salary">
 <div class="tableSalary-show">
+  <div>
+    <form action="/teacher/tableSalary/{{salary._id}}/createTS" method="post">
+    <button type="submit">create</button>
+    </form>
+  </div>
 <table>
 <thead>
   <tr>
@@ -9,15 +14,13 @@
     <th>Day Work</th>
     <th>Day Out</th>
     <th>Allowance</th>
-    <th>Bonus</th>
     <th>Except Social Insurance</th>
     <th>Total Salary</th>
-    <th>Note</th>
     <th>Option</th>
   </tr>
 </thead>
 <tbody>
-{{!-- {{#each tableSalary}}
+{{#each tableSalary}}
 <tr>
   <td>{{this.nameTeacher}}</td>
   <td>{{this.position}}</td>
@@ -25,13 +28,11 @@
   <td>{{this.dayWork}}</td>
   <td>{{this.dayOut}}</td>
   <td>{{this.allowance}}</td>
-  <td>{{this.bonus}}</td>
   <td>{{this.exceptSocialInsurance}}</td>
   <td>{{this.totalSalary}}</td>
-  <td>{{this.note}}</td>
   <td><a href="/teacher/detailTB/{{this._id}}">Detail</a></td>
 </tr>
-{{/each}} --}}
+{{/each}}
 </tbody>
  </table>
 </div>

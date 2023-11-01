@@ -7,8 +7,6 @@
                     <th>Name Salary</th>
                     <th>Salary Period</th>
                     <th>Total Salary Pay</th>
-                    <th>Pay Salary</th>
-                    <th>No Pay Salary</th>
                     <th>Status</th>
                     <th>option</th>
                 </tr>
@@ -19,9 +17,6 @@
                     <td>{{this.codeSalary}}</td>
                     <td>{{this.nameSalary}}</td>
                     <td>{{moment this.salaryPeriod1 format ="DD MMM YYYY"}} - {{moment this.salaryPeriod2 format ="DD MMM YYYY"}}</td>
-                    <td>{{this.totalSalaryPay}}</td>
-                    <td>{{this.paySalary}}</td>
-                    <td>{{this.noPaySalary}}</td>
                     <td>{{this.statusSalary}}</td>
                     <td><a href="/teacher/tableSalary/{{this._id}}">Detail</a></td>
                     <td><a href="/teacher/exportExcel/{{this._id}}">Export Excel</a></td>
@@ -48,18 +43,6 @@
             <div class="form-createSalary">
                 <label for="salaryPeriod2">To day</label>
                 <input type="date" id="salaryPeriod2" name="salaryPeriod2">
-            </div>
-            <div class="form-createSalary">
-                <label for="totalSalaryPay">Total Salary Pay</label>
-                <input type="text" id="totalSalaryPay" name="totalSalaryPay">
-            </div>
-            <div class="form-createSalary">
-                <label for="paySalary">Pay Salary</label>
-                <input type="text" id="paySalary" name="paySalary">
-            </div>
-            <div class="form-createSalary">
-                <label for="noPaySalary">No Pay Salary</label>
-                <input type="text" id="noPaySalary" name="noPaySalary">
             </div>
             <div class="form-createSalary">
                 <label for="statusSalary">Status</label>
