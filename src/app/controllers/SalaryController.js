@@ -268,6 +268,25 @@ class salaryController {
     });
   }
 
+  // [DELETE] Delete Salary
+  async deleteSalary(req, res, next) {
+    Salary.deleteOne({_id: req.params.id}, req.body).then((data) => {
+      if (data) {
+        ReportSalary.deleteOne({idS: req.params.id}, req.body).then((data) => {
+          if (data) {
+            Tablesalary.deleteMany({idS: req.params.id})
+              .then(() => res.redirect("/teacher/salary"))
+              .catch((error) => {});
+          }
+        });
+        // .then(() => res.redirect("/teacher/salary"))
+        // .catch((error) => {});
+      }
+    });
+  }
+
+  // -----------------------------------------------------Export file Salary------------------------------------------------ //
+
   // [POST] export PDF Salary
   async exportSalary(req, res, next) {
     const tableSalary = await Tablesalary.findOne({_id: req.params.id});
@@ -376,6 +395,7 @@ class salaryController {
         for (var i = 0; i < 1; i++) {
           const tableSalary = Number(t[i].totalSalary);
           const reportSalary = new ReportSalary({
+            idS: idS._id,
             nameSalary: nameSalary,
             salaryPeriod1: idS.salaryPeriod1,
             salaryPeriod2: idS.salaryPeriod2,

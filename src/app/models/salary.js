@@ -7,7 +7,6 @@ const Salary = new Schema({
   nameSalary: String,
   salaryPeriod1: Date,
   salaryPeriod2: Date,
-  statusSalary: String,
 });
 
 module.exports = mongoose.model("Salary", Salary);

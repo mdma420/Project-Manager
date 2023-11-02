@@ -6,8 +6,6 @@
                     <th>Code Salary</th>
                     <th>Name Salary</th>
                     <th>Salary Period</th>
-                    <th>Total Salary Pay</th>
-                    <th>Status</th>
                     <th>option</th>
                 </tr>
             </thead>
@@ -17,9 +15,13 @@
                     <td>{{this.codeSalary}}</td>
                     <td>{{this.nameSalary}}</td>
                     <td>{{moment this.salaryPeriod1 format ="DD MMM YYYY"}} - {{moment this.salaryPeriod2 format ="DD MMM YYYY"}}</td>
-                    <td>{{this.statusSalary}}</td>
-                    <td><a href="/teacher/tableSalary/{{this._id}}">Detail</a></td>
-                    <td><a href="/teacher/exportExcel/{{this._id}}">Export Excel</a></td>
+                    <td>
+                        <button><a href="/teacher/tableSalary/{{this._id}}">Detail</a></button>
+                        <button><a href="/teacher/exportExcel/{{this._id}}">Export Excel</a></button>
+                        <form action="/teacher/deleteSalary/{{this._id}}?_method=DELETE" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 {{/each}}
             </tbody>
@@ -43,10 +45,6 @@
             <div class="form-createSalary">
                 <label for="salaryPeriod2">To day</label>
                 <input type="date" id="salaryPeriod2" name="salaryPeriod2">
-            </div>
-            <div class="form-createSalary">
-                <label for="statusSalary">Status</label>
-                <input type="text" id="statusSalary" name="statusSalary">
             </div>
             <div class="btn-createSalary">
                 <button type="submit">Submit</button>
