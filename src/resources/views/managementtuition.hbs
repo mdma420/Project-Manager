@@ -93,6 +93,11 @@
       {{/each}}    
     </tbody>
   </table>
+  <div class="pagination">
+    {{#each pages}}
+      <a href="/tuition/managementtuition?page={{this}}" data-page-company="{{this}}">{{this}}</a>
+    {{/each}}
+  </div>
 </div>
 </div>
     

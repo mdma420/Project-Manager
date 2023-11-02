@@ -15,6 +15,7 @@ const {response} = require("express");
 const {text} = require("body-parser");
 const email = require("../models/email");
 const multer = require("multer");
+const {count} = require("console");
 
 class TuitionController {
   // -------------------------------------------------------Management Tuition--------------------------------------------------------//
@@ -98,17 +99,46 @@ class TuitionController {
   // -----------------------------------------------------Management Student-------------------------------------------------------//
 
   //[GET] Student
-  student(req, res, next) {
-    Student.find()
-      .then((student) => {
+  async student(req, res, next) {
+    const count = await Student.countDocuments({});
+    var page = req.query.page;
+    var PAGE_SIZE = 5;
+    var total = Math.ceil(count / PAGE_SIZE + 1);
+    const pages = [];
+    for (let i = 1; i < total; i++) {
+      pages.push(i);
+    }
+
+    if (page) {
+      page = parseInt(page);
+      const skip = (page - 1) * PAGE_SIZE;
+      Student.find()
+        .skip(skip)
+        .limit(PAGE_SIZE)
+        .then((student) => {
+          student = student.map((student) => student.toObject());
+          res.render("managementtuition", {
+            student,
+            pages: pages,
+            count: count,
+            user: req.user,
+            title: "managementtuition",
+          });
+        });
+    } else {
+      page = 1;
+      const skip = (page - 1) * PAGE_SIZE;
+      Student.find().then((student) => {
         student = student.map((student) => student.toObject());
         res.render("managementtuition", {
           student,
+          pages: pages,
+          count: count,
           user: req.user,
           title: "managementtuition",
         });
-      })
-      .catch(next);
+      });
+    }
   }
 
   //[GET] Sreach Student
