@@ -128,16 +128,19 @@ class TuitionController {
     } else {
       page = 1;
       const skip = (page - 1) * PAGE_SIZE;
-      Student.find().then((student) => {
-        student = student.map((student) => student.toObject());
-        res.render("managementtuition", {
-          student,
-          pages: pages,
-          count: count,
-          user: req.user,
-          title: "managementtuition",
+      Student.find()
+        .skip(skip)
+        .limit(PAGE_SIZE)
+        .then((student) => {
+          student = student.map((student) => student.toObject());
+          res.render("managementtuition", {
+            student,
+            pages: pages,
+            count: count,
+            user: req.user,
+            title: "managementtuition",
+          });
         });
-      });
     }
   }
 
