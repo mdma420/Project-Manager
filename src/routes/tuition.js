@@ -11,6 +11,10 @@ router.get("/sreach", tuitionController.sreach);
 router.get("/sreach1", tuitionController.sreach1);
 
 // Management student
+router.get("/createS", tuitionController.createS);
+router.post("/createStudent", tuitionController.createStudent);
+router.delete("/deleteS/:id", tuitionController.deleteS);
+router.get("/sreach", tuitionController.sreach);
 router.get("/managementtuition", tuitionController.student);
 router.get("/managementtuition/sreach", tuitionController.sreachStudent);
 router.get("/managementtuition/sreach1", tuitionController.sreachStudent1);

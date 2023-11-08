@@ -1,0 +1,66 @@
+<div class="main_setting_teacher_q">
+<div class="form_create_teacher_q">
+    <h2>Create Teacher</h2>
+    <form method="post" action="/tuition/createStudent">
+    <div class="form_teacher_q">
+        <label for="codeStudent">Code Student</label>
+        <input type="text" name="codeStudent" id="codeStudent">
+    </div>
+    <div class="form_teacher_q">
+        <label for="name">Name Student</label>
+        <input type="text" name="name" id="name">
+    </div>
+    <div class="form_teacher_q">
+        <label for="phone">Phone</label>
+        <input type="text" name="phone" id="phone">
+    </div>
+    <div class="form_teacher_q">
+        <label for="science">Science</label>
+        <input type="text" name="science" id="science">
+    </div>
+    <div class="form_teacher_q">
+        <label for="dayAdmission">Day Admission</label>
+        <input type="date" name="dayAdmission" id="dayAdmission">
+    </div>
+    <div class="form_teacher_q">
+        <label for="emailStudent">Email Student</label>
+        <input type="text" name="emailStudent" id="emailStudent">
+    </div>
+    <div>
+        <button type="submit">Add new Student</button>
+    </div>
+    </form>
+</div>
+<div class="form_data_teacher_q">
+    <table>
+        <thead>
+            <tr>
+                <th>Code student</th>
+                <th>Name student</th>
+                <th>phone</th>
+                <th>science</th>
+                <th>Day Admission</th>
+                <th>Email</th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each student}}
+            <tr>
+                <td>{{this.codeStudent}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.phone}}</td>
+                <td>{{this.science}}</td>
+                <td>{{moment this.dayAdmission format ="DD MMM YYYY"}}</td>
+                <td>{{this.emailStudent}}</td>
+                <td>
+                    <form action="/tuition/deleteS/{{this._id}}?_method=DELETE" method="post">
+                    <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+</div>

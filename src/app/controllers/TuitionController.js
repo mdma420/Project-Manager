@@ -144,6 +144,44 @@ class TuitionController {
     }
   }
 
+  //[GET] Create Student
+  createS(req, res, next) {
+    Student.find({}).then((student) => {
+      student = student.map((student) => student.toObject());
+      res.render("createStudent", {
+        student,
+        user: req.user,
+        title: "Management Create Student",
+      });
+    });
+  }
+
+  //[Post] Create Student
+  createStudent(req, res, next) {
+    var name = req.body.name;
+    Student.findOne({name: name}).then((data) => {
+      if (data) {
+        const message = "Teacher already exists!";
+        const url =
+          "/tuition/createS?" + querystring.stringify({message: message});
+        res.redirect(url);
+      } else {
+        const student = new Student(req.body);
+        student
+          .save()
+          .then(() => res.redirect("/tuition/createS"))
+          .catch((error) => {});
+      }
+    });
+  }
+
+  //[DELETE] Delete Student
+  deleteS(req, res, next) {
+    Student.deleteOne({_id: req.params.id}, req.body)
+      .then(() => res.redirect("/tuition/createS"))
+      .catch((error) => {});
+  }
+
   //[GET] Sreach Student
   sreachStudent(req, res, next) {
     var Name = req.query.name;
