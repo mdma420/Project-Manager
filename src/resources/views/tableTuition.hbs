@@ -1,0 +1,60 @@
+<div class="main__Salary">
+    <div class="show__Salary--teacher">
+        <table>
+            <thead>
+                <tr>
+                    <th>Code Table Tuition</th>
+                    <th>Name Table Tuition</th>
+                    <th>Dealine</th>
+                    <th>Table Tuition Period</th>
+                    <th>option</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each tableT}}
+                <tr>
+                    <td>{{this.codeTableT}}</td>
+                    <td>{{this.nameTableT}}</td>
+                    <td>{{moment this.dealine format ="DD MMM YYYY"}}</td>
+                    <td>{{moment this.tableTPeriod1 format ="DD MMM YYYY"}} - {{moment this.tableTPeriod2 format ="DD MMM YYYY"}}</td>
+                    <td>
+                        <button><a href="/tuition/managementtuition">Detail</a></button>
+                        <button><a href="">Export Excel</a></button>
+                        <form action="" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <div class="create__Salary--months">
+        <h2>Create month's salary</h2>
+        <form class="type__create--Salary" method="post" action="/tuition/createTT" width="100%">
+            <div class="form-createSalary">
+                <label for="codeTableT">Code Table Tuition</label>
+                <input type="text" id="codeTableT" name="codeTableT">
+            </div>
+            <div class="form-createSalary">
+                <label for="nameTableT">Name Table Tuition</label>
+                <input type="text" id="nameTableT" name="nameTableT">
+            </div>
+            <div class="form-createSalary">
+                <label for="dealine">Dealine</label>
+                <input type="date" id="dealine" name="dealine">
+            </div>
+            <div class="form-createSalary">
+                <label for="tableTPeriod1">From Date</label>
+                <input type="date" id="tableTPeriod1" name="tableTPeriod1">
+            </div>
+            <div class="form-createSalary">
+                <label for="tableTPeriod2">To day</label>
+                <input type="date" id="tableTPeriod2" name="tableTPeriod2">
+            </div>
+            <div class="btn-createSalary">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

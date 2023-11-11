@@ -2,6 +2,7 @@ const Tuition = require("../models/tuition");
 const {mongooseToObject} = require("../../util/mongoose");
 const {mutipleMongooseToObject} = require("../../util/mongoose");
 const Student = require("../models/student");
+const TableT = require("../models/tableT");
 const nodemailer = require("nodemailer");
 const Email = require("../models/email");
 const Invoice = require("../models/invoice");
@@ -13,9 +14,7 @@ const path = require("path");
 const {options} = require("../../routes/tuition");
 const {response} = require("express");
 const {text} = require("body-parser");
-const email = require("../models/email");
 const multer = require("multer");
-const {count} = require("console");
 
 class TuitionController {
   // -------------------------------------------------------Management Tuition--------------------------------------------------------//
@@ -94,6 +93,38 @@ class TuitionController {
       })
       // .then((tuition) => res.redirect("/tuition"))
       .catch(next);
+  }
+
+  // -----------------------------------------------------Table Tuition-------------------------------------------------------//
+
+  // [GET] Tuition Table
+  tableTuition(req, res, next) {
+    TableT.find({}).then((tableT) => {
+      tableT = tableT.map((tableT) => tableT.toObject());
+      res.render("tableTuition", {
+        tableT,
+        title: "Table Tuition",
+      });
+    });
+  }
+
+  // [POST] Create Tuition Table
+  createTT(req, res, next) {
+    var nameTableT = req.body.nameTableT;
+    TableT.findOne({nameTableT: nameTableT}).then((data) => {
+      if (data) {
+        const message = "Table already exists!";
+        const url =
+          "/tuition/tableTuition?" + querystring.stringify({message: message});
+        res.redirect(url);
+      } else {
+        const tableT = new TableT(req.body);
+        tableT
+          .save()
+          .then(() => res.redirect("/tuition/tableTuition"))
+          .catch((error) => {});
+      }
+    });
   }
 
   // -----------------------------------------------------Management Student-------------------------------------------------------//

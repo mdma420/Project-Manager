@@ -10,11 +10,15 @@ router.post("/createTuition", tuitionController.createTuition);
 router.get("/sreach", tuitionController.sreach);
 router.get("/sreach1", tuitionController.sreach1);
 
+// Table Tuition
+router.get("/tableTuition", tuitionController.tableTuition);
+router.post("/createTT", tuitionController.createTT);
+
 // Management student
 router.get("/createS", tuitionController.createS);
 router.post("/createStudent", tuitionController.createStudent);
 router.delete("/deleteS/:id", tuitionController.deleteS);
-router.get("/sreach", tuitionController.sreach);
+// Table Tui Student
 router.get("/managementtuition", tuitionController.student);
 router.get("/managementtuition/sreach", tuitionController.sreachStudent);
 router.get("/managementtuition/sreach1", tuitionController.sreachStudent1);
