@@ -6,12 +6,11 @@
         <table>
             <thead>
                 <tr>
-                    <th>Mã phiếu thu</th>
+                    <th>code invoice</th>
                     <th>Ngày thu</th>
                     <th>Người nộp</th>
                     <th>Học Phí</th>
-                    <th>Thực thu</th>
-                    <th></th>
+                    <th>Cách đóng</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,36 +19,8 @@
                     <td>{{this._id}}</td>
                     <td>{{moment this.createdAt format ="DD MMM YYYY"}}</td>
                     <td>{{this.name}}</td>
-                    <td>{{this.fee}}</td>
-                    <td>{{this.fee}}</td>
-                    <td>xem phiếu thu</td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-        </div>
-       </div>
-       <div class="table__History-noti">
-        <h2>Lịch sử gửi thông báo</h2>
-        <div class="show__History">
-        <table>
-            <thead>
-                <tr>
-                    <th>Tiêu đề</th>
-                    <th>Nội dung</th>
-                    <th>Ngày gửi</th>
-                    <th>Giờ gửi</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each email}}
-                <tr>
-                    <td>{{this.subject}}</td>
-                    <td>{{this.html}}</td>
-                    <td>{{moment this.createdAt format ="DD MMM YYYY"}}</td>
-                    <td></td>
-                    <td>xem thông báo</td>
+                    <td>{{this.tuition}}</td>
+                    <td>{{this.method}}</td>
                 </tr>
                 {{/each}}
             </tbody>

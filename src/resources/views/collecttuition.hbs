@@ -34,21 +34,7 @@
          </div>
          <div class="form__Registered-subject">
             <h2>List of registered courses</h2>
-            <div class="list__Registered-select">
-            <label for="session">Session :</label>
-            <select id="registered-session">
-              <option value="">...</option>
-              <option value="">2020-2021</option>
-              <option value="">2021-2022</option>
-              <option value="">2022-2023</option>
-              <option value="">2023-2024</option>
-            </select>
-             <label for="semester">Semester :</label>
-            <select id="registered-semester">
-              <option value="">...</option>
-              <option value="">1st semester</option>
-              <option value="">2nd semester</option>
-            </select>           
+            <div class="list__Registered-select">                    
         </div>
                 <div class="table__Registered-subject">
   <table>
@@ -60,8 +46,6 @@
         <th>Semester</th>
         <th>Unit</th>
         <th>Course costs</th>
-        <th>Start day</th>
-        <th>End day</th>
       </tr>
     </thead>
     <tbody>
@@ -73,8 +57,6 @@
         <td>{{this.time}}</td>
         <td>{{this.unit}}</td>
         <td>{{this.totalTuition}}</td>
-        <td>1/2/2023</td>
-        <td>1/5/2023</td>
       </tr>
       {{/each}}
     </tbody>
@@ -82,54 +64,54 @@
 </div>
         </div>
         </div>
+  <form action="/tuition/tableTuition/collecttuition/{{tuitionStudent._id}}/edit?_method=PUT" method="post">
         <div class="form__Receipt-tuition">
   <h2>Invoice</h2>
   <div class="form__Show-receipt">
   <div class="form__card-receipt">
-    <label for="receipt-code">Code Bill:</label>
-    <input type="text" id="receipt-code" value="IN{{student.codeStudent}}" name="receipt-code">
+    <label for="codeStudent">Code Student:</label>
+    <input type="text" id="codeStudent" value="{{tuitionStudent.codeStudent}}" name="codeStudent">
   </div>
   <div class="form__card-receipt">
-    <label for="student-name">Student name:</label>
-    <input type="text" id="student-name" value="{{student.name}}" name="student-name">
+    <label for="name">Student name:</label>
+    <input type="text" id="name" value="{{tuitionStudent.name}}" name="name">
   </div>
   <div class="form__card-receipt">
     <label for="class">class:</label>
-    <input type="text" id="class" value="{{student.class}}" name="class">
+    <input type="text" id="class" value="{{tuitionStudent.science}}" name="class">
   </div>
   <div class="form__card-receipt">
-    <label for="session">Semester:</label>
-    <select id="session" name="session">
-      <option value="">...</option>
-      <option value="2020-2021">2020-2021</option>
-      <option value="2021-2022">2021-2022</option>
-      <option value="2022-2023">2022-2023</option>
-      <option value="2023-2024">2023-2024</option>
-    </select>
-  </div>
-  <div class="form__card-receipt">
-    <label for="total-credit">Total Science:</label>
-    <input type="text" id="total-credit" value="1" name="total-credit">
-  </div>
-  <div class="form__card-receipt">
-    <label for="total-cost">Total Tuition:</label>
-    <input type="text" id="total-cost" name="total-cost">
-  </div>
-  <div class="form__card-receipt">
-    <label for="paid">Amount paid:</label>
-    <input type="text" id="paid" name="paid">
-  </div>
-  <div class="form__card-receipt">
-    <label for="method">Payment methods:</label>
-            <select id="method" name="method">
-                <option value="cash">Cash</option>
-                <option value="bank">Bank transfer</option>
+    <label for="subject">Payment methods:</label>
+            <select id="subject" name="subject">
+                <option value="Computing">Computing</option>
+                <option value="Application">Application</option>
+                <option value="Web">Web</option>
+                <option value="Web">Vision's theory</option>
+                <option value="Web">Principles of Graphic Design</option>
+                <option value="Web">Letter Graphic Art</option>
+                <option value="Web">Marketing</option>
+                <option value="Web">Corporate Governance</option>
+                <option value="Web">Logistic</option>
             </select>
   </div>
+    <div class="form__card-receipt">
+    <label for="tuition">class:</label>
+    <input type="text" id="tuition" value="{{tuitionStudent.tuition}}" name="tuition">
+  </div>
+    <div class="form__card-receipt">
+    <label for="deadline">class:</label>
+    <input type="date" id="deadline" value="{{tuitionStudent.deadline}}" name="deadline">
+  </div>
+    <div class="form__card-receipt">
+    <label for="status">class:</label>
+    <input type="text" id="status" value="Not been paid" name="status">
+  </div>
+  <button type="submit">Select tuition</button>
+  </form>
   
   </div>
   
-  <button type="submit"><a href="/tuition/managmenttuition/collecttuition/{{student._id}}/invoice">Sprint card</a></button>
+  {{!-- <button type="submit"><a href="/tuition/managmenttuition/collecttuition/{{student._id}}/invoice">Sprint card</a></button> --}}
   
 </div>
 

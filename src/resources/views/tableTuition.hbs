@@ -18,9 +18,9 @@
                     <td>{{moment this.dealine format ="DD MMM YYYY"}}</td>
                     <td>{{moment this.tableTPeriod1 format ="DD MMM YYYY"}} - {{moment this.tableTPeriod2 format ="DD MMM YYYY"}}</td>
                     <td>
-                        <button><a href="/tuition/managementtuition">Detail</a></button>
+                        <button><a href="/tuition/tableTuition/{{this._id}}">Detail</a></button>
                         <button><a href="">Export Excel</a></button>
-                        <form action="" method="post">
+                        <form action="/tuition/tableTuition/{{this._id}}?_method=DELETE" method="post">
                             <button type="submit">Delete</button>
                         </form>
                     </td>

@@ -13,43 +13,33 @@ router.get("/sreach1", tuitionController.sreach1);
 // Table Tuition
 router.get("/tableTuition", tuitionController.tableTuition);
 router.post("/createTT", tuitionController.createTT);
+router.get("/tableTuition/:id", tuitionController.student);
+router.post("/tableTuition/:id/createTS", tuitionController.createTS);
+router.get(
+  "/tableTuition/collecttuition/:id",
+  tuitionController.collecttuition
+);
+router.put("/tableTuition/collecttuition/:id/edit", tuitionController.edit);
+router.delete("/tableTuition/:id", tuitionController.deleteTT);
 
 // Management student
 router.get("/createS", tuitionController.createS);
 router.post("/createStudent", tuitionController.createStudent);
 router.delete("/deleteS/:id", tuitionController.deleteS);
-// Table Tui Student
-router.get("/managementtuition", tuitionController.student);
-router.get("/managementtuition/sreach", tuitionController.sreachStudent);
-router.get("/managementtuition/sreach1", tuitionController.sreachStudent1);
-router.get(
-  "/managmenttuition/collecttuition/:id",
-  tuitionController.collecttuition
-);
+router.get("/reportTuition/history/:id", tuitionController.history);
 
 // Management report tuition
 router.get("/reportTuition", tuitionController.report);
-
-// History
-router.get("/managmenttuition/:id/history", tuitionController.history);
+router.post("/reportTuition/:id", tuitionController.createRT);
 
 // Send Mail
-router.post(
-  "/managmenttuition/:id/sendMail/send",
-  upload.single("file"),
-  tuitionController.send
-);
+router.post("/tableTuition/sendMail/:id", tuitionController.send);
 
 // Management Invoice
-router.get(
-  "/managmenttuition/collecttuition/:id/invoice",
-  tuitionController.invoice
-);
-// Export PDF
-router.post(
-  "/managmenttuition/collecttuition/:id/invoice/exportPDF",
-  tuitionController.exportPDF
-);
+router.get("/tableTuition/invoice/:id", tuitionController.invoice);
+// Export PDF Invoice
+router.post("/tableTuition/invoice/:id/exportPDF", tuitionController.exportPDF);
+
 router.get("/", tuitionController.tuition);
 
 module.exports = router;

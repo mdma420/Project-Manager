@@ -14,6 +14,7 @@ const querystring = require("querystring");
 const {error} = require("console");
 const path = require("path");
 const tablesalary = require("../models/tablesalary");
+const {tuition} = require("./TuitionController");
 
 class salaryController {
   // ------------------------------------------------------Management Teacher---------------------------------------------------------- //
@@ -204,12 +205,12 @@ class salaryController {
   async createTS(req, res, next) {
     const idS = await Salary.findById(req.params.id);
     const t = await Teacher.find();
-    const tLeaght = t.length;
+    const tLenght = t.length;
     Tablesalary.findOne({idS: idS._id}).then((data) => {
       if (data) {
         res.redirect("/teacher/tableSalary/" + idS._id);
       } else {
-        for (var i = 0; i < tLeaght; i++) {
+        for (var i = 0; i < tLenght; i++) {
           const name = t[i].nameTeacher;
           const position = t[i].position;
           const basicSalary = Number(t[i].basicSalary);
@@ -392,20 +393,26 @@ class salaryController {
       if (data) {
         res.redirect("/teacher/reportSalary");
       } else {
-        for (var i = 0; i < 1; i++) {
+        const tableSalarys = [];
+        for (var i = 0; i < tLeaght2; i++) {
           const tableSalary = Number(t[i].totalSalary);
-          const reportSalary = new ReportSalary({
-            idS: idS._id,
-            nameSalary: nameSalary,
-            salaryPeriod1: idS.salaryPeriod1,
-            salaryPeriod2: idS.salaryPeriod2,
-            totalSalary: tableSalary * tLeaght2,
-          });
-          reportSalary
-            .save()
-            .then(() => res.redirect("/teacher/reportSalary"))
-            .catch(next);
+          tableSalarys.push(tableSalary);
         }
+        const total = tableSalarys.reduce(
+          (acc, tableSalary) => acc + tableSalary,
+          0
+        );
+        const reportSalary = new ReportSalary({
+          idS: idS._id,
+          nameSalary: nameSalary,
+          salaryPeriod1: idS.salaryPeriod1,
+          salaryPeriod2: idS.salaryPeriod2,
+          totalSalary: total,
+        });
+        reportSalary
+          .save()
+          .then(() => res.redirect("/teacher/reportSalary"))
+          .catch(next);
       }
     });
   }

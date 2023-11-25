@@ -4,10 +4,9 @@ const Schema = mongoose.Schema;
 
 const Invoice = new Schema({
   name: String,
-  email: String,
-  fee: String,
+  subject: String,
+  tuition: String,
   method: String,
-  for: String,
   createdAt: {type: Date, default: Date.now},
 });
 
