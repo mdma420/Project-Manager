@@ -1,4 +1,4 @@
-<form action="/tuition/managmenttuition/collecttuition/{{student._id}}/invoice/exportPDF" method="post">
+<form action="/tuition/tableTuition/invoice/{{tuitionStudent._id}}/exportPDF" method="post">
 <div class="main__Invoice">
     <div class="form__Invoice">
 		<div class="show__Infor-company">
@@ -17,23 +17,19 @@
 			<div class="show__Info-bill">
 				<div class="form-bill">
             <label for="name">Name</label>
-            <input type="text" value="{{student.name}}" id="name" name="name">
+            <input type="text" value="{{tuitionStudent.name}}" id="name" name="name">
 			</div>
 			<div class="form-bill">
-            <label for="email">Email:</label>
-            <input type="email" value="{{student.emailStudent}}" id="email" name="email">
+            <label for="subject">Reason for payment:</label>
+            <input type="subject" value="Payment of {{tuitionStudent.subject}} tuition fees" id="email" name="subject">
 			</div>
 			<div class="form-bill">
-            <label for="fee">Payment amount:</label>
-            <input type="text" id="fee" name="fee">
+            <label for="tuition">Payment amount:</label>
+            <input type="text" id="tuition" value="{{tuitionStudent.tuition}}" name="tuition">
 			</div>
 			<div class="form-bill">
             <label for="method">Payment methods:</label>
-            <input type="text" id="method" name="method">
-			</div>
-			<div class="form-bill">
-            <label for="reason">For</label>
-            <input type="text"  name="reason">
+            <input type="text" id="method" value="Cash" name="method">
 			</div>
 		</div>
 	<div class="show__Signature">
@@ -50,6 +46,7 @@
 	</div>
 	<button type="submit">Complete Payment</button>
 	</div>
+</div>
 </div>
 </form>
 

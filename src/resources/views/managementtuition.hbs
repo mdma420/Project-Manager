@@ -2,92 +2,44 @@
     <section class="table__Management-fees_header">
       
         <h2>Student list</h2>
-        <div class="search__Management-fees">
-          {{!-- <input type="text" id="management-code" placeholder="Search by code"> --}}
-          {{!-- <select id="management-course">
-              <option value="">Course</option>
-              <option value="math">Math</option>
-              <option value="history">History</option>
-              <option value="science">Science</option>
-          </select> --}}
-          <form action="/tuition/managementtuition/sreach">          
-            <label for="name">Sreach Student:</label>
-            <input type="text" id="name" name="name">
-          </form>
-          <form action="/tuition/managementtuition/sreach1">          
-            <label for="science">Sreach Science:</label>
-            <input type="option" id="science" name="science">
-            <button type="submit">Sreach</button>
-          </form>             
-          {{!-- <button id="button-management__search">Search</button> --}}
-        </div>
         <div class="editor" style="display: none;">
-  <form action="/tuition/managmenttuition/64197461e07b85ca00cbc585/sendMail/send" enctype="multipart/form-data" method="post">
-  <h3>Gửi thông báo</h3>
-  <div class="form-noti">
-    <label for="subject">Content:</label>
-    <input type="text" id="subject" name="subject">
-    <label for="emailStudent">To:</label>
-    <input type="text" id="emailStudent" name="emailStudent">
-  </div>
-  {{!-- <button id="italicBtn"><i>I</i></button>
-  <button id="underlineBtn"><u>U</u></button>
-  <textarea id="html" name="html"></textarea> --}}
-  <div class="sendMail">
-    <button onclick="applyBold(event)">Tô Đậm</button>
-    <button onclick="applyItalic(event)">In Nghiêng</button>
-    <button onclick="applyUnderline(event)">Gạch Chân</button>
-    <textarea id="html" name="html"></textarea>
-  <div>
-    <label for="file">File</label>
-    <input type="file" id="file" name="file">
-  </div>
-  </div>
-  <button type="submit" id="sendBtn">Send</button>
-
+</div>
+<div>
+  <form action="/tuition/tableTuition/{{TableT._id}}/createTS" method="post">
+  <button type="submit">create</button>
   </form>
-  <button id="cancelBtn">Cancel</button>
-  
 </div>
 </section>
         <section class="table__Management-fees_body">
   <table>
     <thead>
       <tr>
-        <th>Code</th>
+        <th>Code Student</th>
         <th>Name</th>
-        <th>Class</th>
         <th>Science</th>
-        <th>Phone</th>
-        <th>Day Add mission</th>
+        <th>Subject</th>
         <th>Tuition</th>
+        <th>Dealine</th>
         <th>Status</th>
-        <th>Day tuition collection</th>
-        <th></th>
+        <th>Option</th>
       </tr>
     </thead>
     <tbody>
-      {{#each student}}
+      {{#each tuitionStudent}}
       <tr>
         <td>{{this.codeStudent}}</td>
         <td>{{this.name}}</td>
-        <td>{{this.class}}</td>
         <td>{{this.science}}</td>
-        <td>{{this.phone}}</td>
-        <td>{{moment this.dayAdmission format ="DD MMM YYYY"}}</td>
-        <td>{{this.tuition}}</td>
+        <td>{{this.subject}}</td>
+        <td>{{this.tuition}}.vnd</td>
+        <td>{{moment this.dealine format ="DD MMM YYYY"}}</td>
         <td>{{this.status}}</td>
-        <td>{{moment this.tuitionCollectionDate format ="DD MMM YYYY"}}</td>
         <td>
-            
-                
-                  <ul>
-                    <li onclick="goToPage()">Thu học phí</li>
-                    <li id="compose-email">Send Mail</li>
-                    <li onclick="goToHistory()">History</li>
-                  </ul>
-                
-            
+          <a href="/tuition/tableTuition/collecttuition/{{this._id}}">Chose tuition</a>
+          <a href="/tuition/tableTuition/invoice/{{this._id}}">Tuition Patment</a>
+          <form action="/tuition/tableTuition/sendMail/{{this._id}}" method="post">
+          <button type="submit">Send Mail</button>
+          </form>
         </td>
         
       </tr>
@@ -96,83 +48,15 @@
   </table>
   <div class="pagination">
     {{#each pages}}
-      <a href="/tuition/managementtuition?page={{this}}" data-page-company="{{this}}">{{this}}</a>
+      <a href="/tuition/tableTuition/{{@root.tableTId}}/?page={{this}}" data-page-company="{{this}}">{{this}}</a>
     {{/each}}
   </div>
-
-</section>
-    
-
-    
+  <div>
+    <form action="/tuition/reportTuition/{{TableT._id}}" method="post">
+    <button type="submit">Total Tuition</button>
+    </form>
+  </div>
 </div>
-<script>
-
-function goToPage() {
-    window.location.href = "/tuition/managmenttuition/collecttuition/64197461e07b85ca00cbc585";
-  }
-  function goToHistory() {
-    window.location.href = "/tuition/managmenttuition/64197461e07b85ca00cbc585/history";
-  }
-  function cancel() {
-  var result = confirm("Bạn có chắc muốn hủy không?");
-  if (result) {
-    window.location.href = "/tuition/managementtuition";
-  }
-}
-
-document.getElementById("cancelBtn").onclick = cancel;
-
-
-</script>
-<script>
-const composeBtn = document.getElementById('compose-email');
-  const editor = document.querySelector('.editor');
-  // Lấy các nút chức năng
-  const italicBtn = document.getElementById('italicBtn');
-  const textInput = document.getElementById('textInput');
-  const sendBtn = document.getElementById('sendBtn');
-  const cancelBtn = document.getElementById('cancelBtn');
-  const underlineBtn = document.getElementById('underlineBtn');
-
-composeBtn.addEventListener('click', () => {
-  editor.style.display = 'block';
-});
-
-
-sendBtn.addEventListener('click', () => {
-  const to = toInput.value;
-  const content = textInput.value;
-  console.log(`Sending email to ${to}: ${content}`);
-  // Add your code here to send the email
-});
-
-cancelBtn.addEventListener('click', () => {
-  toInput.value = '';
-  contentInput.value = '';
-  textInput.value = '';
-  editor.style.display = 'none';
-});
-
-textInput.addEventListener('input', () => {
-  localStorage.setItem('editorContent', textInput.value);
-});
-
-
-</script>
-<script>
-    function applyBold(event) {
-  event.preventDefault(); // Ngăn trình duyệt thực hiện hành vi mặc định
-  document.execCommand("bold", false, null);
-}
-
-function applyItalic(event) {
-  event.preventDefault(); // Ngăn trình duyệt thực hiện hành vi mặc định
-  document.execCommand("italic", false, null);
-}
-
-function applyUnderline(event) {
-  event.preventDefault(); // Ngăn trình duyệt thực hiện hành vi mặc định
-  document.execCommand("underline", false, null);
-}
-  </script>
+</div>
+</div>
 
