@@ -1,5 +1,5 @@
-<div class="main__Management_tuition">
-    <div class="table__Management-fees">
+<div class="table__Management_tuition">
+    <section class="table__Management-fees_header">
       
         <h2>Student list</h2>
         <div class="search__Management-fees">
@@ -49,7 +49,8 @@
   <button id="cancelBtn">Cancel</button>
   
 </div>
-        <div class="table__Management-fees">
+</section>
+        <section class="table__Management-fees_body">
   <table>
     <thead>
       <tr>
@@ -78,15 +79,15 @@
         <td>{{this.status}}</td>
         <td>{{moment this.tuitionCollectionDate format ="DD MMM YYYY"}}</td>
         <td>
-            <div class="options-icon">&#8942;
-                <div class="options">
+            
+                
                   <ul>
                     <li onclick="goToPage()">Thu học phí</li>
                     <li id="compose-email">Send Mail</li>
                     <li onclick="goToHistory()">History</li>
                   </ul>
-                </div>
-            </div>
+                
+            
         </td>
         
       </tr>
@@ -98,20 +99,14 @@
       <a href="/tuition/managementtuition?page={{this}}" data-page-company="{{this}}">{{this}}</a>
     {{/each}}
   </div>
-</div>
-</div>
+
+</section>
     
 
     
 </div>
 <script>
-const optionsIcons = document.querySelectorAll('.options-icon');
-optionsIcons.forEach(icon => {
-  icon.addEventListener('click', () => {
-    const options = document.querySelector('.options');
-    options.classList.add('show-options');
-  });
-});
+
 function goToPage() {
     window.location.href = "/tuition/managmenttuition/collecttuition/64197461e07b85ca00cbc585";
   }

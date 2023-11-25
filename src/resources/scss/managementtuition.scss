@@ -1,21 +1,31 @@
-.main__Management_tuition {
-    background: url("http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg") center / cover no-repeat;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+.table__Management_tuition {
+  width: 100%;
+  height: 100vh;
+  background-color: #1b292055;
+
+  backdrop-filter: blur(7px);
+  box-shadow: 0 .4rem .8rem #0005;
+  
+  position: relative;
+  
+  
   }
-  .table__Management-fees {
+  .table__Management-fees_header {
+    width: 100%;
+    height: 10%;
+    background-color: #fff4;
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    background-image: url(transparent-background.png);
-    background-color: rgba(255, 255, 255, 0.5);
-    width: 80%;
-    height: 100%;
-    border-radius: 25px;
-    box-sizing: border-box;
+  }
+  .table__Management-fees_body {
+    width: 95%;
+    max-height: 89%;
+    margin: .8rem auto;
+    overflow: hidden;
+  }
+  .table__Management-fees_body table {
+    width: 100%;
   }
   .session__Management-fees {
     width: 65%;
@@ -47,22 +57,14 @@
     padding: 12px;
     border-radius: 15px;
   }
-  .table__Management-fees table {
+  .table__Management-fees table, th, td {
     border-collapse: collapse;
-    width: 100%;
-  }
-  
-  .table__Management-fees th,
-  .table__Management-fees td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    background-color: #fff4;
+    padding: 1rem;
     text-align: left;
   }
   
-  .table__Management-fees th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  }
+ 
   .options {
     display: none;
   }
@@ -83,17 +85,16 @@
   // css collecttuition
 
   .main__Collect_tuition {
-    background: url("http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg") center / cover no-repeat;
+    background-color: #1b292055;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 1000px;
+    flex-direction: column;
 }
 .table__Collect-tuition {
     display: flex;
-    background-image: url(transparent-background.png);
-    background-color: rgba(255, 255, 255, 0.5);
     width: 80%;
     height: 100%;
     border-radius: 25px;
@@ -102,14 +103,16 @@
     flex-direction: column;
 }
 .card__Info-student {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 30%;
-    height: 60%;
-    background-color: cornsilk;
-    border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+  height: 60%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 33px rgba(0, 0, 0, 0.1);
+  border: 13px solid #ddd;
 }
 .card__Info-student h2 {
   display: flex;
@@ -346,6 +349,7 @@ box-sizing: border-box;
   border-radius: 10px;
   width: 40%;
   height: 50%;
+  top: 12%;
 }
 .editor textarea {
   width: 100%;

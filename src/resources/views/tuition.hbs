@@ -1,24 +1,9 @@
 <div class="main__List_tuition">
-    <div class="table__List-fees">
-      <div class="session__List-fees">
-        <form action="/tuition/sreach">
-          <label for="name">sreach tuition</label>
-          <input type="text" id="name" name="name">
-        </form>
-      </div>      
-        <div class="search__List-fees">
-          <form action="/tuition/sreach1">          
-            <label for="science">Chose Science</label>
-            <input type="option" id="science" name="science">
-            <button type="submit">Sreach</button>
-          </form>              
-          {{!-- create --}}
-        </div>
-             <div class="button__List-fees">
-          
-               <div class="form__List-fees">
-                <button id="add-subject">Create tuition</button>
+
+               
+                
                 <div id="add-new-subject">
+                  <div class="input_subject">
                   <form method="post" action="/tuition/createTuition">
                   <div id="form__type" class="form-row">  
                   <label for="code">Code :</label>
@@ -56,10 +41,21 @@
                   <button type="submit" id="add-button">Add</button>
                   </div>
                   </form>
+                  </div>
                  </div>
-              </div>
+              
                 <div class="table__List-show">
+                   <section class="table__List-header">
+                              <div class="click_add-subject">
+          <button id="add-subject">Create tuition</button>
+          </div>
           <h2>Management of tuition</h2>
+          <div class="input_search_tuition">
+            <i class="fa fa-search"></i>
+            <input type="search" placeholder="Search cousre...">
+          </div>
+                   </section>
+          <section class="table__List-body">
      <table>
         <thead>
               <tr>
@@ -88,9 +84,10 @@
         </tbody>
         {{/each}}  
       </table>
+          </section>
       </div>
-     </div>
-    </div>       
+   
+        
 </div>
 
 
