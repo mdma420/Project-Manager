@@ -371,36 +371,36 @@
     flex-direction: column;
     height: 100%;
 }
-.form-createSalary {
-    width: 100%;
-    display: flex;
-    padding: 5px; 
-    font-size: 15px; 
-}
-.form-createSalary label {
-    width: 35%;
-    font-size: 20px;
-}
-.form-createSalary input {
-    width: 60%;
-    border-radius: 10px;
-    font-size: 20px;
-}
-.form-createSalary button {
-    display: flex;
-    justify-content: center;
-    height: 50%;
-}
-.btn-createSalary {
-    padding: 20px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.btn-createSalary button {
-    font-size: 20px;
-}
+// .form-createSalary {
+//     width: 100%;
+//     display: flex;
+//     padding: 5px; 
+//     font-size: 15px; 
+// }
+// .form-createSalary label {
+//     width: 35%;
+//     font-size: 20px;
+// }
+// .form-createSalary input {
+//     width: 60%;
+//     border-radius: 10px;
+//     font-size: 20px;
+// }
+// .form-createSalary button {
+//     display: flex;
+//     justify-content: center;
+//     height: 50%;
+// }
+// .btn-createSalary {
+//     padding: 20px;
+//     width: 100%;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
+// .btn-createSalary button {
+//     font-size: 20px;
+// }
 .list__tableTuition--option {
     width: 100%;
     display: flex;
@@ -478,4 +478,62 @@
     font-size: 30px;
     width: 10%;
     border-radius: 10px;
+}
+
+//teacherSalary//
+.main__Salary--teacher {
+    background-color: #1b292055;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+}
+.table__Salaryteacher-show {
+    width: 100%;
+    height: 60%;
+}
+.table__Salaryteacher-header {
+    width: 100%;
+}
+.table__Salaryteacher-body {
+    width: 100%;
+}
+.table__Salaryteacher-body table {
+    width: 100%;
+}
+.table__Salaryteacher-body button {
+    width: 30%;
+}
+.form-createSalary {
+    width: 100%;
+    display: flex;
+    padding: 5px; 
+    font-size: 15px; 
+}
+.form-createSalary label {
+    width: 35%;
+    font-size: 20px;
+}
+.form-createSalary input {
+    width: 60%;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.form-createSalary button {
+    display: flex;
+    justify-content: center;
+    height: 50%;
+}
+.btn-createSalary {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-createSalary button {
+    font-size: 20px;
+    border-radius: 6px;
 }

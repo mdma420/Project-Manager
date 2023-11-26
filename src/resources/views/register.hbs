@@ -1,5 +1,47 @@
 <div class="main_setting_regisster">
-<div class="form_regisster_q">
+<div class="table_listRegister-show">
+    <div class="table_listRegister-header">
+        <h2>List Register</h2>
+        <div class="table_listRegister-search">
+            <i class="fa fa-search"></i>
+            <input type="search" placeholder="Search Register's name..." id="">
+            <button>Search</button>
+            <button id="btn_create-register">Create Register</button>
+        </div>
+    </div>
+    <div class="table_listRegister-body">
+    <table>
+        <thead>
+            <tr>
+                <th>User name</th>
+                <th>Full name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>option</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each user}}
+            <tr>
+                <td>{{this.username}}</td>
+                <td>{{this.fullname}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.phone}}</td>
+                <td>{{this.role}}</td>
+                <td>
+                    <button class="btn_edit_user"><a href="/register/updateUser/{{this._id}}">Edit User</a></button>
+                    <form action="/register/DU/{{this._id}}?_method=DELETE" method="post">
+                        <button class="btn_delete_user" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    </div>
+    <div class="form_regisster_q">
+        <div class="input_regisster_q">
     <h2>Create User</h2>
     <form method="post" action="/register/apiregister">
     <div class="form_user_q">
@@ -36,36 +78,17 @@
         <button type="submit">Add new user</button>
     </div>
     </form>
-</div>
-<div class="form_data_regisster_q">
-    <table>
-        <thead>
-            <tr>
-                <th>User name</th>
-                <th>Full name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Role</th>
-                <th>option</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each user}}
-            <tr>
-                <td>{{this.username}}</td>
-                <td>{{this.fullname}}</td>
-                <td>{{this.email}}</td>
-                <td>{{this.phone}}</td>
-                <td>{{this.role}}</td>
-                <td>
-                    <button class="btn_edit_user"><a href="/register/updateUser/{{this._id}}">Edit User</a></button>
-                    <form action="/register/DU/{{this._id}}?_method=DELETE" method="post">
-                        <button class="btn_delete_user" type="submit">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
+    </div>
 </div>
 </div>
+
+<script>
+    document.getElementById("btn_create-register").addEventListener("click", function () {
+        var registerForm = document.querySelector(".form_regisster_q");
+        if (registerForm.style.display === "none") {
+            registerForm.style.display = "block";
+        } else {
+            registerForm.style.display = "none";
+        }
+    });
+</script>

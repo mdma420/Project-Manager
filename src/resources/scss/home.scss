@@ -34,6 +34,7 @@ h1 {
 
 .drop-down__header {
     width: 20%;
+    padding: 26px 0;
 }
 
 .Tuition-show,
@@ -44,6 +45,9 @@ h1 {
     display: none;
     flex-direction:  column;
     margin-top: 50px;
+    position: absolute;
+    top: 2px;
+    z-index: 20;
 }
 .drop-down__header:hover .Tuition-show,
 .drop-down__header:hover .Salary-show,
