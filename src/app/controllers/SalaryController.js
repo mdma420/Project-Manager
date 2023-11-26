@@ -259,7 +259,7 @@ class salaryController {
   }
 
   // [GET] Detail Table Salary
-  invoiceSalary(req, res, next) {
+  detailSalary(req, res, next) {
     Tablesalary.findById(req.params.id).then((tableSalary) => {
       res.render("invoiceSalary", {
         tableSalary: mongooseToObject(tableSalary),
@@ -288,38 +288,33 @@ class salaryController {
 
   // -----------------------------------------------------Export file Salary------------------------------------------------ //
 
-  // [POST] export PDF Salary
-  async exportSalary(req, res, next) {
-    const tableSalary = await Tablesalary.findOne({_id: req.params.id});
-
-    const baseUrl = `http://localhost:3000`;
-    const url = `${baseUrl}/teacher/invoiceSalary/${req.params.id}`;
-    const filePath = path.resolve(
-      __dirname,
-      "../../../filePDF/tableSalary.pdf"
+  // [POST] Edit Salary
+  async editSalary(req, res, next) {
+    const t = await Tablesalary.findById(req.params.id);
+    const basicSalary = Number(t.basicSalary);
+    const s = Number(150000);
+    const dayWork = Number(30);
+    const dayOut = Number(req.body.dayOut);
+    const allowance = Number(1000000);
+    const exceptSocialInsurance = Number(
+      (basicSalary + s * dayWork - s * dayOut + allowance) * 0.104
     );
-    const browser = await puppeteer.launch({headless: false});
-    const page = await browser.newPage();
-
-    await page.goto(url, {waitUntil: "networkidle0"});
-    await page.type("#username", "Admin");
-    await page.type("#password", "123");
-    await page.click("body > div > div > div > form > div > button");
-    await page.waitForTimeout(10000);
-    await page.goto(url);
-    await page.addStyleTag({
-      content: ".header-list{display: none !improtant;}",
-    });
-    await page.pdf({
-      path: filePath,
-      displayHeaderFooter: false,
-      landscape: false,
-      format: "a4",
-      printBackground: false,
-    });
-    await browser.close();
-
-    res.download(filePath);
+    Tablesalary.updateOne(
+      {_id: req.params.id},
+      {
+        dayWork: dayWork - dayOut,
+        dayOut: dayOut,
+        exceptSocialInsurance: exceptSocialInsurance,
+        totalSalary:
+          basicSalary +
+          s * dayWork -
+          s * dayOut +
+          allowance -
+          exceptSocialInsurance,
+      }
+    )
+      .then(() => res.redirect("/teacher/tableSalary/" + t.idS))
+      .catch(next);
   }
 
   // [GET] export Excel Salary

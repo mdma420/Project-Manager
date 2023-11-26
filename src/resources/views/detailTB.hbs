@@ -1,5 +1,5 @@
 <div>
-    <form action="/teacher/detailTB/{{tableSalary._id}}/exportPDF" method="post">
+    <form action="/teacher/detailTB/{{tableSalary._id}}/editSalary?_method=PUT" method="post">
 <table>
 <thead>
   <tr>
@@ -11,10 +11,8 @@
     <th>Day Work</th>
     <th>Day Out</th>
     <th>Allowance</th>
-    <th>Bonus</th>
     <th>Except Social Insurance</th>
     <th>Total Salary</th>
-    <th>Note</th>
     <th>Option</th>
   </tr>
 </thead>
@@ -26,18 +24,16 @@
   <td>{{tableSalary.coefficientsSalary}}</td>
   <td>{{tableSalary.basicSalary}}</td>
   <td>{{tableSalary.dayWork}}</td>
-  <td>{{tableSalary.dayOut}}</td>
+  <td><input type="text" id="dayOut" value="{{tableSalary.dayOut}}" name="dayOut"></td>
   <td>{{tableSalary.allowance}}</td>
-  <td>{{tableSalary.bonus}}</td>
   <td>{{tableSalary.exceptSocialInsurance}}</td>
   <td>{{tableSalary.totalSalary}}</td>
-  <td>{{tableSalary.note}}</td>
   <td><a href="/teacher/tableSalary/{{tableSalary.idS}}">Back</a></td>
 </tr>
 </tbody>
  </table>
  <div>
-    <button type="submit">export PDF</button>
+    <button type="submit">Edit</button>
  </div>
  </form>
 </div>
