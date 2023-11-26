@@ -1,0 +1,166 @@
+.main__announcement {
+    background-color: #1b292055;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+.table_announcement-header {
+    width: 100%;
+    height: 10%;
+    background-color: #fff4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.table_announcement-body {
+    width: 100%;
+    box-shadow: 0 .4rem .8rem #0005;
+    border-radius: 7px;
+}
+.table_announcement-header h2 {
+    width: 50%;
+    height: 50%;
+    font-size: 40px;
+}
+.table_announcement-body table {
+    width: 100%;
+}
+.input_announcement {
+    width: 45%;
+    height: 45%;
+}
+.input_announcement input {
+    width: 70%;
+    height: 100%;
+    border-radius: 6px;
+}
+.input_announcement i {
+    height: 100%;
+    font-size: 15px;
+}
+.input_announcement button {
+    height: 100%;
+    width: 20%;
+    border-radius: 6px;
+}
+.table_announcement-body button {
+    width: 100%;
+}
+
+
+//detailForStudent//
+.main__detailForStudent {
+    background-color: #1b292055;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+.table_detailForStudent-header{
+    width: 100%;
+    height: 10%;
+    background-color: #fff4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.table_detailForStudent-header h2 {
+    width: 70%;
+    font-size: 40px;
+}
+.table_detailForStudent-header button {
+    width: 10%;
+    font-size: 20px;
+}
+.table_detailForStudent-body {
+    width: 100%;
+    box-shadow: 0 .4rem .8rem #0005;
+    border-radius: 7px;
+}
+.table_detailForStudent-body table {
+    width: 100%;
+}
+
+//main__announcementStudents//
+.main__announcementStudents{
+    background-color: #1b292055;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+.table_announcementStudents-header {
+    width: 100%;
+    height: 10%;
+    background-color: #fff4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.table_announcementStudents-body {
+    width: 100%;
+    box-shadow: 0 .4rem .8rem #0005;
+    border-radius: 7px;
+}
+.table_announcementStudents-body table {
+    width: 100%;
+}
+.table_announcementStudents-body button {
+    width: 100%;
+}
+
+//main__announcementTeacher//
+.main__announcementTeacher {
+    background-color: #1b292055;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+.table_announcementTeacher-header {
+    width: 100%;
+    height: 10%;
+    background-color: #fff4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.table_announcementTeacher-body {
+    width: 100%;
+    box-shadow: 0 .4rem .8rem #0005;
+    border-radius: 7px;
+}
+.table_announcementTeacher-body table {
+    width: 100%;
+}
+.table_announcementTeacher-body button {
+    width: 40%;
+}
+
+//sendMail Teacher//
+.main__sendMail--teacher{
+    background-color: #1b292055;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+}
+.table__sendMail--body {
+    width: 50%;
+    height: 50%;
+}
+.table__sendMail--body button {
+    width: 20%;
+}
+.table__sendMail--body textarea {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+}

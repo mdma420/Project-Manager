@@ -202,6 +202,7 @@
   align-items: center;
   background-color: cornsilk;
   border-radius: 10px;
+  margin: .8rem ;
 }
 .form__Show-receipt {
   display: flex;
@@ -239,7 +240,7 @@
 // css bill invoice
 
 .main__Invoice {
-  background: url("http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg") center / cover no-repeat;
+  background-color: #1b292055;
   width: 100%;
   display: flex;
   align-items: center;
@@ -332,7 +333,7 @@ box-sizing: border-box;
   height: 20%;
 }
 .form__Invoice button {
-  width: 5%;
+  width: 10%;
   border-radius: 7px;
   background-color: bisque;
 }

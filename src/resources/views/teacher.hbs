@@ -1,23 +1,23 @@
-<div class = "main_profileTeacher">
+<div class = "main_Teacher">
 {{!-- <div>
   <button><a href="/teacher/listOnLeaveTeacher">Lịch sử nghỉ phép</a></button>
 </div> --}}
-<div>
-  <form action="/teacher/sreach">
-    <label for="nameTeacher">Sreach Teacher</label>
-    <input type="text" id="nameTeacher" name="nameTeacher">
+<section class="table__Teacher--header">
+  <H2>List Teachers</H2>
+  <form action="/teacher/sreach" class="search_Teacher--input">
+    <input type="text" id="nameTeacher" name="nameTeacher" placeholder="Search Teacher's name...">
   </form>
-  <form action="/teacher/sreachS">          
+  <form action="/teacher/sreachS" class="search_Teacher--select">          
     <select name="subject" id="subject"> 
       <option value="">chose subject</option>
       <option value="IT">IT</option>
       <option value="Design">Design</option>
       <option value="Business">Business</option>
     </select>
-    <button type="submit">Sreach</button>
+    <button type="submit">Search</button>
   </form>
-</div>
-<div>
+</section>
+<section class="table__Teacher--body">
   <table>
 <thead>
   <tr>
@@ -39,11 +39,13 @@
   <td>{{this.subject}}</td>
   <td>{{this.onLeave}}</td>
   <td>{{this.status}}</td>
-  <td><a href="teacher/detailTeacher/{{this._id}}">Detail</a></td>
-  <td><a href="teacher/updateTeacher/{{this._id}}">Update</a></td>
+  <td>
+    <button class="btn_detail-Teacher"><a href="teacher/detailTeacher/{{this._id}}">Detail</a></button>
+    <button class="btn_update-Teacher"><a href="teacher/updateTeacher/{{this._id}}">Update</a></button>
+  </td>
 </tr>
 {{/each}}
 </tbody>
  </table>
-</div>
+</section>
 </div>

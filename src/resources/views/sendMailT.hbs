@@ -1,4 +1,5 @@
-<div>
+<div class="main__sendMail--teacher">
+  <div class="table__sendMail--header">
     <form action="/announcement/sendMailT/{{teacher._id}}" method="post">
     <h3>Send Mail Teacher</h3>
   <div class="form-noti">
@@ -7,13 +8,16 @@
     <label for="emailTeacher">To:</label>
     <input type="text" value="{{teacher.emailTeacher}}" id="emailTeacher" name="emailTeacher">
   </div>
+  </div>
+  <div class="table__sendMail--body">
   <textarea id="html" name="html"></textarea>
   <div>
     <label for="file">File</label>
     <input type="file" id="file" name="file">
   </div>
+    <button><a href="/announcement/forTeacher">Back</a></button>
+    <button type="submit" id="sendBtn">Send</button>
   </div>
-  <button><a href="/announcement/forTeacher">Back</a></button>
-  <button type="submit" id="sendBtn">Send</button>
+  </div>
     </form>
 </div>

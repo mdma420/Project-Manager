@@ -1,4 +1,8 @@
-<div>
+<div class="main__announcementTeacher">
+  <div class="table_announcementTeacher-header">
+       <h2>List Teacher's Announcement</h2>
+  </div>
+  <div class="table_announcementTeacher-body">
     <table>
 <thead>
   <tr>
@@ -16,10 +20,14 @@
   <td>{{this.nameTeacher}}</td>
   <td>{{this.position}}</td>
   <td>{{this.subject}}</td>
-  <td><a href="/announcement/mailTeacher/{{this._id}}">Detail Mail</a></td>
-  <td><a href="/announcement/sendMailTeacher/{{this._id}}">Send Mail</a></td>
+  <td>
+    <button><a href="/announcement/mailTeacher/{{this._id}}">Detail Mail</a></button>
+    <button><a href="/announcement/sendMailTeacher/{{this._id}}">Send Mail</a></button>
+  </td>
+  
 </tr>
 {{/each}}
 </tbody>
  </table>
+ </div>
 </div>

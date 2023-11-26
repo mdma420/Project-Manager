@@ -1,40 +1,40 @@
-.main__Teacher {
-    background: url("http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg") center / cover no-repeat;
+//detailTeacher//
+.main__Teacher--infor {
+    background-color:gray ;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     height: 100vh;
-}
-.table__Teacher-info {
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    background-image: url(transparent-background.png);
-    background-color: rgba(255, 255, 255, 0.5);
-    width: 80%;
-    height: 100%;
-    border-radius: 25px;
-    box-sizing: border-box;
 }
-.form__Info-teacher {
+.table__Teacher--infor {
     display: flex;
-    flex-direction: row;
+    height: 60%;
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    font-size: 15px;
-    height: 70%;
+    flex-direction: row;
 }
-.card__Info-teacher {
+.form__Info-teacher {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 30%;
     height: 60%;
-    background-color: cornsilk;
+    background-color: #fff;
     border-radius: 10px;
+    box-shadow: 0 8px 33px rgba(0, 0, 0, 0.1);
+    border: 13px solid #ddd;
+}
+.form__card-teacher {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+    background-color: cornsilk;
 }
 .form__Level-history {
     display: flex;
@@ -232,29 +232,107 @@
     width: 100%;
     background-color: gainsboro;
 }
-
-.main_profileTeacher {
-    background: url("http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg") center / cover no-repeat;
+// home teacher//
+.main_Teacher {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: 100vh;
+    background-color: #1b292055;
+    backdrop-filter: blur(7px);
+    box-shadow: 0 .4rem .8rem #0005;
+    display: flex;
     flex-direction: column;
+    align-items: center;
 }
-
+.table__Teacher--header {
+    width: 100%;
+    height: 10%;
+    background-color: #fff4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.table__Teacher--body {
+    width: 95%;
+    max-height: 89%;
+    margin: .8rem auto;
+    overflow: hidden;
+}
+.table__Teacher--header h2 {
+    font-size: 35px;
+}
+.search_Teacher--input {
+   width: 30%;
+}
+.search_Teacher--input input {
+    width: 100%;
+    font-size: 30px;
+    border-radius: 7px;
+}
+.search_Teacher--select {
+   width: 20%;
+}
+.search_Teacher--select select {
+    width: 60%;
+    font-size: 20px;
+    height: 4vh;
+    border-radius: 7px;
+ }
+ .search_Teacher--select button {
+    width: 35%;
+    font-size: 28px;
+    border-radius: 7px;
+ }
+ .table__Teacher--body table {
+    width: 100%;
+ }
+ .btn_detail-Teacher,
+ .btn_update-Teacher {
+    font-size: 20px;
+    width: 45%;
+    border-radius: 5px;
+ }
 //salary//
 .main__Salary {
-    background: url("http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg") center / cover no-repeat;
+    background-color: #1b292055;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     height: 100vh;
     flex-direction: column;
 }
-.show__Salary--teacher {
-    width: 90%;
+.show__Salary--header {
+    width: 100%;
+    height: 10%;
+    background-color: #fff4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.show__Salary--body {
+    width: 100%;
+    box-shadow: 0 .4rem .8rem #0005;
+    border-radius: 7px;
+}
+.show__Salary--body table {
+    width: 100%;
+}
+.input__Salary-search {
+   font-size: 20px;
+   width: 20%;
+   justify-content: space-between;
+   display: flex;
+   align-items: center;
+}
+.input__Salary-search input {
+    font-size: 25px;
+    backdrop-filter: blur(7px);
+    box-shadow: 0 .4rem .8rem #0005;
+    border-radius: 7px;
+}
+.show__Salary--header button {
+    font-size: 20px;
+    width: 10%;
+    border-radius: 6px;
 }
 .show__Salary--teacher table {
     width: 100%;
@@ -270,26 +348,31 @@
     background-color: antiquewhite;
 }
 .create__Salary--months {
-    display: flex;
+    display: none;
     background-color: cornsilk;
     border-radius: 10px;
     height: 60%;
     margin-top: 30px;
-    width: 50%;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+.create__Salary--months.hidden {
+    display: block;
+    height: 50%;
+    width: 50%;
+  }
 .type__create--Salary {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 120%;
+    width: 100%;
     flex-direction: column;
     height: 100%;
 }
 .form-createSalary {
-    width: 50%;
+    width: 100%;
     display: flex;
     padding: 5px; 
     font-size: 15px; 
@@ -317,6 +400,23 @@
 }
 .btn-createSalary button {
     font-size: 20px;
+}
+.list__tableTuition--option {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.btn__detail--option,
+.btn__delete--option {
+    width: 40%;
+}
+.btn__delete--option button {
+    width: 100%;
+}
+.btn__export--option {
+    width: 60%;
 }
 //table salary//
 .main__table--Salary {

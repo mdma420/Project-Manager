@@ -1,5 +1,13 @@
 <div class="main__Salary">
-    <div class="show__Salary--teacher">
+    <section class="show__Salary--header">
+        <h2>List of tuition fees for each semester</h2>
+        <div class="input__Salary-search">
+            <i class="fa fa-search"></i>
+            <input type="search" placeholder="Search years...">
+        </div>
+        <button>Create salary</button>
+    </section>
+    <section class="show__Salary--body">
         <table>
             <thead>
                 <tr>
@@ -18,17 +26,20 @@
                     <td>{{moment this.dealine format ="DD MMM YYYY"}}</td>
                     <td>{{moment this.tableTPeriod1 format ="DD MMM YYYY"}} - {{moment this.tableTPeriod2 format ="DD MMM YYYY"}}</td>
                     <td>
-                        <button><a href="/tuition/tableTuition/{{this._id}}">Detail</a></button>
-                        <button><a href="">Export Excel</a></button>
-                        <form action="/tuition/tableTuition/{{this._id}}?_method=DELETE" method="post">
+                        <div class="list__tableTuition--option">
+                        <button class="btn__detail--option"><a href="/tuition/tableTuition/{{this._id}}">Detail</a></button>
+                        
+                        <form action="/tuition/tableTuition/{{this._id}}?_method=DELETE" method="post" class="btn__delete--option">
                             <button type="submit">Delete</button>
                         </form>
+                        <button class="btn__export--option"><a href="">Export Excel</a></button>
+                        </div>
                     </td>
                 </tr>
                 {{/each}}
             </tbody>
         </table>
-    </div>
+    </section>
     <div class="create__Salary--months">
         <h2>Create month's salary</h2>
         <form class="type__create--Salary" method="post" action="/tuition/createTT" width="100%">
@@ -58,3 +69,18 @@
         </form>
     </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var createSalaryButton = document.querySelector(".show__Salary--header button");
+    var createSalaryMonths = document.querySelector(".create__Salary--months");
+
+    createSalaryButton.addEventListener("click", function(event) {
+      // Prevent the default behavior of the button (e.g., form submission)
+      event.preventDefault();
+      
+      // Toggle the 'hidden' class on createSalaryMonths
+      createSalaryMonths.classList.toggle("hidden");
+    });
+  });
+</script>
