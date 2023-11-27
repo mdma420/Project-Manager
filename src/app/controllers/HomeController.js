@@ -1,19 +1,22 @@
 const ReportTuition = require("../models/reportTuition");
+const ReportSalary = require("../models/reportSalary");
 class HomeController {
   home(req, res, next) {
     ReportTuition.find().then((reportTuition) => {
       reportTuition = reportTuition.map((reportTuition) =>
         reportTuition.toObject()
       );
-      console.log(reportTuition);
-      res.render("home", {
-        reportTuition,
-        title: "Home ",
+      ReportSalary.find({}).then((reportSalary) => {
+        reportSalary = reportSalary.map((reportSalary) =>
+          reportSalary.toObject()
+        );
+        res.render("home", {
+          reportTuition,
+          reportSalary,
+          title: "home",
+        });
       });
     });
-    // res.render('home', {
-    //     title: 'Home'
-    // })
   }
 }
 
