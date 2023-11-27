@@ -1,4 +1,8 @@
-<div>
+<div class="main_detailTB">
+  <div class="table_detailTB-header">
+    <h2>List Teacher's detail</h2>
+  </div>
+  <div class="table_detailTB-body">
     <form action="/teacher/detailTB/{{tableSalary._id}}/editSalary?_method=PUT" method="post">
 <table>
 <thead>
@@ -28,12 +32,15 @@
   <td>{{tableSalary.allowance}}</td>
   <td>{{tableSalary.exceptSocialInsurance}}</td>
   <td>{{tableSalary.totalSalary}}</td>
-  <td><a href="/teacher/tableSalary/{{tableSalary.idS}}">Back</a></td>
+  <td>
+    <button>
+      <a href="/teacher/tableSalary/{{tableSalary.idS}}">Back</a>
+      </button>
+      </td>
 </tr>
 </tbody>
  </table>
- <div>
-    <button type="submit">Edit</button>
- </div>
  </form>
+ </div>
+ <button type="submit">Edit</button>
 </div>

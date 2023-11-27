@@ -78,11 +78,54 @@ h1 {
 }
 .main-home {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: bisque;
 }
 
 .chart-tuition {
     width: 400px;
     margin: 20px auto;
+}
+.table__Report-tuition {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 50%;
+}
+.table-data_tuition  {
+    width: 100%;
+    height: 100%;
+    background-color: #fff4;
+    margin: .8rem auto;
+}
+.table-data_tuition table {
+    width: 100%;
+}
+.chart-salary {
+    width: 400px;
+    margin: 20px auto;
+}
+.table__Report-salary {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 45%;
+    width: 80%;
+}
+.table-data_salary  {
+    width: 100%;
+    height: 100%;
+    background-color: #fff4;
+    margin: .8rem auto;
+    border-radius: 25px;
+}
+.table-data_salary table {
+    width: 100%;
+    
 }
 
 

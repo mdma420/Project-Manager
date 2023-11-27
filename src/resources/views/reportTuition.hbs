@@ -1,7 +1,8 @@
-<div class="main__Report-tuition">
-    <div class="table__Report-tuition">
+<div class="main__Reporting-tuition">
+    <div class="table__Reportingtuition-header">
         <h2>Báo cáo học phí</h2>
-        <div class="show__Report-tuition">
+        </div>
+        <div class="table__Reportingtuition-body">
             <table>
         <thead>
           <tr>
@@ -10,16 +11,15 @@
             <th>Total Tuition</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody >
           {{#each reportTuition}}
-            <tr class="data_tuition">
-              <td class="td-nameTuition">{{this.nameTT}}</td>
-              <td class="td-period">{{moment this.tuitionPeriod1 format ="DD MMM YYYY"}} - {{moment this.tuitionPeriod2 format ="DD MMM YYYY"}}</td>
-              <td class="td-totalTuition">{{this.totalTT}}.vnd</td>
+            <tr >
+              <td >{{this.nameTT}}</td>
+              <td >{{moment this.tuitionPeriod1 format ="DD MMM YYYY"}} - {{moment this.tuitionPeriod2 format ="DD MMM YYYY"}}</td>
+              <td >{{this.totalTT}}.vnd</td>
             </tr>
           {{/each}}
         </tbody>
       </table>
-      </div>
     </div>
 </div>

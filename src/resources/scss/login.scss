@@ -1,10 +1,11 @@
 .about-login {
-    height: 100vh;
+    background-color: #1b292055;
     width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    background: url(http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg) center/cover no-repeat;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
 }
 .main-login {
     justify-content: center;

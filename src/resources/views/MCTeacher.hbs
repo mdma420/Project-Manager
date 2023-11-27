@@ -1,5 +1,43 @@
-<div class="main_setting_teacher_q">
-<div class="form_create_teacher_q">
+<div class="main_MC-teacher">
+<div class="table_MC-teacher">
+    <div class="table_MC-header">
+        <h2>List Teacher</h2>
+        <button>Create</button>
+    </div>
+    <div class="table_MC-body">
+    <table>
+        <thead>
+            <tr>
+                <th>Code Teacher</th>
+                <th>Name Teacher</th>
+                <th>Sex</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each teacher}}
+            <tr>
+                <td>{{this.codeTeacher}}</td>
+                <td>{{this.nameTeacher}}</td>
+                <td>{{this.sex}}</td>
+                <td>{{this.emailTeacher}}</td>
+                <td>{{this.phone}}</td>
+                <td>{{this.address}}</td>
+                <td>
+                    <form action="/teacher/deleteTeacher/{{this._id}}?_method=DELETE" method="post">
+                    <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    </div>
+</div>
+<div class="form_create_teacher_q center-form">
     <h2>Create Teacher</h2>
     <form method="post" action="/teacher/createTeacher">
     <div class="form_teacher_q">
@@ -60,42 +98,21 @@
     </div>
     <div>
         <button type="submit">Add new teacher</button>
+        <button>Back</button>
     </div>
     </form>
 </div>
-<div class="form_data_teacher_q">
-    <table>
-        <thead>
-            <tr>
-                <th>Code Teacher</th>
-                <th>Name Teacher</th>
-                <th>Sex</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each teacher}}
-            <tr>
-                <td>{{this.codeTeacher}}</td>
-                <td>{{this.nameTeacher}}</td>
-                <td>{{this.sex}}</td>
-                <td>{{this.emailTeacher}}</td>
-                <td>{{this.phone}}</td>
-                <td>{{this.address}}</td>
-                <td>
-                    <form action="/teacher/deleteTeacher/{{this._id}}?_method=DELETE" method="post">
-                    <button type="submit">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
 </div>
-</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var createButton = document.querySelector('.table_MC-header button');
+    var formCreateTeacher = document.querySelector('.form_create_teacher_q');
+
+    createButton.addEventListener('click', function () {
+      formCreateTeacher.style.display = 'block';
+    });
+  });
+</script>
 
 {{!-- Confirm delete Teacher
 

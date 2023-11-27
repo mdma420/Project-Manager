@@ -1,38 +1,159 @@
+<!-- Các phần HTML -->
+
 <div class="main-home">
+     <div class="table__Report-tuition">
+        <div class="table-data_tuition">
+            <h2>Tuition summary</h2>
+            <table>
+        <thead>
+          <tr>
+            <th>Name Tuition</th>          
+            <th>Tuition Period</th>
+            <th>Total Tuition</th>
+          </tr>
+        </thead>
+        <tbody id="tuition-list">
+          {{#each reportTuition}}
+            <tr class="data_tuition">
+              <td class="td-nameTuition">{{this.nameTT}}</td>
+              <td class="td-period">{{moment this.tuitionPeriod1 format ="DD MMM YYYY"}} - {{moment this.tuitionPeriod2 format ="DD MMM YYYY"}}</td>
+              <td class="td-totalTuition">{{this.totalTT}}.vnd</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      </div>
     <div class="chart-tuition">
-        <canvas id="myChart"></canvas>
+        <canvas id="myChart1"></canvas>
     </div>
+    </div>
+    <div class="table__Report-salary" id="yearlySalaryTable">
+        <div class="table-data_salary">
+            <h2>Salary summary</h2>
+            <table>
+            <thead>
+                <tr>
+                    <th>Name Salary</th>          
+                    <th>Salary Period</th>
+                    <th>Total Salary</th>                
+                </tr>
+            </thead>
+            <tbody id="salary-list">
+                {{#each reportSalary}}
+                <tr class="data_salary">
+                    <td class="td-nameSalary">{{this.nameSalary}}</td>
+                    <td>{{moment this.salaryPeriod1 format ="DD MMM YYYY"}} - {{moment this.salaryPeriod2 format ="DD MMM YYYY"}}</td>
+                    <td class="td-totalSalary">{{this.totalSalary}}.vnd</td>
+                </tr>
+                {{/each}}
+            </tbody>
+            </div>
+            <div class="chart-salary">
+        <canvas id="myChart2"></canvas>
+    </div>
+  </div>
+    
 </div>
 
 <!-- Thêm dòng script sau vào phía dưới phần body của trang HTML -->
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script> <!-- Bạn cần có thư viện moment.js -->
+<script>
+  var data = {
+    labels: [],
+    datasets: [{
+      data: [],
+      backgroundColor: []
+    }]
+  };
 
-  <script>
-    // Dữ liệu phần trăm và tên
-    var data = {
-      labels: ["name1", "name2", "name3"], // Thay thế bằng tên thực tế của bạn
-      datasets: [{
-        data: [25, 30, 45], // Thay thế bằng phần trăm thực tế của bạn
-        backgroundColor: ["#ff5733", "#33ff57", "#5733ff"], // Màu sắc của các phần tử
-      }]
-    };
+  var rows = document.querySelectorAll("#tuition-list tr.data_tuition");
+  rows.forEach(function(row) {
+    data.labels.push(row.querySelector(".td-nameTuition").textContent);
+    data.datasets[0].data.push(parseFloat(row.querySelector(".td-totalTuition").textContent));
+    data.datasets[0].backgroundColor.push(getRandomColor());
+  });
 
-    // Cấu hình biểu đồ
-    var options = {
+  var ctx = document.getElementById("myChart1").getContext("2d");
+  var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: data,
+    options: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          fontColor: 'black',
+          fontSize: 15
+        }
+      },
       responsive: true,
-      maintainAspectRatio: false,
-    };
+      maintainAspectRatio: false
+    }
+  });
 
-    // Tạo biểu đồ tròn
-    var ctx = document.getElementById("myChart").getContext("2d");
-    var myChart = new Chart(ctx, {
-      type: 'pie',
-      data: data,
-      options: options
-    });
-  </script>
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+</script>
+<!-- Thêm đoạn mã sau vào sau đoạn mã biểu đồ tròn và trước thẻ </body> -->
+<script>
+  var salaryData = {
+    labels: [],
+    datasets: [{
+      label: 'Total Salary',
+      data: [],
+      backgroundColor: []
+    }]
+  };
+
+  var salaryRows = document.querySelectorAll("#salary-list tr.data_salary");
+  salaryRows.forEach(function(row) {
+    salaryData.labels.push(row.querySelector(".td-nameSalary").textContent);
+    salaryData.datasets[0].data.push(parseFloat(row.querySelector(".td-totalSalary").textContent));
+    salaryData.datasets[0].backgroundColor.push(getRandomColor());
+  });
+
+  var ctx2 = document.getElementById("myChart2").getContext("2d");
+  var myChart2 = new Chart(ctx2, {
+    type: 'bar',
+    data: salaryData,
+    options: {
+      legend: {
+        display: false
+      },
+      scales: {
+        xAxes: [{
+          gridLines: {
+            display: false
+          },
+          ticks: {
+            fontColor: 'black',
+            fontSize: 15
+          }
+        }],
+        yAxes: [{
+          gridLines: {
+            display: false
+          },
+          ticks: {
+            beginAtZero: true,
+            fontColor: 'black',
+            fontSize: 15
+          }
+        }]
+      },
+      responsive: true,
+      maintainAspectRatio: false
+    }
+  });
+</script>
+
 
 
 
