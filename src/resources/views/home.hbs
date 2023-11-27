@@ -1,1 +1,92 @@
-<div class="main-home"></div>
+<div class="main-home">
+    <div class="chart-container">
+        <canvas id="tuitionDoughnutChart"></canvas>
+    </div>
+</div>
+
+<!-- Thêm dòng script sau vào phía dưới phần body của trang HTML -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Lấy tất cả các ô td trong cột "Name Tuition"
+    var nameTuitionCells = document.querySelectorAll('.show__Report-tuition td#td-nameTuition');
+
+    // Lấy tất cả các ô td trong cột "Tuition Period"
+    var tuitionPeriodCells = document.querySelectorAll('.show__Report-tuition td#td-period');
+
+    // Lấy tất cả các ô td trong cột "Total Tuition"
+    var totalTuitionCells = document.querySelectorAll('.show__Report-tuition td#td-totalTuition');
+
+    // Mảng để lưu trữ dữ liệu từ cột "Name Tuition"
+    var nameTuitionData = [];
+
+    // Mảng để lưu trữ dữ liệu từ cột "Tuition Period"
+    var tuitionPeriodData = [];
+
+    // Mảng để lưu trữ dữ liệu từ cột "Total Tuition"
+    var totalTuitionData = [];
+
+    // Duyệt qua từng ô và lấy dữ liệu
+    nameTuitionCells.forEach(function (cell) {
+        var nameTuitionText = cell.textContent.trim();
+        nameTuitionData.push(nameTuitionText);
+    });
+
+    // Duyệt qua từng ô và lấy dữ liệu
+    tuitionPeriodCells.forEach(function (cell) {
+        var tuitionPeriodText = cell.textContent.trim();
+        tuitionPeriodData.push(tuitionPeriodText);
+    });
+
+    // Duyệt qua từng ô và lấy dữ liệu
+    totalTuitionCells.forEach(function (cell) {
+        var totalTuitionText = cell.textContent.trim().replace('.vnd', ''); // Loại bỏ ký tự không mong muốn
+        var totalTuitionValue = parseFloat(totalTuitionText);
+        totalTuitionData.push(totalTuitionValue);
+    });
+
+    // Tính tổng dữ liệu
+    var totalTuitionSum = totalTuitionData.reduce(function (acc, val) {
+        return acc + val;
+    }, 0);
+
+    // Tính phần trăm từng giá trị
+    var percentageData = totalTuitionData.map(function (value) {
+        return ((value / totalTuitionSum) * 100).toFixed(2);
+    });
+
+    // Tạo biểu đồ tròn
+    var ctx = document.getElementById('tuitionDoughnutChart').getContext('2d');
+    var myDoughnutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: nameTuitionData,
+            datasets: [{
+                data: percentageData,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 206, 86, 0.8)',
+                    // Thêm màu sắc khác nếu cần
+                ],
+                borderColor: 'rgba(255, 255, 255, 1)',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
