@@ -399,52 +399,6 @@ class TuitionController {
     await browser.close();
 
     res.download(filePath);
-    // try {
-    //   const tuition = await Tuition.find();
-    //   const data = {
-    //     tuition: tuition,
-    //   };
-    //   const student = await Student.findOne({_id: req.params.id});
-    //   const dataS = {
-    //     student: student,
-    //   };
-    //   const invoice = new Invoice({
-    //     name: student.name,
-    //     email: student.emailStudent,
-    //     fee: req.body.fee,
-    //     method: req.body.method,
-    //     for: req.body.for,
-    //   });
-    //   await invoice.save();
-    //   const filePathName = path.resolve(
-    //     __dirname,
-    //     "../../resources/views/invoice.hbs"
-    //   );
-    //   const htmlString = fs.readFileSync(filePathName).toString();
-    //   let option = {
-    //     format: "Letter",
-    //   };
-    //   const ejsData = ejs.render(htmlString, data, dataS);
-    //   // console.log(ejsData);
-    //   pdf.create(ejsData, option).toFile("tuition.pdf", (err, response) => {
-    //     if (err) console.log(err);
-    //     const filePath = path.resolve(__dirname, "../../../tuition.pdf");
-
-    //     fs.readFile(filePath, (err, file) => {
-    //       if (err) {
-    //         console.log(err);
-    //         return res.status(500).send("could not dowload file");
-    //       }
-
-    //       res.set("Content-Type", "application/pdf");
-    //       res.set("Content-Disposition", 'attachment;filename="tuition.pdf"');
-
-    //       res.send(file);
-    //     });
-    //   });
-    // } catch (error) {
-    //   console.log(error.message);
-    // }
   }
 
   //[GET] History
@@ -519,11 +473,20 @@ class TuitionController {
       reportTuition = reportTuition.map((reportTuition) =>
         reportTuition.toObject()
       );
-      res.render("reportTuition", {
-        reportTuition,
-        title: "Report Tuition",
+      ReportSalary.find({}).then((reportSalary) => {
+        reportSalary = reportSalary.map((reportSalary) =>
+          reportSalary.toObject()
+        );
+        console.log(reportTuition),
+          console.log(reportSalary),
+          res.render("home", {
+            reportTuition,
+            reportSalary,
+            title: "home",
+          });
       });
     });
+
     // res.render("reportTuition");
   }
 
