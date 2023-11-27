@@ -245,9 +245,8 @@ class TuitionController {
   async edit(req, res, next) {
     const tuitionStudent = await TuitionStudent.findById(req.params.id);
     const id = tuitionStudent.id;
-    const idTT = tuitionStudent.idTT;
     TuitionStudent.updateOne({_id: id}, req.body)
-      .then(() => res.redirect("/tuition/tableTuition/" + idTT))
+      .then(() => res.redirect("/tuition/tableTuition/" + tuitionStudent.idTT))
       .catch(next);
   }
 
@@ -400,52 +399,6 @@ class TuitionController {
     await browser.close();
 
     res.download(filePath);
-    // try {
-    //   const tuition = await Tuition.find();
-    //   const data = {
-    //     tuition: tuition,
-    //   };
-    //   const student = await Student.findOne({_id: req.params.id});
-    //   const dataS = {
-    //     student: student,
-    //   };
-    //   const invoice = new Invoice({
-    //     name: student.name,
-    //     email: student.emailStudent,
-    //     fee: req.body.fee,
-    //     method: req.body.method,
-    //     for: req.body.for,
-    //   });
-    //   await invoice.save();
-    //   const filePathName = path.resolve(
-    //     __dirname,
-    //     "../../resources/views/invoice.hbs"
-    //   );
-    //   const htmlString = fs.readFileSync(filePathName).toString();
-    //   let option = {
-    //     format: "Letter",
-    //   };
-    //   const ejsData = ejs.render(htmlString, data, dataS);
-    //   // console.log(ejsData);
-    //   pdf.create(ejsData, option).toFile("tuition.pdf", (err, response) => {
-    //     if (err) console.log(err);
-    //     const filePath = path.resolve(__dirname, "../../../tuition.pdf");
-
-    //     fs.readFile(filePath, (err, file) => {
-    //       if (err) {
-    //         console.log(err);
-    //         return res.status(500).send("could not dowload file");
-    //       }
-
-    //       res.set("Content-Type", "application/pdf");
-    //       res.set("Content-Disposition", 'attachment;filename="tuition.pdf"');
-
-    //       res.send(file);
-    //     });
-    //   });
-    // } catch (error) {
-    //   console.log(error.message);
-    // }
   }
 
   //[GET] History
@@ -473,7 +426,7 @@ class TuitionController {
       const email = new Email({
         codeStudent: tuitionStudent.codeStudent,
         nameStudent: tuitionStudent.name,
-        emailStudent: tuitionStudent.emailStudent,
+        emailStudent: tuitionStudent.email,
         subject: "Notice of tuition payment " + tuitionStudent.subject,
         html:
           tuitionStudent.subject +
@@ -507,88 +460,6 @@ class TuitionController {
           res.redirect("/tuition/tableTuition/" + tuitionStudent.idTT);
         }
       });
-      // if (req.file) {
-      //   fs.readFile(req.file.path, (err, data) => {
-      //     if (err) {
-      //       console.error(err);
-      //     } else {
-      //       const email = new Email({
-      //         codeStudent: tuitionStudent.codeStudent,
-      //         nameStudent: tuitionStudent.name,
-      //         emailStudent: tuitionStudent.email,
-      //         subject: tuitionStudent.subject,
-      //         html: "Notice of tuition payment",
-      //         file: req.file.path,
-      //         createdAt: req.body.createdAt,
-      //       });
-      //       email.save();
-
-      //       var transporter = nodemailer.createTransport({
-      //         service: "gmail",
-      //         auth: {
-      //           user: "npq10102001@gmail.com",
-      //           pass: "rrownmqpepzvoylj",
-      //         },
-      //       });
-
-      //       var mailOptions = {
-      //         from: "npq10102001@gmail.com",
-      //         to: student.emailStudent,
-      //         subject: email.subject,
-      //         html: email.html,
-      //         attachments: {
-      //           __filename: "File",
-      //           path: email.file,
-      //         },
-      //       };
-
-      //       transporter.sendMail(mailOptions, function (error, info) {
-      //         if (error) {
-      //           console.log(error.message);
-      //         } else {
-      //           console.log("Email send" + info.response);
-      //           res.redirect("/tuition/managementtuition");
-      //         }
-      //       });
-      //     }
-      //   });
-      // } else {
-      //   const email = new Email({
-      //     codeStudent: student.codeStudent,
-      //     nameStudent: student.name,
-      //     phone: student.phone,
-      //     class: student.class,
-      //     emailStudent: student.emailStudent,
-      //     subject: req.body.subject,
-      //     html: req.body.html,
-      //     createdAt: req.body.createdAt,
-      //   });
-      //   await email.save();
-
-      //   var transporter = nodemailer.createTransport({
-      //     service: "gmail",
-      //     auth: {
-      //       user: "npq10102001@gmail.com",
-      //       pass: "rrownmqpepzvoylj",
-      //     },
-      //   });
-
-      //   var mailOptions = {
-      //     from: "npq10102001@gmail.com",
-      //     to: student.emailStudent,
-      //     subject: email.subject,
-      //     html: email.html,
-      //   };
-
-      //   transporter.sendMail(mailOptions, function (error, info) {
-      //     if (error) {
-      //       console.log(error.message);
-      //     } else {
-      //       console.log("Email send" + info.response);
-      //       res.redirect("/tuition/managementtuition");
-      //     }
-      //   });
-      // }
     } catch (error) {
       console.log(error.message);
     }
@@ -602,17 +473,28 @@ class TuitionController {
       reportTuition = reportTuition.map((reportTuition) =>
         reportTuition.toObject()
       );
-      res.render("reportTuition", {
-        reportTuition,
-        title: "Report Tuition",
+      ReportSalary.find({}).then((reportSalary) => {
+        reportSalary = reportSalary.map((reportSalary) =>
+          reportSalary.toObject()
+        );
+        console.log(reportTuition),
+          console.log(reportSalary),
+          res.render("home", {
+            reportTuition,
+            reportSalary,
+            title: "home",
+          });
       });
     });
+
     // res.render("reportTuition");
   }
 
+  //[POST] Total Tuition
   async createRT(req, res, next) {
     const idTT = await TableT.findById(req.params.id);
     const tt = await TuitionStudent.find({idTT: idTT.id});
+    console.log(tt);
     const ttLenght = tt.length;
     ReportTuition.findOne({nameTT: idTT.nameTableT}).then((data) => {
       if (data) {
@@ -623,6 +505,7 @@ class TuitionController {
           const tuition = Number(tt[i].tuition);
           tuitions.push(tuition);
         }
+        console.log(tuitions);
         const total = tuitions.reduce((acc, tuition) => acc + tuition, 0);
         const reportTuition = new ReportTuition({
           idTT: idTT._id,
