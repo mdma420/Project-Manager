@@ -14,11 +14,12 @@
           {{#each reportTuition}}
             <tr>
               <td>{{this.nameTT}}</td>
-              <td>{{moment this.tuitionPeriod1 format ="DD MMM YYYY"}} - {{moment this.tuitionPeriod2 format ="DD MMM YYYY"}}</td>
-              <td>{{this.totalTT}}.vnd</td>
+              <td id="td-period">{{moment this.tuitionPeriod1 format ="DD MMM YYYY"}} - {{moment this.tuitionPeriod2 format ="DD MMM YYYY"}}</td>
+              <td id="td-totalTuition">{{this.totalTT}}.vnd</td>
             </tr>
           {{/each}}
         </tbody>
       </table>
       </div>
+    </div>
 </div>
