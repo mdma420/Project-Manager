@@ -76,7 +76,12 @@
             <td>{{this.unit}}</td>
             <td>{{this.tuitionOneUnit}}</td>
             <td>{{this.totalTuition}}</td>
-            <td>{{this.status}}</td>
+            <td>
+              {{this.status}}
+              <form action="/tuition/deleteTuition/{{this._id}}?_method=DELETE" method="post">
+                  <button class="btn_delete_user" type="submit">Delete</button>
+              </form>
+            </td>
           </tr>
         </tbody>
         {{/each}}  

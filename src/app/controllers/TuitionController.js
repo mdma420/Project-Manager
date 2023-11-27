@@ -65,6 +65,13 @@ class TuitionController {
     // });
   }
 
+  //[DELETE] Delete Tuition
+  deleteT(req, res, next) {
+    Tuition.deleteOne({_id: req.params.id}, req.body)
+      .then(() => res.redirect("/tuition"))
+      .catch((error) => {});
+  }
+
   // [GET] Sreach Tuition
   sreach(req, res, next) {
     var Name = req.query.name;
