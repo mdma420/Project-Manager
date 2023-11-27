@@ -5,17 +5,17 @@
             <table>
         <thead>
           <tr>
-            <th id="th-nameTuition">Name Tuition</th>          
-            <th id="th-period">Tuition Period</th>
-            <th id="th-totalTuition">Total Tuition</th>
+            <th>Name Tuition</th>          
+            <th>Tuition Period</th>
+            <th>Total Tuition</th>
           </tr>
         </thead>
         <tbody>
           {{#each reportTuition}}
-            <tr>
-              <td id="td-nameTuition">{{this.nameTT}}</td>
-              <td id="td-period">{{moment this.tuitionPeriod1 format ="DD MMM YYYY"}} - {{moment this.tuitionPeriod2 format ="DD MMM YYYY"}}</td>
-              <td id="td-totalTuition">{{this.totalTT}}.vnd</td>
+            <tr class="data_tuition">
+              <td class="td-nameTuition">{{this.nameTT}}</td>
+              <td class="td-period">{{moment this.tuitionPeriod1 format ="DD MMM YYYY"}} - {{moment this.tuitionPeriod2 format ="DD MMM YYYY"}}</td>
+              <td class="td-totalTuition">{{this.totalTT}}.vnd</td>
             </tr>
           {{/each}}
         </tbody>
