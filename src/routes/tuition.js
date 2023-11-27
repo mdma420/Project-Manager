@@ -7,6 +7,7 @@ const {upload} = require("../util/data");
 
 // Management tuition
 router.post("/createTuition", tuitionController.createTuition);
+router.delete("/deleteTuition/:id", tuitionController.deleteT);
 router.get("/sreach", tuitionController.sreach);
 router.get("/sreach1", tuitionController.sreach1);
 
