@@ -473,17 +473,9 @@ class TuitionController {
       reportTuition = reportTuition.map((reportTuition) =>
         reportTuition.toObject()
       );
-      ReportSalary.find({}).then((reportSalary) => {
-        reportSalary = reportSalary.map((reportSalary) =>
-          reportSalary.toObject()
-        );
-        console.log(reportTuition),
-          console.log(reportSalary),
-          res.render("home", {
-            reportTuition,
-            reportSalary,
-            title: "home",
-          });
+      res.render("reportTuition", {
+        reportTuition,
+        title: "reportTuition",
       });
     });
 
