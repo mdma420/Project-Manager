@@ -5,15 +5,15 @@
             <table>
         <thead>
           <tr>
-            <th>Name Tuition</th>          
-            <th>Tuition Period</th>
-            <th>Total Tuition</th>
+            <th id="th-nameTuition">Name Tuition</th>          
+            <th id="th-period">Tuition Period</th>
+            <th id="th-totalTuition">Total Tuition</th>
           </tr>
         </thead>
         <tbody>
           {{#each reportTuition}}
             <tr>
-              <td>{{this.nameTT}}</td>
+              <td id="td-nameTuition">{{this.nameTT}}</td>
               <td id="td-period">{{moment this.tuitionPeriod1 format ="DD MMM YYYY"}} - {{moment this.tuitionPeriod2 format ="DD MMM YYYY"}}</td>
               <td id="td-totalTuition">{{this.totalTT}}.vnd</td>
             </tr>

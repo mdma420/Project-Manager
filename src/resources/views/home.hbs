@@ -5,26 +5,39 @@
 </div>
 
 <!-- Thêm dòng script sau vào phía dưới phần body của trang HTML -->
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    // Lấy tất cả các ô td trong cột "Name Tuition"
+    var nameTuitionCells = document.querySelectorAll('.show__Report-tuition td#td-nameTuition');
+
     // Lấy tất cả các ô td trong cột "Tuition Period"
     var tuitionPeriodCells = document.querySelectorAll('.show__Report-tuition td#td-period');
 
     // Lấy tất cả các ô td trong cột "Total Tuition"
     var totalTuitionCells = document.querySelectorAll('.show__Report-tuition td#td-totalTuition');
 
+    // Mảng để lưu trữ dữ liệu từ cột "Name Tuition"
+    var nameTuitionData = [];
+
     // Mảng để lưu trữ dữ liệu từ cột "Tuition Period"
     var tuitionPeriodData = [];
+
+    // Mảng để lưu trữ dữ liệu từ cột "Total Tuition"
+    var totalTuitionData = [];
+
+    // Duyệt qua từng ô và lấy dữ liệu
+    nameTuitionCells.forEach(function (cell) {
+        var nameTuitionText = cell.textContent.trim();
+        nameTuitionData.push(nameTuitionText);
+    });
 
     // Duyệt qua từng ô và lấy dữ liệu
     tuitionPeriodCells.forEach(function (cell) {
         var tuitionPeriodText = cell.textContent.trim();
         tuitionPeriodData.push(tuitionPeriodText);
     });
-
-    // Mảng để lưu trữ dữ liệu từ cột "Total Tuition"
-    var totalTuitionData = [];
 
     // Duyệt qua từng ô và lấy dữ liệu
     totalTuitionCells.forEach(function (cell) {
@@ -48,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var myDoughnutChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: tuitionPeriodData,
+            labels: nameTuitionData,
             datasets: [{
                 data: percentageData,
                 backgroundColor: [
