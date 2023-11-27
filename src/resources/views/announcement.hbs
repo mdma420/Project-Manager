@@ -1,11 +1,6 @@
 <div class="main__announcement">
     <div class="table_announcement-header">
         <h2>List Announcement</h2>
-        <div class="input_announcement">
-            <i class="fa fa-search"></i>
-        <input type="text" id="sreach" name="sreach">
-        <button type="submit">Sreach</button>
-        </div>
     </div>
 <div class="table_announcement-body">
     <table>
@@ -16,7 +11,6 @@
                 <th>Email</th>
                 <th>Subject</th>
                 <th>Sent Date</th>
-                <th>option</th>
             </tr>
         </thead>
         <tbody>
@@ -27,9 +21,6 @@
                 <td>{{this.emailStudent}}</td>
                 <td>{{this.subject}}</td>
                 <td>{{moment this.createdAt format ="DD MMM YYYY"}}</td>
-                <td>
-                    <button><a href="/announcement/detailForStudent/{{this._id}}">Detail</a></button>
-                </td>
             </tr>
             {{/each}}
             {{#each emailTeacher}}
@@ -39,9 +30,6 @@
                 <td>{{this.emailTeacher}}</td>
                 <td>{{this.subject}}</td>
                 <td>{{moment this.createdAt format ="DD MMM YYYY"}}</td>
-                <td>
-                    <button><a href="">Detail</a></button>
-                </td>
             </tr>
             {{/each}}
         </tbody>

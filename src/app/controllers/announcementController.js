@@ -42,19 +42,6 @@ class SettingController {
       .catch(next);
   }
 
-  // [GET] Detail instructions student
-  detailForStudent(req, res, next) {
-    Email.findById(req.params.id)
-      .then((email) => {
-        res.render("detailAnnouncementStudent", {
-          email: mongooseToObject(email),
-          user: req.user,
-          title: "Detail Instructions Student",
-        });
-      })
-      .catch(next);
-  }
-
   // [GET] instructions teacher
   forTeacher(req, res, next) {
     Teacher.find({}).then((teacher) => {

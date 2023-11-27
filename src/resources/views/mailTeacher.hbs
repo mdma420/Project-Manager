@@ -1,14 +1,24 @@
 <div>
-    {{#each emailTeacher}}
-        <tr>
-            <td>{{this.codeTeacher}}</td>
-            <td>{{this.nameTeacher}}</td>
-            <td>{{this.emailTeacher}}</td>
-            <td>{{this.subject}}</td>
-            <td>{{moment this.createdAt format ="DD MMM YYYY"}}</td>
-            <td>
-                <button><a href="">Detail</a></button>
-            </td>
-        </tr>
-    {{/each}}
+    <table>
+        <thead>
+            <tr>
+                <th>Code Student</th>
+                <th>Name Student</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Sent Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each emailTeacher}}
+                <tr>
+                    <td>{{this.codeTeacher}}</td>
+                    <td>{{this.nameTeacher}}</td>
+                    <td>{{this.emailTeacher}}</td>
+                    <td>{{this.subject}}</td>
+                    <td>{{moment this.createdAt format ="DD MMM YYYY"}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
 </div>
