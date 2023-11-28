@@ -36,9 +36,102 @@
         <div class="drop-down__header">Account
           <ul class="Account-show">
             <li><a href="/login">Login</a></li>
-            <li><a href="/login">Logout</a></li>
+            <li><a onclick="logout()">Logout</a></li>
           </ul>
         </div>
       </div>
   </nav>
 </header>
+<nav class="navbar bg-body-tertiary fixed-top header-reponsive">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">School</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              anagement of tuition
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/tuition">List of tuition fees</a></li>
+              <li><a class="dropdown-item" href="/tuition/tableTuition">Managing school fees</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/tuition/reportTuition">Reporting of school expenses</a></li>
+            </ul>
+          </li>
+                    <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              The salary management
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/teacher">Profile of teacher</a></li>
+              <li><a class="dropdown-item" href="/teacher/salary">Calculate the salary</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/teacher/reportSalary">Report of salary</a></li>
+            </ul>
+          </li>
+                   
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Announcement
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/announcement">My announcement</a></li>
+              <li><a class="dropdown-item" href="/announcement/forStudent">For Student</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/announcement/forTeacher">For Teacher</a></li>
+            </ul>
+          </li>
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Setting
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/register">Register User</a></li>
+              <li><a class="dropdown-item" href="/teacher/MCTeacher">Create Teacher</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/tuition/createS">Create Student</a></li>
+            </ul>
+          </li>
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Account
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/login">LogIn</a></li>
+              <li><a class="dropdown-item" onclick="logout()" >LogOut</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  function logout() {
+    document.cookie = 'token =; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    window.location.href = "/login"
+  }
+</script>

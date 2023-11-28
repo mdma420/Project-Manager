@@ -22,3 +22,16 @@
 .table__Reportingtuition-body table {
     width: 100%;
 }
+
+
+//reponsive//
+@media screen and (max-width: 1024px) {
+    .main__Reporting-tuition {
+        margin-top: 50px;
+    }
+}
+@media screen and (max-width: 414px) {
+    .table__Reportingtuition-body {
+        overflow: scroll;
+    }
+}

@@ -249,7 +249,6 @@
   }
   .table_newStudent-body {
     display: flex;
-    justify-content: center;
     align-items: center;
     width: 100%;
     flex-direction: column;
@@ -329,4 +328,145 @@
 }
 .table__History-body table {
     width: 100%;
+}
+
+//reponsive//
+@media screen and (max-width: 1024px) {
+    .table_listRegister-search {
+        width: 70%;
+    }
+    .input_regisster_q form {
+        width: 100%;
+    }
+    .main_setting_updateUser {
+        display: flex;
+        justify-content: start;
+    }
+    .form_updateUser_q {
+        width: 80%;
+    }
+    .form_updateUser_q2 select {
+        width: 30%;
+    }
+    .table_newStudent-body button {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 768px) {
+    .table_listRegister-body {
+        overflow: scroll;
+    }
+    .table_listRegister-search {
+        width: 60%;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    }
+    .table_listRegister-search input {
+        width: 40%;
+    }
+    .table_listRegister-search button {
+        width: 30%;
+    }
+    .table_listRegister-body button {
+        width: 100%;
+    }
+    .form_regisster_q {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 768px) {
+    .table_listRegister-search {
+        width: 60%;
+    }
+    .table_listRegister-search button {
+        width: 30%;
+    }
+    .center-form {
+        width: 90%;
+    }
+    .table_MC-body {
+        overflow: scroll;
+    }
+    .table_newStudent-header button {
+        width: 20%;
+    }
+    .table_newStudent-body {
+        overflow: scroll;
+    }
+}
+@media screen and (max-width: 600px) {
+    .btn_create_user_q button {
+        width: 25%;
+    }
+    .center-form-student {
+        width: 80%;
+    }
+    .table__History-body {
+        overflow: scroll;
+    }
+}
+@media screen and (max-width: 414px) {
+    .table_listRegister-header {
+        display: flex;
+        flex-direction: column;
+    }
+    .table_listRegister-search {
+        display: flex;
+       flex-direction: row;
+       width: 95%;
+    }
+    .form_updateUser_q {
+        width: 90%;
+    }
+    .form_updateUser_q2 input,
+    .form_updateUser_q2 select {
+        width: 50%;
+    }
+    .form_teacher_q {
+        display: flex;
+    flex-direction: row;
+    align-items: center;
+    }
+    .center-form {
+        height: 100%;
+    }
+    .center-form form {
+        height: 98%;
+    }
+    .table_MC-header button {
+        width: 30%;
+    }
+    .table_newStudent-header button {
+        width: 30%;
+    }
+    .center-form-student {
+        width: 90%;
+        height: 70%;
+    }
+}
+@media screen and (max-width: 375px) {
+    .table_listRegister-search {
+        height: 50%;
+    }
+    .form_regisster_q {
+        width: 90%;
+    }
+}
+@media screen and (max-width: 320px) {
+    .table_listRegister-search {
+        height: 60%;
+    }
+    .form_teacher_q label {
+        font-size: 13px;
+    }
+    .form_teacher_q input {
+        font-size: 13px;
+    }
+    .main_MC-teacher {
+        height: 100%;
+    }
+    .table_newStudent-header button {
+        width: 40%;
+    }
 }

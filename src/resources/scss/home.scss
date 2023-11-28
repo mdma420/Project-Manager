@@ -4,6 +4,9 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
+.navbar.header-reponsive {
+    display: none !important;
+}
 nav {
     display: flex;
     justify-content: space-between;
@@ -76,6 +79,8 @@ h1 {
     font-size: 15px;
     display: contents;
 }
+
+//main_home//
 .main-home {
     text-align: center;
     display: flex;
@@ -128,6 +133,55 @@ h1 {
 .table-data_salary table {
     width: 100%;
     
+}
+
+@media screen and (max-width: 1024px) {
+    .table__Report-tuition {
+        width: 90%;
+    }
+
+    .data_tuition {
+        width: 100%;
+    }
+    .table__Report-salary {
+        width: 90%;
+    }
+    header {
+        display: none;
+    }
+    .navbar.header-reponsive {
+        display: flex !important;
+    }
+}
+@media screen and (max-width: 768px) {
+    .table__Report-tuition {
+        overflow: scroll;
+        width: 95%;
+    }
+    .chart-tuition {
+        width: 50%;
+        height: 50%;
+    }
+    .table__Report-salary {
+        overflow: scroll;
+        width: 95%;
+    }
+    .table-data_tuition {
+        overflow: scroll;
+    }
+    .table-data_salary {
+        overflow: scroll;
+    }
+}
+@media screen and (max-width: 414px) {
+    .table__Report-salary {
+        width: 95%;
+    }.table-data_salary {
+        width: 100%;
+    }
+    .table-data_salary table {
+        width: 100%;
+    }
 }
 
 

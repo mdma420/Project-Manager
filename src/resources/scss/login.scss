@@ -72,3 +72,55 @@
     border-radius: 5px;
     width: 15%;
 }
+ // reponsive//
+ @media screen and (max-width: 768px) {
+    .main-login button {
+        width: 20%;
+    }
+}
+ @media screen and (max-width: 600px) {
+        .main-login button {
+            width: 20%;
+        }
+        .form-login {
+            height: 100%;
+            width: 100%;
+        }
+ @media screen and (max-width: 414px) {
+    .main-login {
+        width: 90%;
+    }
+    .form-login {
+        height: 100%;
+        width: 100%;
+    }
+ }
+ @media screen and (max-width: 375px) {
+    .about-login {
+        width: 100%;
+    }
+    .main-login {
+        width: 90%;
+    }
+    .form-login {
+        height: 100%;
+        width: 80%;
+    }
+    .main-login button {
+        width: 30%;
+    }
+ }
+ @media screen and (max-width: 320px) {
+    .login-title {
+        font-size: 25px;
+    }
+    .type--login {
+        font-size: 15px;
+        width: 100%;
+    }
+    .main-login button {
+        width: 90%;
+    }
+ }
+ }
+

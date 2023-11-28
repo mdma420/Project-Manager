@@ -18,6 +18,17 @@
     justify-content: space-around;
     align-items: center;
   }
+.btn__Managementtuition-header {
+  display: flex;
+  flex-direction: row;
+  width: 20%;
+}
+.btn__Managementtuition-header form {
+  width: 100%;
+}
+.btn__Managementtuition-header button {
+  width: 100%;
+}
   .table__Management-fees_body {
     width: 95%;
     max-height: 89%;
@@ -81,6 +92,7 @@
     align-items: center;
     flex-direction: column;
   }
+  
 
   // css collecttuition
 
@@ -90,7 +102,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 1000px;
+    height: 100vh;
     flex-direction: column;
 }
 .table__Collect-tuition {
@@ -150,7 +162,6 @@
 .table__Registered-subject {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 80%;
   height: 100%;
 }
@@ -173,12 +184,18 @@
 .form__Registered-subject {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     width: 65%;
-    align-items: center;
+    align-items: start;
     height: 60%;
     background-color: cornsilk;
     border-radius: 10px;
+}
+.table__Registered-subject {
+  width: 100%;
+}
+.table__Registered-subject table {
+  width: 100%;
 }
 .list__Registered-select {
     width: 80%;
@@ -206,11 +223,12 @@
 }
 .form__Show-receipt {
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
   flex-direction: row;
   width: 100%;
   height: 77%;
+  justify-content: space-between;
+  width: 95%;
 }
 .form__card-receipt{
   width: 45%;
@@ -453,3 +471,197 @@ box-sizing: border-box;
 .show__History tr:hover {
   background-color: #f5f5f5;
 }
+
+
+
+
+//Reponsive//
+@media screen and (max-width: 1024px) {
+  .table__List-header {
+    display: flex;
+    align-items: center; 
+  }
+  .card__Info-student {
+  }
+  .form__Invoice {
+    width: 95%;
+  }
+  .table__Management_tuition {
+    margin-top: 40px;
+  }
+}
+  @media screen and (max-width: 768px) {
+    .input_search_tuition {
+      width: 30%;
+    }
+    .table__List-body {
+      overflow: scroll;
+    }
+    button#add-subject {
+      font-size: 15px;
+    }
+    .form__card {
+      display: flex;
+     justify-content: space-between;
+     width: 100%;
+    }
+    .card__Info-student {
+      width: 90%;
+
+    }
+    .card__Info-student p {
+      width: 100%;
+    }
+    .table__Registered-subject {
+      width: 100%;
+    }
+    .form__Info-student {
+      display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 70%;
+    }
+    .form__card-receipt input, select {
+      width: 40%;
+    }
+    .table__Management-fees_body {
+      overflow: scroll;
+    }
+    .btn__Managementtuition-header {
+      width: 30%;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .table__List-header h2 {
+      font-size: 20px;
+      width: 40%;
+    }
+    .input_search_tuition {
+      width: 40%;
+    }
+    .input_search_tuition input {
+      width: 90%;
+    }
+    .form__Registered-subject {
+      width: 90%;
+      overflow-y: scroll;
+    }
+    .form__card-receipt label {
+      font-size: 13px;
+      width: 20%;
+    }
+    .form__card-receipt input, select {
+      width: 50%;
+    }
+    .card__Info-student {
+      height: 50%;
+    }
+    .form-bill label {
+      width: 45%;
+    }
+    .table__Info-bill button {
+      width: 20%;
+    }
+  }
+  @media screen and (max-width: 414px) {
+    button#add-subject {
+      font-size: 10px;
+    }
+    #add-new-subject {
+      width: 90%;
+      height: 80%;
+    }
+    .form__Registered-subject {
+      display: flex;
+    justify-content: start;
+    align-items: start;
+    }
+    .form__Receipt-tuition button {
+      height: 20%;
+    }
+    .main__Collect_tuition {
+      height: 100%;
+    }
+    .show__Infor-company {
+      flex-direction: column;
+    width: 100%;
+    height: 20%;
+    justify-content: center;
+    align-items: flex-start;
+    }
+    .show__Adress h2 {
+      font-size: 15px;
+    }
+    .show__Adress h3 {
+      font-size: 10px;
+    }
+    .show__Info-bill {
+      
+    }
+    .show__Code-bill {
+      height: 35%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 65%;
+    }
+    .form-bill {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      height: 20%;
+    }
+    .form-bill label {
+      width: 70%;
+    }
+    .btn__Managementtuition-header {
+      width: 50%;
+    }
+  }
+  @media screen and (max-width: 375px) {
+    button#add-subject {
+      width: 90%;
+    }
+    .table__List-header h2 {
+      font-size: 20px;
+      width: 40%;
+    }
+    .show__Signature {
+      display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    }
+    .form__Signature {
+      height: 50%;
+    }
+  }
+  @media screen and (max-width: 320px) {
+    .table__List-header h2 {
+      font-size: 15px;
+      width: 40%;
+    }
+    #add-new-subject {
+      width: 90%;
+      height: 80%;
+    }
+    .form-row {
+    font-size: 15px;
+    height: 5%;
+    }
+    .form__Show-receipt {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+    .form__card-receipt {
+      width: 90%;
+    }
+    .form__Show-receipt label, input, select {
+      width: 50%;
+    }
+    .table__Info-bill button {
+      width: 30%;
+    }
+  }

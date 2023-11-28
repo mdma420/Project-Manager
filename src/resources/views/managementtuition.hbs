@@ -2,13 +2,14 @@
     <section class="table__Management-fees_header">
       
         <h2>Student list</h2>
-        <div class="editor" style="display: none;">
-</div>
-<div>
+        <div class="btn__Managementtuition-header">
+          <form action="/tuition/reportTuition/{{TableT._id}}" method="post">
+    <button type="submit">Total Tuition</button>
+    </form>
   <form action="/tuition/tableTuition/{{TableT._id}}/createTS" method="post">
   <button type="submit">create</button>
   </form>
-</div>
+  </div>
 </section>
         <section class="table__Management-fees_body">
   <table>
@@ -35,8 +36,8 @@
         <td>{{moment this.dealine format ="DD MMM YYYY"}}</td>
         <td>{{this.status}}</td>
         <td>
-          <a href="/tuition/tableTuition/collecttuition/{{this._id}}">Chose tuition</a>
-          <a href="/tuition/tableTuition/invoice/{{this._id}}">Tuition Patment</a>
+          <button><a href="/tuition/tableTuition/collecttuition/{{this._id}}">Chose tuition</a></button>
+          <button><a href="/tuition/tableTuition/invoice/{{this._id}}">Tuition Patment</a></button>
           <form action="/tuition/tableTuition/sendMail/{{this._id}}" method="post">
           <button type="submit">Send Mail</button>
           </form>
@@ -50,11 +51,6 @@
     {{#each pages}}
       <a href="/tuition/tableTuition/{{@root.tableTId}}/?page={{this}}" data-page-company="{{this}}">{{this}}</a>
     {{/each}}
-  </div>
-  <div>
-    <form action="/tuition/reportTuition/{{TableT._id}}" method="post">
-    <button type="submit">Total Tuition</button>
-    </form>
   </div>
 </div>
 </div>

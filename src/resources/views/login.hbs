@@ -25,7 +25,7 @@
         <label for="password">Password</label>
         <div class="password-field">
           <input id="password" type="password" type="password" name="password" placeholder="Enter your password" required>
-          <span class="toggle-password" onclick="showPassword()">
+          <span class="toggle-password" >
             <i class="bi bi-eye"></i>
           </span>
         </div>
@@ -44,16 +44,3 @@
   </div>
 </div>
 
-<script>
- function showPassword(){
-    var show = document.getElementById('password')
-      if(show.type === 'password'){
-        show.type = 'text'
-        document.querySelector('.icon-password').innerHTML = '<i class="bi bi-eye"></i>';
-      }
-      else{
-        show.type = 'password'
-        document.querySelector('.icon-password').innerHTML = '<i class="bi bi-eye"></i>';
-      }
-  }
-</script>
