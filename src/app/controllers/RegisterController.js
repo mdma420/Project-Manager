@@ -49,10 +49,7 @@ class RegisterController {
                   "/login?" + querystring.stringify({message: message});
                 res.redirect(url);
               } else {
-                // console.log("da toi day");
                 bcrypt.hash(password, 10, function (err, hash) {
-                  // Store hash in your password DB.
-                  // console.log(hash)
                   UserModel.create({
                     username: username,
                     password: hash,
@@ -67,13 +64,13 @@ class RegisterController {
             })
             .catch((err) => {
               console.error(err);
-              res.json("Lỗi kiểm tra địa chỉ email");
+              res.json("Error check email");
             });
         }
       })
       .catch((err) => {
         console.error(err);
-        res.json("Lỗi kiểm tra tài khoản");
+        res.json("Error check account");
       });
   }
 

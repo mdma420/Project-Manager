@@ -57,7 +57,6 @@ class SettingController {
   // [GET] mail Teacher
   async mailTeacher(req, res, next) {
     const teacher = await Teacher.findById(req.params.id);
-    console.log(teacher);
     EmailT.find({nameTeacher: teacher.nameTeacher}).then((emailTeacher) => {
       emailTeacher = emailTeacher.map((emailTeacher) =>
         emailTeacher.toObject()

@@ -15,10 +15,6 @@ router.get("/detailTeacher/:id", salaryController.detailTeacher);
 router.get("/updateTeacher/:id", salaryController.updateTeacher);
 router.put("/update/:id", salaryController.update);
 
-// Timesheets and list on leave Teacher
-router.get("/listOnLeaveTeacher", salaryController.listOnLeaveTeacher);
-// router.post("/test", salaryController.test);
-
 // Management Salary
 router.get("/salary", salaryController.salary);
 router.post("/createSalary", salaryController.createSalary);

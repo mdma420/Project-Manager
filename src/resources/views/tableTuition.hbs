@@ -1,7 +1,7 @@
 <div class="main__Salary">
     <section class="show__Salary--header">
         <h2>List of tuition fees for each semester</h2>
-        <button>Create salary</button>
+        <button>Create Tuition</button>
     </section>
     <section class="show__Salary--body">
         <table>
@@ -28,7 +28,6 @@
                         <form action="/tuition/tableTuition/{{this._id}}?_method=DELETE" method="post" class="btn__delete--option">
                             <button type="submit">Delete</button>
                         </form>
-                        <button class="btn__export--option"><a href="">Export Excel</a></button>
                         </div>
                     </td>
                 </tr>
@@ -37,7 +36,7 @@
         </table>
     </section>
     <div class="create__Salary--months">
-        <h2>Create month's salary</h2>
+        <h2>Create Table Tuition</h2>
         <form class="type__create--Salary" method="post" action="/tuition/createTT" width="100%">
             <div class="form-createSalary">
                 <label for="codeTableT">Code Table Tuition</label>
