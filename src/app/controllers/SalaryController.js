@@ -135,36 +135,6 @@ class salaryController {
       .catch(error);
   }
 
-  // ---------------------------------------------Timesheets and list on leave Teacher-------------------------------------------------- //
-
-  // [GET] List On Leave Teacher
-  listOnLeaveTeacher(req, res, next) {
-    // Test.find({}).then((test) => {
-    //   test = test.map((test) => test.toObject());
-    //   res.render("listOnLeaveTeacher", {
-    //     test,
-    //     user: req.user,
-    //     title: "List On Leave Teacher",
-    //   });
-    // });
-    res.render("listOnLeaveTeacher");
-  }
-
-  // test
-  // test(req, res, next) {
-  //   const a = Number(req.body.a);
-  //   const b = Number(req.body.b);
-  //   const test = new Test({
-  //     a: req.body.a,
-  //     b: req.body.b,
-  //     c: a + b,
-  //   });
-  //   test
-  //     .save()
-  //     .then(() => res.redirect("/teacher/listOnLeaveTeacher"))
-  //     .catch(next);
-  // }
-
   // -----------------------------------------------------------Management Salary----------------------------------------------------- //
 
   // [GET] Salary
@@ -219,7 +189,7 @@ class salaryController {
           const dout = Number(0);
           const allowance = Number(1000000);
           const exceptSocialInsurance = Number(
-            (basicSalary + s * dwork - s * dout + allowance) * 0.104
+            (basicSalary + s * dwork - s * dout + allowance) * 0.104 - 750000
           );
           const tableSalary = new Tablesalary({
             idS: idS._id,
@@ -297,7 +267,7 @@ class salaryController {
     const dayOut = Number(req.body.dayOut);
     const allowance = Number(1000000);
     const exceptSocialInsurance = Number(
-      (basicSalary + s * dayWork - s * dayOut + allowance) * 0.104
+      (basicSalary + s * dayWork - s * dayOut + allowance) * 0.104 - 750000
     );
     Tablesalary.updateOne(
       {_id: req.params.id},

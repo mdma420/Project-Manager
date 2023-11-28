@@ -54,7 +54,7 @@
         <td>{{this.code}}</td>
         <td>{{this.name}}</td>
         <td>{{this.science}}</td>       
-        <td>{{this.time}}</td>
+        <td>{{this.semester}}</td>
         <td>{{this.unit}}</td>
         <td>{{this.totalTuition}}</td>
       </tr>
@@ -77,7 +77,7 @@
     <input type="text" id="name" value="{{tuitionStudent.name}}" name="name">
   </div>
   <div class="form__card-receipt">
-    <label for="class">class:</label>
+    <label for="class">Science:</label>
     <input type="text" id="class" value="{{tuitionStudent.science}}" name="class">
   </div>
   <div class="form__card-receipt">
@@ -95,15 +95,15 @@
             </select>
   </div>
     <div class="form__card-receipt">
-    <label for="tuition">class:</label>
+    <label for="tuition">Tuition:</label>
     <input type="text" id="tuition" value="{{tuitionStudent.tuition}}" name="tuition">
   </div>
     <div class="form__card-receipt">
-    <label for="deadline">class:</label>
+    <label for="deadline">Dealine:</label>
     <input type="date" id="deadline" value="{{tuitionStudent.deadline}}" name="deadline">
   </div>
     <div class="form__card-receipt">
-    <label for="status">class:</label>
+    <label for="status">Status:</label>
     <input type="text" id="status" value="Not been paid" name="status">
   </div>
   <button type="submit">Select tuition</button>
