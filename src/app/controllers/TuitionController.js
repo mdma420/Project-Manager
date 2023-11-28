@@ -49,20 +49,6 @@ class TuitionController {
       .save()
       .then(() => res.redirect("/tuition"))
       .catch(next);
-    // var name = req.body.name;
-    // Tuition.findOne({name: name}).then(() => {
-    //   // if (data) {
-    //   //   const message = "Category already exists!";
-    //   //   const url = "/tuitions?" + querystring.stringify({message: message});
-    //   //   res.redirect(url);
-    //   // } else {
-    //   //   const tuition = new Tuition(req.body);
-    //   //   tuition
-    //   //     .save()
-    //   //     .then(() => res.redirect("/tuition"))
-    //   //     .catch((error) => {});
-    //   // }
-    // });
   }
 
   //[DELETE] Delete Tuition
@@ -374,10 +360,6 @@ class TuitionController {
     const test = await page.$(".main__Invoice");
     const test2 = await test.boundingBox();
 
-    // await page.addStyleTag({
-    //   content: ".header-list{display: none !improtant;}",
-    //   content: ".form__Invoice button{display: none !improtant;}",
-    // });
     await page.addStyleTag({
       content: `
       .header-list { display: none !important; }
@@ -387,9 +369,7 @@ class TuitionController {
       }
     `,
     });
-    // await page.addStyleTag({
-    //   content: ".main__Invoice{width: 500%; height: 50vh}",
-    // });
+
     await page.pdf({
       path: filePath,
       displayHeaderFooter: false,
@@ -454,7 +434,7 @@ class TuitionController {
 
       var mailOptions = {
         from: "npq10102001@gmail.com",
-        to: "quycan1xxx@gmail.com",
+        to: tuitionStudent.email,
         subject: email.subject,
         html: email.html,
       };
