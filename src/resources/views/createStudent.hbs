@@ -1,37 +1,10 @@
-<div class="main_setting_teacher_q">
-<div class="form_create_teacher_q">
-    <h2>Create Teacher</h2>
-    <form method="post" action="/tuition/createStudent">
-    <div class="form_teacher_q">
-        <label for="codeStudent">Code Student</label>
-        <input type="text" name="codeStudent" id="codeStudent">
+<div class="main_createStudent">
+<div class="table_data_Student">
+    <div class="table_newStudent-header">
+         <h2>List Student</h2>
+         <button>Create Student</button>
     </div>
-    <div class="form_teacher_q">
-        <label for="name">Name Student</label>
-        <input type="text" name="name" id="name">
-    </div>
-    <div class="form_teacher_q">
-        <label for="phone">Phone</label>
-        <input type="text" name="phone" id="phone">
-    </div>
-    <div class="form_teacher_q">
-        <label for="science">Science</label>
-        <input type="text" name="science" id="science">
-    </div>
-    <div class="form_teacher_q">
-        <label for="dayAdmission">Day Admission</label>
-        <input type="date" name="dayAdmission" id="dayAdmission">
-    </div>
-    <div class="form_teacher_q">
-        <label for="emailStudent">Email Student</label>
-        <input type="text" name="emailStudent" id="emailStudent">
-    </div>
-    <div>
-        <button type="submit">Add new Student</button>
-    </div>
-    </form>
-</div>
-<div class="form_data_teacher_q">
+    <div class="table_newStudent-body">
     <table>
         <thead>
             <tr>
@@ -57,11 +30,58 @@
                     <form action="/tuition/deleteS/{{this._id}}?_method=DELETE" method="post">
                     <button type="submit">Delete</button>
                     </form>
+                    <button>
                     <a href="/tuition/reportTuition/history/{{this._id}}">Detail</a>
+                    </button>
                 </td>
             </tr>
             {{/each}}
         </tbody>
     </table>
+    </div>
+</div>
+<div class="form_create_student_q center-form-student">
+    <h2>Create Teacher</h2>
+    <form method="post" action="/tuition/createStudent">
+    <div class="form_student_q">
+        <label for="codeStudent">Code Student</label>
+        <input type="text" name="codeStudent" id="codeStudent">
+    </div>
+    <div class="form_student_q">
+        <label for="name">Name Student</label>
+        <input type="text" name="name" id="name">
+    </div>
+    <div class="form_student_q">
+        <label for="phone">Phone</label>
+        <input type="text" name="phone" id="phone">
+    </div>
+    <div class="form_student_q">
+        <label for="science">Science</label>
+        <input type="text" name="science" id="science">
+    </div>
+    <div class="form_student_q">
+        <label for="dayAdmission">Day Admission</label>
+        <input type="date" name="dayAdmission" id="dayAdmission">
+    </div>
+    <div class="form_student_q">
+        <label for="emailStudent">Email Student</label>
+        <input type="text" name="emailStudent" id="emailStudent">
+    </div>
+    <div>
+        <button type="submit">Add new Student</button>
+        <button>Back</button>
+    </div>
+    </form>
 </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var createStudentButton = document.querySelector('.table_newStudent-header button');
+    var formCreateStudent = document.querySelector('.form_create_student_q');
+
+    createStudentButton.addEventListener('click', function () {
+      formCreateStudent.style.display = 'block';
+    });
+  });
+</script>

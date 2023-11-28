@@ -1,86 +1,163 @@
+<!-- Các phần HTML -->
+
 <div class="main-home">
-    <div class="chart-container">
-        <canvas id="tuitionDoughnutChart"></canvas>
+     <div class="table__Report-tuition">
+        <div class="table-data_tuition">
+            <h2>Tuition summary</h2>
+            <table>
+        <thead>
+          <tr>
+            <th>Name Tuition</th>          
+            <th>Tuition Period</th>
+            <th>Total Tuition</th>
+          </tr>
+        </thead>
+        <tbody id="tuition-list">
+          {{#each reportTuition}}
+            <tr class="data_tuition">
+              <td class="td-nameTuition">{{this.nameTT}}</td>
+              <td class="td-period">{{moment this.tuitionPeriod1 format ="DD MMM YYYY"}} - {{moment this.tuitionPeriod2 format ="DD MMM YYYY"}}</td>
+              <td class="td-totalTuition">{{this.totalTT}}.vnd</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      </div>
+    <div class="chart-tuition">
+        <canvas id="myChart1"></canvas>
     </div>
+    </div>
+    <div class="table__Report-salary" id="yearlySalaryTable">
+        <div class="table-data_salary">
+            <h2>Salary summary</h2>
+            <table>
+            <thead>
+                <tr>
+                    <th>Name Salary</th>          
+                    <th>Salary Period</th>
+                    <th>Total Salary</th>                
+                </tr>
+            </thead>
+            <tbody id="salary-list">
+                {{#each reportSalary}}
+                <tr class="data_salary">
+                    <td class="td-nameSalary">{{this.nameSalary}}</td>
+                    <td>{{moment this.salaryPeriod1 format ="DD MMM YYYY"}} - {{moment this.salaryPeriod2 format ="DD MMM YYYY"}}</td>
+                    <td class="td-totalSalary">{{this.totalSalary}}.vnd</td>
+                </tr>
+                {{/each}}
+            </tbody>
+            </div>
+            <div class="chart-salary">
+        <canvas id="myChart2"></canvas>
+    </div>
+  </div>
+    
 </div>
 
 <!-- Thêm dòng script sau vào phía dưới phần body của trang HTML -->
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script> <!-- Bạn cần có thư viện moment.js -->
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    // Lấy tất cả các ô td trong cột "Name Tuition"
-    var nameTuitionCells = document.querySelectorAll('.show__Report-tuition td#td-nameTuition');
+  var data = {
+    labels: [],
+    datasets: [{
+      data: [],
+      backgroundColor: []
+    }]
+  };
 
-    // Lấy tất cả các ô td trong cột "Tuition Period"
-    var tuitionPeriodCells = document.querySelectorAll('.show__Report-tuition td#td-period');
+  var rows = document.querySelectorAll("#tuition-list tr.data_tuition");
+  rows.forEach(function(row) {
+    data.labels.push(row.querySelector(".td-nameTuition").textContent);
+    data.datasets[0].data.push(parseFloat(row.querySelector(".td-totalTuition").textContent));
+    data.datasets[0].backgroundColor.push(getRandomColor());
+  });
 
-    // Lấy tất cả các ô td trong cột "Total Tuition"
-    var totalTuitionCells = document.querySelectorAll('.show__Report-tuition td#td-totalTuition');
-
-    // Mảng để lưu trữ dữ liệu từ cột "Name Tuition"
-    var nameTuitionData = [];
-
-    // Mảng để lưu trữ dữ liệu từ cột "Tuition Period"
-    var tuitionPeriodData = [];
-
-    // Mảng để lưu trữ dữ liệu từ cột "Total Tuition"
-    var totalTuitionData = [];
-
-    // Duyệt qua từng ô và lấy dữ liệu
-    nameTuitionCells.forEach(function (cell) {
-        var nameTuitionText = cell.textContent.trim();
-        nameTuitionData.push(nameTuitionText);
-    });
-
-    // Duyệt qua từng ô và lấy dữ liệu
-    tuitionPeriodCells.forEach(function (cell) {
-        var tuitionPeriodText = cell.textContent.trim();
-        tuitionPeriodData.push(tuitionPeriodText);
-    });
-
-    // Duyệt qua từng ô và lấy dữ liệu
-    totalTuitionCells.forEach(function (cell) {
-        var totalTuitionText = cell.textContent.trim().replace('.vnd', ''); // Loại bỏ ký tự không mong muốn
-        var totalTuitionValue = parseFloat(totalTuitionText);
-        totalTuitionData.push(totalTuitionValue);
-    });
-
-    // Tính tổng dữ liệu
-    var totalTuitionSum = totalTuitionData.reduce(function (acc, val) {
-        return acc + val;
-    }, 0);
-
-    // Tính phần trăm từng giá trị
-    var percentageData = totalTuitionData.map(function (value) {
-        return ((value / totalTuitionSum) * 100).toFixed(2);
-    });
-
-    // Tạo biểu đồ tròn
-    var ctx = document.getElementById('tuitionDoughnutChart').getContext('2d');
-    var myDoughnutChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: nameTuitionData,
-            datasets: [{
-                data: percentageData,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.8)',
-                    'rgba(54, 162, 235, 0.8)',
-                    'rgba(255, 206, 86, 0.8)',
-                    // Thêm màu sắc khác nếu cần
-                ],
-                borderColor: 'rgba(255, 255, 255, 1)',
-                borderWidth: 2
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false
+  var ctx = document.getElementById("myChart1").getContext("2d");
+  var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: data,
+    options: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          fontColor: 'black',
+          fontSize: 15
         }
-    });
-});
+      },
+      responsive: true,
+      maintainAspectRatio: false
+    }
+  });
+
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
 </script>
+<!-- Thêm đoạn mã sau vào sau đoạn mã biểu đồ tròn và trước thẻ </body> -->
+<script>
+  var salaryData = {
+    labels: [],
+    datasets: [{
+      label: 'Total Salary',
+      data: [],
+      backgroundColor: []
+    }]
+  };
+
+  var salaryRows = document.querySelectorAll("#salary-list tr.data_salary");
+  salaryRows.forEach(function(row) {
+    salaryData.labels.push(row.querySelector(".td-nameSalary").textContent);
+    salaryData.datasets[0].data.push(parseFloat(row.querySelector(".td-totalSalary").textContent));
+    salaryData.datasets[0].backgroundColor.push(getRandomColor());
+  });
+
+  var ctx2 = document.getElementById("myChart2").getContext("2d");
+  var myChart2 = new Chart(ctx2, {
+    type: 'bar',
+    data: salaryData,
+    options: {
+      legend: {
+        display: false
+      },
+      scales: {
+        xAxes: [{
+          gridLines: {
+            display: false
+          },
+          ticks: {
+            fontColor: 'black',
+            fontSize: 15
+          }
+        }],
+        yAxes: [{
+          gridLines: {
+            display: false
+          },
+          ticks: {
+            beginAtZero: true,
+            fontColor: 'black',
+            fontSize: 15
+          }
+        }]
+      },
+      responsive: true,
+      maintainAspectRatio: false
+    }
+  });
+</script>
+
+
+
+
+
 
 
 

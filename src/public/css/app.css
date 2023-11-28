@@ -1,10 +1,15 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 .main__List_tuition {
-  background: bisque;
+  background-color: #1b292055;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+  width: 100%;
+  display: flex;
+  align-items: center;
   height: 100vh; }
 
 .form__List-fees {
@@ -85,13 +90,12 @@ button#add-button {
   border-radius: 7px; }
 
 .table__List-show {
-  width: 82vw;
+  width: 100%;
   height: 90vh;
   background-color: #1b292055;
   backdrop-filter: blur(7px);
   box-shadow: 0 .4rem .8rem #0005;
   border-radius: .8rem;
-  position: relative;
   overflow: hidden; }
 
 .table__List-header {
@@ -574,60 +578,29 @@ textarea::selection {
 .show__History tr:hover {
   background-color: #f5f5f5; }
 
-.main__Report-tuition {
+.main__Reporting-tuition {
   background-color: #1b292055;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 100vh; }
+  height: 100vh;
+  flex-direction: column; }
 
-.table__Report-tuition {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-image: url(transparent-background.png);
-  background-color: rgba(255, 255, 255, 0.5);
-  width: 80%;
-  height: 100%;
-  border-radius: 25px;
-  box-sizing: border-box; }
-
-.show__Report-tuition {
-  background-color: bisque;
-  width: 70%; }
-
-.table__Report-tuition h2 {
-  height: 15%;
-  display: flex;
-  align-items: center;
-  font-size: 35px; }
-
-.show__Report-tuition table {
+.table__Reportingtuition-header {
   width: 100%;
-  height: 60%; }
-
-.show__Report-tuition td,
-.show__Report-tuition th {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-  background-color: #f2f2f2;
-  font-weight: bold; }
-
-.search__Report-tuition {
+  height: 10%;
+  background-color: #fff4;
   display: flex;
-  flex-direction: row;
-  width: 50%;
   justify-content: space-around;
-  align-items: center;
-  height: 20%; }
+  align-items: center; }
 
-.search__Report-tuition select,
-.search__Report-tuition button {
-  font-size: 20px;
-  border-radius: 7px;
-  width: 15%; }
+.table__Reportingtuition-body {
+  width: 100%;
+  box-shadow: 0 .4rem .8rem #0005;
+  border-radius: 7px; }
+
+.table__Reportingtuition-body table {
+  width: 100%; }
 
 .main__Teacher--infor {
   background-color: gray;
@@ -722,15 +695,10 @@ textarea::selection {
   background-color: #f2f2f2;
   font-weight: bold; }
 
-.chart__Tuition {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 65%;
-  align-items: center;
-  height: 60%;
-  background-color: cornsilk;
-  border-radius: 10px; }
+.main__Teacher--infor button {
+  width: 10%;
+  height: 5%;
+  border-radius: 6px; }
 
 .main__updateTeacher {
   background-color: gray;
@@ -740,6 +708,12 @@ textarea::selection {
   justify-content: center;
   height: 100vh;
   flex-direction: column; }
+
+.main__updateTeacher form {
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 .show-update__Teacher,
 .show-update__Salary {
@@ -757,15 +731,16 @@ textarea::selection {
   align-items: center;
   background-color: cornsilk;
   border-radius: 10px;
-  width: 60%;
-  height: 50%; }
+  width: 80%;
+  height: 100%; }
 
 .form-updateTeacher,
 .form-updateSalary {
   width: 45%;
   display: flex;
   height: 15%;
-  font-size: 20px; }
+  font-size: 20px;
+  align-items: center; }
 
 .form-updateTeacher label,
 .form-updateSalary label {
@@ -779,8 +754,11 @@ textarea::selection {
 .form-updateSalary select {
   flex: 1 0 50%;
   margin: 10px;
-  height: 25px;
-  border-radius: 5px; }
+  height: 40%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .table-updateSalary {
   display: flex;
@@ -791,6 +769,16 @@ textarea::selection {
   border-radius: 10px;
   width: 60%;
   height: 40%; }
+
+.btn_main-updateTeacher {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center; }
+
+.btn_main-updateTeacher button {
+  width: 10%; }
 
 .main__timesheets {
   background: url("http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg") center/cover no-repeat;
@@ -1003,65 +991,52 @@ textarea::selection {
 .btn__export--option {
   width: 60%; }
 
-.main__table--Salary {
-  background: url("http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg") center/cover no-repeat;
+.main__tableSalary {
+  background-color: #1b292055;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
   height: 100vh;
   flex-direction: column; }
 
-.create__TeacherSalary {
-  width: 85%;
+.tableSalary_show-header {
+  width: 100%;
+  height: 10%;
+  background-color: #fff4;
   display: flex;
-  justify-content: center;
-  flex-flow: wrap;
-  background-color: cornsilk;
-  height: 35%;
-  align-items: center;
-  border-radius: 10px;
-  font-size: 20px; }
-
-.form-Teachersalary {
-  padding: 10px; }
-
-.form-Teachersalary button {
-  font-size: 20px;
-  border-radius: 3px; }
-
-.form-Teachersalary input {
-  border-radius: 3px;
-  font-size: 11px; }
-
-.tableSalary-show {
-  width: 90%;
-  height: 55%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   align-items: center; }
 
-.tableSalary-show table {
+.btn_tableSalary-header {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  height: 40%;
+  justify-content: space-around; }
+
+.tableSalary_show-body {
+  width: 95%;
+  max-height: 89%;
+  margin: 0.8rem auto;
+  overflow: hidden; }
+
+.tableSalary_show-body table {
   width: 100%; }
 
-.tableSalary-show th {
-  background-color: #eee;
-  padding: 5px;
-  font-size: 15px; }
+.tableSalary_show-body button {
+  width: 100%; }
 
-.tableSalary-show td {
-  padding: 5px;
-  border-bottom: 1px solid #ddd;
-  background-color: antiquewhite; }
-
-.btn__Teacherback {
-  display: flex;
-  justify-content: center;
-  background-color: azure;
-  font-size: 30px;
+.btn_tableSalary-header button {
   width: 10%;
-  border-radius: 10px; }
+  border-radius: 6px; }
+
+.tableSalary-header_btn {
+  width: 30%; }
+
+.tableSalary-header_btn button {
+  height: 100%;
+  width: 100%;
+  border-radius: 6px; }
 
 .main__Salary--teacher {
   background-color: #1b292055;
@@ -1118,6 +1093,71 @@ textarea::selection {
 .btn-createSalary button {
   font-size: 20px;
   border-radius: 6px; }
+
+.main_detailTB {
+  background-color: #1b292055;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  position: relative; }
+
+.main_detailTB button {
+  width: 10%;
+  height: 5%;
+  border-radius: 6px; }
+
+.table_detailTB-header {
+  width: 100%;
+  height: 10%;
+  background-color: #fff4;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+.table_detailTB-body {
+  width: 100%;
+  box-shadow: 0 0.4rem 0.8rem #0005;
+  border-radius: 7px;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; }
+
+.table_detailTB-body table {
+  width: 100%;
+  height: 80%; }
+
+.table_detailTB-body button {
+  width: 100%;
+  border-radius: 6px; }
+
+.main_reportSalary {
+  background-color: #1b292055;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  position: relative; }
+
+.table_reportSalary-header {
+  width: 100%;
+  height: 10%;
+  background-color: #fff4;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+.table_reportSalary-body {
+  width: 100%;
+  box-shadow: 0 .4rem .8rem #0005;
+  border-radius: 7px; }
+
+.table_reportSalary-body table {
+  width: 100%; }
 
 .main__announcement {
   background-color: #1b292055;
@@ -1276,6 +1316,34 @@ textarea::selection {
   height: 100%;
   border-radius: 6px; }
 
+.main_mailTeacher {
+  background-color: #1b292055;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column; }
+
+.table_mailTeacher-show {
+  height: 100%;
+  width: 100%; }
+
+.table_mailTeacher-header {
+  width: 100%;
+  height: 10%;
+  background-color: #fff4;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+.table_mailTeacher-body {
+  width: 100%;
+  box-shadow: 0 .4rem .8rem #0005;
+  border-radius: 7px; }
+
+.table_mailTeacher-body table {
+  width: 100%; }
+
 * {
   padding: 0;
   margin: 0;
@@ -1350,13 +1418,65 @@ h1 {
   font-size: 15px;
   display: contents; }
 
-.about-login {
+.main-home {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
   height: 100vh;
+  background-color: #1b292055; }
+
+.chart-tuition {
+  width: 400px;
+  margin: 20px auto; }
+
+.table__Report-tuition {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 50%;
+  width: 80%; }
+
+.table-data_tuition {
+  width: 100%;
+  height: 100%;
+  background-color: #fff4;
+  margin: .8rem auto;
+  border-radius: 6px; }
+
+.table-data_tuition table {
+  width: 100%; }
+
+.chart-salary {
+  width: 400px;
+  margin: 20px auto; }
+
+.table__Report-salary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 45%;
+  width: 80%; }
+
+.table-data_salary {
+  width: 100%;
+  height: 100%;
+  background-color: #fff4;
+  margin: .8rem auto;
+  border-radius: 25px; }
+
+.table-data_salary table {
+  width: 100%; }
+
+.about-login {
+  background-color: #1b292055;
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  background: url(http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg) center/cover no-repeat; }
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center; }
 
 .main-login {
   justify-content: center;
@@ -1513,3 +1633,236 @@ h1 {
 .btn_create_user_q button {
   width: 20%;
   border-radius: 6px; }
+
+.main_setting_updateUser {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1b292055;
+  width: 100%;
+  flex-direction: column; }
+
+.form_updateUser_q {
+  width: 30%;
+  background: white;
+  height: 50%; }
+
+.table_updateUser-header {
+  width: 100%;
+  height: 10%;
+  background-color: rgba(126, 119, 119, 0.267);
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+.table_updateUser-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  background-color: rgba(160, 137, 137, 0.267);
+  height: 90%; }
+
+.table_updateUser-body form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%; }
+
+.form_updateUser_q2 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+.form_updateUser_q2 input {
+  font-size: 20px;
+  border-radius: 6px; }
+
+.form_updateUser_q2 label {
+  width: 30%; }
+
+.form_updateUser_q2 select {
+  width: 43%; }
+
+.form_btn_updateUser_q {
+  display: flex;
+  width: 100%;
+  justify-content: center; }
+
+.main_MC-teacher {
+  background-color: #1b292055;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  position: relative; }
+
+.table_MC-teacher {
+  height: 100%;
+  width: 100%; }
+
+.table_MC-header {
+  width: 100%;
+  height: 10%;
+  background-color: #fff4;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+.table_MC-header button {
+  width: 10%;
+  height: 30%;
+  border-radius: 6px; }
+
+.table_MC-body {
+  width: 100%;
+  box-shadow: 0 .4rem .8rem #0005;
+  border-radius: 7px; }
+
+.table_MC-body table {
+  width: 100%; }
+
+.table_MC-body form {
+  width: 100%; }
+
+.table_MC-body button {
+  width: 100%; }
+
+.center-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  display: none;
+  /* Ban đầu ẩn form */
+  width: 60%;
+  height: 80%;
+  border-radius: 6px; }
+
+.form_create_teacher_q form {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center; }
+
+.form_teacher_q {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between; }
+
+.form_teacher_q input {
+  width: 60%;
+  font-size: 20px;
+  border-radius: 5px; }
+
+.main_createStudent {
+  background-color: #1b292055;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  position: relative; }
+
+.table_data_Student {
+  height: 100%;
+  width: 100%; }
+
+.table_newStudent-header {
+  width: 100%;
+  height: 10%;
+  background-color: #fff4;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+.table_newStudent-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  background-color: rgba(160, 137, 137, 0.267);
+  height: 70%; }
+
+.table_newStudent-body table {
+  width: 100%;
+  height: 100%; }
+
+.table_newStudent-body button {
+  width: 50%; }
+
+.table_newStudent-header button {
+  width: 10%;
+  height: 30%;
+  border-radius: 6px; }
+
+.center-form-student {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  display: none;
+  height: 50%;
+  border-radius: 6px; }
+
+.form_create_student_q form {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center; }
+
+.form_student_q {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between; }
+
+.form_student_q input {
+  width: 60%;
+  font-size: 20px;
+  border-radius: 5px; }
+
+.main__Historytuition {
+  background-color: #1b292055;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  position: relative; }
+
+.table__History-show {
+  height: 100%;
+  width: 100%; }
+
+.table__History-header {
+  width: 100%;
+  height: 10%;
+  background-color: #fff4;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+.table__History-body {
+  width: 100%;
+  box-shadow: 0 .4rem .8rem #0005;
+  border-radius: 7px; }
+
+.table__History-body table {
+  width: 100%; }

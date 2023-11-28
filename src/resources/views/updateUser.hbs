@@ -1,29 +1,32 @@
-<div class="main_setting_edit_user">
-<div class="form_edit_user_q">
-    <h2>Edit User</h2>
+<div class="main_setting_updateUser">
+<div class="form_updateUser_q">
+    <div class="table_updateUser-header">
+        <h2>Edit User</h2>
+    </div>
+    <div class="table_updateUser-body">
     <form method="post" action="/register/UU/{{user._id}}?_method=PUT">
-    <div class="form_edit_user_q2">
+    <div class="form_updateUser_q2">
         <label for="username">Username</label>
         <input type="text" value="{{user.username}}" name="username" id="username">
     </div>
-    <div class="form_edit_user_q2">
+    <div class="form_updateUser_q2">
         <label for="password">Password</label>
         <input type="password" name="password" id="password">
     </div>
-    <div class="form_edit_user_q2">
+    <div class="form_updateUser_q2">
         <label for="fullname">Fullname</label>
         <input type="text" value="{{user.fullname}}" name="fullname" id="fullname">
     </div>
-    <div class="form_edit_user_q2">
+    <div class="form_updateUser_q2">
         <label for="email">Email</label>
         <input type="text" value="{{user.email}}" name="email" id="email">
     </div>
-    <div class="form_edit_user_q2">
+    <div class="form_updateUser_q2">
         <label for="phone">Phone</label>
         <input type="text" value="{{user.phone}}" name="phone" id="phone">
     </div>
-    <div class="form_edit_user_q2">
-        <label for="role">role</label>
+    <div class="form_updateUser_q2">
+        <label for="role">Role</label>
         <select name="role" id="role">
             <option>choose role</option>
             <option value="Admin">Admin</option>
@@ -33,9 +36,10 @@
         </select>
         {{!-- <input type="text" value="{{user.role}}" name="role" id="role"> --}}
     </div>
-    <div class="form_btn_edit_user_q">
+        <div class="form_btn_updateUser_q">
         <button id="btn_back_user"><a href="/register">Back</a></button>
         <button id="btn_edit_user" type="submit">Edit user</button>
+    </div>
     </div>
     </form>
 </div>

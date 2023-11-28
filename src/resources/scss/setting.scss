@@ -77,9 +77,6 @@
     height: 20%;
     padding: 2px 0;
 }
-.form_user_q label {
-
-}
 .form_user_q input, select {
    border-radius: 6px;
 }
@@ -91,4 +88,245 @@
 .btn_create_user_q button {
     width: 20%;
     border-radius: 6px;
+}
+
+//update User//
+.main_setting_updateUser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1b292055;
+    width: 100%;
+    flex-direction: column;
+}
+.form_updateUser_q {
+    width: 30%;
+    background: white;
+    height: 50%;
+}
+.table_updateUser-header {
+    width: 100%;
+    height: 10%;
+    background-color: rgba(126, 119, 119, 0.267);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.table_updateUser-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    background-color: rgba(160, 137, 137, 0.267);
+    height: 90%;
+}
+.table_updateUser-body form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+}
+.form_updateUser_q2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.form_updateUser_q2 input {
+    font-size: 20px;
+    border-radius: 6px;
+}
+.form_updateUser_q2 label {
+    width: 30%;
+}
+.form_updateUser_q2 select {
+    width: 43%;
+}
+.form_btn_updateUser_q {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+//MC Teacher//
+.main_MC-teacher {
+    background-color: #1b292055;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    position: relative;
+}
+.table_MC-teacher {
+    height: 100%;
+    width: 100%;
+}
+.table_MC-header {
+    width: 100%;
+    height: 10%;
+    background-color: #fff4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.table_MC-header button {
+    width: 10%;
+    height: 30%;
+    border-radius: 6px;
+}
+.table_MC-body {
+    width: 100%;
+    box-shadow: 0 .4rem .8rem #0005;
+    border-radius: 7px;
+}
+.table_MC-body table {
+    width: 100%;
+}
+.table_MC-body form {
+    width: 100%;
+}
+.table_MC-body button {
+    width: 100%;
+}
+.center-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    display: none; /* Ban đầu ẩn form */
+    width: 60%;
+    height: 80%;
+    border-radius: 6px;
+  }
+  .form_create_teacher_q form {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .form_teacher_q {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .form_teacher_q input {
+    width: 60%;
+    font-size: 20px;
+    border-radius: 5px;
+  }
+
+
+  //create new student//
+  .main_createStudent {
+    background-color: #1b292055;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    position: relative;
+  }
+  .table_data_Student {
+    height: 100%;
+    width: 100%;
+  }
+  .table_newStudent-header {
+    width: 100%;
+    height: 10%;
+    background-color: #fff4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .table_newStudent-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    background-color: rgba(160, 137, 137, 0.267);
+    height: 70%;
+  }
+  .table_newStudent-body table {
+    width: 100%;
+    height: 100%;
+  }
+  .table_newStudent-body button {
+    width: 50%;
+  }
+  .table_newStudent-header button {
+    width: 10%;
+    height: 30%;
+    border-radius: 6px;
+  }
+  .center-form-student {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    display: none; 
+    height: 50%;
+    border-radius: 6px;
+  }
+  .form_create_student_q form {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .form_student_q {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .form_student_q input {
+    width: 60%;
+    font-size: 20px;
+    border-radius: 5px;
+  }
+
+  //main__Historytuition//
+.main__Historytuition {
+    background-color: #1b292055;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    position: relative;
+}
+.table__History-show {
+    height: 100%;
+    width: 100%;
+}
+.table__History-header {
+    width: 100%;
+    height: 10%;
+    background-color: #fff4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.table__History-body {
+    width: 100%;
+    box-shadow: 0 .4rem .8rem #0005;
+    border-radius: 7px;
+}
+.table__History-body table {
+    width: 100%;
 }

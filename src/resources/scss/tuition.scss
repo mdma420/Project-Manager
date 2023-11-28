@@ -1,9 +1,13 @@
 .main__List_tuition {
-  background: bisque;
+  background-color: #1b292055;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+  width: 100%;
+  display: flex;
+  align-items: center;
   height: 100vh;
 }
 
@@ -102,14 +106,12 @@ width: 80%;
   border-radius: 7px;
 }
 .table__List-show {
-  width: 82vw;
+  width: 100%;
   height: 90vh;
   background-color: #1b292055;
-
   backdrop-filter: blur(7px);
   box-shadow: 0 .4rem .8rem #0005;
   border-radius: .8rem;
-  position: relative;
   overflow: hidden;
 }
 
