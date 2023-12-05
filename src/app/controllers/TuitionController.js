@@ -473,9 +473,10 @@ class TuitionController {
   async createRT(req, res, next) {
     const idTT = await TableT.findById(req.params.id);
     const tt = await TuitionStudent.find({idTT: idTT.id});
-    console.log(tt);
     const ttLenght = tt.length;
+
     ReportTuition.findOne({nameTT: idTT.nameTableT}).then((data) => {
+      console.log(data);
       if (data) {
         res.redirect("/tuition/reportTuition");
       } else {

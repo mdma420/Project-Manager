@@ -353,7 +353,6 @@ class salaryController {
     const nameSalary = idS.nameSalary;
     const t = await Tablesalary.find({idS: idS._id});
     const tLeaght2 = t.length;
-
     ReportSalary.findOne({nameSalary: nameSalary}).then((data) => {
       if (data) {
         res.redirect("/teacher/reportSalary");
