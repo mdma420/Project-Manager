@@ -23,11 +23,17 @@
                     <td>{{moment this.tableTPeriod1 format ="DD MMM YYYY"}} - {{moment this.tableTPeriod2 format ="DD MMM YYYY"}}</td>
                     <td>
                         <div class="list__tableTuition--option">
+                        {{#if this.isAfterToday}}
                         <button class="btn__detail--option"><a href="/tuition/tableTuition/{{this._id}}">Detail</a></button>
-                        
                         <form action="/tuition/tableTuition/{{this._id}}?_method=DELETE" method="post" class="btn__delete--option">
                             <button type="submit">Delete</button>
                         </form>
+                        {{else}}
+                        <button class="btn__detail--option"><a href="/tuition/tableTuitionfinal/{{this._id}}">Detail</a></button>
+                        <form action="/tuition/tableTuition/{{this._id}}?_method=DELETE" method="post" class="btn__delete--option">
+                            <button type="submit">Delete</button>
+                        </form>
+                        {{/if}}
                         </div>
                     </td>
                 </tr>

@@ -20,11 +20,19 @@
                     <td>{{this.nameSalary}}</td>
                     <td>{{moment this.salaryPeriod1 format ="DD MMM YYYY"}} - {{moment this.salaryPeriod2 format ="DD MMM YYYY"}}</td>
                     <td>
+                        
+                        {{#if this.isAfterToday}}
                         <button><a href="/teacher/tableSalary/{{this._id}}">Detail</a></button>
                         <button><a href="/teacher/exportExcel/{{this._id}}">Export Excel</a></button>
                         <form action="/teacher/deleteSalary/{{this._id}}?_method=DELETE" method="post">
                             <button type="submit">Delete</button>
                         </form>
+                        {{else}}
+                        <button><a href="/teacher/tableSalaryfinal/{{this._id}}">Detail</a></button>
+                        <form action="/teacher/deleteSalary/{{this._id}}?_method=DELETE" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                        {{/if}}
                     </td>
                 </tr>
                 {{/each}}

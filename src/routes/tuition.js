@@ -15,6 +15,7 @@ router.get("/sreach1", tuitionController.sreach1);
 router.get("/tableTuition", tuitionController.tableTuition);
 router.post("/createTT", tuitionController.createTT);
 router.get("/tableTuition/:id", tuitionController.student);
+router.get("/tableTuitionfinal/:id", tuitionController.studentfinal);
 router.post("/tableTuition/:id/createTS", tuitionController.createTS);
 router.get(
   "/tableTuition/collecttuition/:id",

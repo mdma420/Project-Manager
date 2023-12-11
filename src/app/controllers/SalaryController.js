@@ -5,6 +5,7 @@ const ReportSalary = require("../models/reportSalary");
 const fs = require("fs");
 const excelJs = require("exceljs");
 const puppeteer = require("puppeteer");
+const moment = require("moment");
 const {
   mutipleMongooseToObject,
   mongooseToObject,
@@ -138,11 +139,30 @@ class salaryController {
   // -----------------------------------------------------------Management Salary----------------------------------------------------- //
 
   // [GET] Salary
+  // salary(req, res, next) {
+  //   Salary.find({}).then((salary) => {
+  //     salary = salary.map((salary) => salary.toObject());
+  //     res.render("salary", {
+  //       salary,
+  //       title: "Management Salary",
+  //     });
+  //   });
+  // }
   salary(req, res, next) {
-    Salary.find({}).then((salary) => {
-      salary = salary.map((salary) => salary.toObject());
+    Salary.find({}).then((salaries) => {
+      const currentDate = moment();
+      const updatedSalaries = salaries.map((salary) => {
+        return {
+          ...salary.toObject(),
+          isAfterToday: moment(salary.salaryPeriod2).isAfter(
+            currentDate,
+            "day"
+          ),
+        };
+      });
+
       res.render("salary", {
-        salary,
+        salary: updatedSalaries,
         title: "Management Salary",
       });
     });
@@ -162,6 +182,20 @@ class salaryController {
     Salary.findById(req.params.id).then((salary) => {
       Tablesalary.find({idS: salary._id}, req.body).then((tableSalary) => {
         res.render("tableSalary", {
+          tableSalary: tableSalary.map((tableSalary) => tableSalary.toObject()),
+          salary: mongooseToObject(salary),
+          user: req.user,
+          title: "Table Salary",
+        });
+      });
+    });
+  }
+
+  //[GET] Table Salary Final
+  tableSalaryfinal(req, res, next) {
+    Salary.findById(req.params.id).then((salary) => {
+      Tablesalary.find({idS: salary._id}, req.body).then((tableSalary) => {
+        res.render("tableSalaryfinal", {
           tableSalary: tableSalary.map((tableSalary) => tableSalary.toObject()),
           salary: mongooseToObject(salary),
           user: req.user,

@@ -1,0 +1,39 @@
+<div class="main__tableSalary">
+<div class="tableSalary_show-header">
+  <h2>List Teachers's Salary</h2>
+  <div class="btn_tableSalary-header">
+    <button><a href="/teacher/salary">Back</a></button>
+    </div>
+  </div>
+  <div class="tableSalary_show-body">
+<table>
+<thead>
+  <tr>
+    <th>Name Teacher</th>
+    <th>Position</th>
+    <th>Basic Salary</th>
+    <th>Day Work</th>
+    <th>Day Out</th>
+    <th>Allowance</th>
+    <th>Except Social Insurance</th>
+    <th>Total Salary</th>
+  </tr>
+</thead>
+<tbody>
+{{#each tableSalary}}
+<tr>
+  <td>{{this.nameTeacher}}</td>
+  <td>{{this.position}}</td>
+  <td>{{this.basicSalary}}</td>
+  <td>{{this.dayWork}}</td>
+  <td>{{this.dayOut}}</td>
+  <td>{{this.allowance}}</td>
+  <td>{{this.exceptSocialInsurance}}</td>
+  <td>{{this.totalSalary}}</td>
+</tr>
+{{/each}}
+</tbody>
+ </table>
+</div>
+
+</div>

@@ -19,6 +19,7 @@ router.put("/update/:id", salaryController.update);
 router.get("/salary", salaryController.salary);
 router.post("/createSalary", salaryController.createSalary);
 router.get("/tableSalary/:id", salaryController.tableSalary);
+router.get("/tableSalaryfinal/:id", salaryController.tableSalaryfinal);
 router.post("/tableSalary/:id/createTS", salaryController.createTS);
 router.get("/detailTB/:id", salaryController.detailTB);
 router.delete("/deleteSalary/:id", salaryController.deleteSalary);

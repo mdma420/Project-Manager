@@ -1,0 +1,42 @@
+<div class="table__Management_tuition">
+    <section class="table__Management-fees_header">   
+        <h2>Student list</h2>
+        <div class="btn__Managementtuition-header">
+  </div>
+</section>
+        <section class="table__Management-fees_body">
+  <table>
+    <thead>
+      <tr>
+        <th>Code Student</th>
+        <th>Name</th>
+        <th>Science</th>
+        <th>Subject</th>
+        <th>Tuition</th>
+        <th>Dealine</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each tuitionStudent}}
+      <tr>
+        <td>{{this.codeStudent}}</td>
+        <td>{{this.name}}</td>
+        <td>{{this.science}}</td>
+        <td>{{this.subject}}</td>
+        <td>{{this.tuition}}.vnd</td>
+        <td>{{moment this.dealine format ="DD MMM YYYY"}}</td>
+        <td>{{this.status}}</td>
+      </tr>
+      {{/each}}    
+    </tbody>
+  </table>
+  <div class="pagination">
+    {{#each pages}}
+      <a href="/tuition/tableTuitionfinal/{{@root.tableTId}}/?page={{this}}" data-page-company="{{this}}">{{this}}</a>
+    {{/each}}
+  </div>
+</div>
+</div>
+</div>
+

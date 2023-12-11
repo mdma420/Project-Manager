@@ -10,6 +10,7 @@ const Invoice = require("../models/invoice");
 const TuitionStudent = require("../models/tuitionStudent");
 const ReportTuition = require("../models/reportTuition");
 const puppeteer = require("puppeteer");
+const moment = require("moment");
 const ejs = require("ejs");
 const pdf = require("html-pdf");
 const fs = require("fs");
@@ -98,10 +99,24 @@ class TuitionController {
 
   // [GET] Tuition Table
   tableTuition(req, res, next) {
+    // TableT.find({}).then((tableT) => {
+    //   tableT = tableT.map((tableT) => tableT.toObject());
+    //   res.render("tableTuition", {
+    //     tableT,
+    //     title: "Table Tuition",
+    //   });
+    // });
+
     TableT.find({}).then((tableT) => {
-      tableT = tableT.map((tableT) => tableT.toObject());
+      const currentDate = moment();
+      const updatedTuition = tableT.map((tableT) => {
+        return {
+          ...tableT.toObject(),
+          isAfterToday: moment(tableT.dealine).isAfter(currentDate, "day"),
+        };
+      });
       res.render("tableTuition", {
-        tableT,
+        tableT: updatedTuition,
         title: "Table Tuition",
       });
     });
@@ -171,6 +186,64 @@ class TuitionController {
               tuitionStudent.toObject()
             );
             res.render("managementtuition", {
+              TableT: mongooseToObject(tableT),
+              tableTId: tableT._id,
+              tuitionStudent,
+              pages: pages,
+              count: count,
+              user: req.user,
+              title: "managementtuition",
+            });
+          });
+      });
+    }
+  }
+
+  //[GET] Tuition Student Final
+  async studentfinal(req, res, next) {
+    const count = await TuitionStudent.countDocuments({idTT: req.params.id});
+    var page = req.query.page;
+    var PAGE_SIZE = 5;
+    var total = Math.ceil(count / PAGE_SIZE + 1);
+    const pages = [];
+    for (let i = 1; i < total; i++) {
+      pages.push(i);
+    }
+
+    if (page) {
+      page = parseInt(page);
+      const skip = (page - 1) * PAGE_SIZE;
+      TableT.findById(req.params.id).then((tableT) => {
+        TuitionStudent.find({})
+          .skip(skip)
+          .limit(PAGE_SIZE)
+          .then((tuitionStudent) => {
+            tuitionStudent = tuitionStudent.map((tuitionStudent) =>
+              tuitionStudent.toObject()
+            );
+            res.render("managementTTF", {
+              TableT: mongooseToObject(tableT),
+              tableTId: tableT._id,
+              tuitionStudent,
+              pages: pages,
+              count: count,
+              user: req.user,
+              title: "managementtuition",
+            });
+          });
+      });
+    } else {
+      page = 1;
+      const skip = (page - 1) * PAGE_SIZE;
+      TableT.findById(req.params.id).then((tableT) => {
+        TuitionStudent.find({idTT: tableT._id}, req.body)
+          .skip(skip)
+          .limit(PAGE_SIZE)
+          .then((tuitionStudent) => {
+            tuitionStudent = tuitionStudent.map((tuitionStudent) =>
+              tuitionStudent.toObject()
+            );
+            res.render("managementTTF", {
               TableT: mongooseToObject(tableT),
               tableTId: tableT._id,
               tuitionStudent,
