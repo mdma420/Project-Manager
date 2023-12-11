@@ -156,7 +156,7 @@ class TuitionController {
       page = parseInt(page);
       const skip = (page - 1) * PAGE_SIZE;
       TableT.findById(req.params.id).then((tableT) => {
-        TuitionStudent.find({})
+        TuitionStudent.find({idTT: tableT._id})
           .skip(skip)
           .limit(PAGE_SIZE)
           .then((tuitionStudent) => {
@@ -214,7 +214,7 @@ class TuitionController {
       page = parseInt(page);
       const skip = (page - 1) * PAGE_SIZE;
       TableT.findById(req.params.id).then((tableT) => {
-        TuitionStudent.find({})
+        TuitionStudent.find({idTT: tableT._id})
           .skip(skip)
           .limit(PAGE_SIZE)
           .then((tuitionStudent) => {
@@ -545,11 +545,15 @@ class TuitionController {
   //[POST] Total Tuition
   async createRT(req, res, next) {
     const idTT = await TableT.findById(req.params.id);
-    const tt = await TuitionStudent.find({idTT: idTT.id});
+    const st = "Tuition has been paid";
+    // const tt = await TuitionStudent.find({idTT: idTT.id});
+    const tt = await TuitionStudent.find({
+      $and: [{idTT: idTT.id}, {status: st}],
+    });
+    console.log(tt);
     const ttLenght = tt.length;
 
     ReportTuition.findOne({nameTT: idTT.nameTableT}).then((data) => {
-      console.log(data);
       if (data) {
         res.redirect("/tuition/reportTuition");
       } else {
