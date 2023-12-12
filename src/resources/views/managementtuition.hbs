@@ -3,12 +3,17 @@
       
         <h2>Student list</h2>
         <div class="btn__Managementtuition-header">
+        <input type="text" id="searchInput" placeholder="Search by status" oninput="resetSearch()">
+        <button onclick="searchByStatus()">Search</button>
+        </div>
+        <div class="btn__Managementtuition-header">
+          
           <form action="/tuition/reportTuition/{{TableT._id}}" method="post">
-    <button type="submit">Total Tuition</button>
-    </form>
-  <form action="/tuition/tableTuition/{{TableT._id}}/createTS" method="post">
-  <button type="submit">create</button>
-  </form>
+            <button type="submit">Total Tuition</button>
+          </form>
+          <form action="/tuition/tableTuition/{{TableT._id}}/createTS" method="post">
+            <button type="submit">create</button>
+          </form>
   </div>
 </section>
         <section class="table__Management-fees_body">
@@ -56,3 +61,33 @@
 </div>
 </div>
 
+<!-- sreach -->
+<script>
+    function searchByStatus() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.querySelector("table");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[6];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function resetSearch() {
+        var table, tr, i;
+        table = document.querySelector("table");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            tr[i].style.display = "";
+        }
+    }
+</script>
