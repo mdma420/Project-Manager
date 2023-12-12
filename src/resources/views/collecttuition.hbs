@@ -41,8 +41,6 @@
         <th>Code Subject</th>
         <th>Name of subject</th>
         <th>Science</th>
-        <th>Semester</th>
-        <th>Unit</th>
         <th>Course costs</th>
       </tr>
     </thead>
@@ -52,8 +50,6 @@
         <td>{{this.code}}</td>
         <td>{{this.name}}</td>
         <td>{{this.science}}</td>       
-        <td>{{this.semester}}</td>
-        <td>{{this.unit}}</td>
         <td>{{this.totalTuition}}</td>
       </tr>
       {{/each}}
@@ -81,7 +77,10 @@
   <div class="form__card-receipt">
     <label for="subject">Payment methods:</label>
             <select id="subject" name="subject">
-                <option value="Computing">Computing</option>
+              {{#each t}}
+              <option value="{{this.name}}">{{this.name}}</option>
+              {{/each}}
+                {{!-- <option value="Computing">Computing</option>
                 <option value="Application">Application</option>
                 <option value="Web">Web</option>
                 <option value="Vision's theory">Vision's theory</option>
@@ -89,7 +88,7 @@
                 <option value="Letter Graphic Art">Letter Graphic Art</option>
                 <option value="Marketing">Marketing</option>
                 <option value="Corporate Governance">Corporate Governance</option>
-                <option value="Logistic">Logistic</option>
+                <option value="Logistic">Logistic</option> --}}
             </select>
   </div>
     <div class="form__card-receipt">

@@ -13,19 +13,7 @@
                   <div id="form__type" class="form-row">  
                   <label for="science">Subject :</label>
                   <input type="text" id="science" name="science" placeholder="Subject">
-                  </div>
-                  <div id="form__type" class="form-row">  
-                  <label for="semester">Semester :</label>
-                  <input type="text" id="semester" name="semester" placeholder="semester">
-                  </div>
-                  <div id="form__type" class="form-row">  
-                  <label for="unit">Unit :</label>
-                  <input type="text" id="unit" name="unit" placeholder="Unit">
-                  </div>
-                  <div id="form__type" class="form-row">  
-                  <label for="tuitionOneUnit">Cost :</label>
-                  <input type="text" id="tuitionOneUnit" name="tuitionOneUnit" placeholder="Course costs">
-                  </div>
+                  </div>         
                   <div id="form__type" class="form-row">  
                   <label for="totalTuition">Payment :</label>
                   <input type="text" id="totalTuition" name="totalTuition" placeholder="All-course payment">
@@ -49,7 +37,7 @@
           <h2>Management of tuition</h2>
           <div class="input_search_tuition">
             <form action="/tuition/sreach">
-                <input type="text" id="name" name="name" placeholder="Search Teacher's name...">
+                <input type="text" id="name" name="name" placeholder="Search Tuitions name...">
             </form>
             <form action="/tuition/sreach1">          
               <select name="science" id="science"> 
@@ -69,10 +57,9 @@
                 <th>Code</th>
                 <th>Cousre</th>
                 <th>Subject</th>
-                <th>Unit</th>
-                <th>Course costs</th>
-                <th>All-course payment</th>
+                <th>Course payment</th>
                 <th>Status</th>
+                <th>Option</th>
             </tr>
         </thead>
         <tbody id="table-body">
@@ -81,11 +68,9 @@
             <td>{{this.code}}</td>
             <td>{{this.name}}</td>
             <td>{{this.science}}</td>
-            <td>{{this.unit}}</td>
-            <td>{{this.tuitionOneUnit}}</td>
             <td>{{this.totalTuition}}</td>
+            <td>{{this.status}}</td>
             <td>
-              {{this.status}}
               <form action="/tuition/deleteTuition/{{this._id}}?_method=DELETE" method="post">
                   <button class="btn_delete_user" type="submit">Delete</button>
               </form>

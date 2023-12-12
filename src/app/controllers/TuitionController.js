@@ -292,16 +292,27 @@ class TuitionController {
   async collecttuition(req, res, next) {
     TuitionStudent.findById(req.params.id).then((tuitionStudent) => {
       var science = tuitionStudent.science;
+      var science1 = tuitionStudent.science;
       var codeStudent = tuitionStudent.codeStudent;
       Student.findOne({codeStudent: codeStudent}).then((student) => {
         Tuition.find({science: science}).then((tuition) => {
-          res.render("collecttuition", {
-            tuitionStudent: mongooseToObject(tuitionStudent),
-            tuition: staffMongoseToObject(tuition),
-            student: mongooseToObject(student),
-            user: req.user,
-            title: "collecttuition",
+          Tuition.find({science: science1}).then((t) => {
+            res.render("collecttuition", {
+              tuitionStudent: mongooseToObject(tuitionStudent),
+              tuition: staffMongoseToObject(tuition),
+              student: mongooseToObject(student),
+              t: staffMongoseToObject(t),
+              user: req.user,
+              title: "collecttuition",
+            });
           });
+          // res.render("collecttuition", {
+          //   tuitionStudent: mongooseToObject(tuitionStudent),
+          //   tuition: staffMongoseToObject(tuition),
+          //   student: mongooseToObject(student),
+          //   user: req.user,
+          //   title: "collecttuition",
+          // });
         });
       });
     });
