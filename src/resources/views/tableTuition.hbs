@@ -1,7 +1,7 @@
 <div class="main__Salary">
     <section class="show__Salary--header">
         <h2>List of tuition fees for each semester</h2>
-        <button>Create Tuition</button>
+        <button>Create Table Tuition</button>
     </section>
     <section class="show__Salary--body">
         <table>
@@ -77,10 +77,9 @@
     var createSalaryMonths = document.querySelector(".create__Salary--months");
 
     createSalaryButton.addEventListener("click", function(event) {
-      // Prevent the default behavior of the button (e.g., form submission)
+      
       event.preventDefault();
       
-      // Toggle the 'hidden' class on createSalaryMonths
       createSalaryMonths.classList.toggle("hidden");
     });
   });
