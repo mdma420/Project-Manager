@@ -80,7 +80,8 @@ button#add-button {
     align-items: center;
     font-size: 20px;
     width: 20%;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 .input_search_tuition input {
   border-radius: 5px;

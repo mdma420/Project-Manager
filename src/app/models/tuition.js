@@ -6,7 +6,6 @@ const Tuition = new Schema({
   code: String,
   name: String,
   science: String,
-  semester: String,
   unit: String,
   tuitionOneUnit: String,
   totalTuition: String,
