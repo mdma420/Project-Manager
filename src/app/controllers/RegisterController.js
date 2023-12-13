@@ -1,6 +1,6 @@
 const User = require("../models/user");
 const UserModel = require("../models/user");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const querystring = require("querystring");
 const {
   mutipleMongooseToObject,
