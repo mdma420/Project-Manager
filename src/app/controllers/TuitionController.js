@@ -406,8 +406,7 @@ class TuitionController {
       $and: [{name: tuitionStudent.name}, {subject: tuitionStudent.subject}],
     }).then((data) => {
       if (data) {
-        res.redirect("/tuition/tableTuition/" + tuitionStudent.idTT);
-        return;
+        return res.render("invoice", {msg: "da thanh toan hoc phi"});
       } else {
         const invoice = new Invoice({
           name: tuitionStudent.name,
