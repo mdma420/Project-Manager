@@ -21,28 +21,104 @@ class salaryController {
   // ------------------------------------------------------Management Teacher---------------------------------------------------------- //
 
   // [GET] Teacher
-  teacher(req, res, next) {
-    // res.render("teacher");
-    Teacher.find({}).then((teacher) => {
-      teacher = teacher.map((teacher) => teacher.toObject());
-      res.render("teacher", {
-        teacher,
-        user: req.user,
-        title: "Management Teacher",
-      });
-    });
+  async teacher(req, res, next) {
+    const count = await Teacher.countDocuments();
+    var page = req.query.page;
+    var PAGE_SIZE = 7;
+    var total = Math.ceil(count / PAGE_SIZE + 1);
+    const pages = [];
+    for (let i = 1; i < total; i++) {
+      pages.push(i);
+    }
+
+    if (page) {
+      page = parseInt(page);
+      const skip = (page - 1) * PAGE_SIZE;
+      Teacher.find({})
+        .skip(skip)
+        .limit(PAGE_SIZE)
+        .then((teacher) => {
+          teacher = teacher.map((teacher) => teacher.toObject());
+          res.render("teacher", {
+            teacher,
+            user: req.user,
+            pages: pages,
+            count: count,
+            title: "Management Teacher",
+          });
+        });
+    } else {
+      page = 1;
+      const skip = (page - 1) * PAGE_SIZE;
+      Teacher.find({})
+        .skip(skip)
+        .limit(PAGE_SIZE)
+        .then((teacher) => {
+          teacher = teacher.map((teacher) => teacher.toObject());
+          res.render("teacher", {
+            teacher,
+            user: req.user,
+            pages: pages,
+            count: count,
+            title: "Management Teacher",
+          });
+        });
+    }
   }
 
   // [GET] Manager Creater Teacher
-  managerCreateTeacher(req, res, next) {
-    Teacher.find({}).then((teacher) => {
-      teacher = teacher.map((teacher) => teacher.toObject());
-      res.render("MCTeacher", {
-        teacher,
-        user: req.user,
-        title: "Management Create Teacher",
-      });
-    });
+  async managerCreateTeacher(req, res, next) {
+    const count = await Teacher.countDocuments();
+    var page = req.query.page;
+    var PAGE_SIZE = 7;
+    var total = Math.ceil(count / PAGE_SIZE + 1);
+    const pages = [];
+    for (let i = 1; i < total; i++) {
+      pages.push(i);
+    }
+
+    if (page) {
+      page = parseInt(page);
+      const skip = (page - 1) * PAGE_SIZE;
+      Teacher.find({})
+        .skip(skip)
+        .limit(PAGE_SIZE)
+        .then((teacher) => {
+          teacher = teacher.map((teacher) => teacher.toObject());
+          res.render("MCTeacher", {
+            teacher,
+            user: req.user,
+            pages: pages,
+            count: count,
+            title: "Management Create Teacher",
+          });
+        });
+    } else {
+      page = 1;
+      const skip = (page - 1) * PAGE_SIZE;
+      Teacher.find({})
+        .skip(skip)
+        .limit(PAGE_SIZE)
+        .then((teacher) => {
+          teacher = teacher.map((teacher) => teacher.toObject());
+          res.render("MCTeacher", {
+            teacher,
+            user: req.user,
+            pages: pages,
+            count: count,
+            title: "Management Create Teacher",
+          });
+        });
+    }
+
+    // Teacher.find({}).then((teacher) => {
+    //   teacher = teacher.map((teacher) => teacher.toObject());
+    //   res.render("MCTeacher", {
+    //     teacher,
+    //     user: req.user,
+    //     title: "Management Create Teacher",
+    //   });
+    // });
   }
 
   // [POST] Create Teacher
@@ -138,16 +214,6 @@ class salaryController {
 
   // -----------------------------------------------------------Management Salary----------------------------------------------------- //
 
-  // [GET] Salary
-  // salary(req, res, next) {
-  //   Salary.find({}).then((salary) => {
-  //     salary = salary.map((salary) => salary.toObject());
-  //     res.render("salary", {
-  //       salary,
-  //       title: "Management Salary",
-  //     });
-  //   });
-  // }
   salary(req, res, next) {
     Salary.find({}).then((salaries) => {
       const currentDate = moment();
@@ -163,6 +229,7 @@ class salaryController {
 
       res.render("salary", {
         salary: updatedSalaries,
+        user: req.user,
         title: "Management Salary",
       });
     });
@@ -178,31 +245,115 @@ class salaryController {
   }
 
   // [GET] Table Salary
-  tableSalary(req, res, next) {
-    Salary.findById(req.params.id).then((salary) => {
-      Tablesalary.find({idS: salary._id}, req.body).then((tableSalary) => {
-        res.render("tableSalary", {
-          tableSalary: tableSalary.map((tableSalary) => tableSalary.toObject()),
-          salary: mongooseToObject(salary),
-          user: req.user,
-          title: "Table Salary",
-        });
+  async tableSalary(req, res, next) {
+    const count = await Tablesalary.countDocuments({idS: req.params.id});
+    var page = req.query.page;
+    var PAGE_SIZE = 7;
+    var total = Math.ceil(count / PAGE_SIZE + 1);
+    const pages = [];
+    for (let i = 1; i < total; i++) {
+      pages.push(i);
+    }
+
+    if (page) {
+      page = parseInt(page);
+      const skip = (page - 1) * PAGE_SIZE;
+      Salary.findById(req.params.id).then((salary) => {
+        Tablesalary.find({idS: salary._id})
+          .skip(skip)
+          .limit(PAGE_SIZE)
+          .then((tableSalary) => {
+            res.render("tableSalary", {
+              tableSalary: tableSalary.map((tableSalary) =>
+                tableSalary.toObject()
+              ),
+              salary: mongooseToObject(salary),
+              salaryId: salary._id,
+              user: req.user,
+              pages: pages,
+              count: count,
+              title: "Table Salary",
+            });
+          });
       });
-    });
+    } else {
+      page = 1;
+      const skip = (page - 1) * PAGE_SIZE;
+      Salary.findById(req.params.id).then((salary) => {
+        Tablesalary.find({idS: salary._id}, req.body)
+          .skip(skip)
+          .limit(PAGE_SIZE)
+          .then((tableSalary) => {
+            res.render("tableSalary", {
+              tableSalary: tableSalary.map((tableSalary) =>
+                tableSalary.toObject()
+              ),
+              salary: mongooseToObject(salary),
+              salaryId: salary._id,
+              user: req.user,
+              pages: pages,
+              count: count,
+              title: "Table Salary",
+            });
+          });
+      });
+    }
   }
 
   //[GET] Table Salary Final
-  tableSalaryfinal(req, res, next) {
-    Salary.findById(req.params.id).then((salary) => {
-      Tablesalary.find({idS: salary._id}, req.body).then((tableSalary) => {
-        res.render("tableSalaryfinal", {
-          tableSalary: tableSalary.map((tableSalary) => tableSalary.toObject()),
-          salary: mongooseToObject(salary),
-          user: req.user,
-          title: "Table Salary",
-        });
+  async tableSalaryfinal(req, res, next) {
+    const count = await Tablesalary.countDocuments({idS: req.params.id});
+    var page = req.query.page;
+    var PAGE_SIZE = 7;
+    var total = Math.ceil(count / PAGE_SIZE + 1);
+    const pages = [];
+    for (let i = 1; i < total; i++) {
+      pages.push(i);
+    }
+
+    if (page) {
+      page = parseInt(page);
+      const skip = (page - 1) * PAGE_SIZE;
+      Salary.findById(req.params.id).then((salary) => {
+        Tablesalary.find({idS: salary._id})
+          .skip(skip)
+          .limit(PAGE_SIZE)
+          .then((tableSalary) => {
+            res.render("tableSalaryfinal", {
+              tableSalary: tableSalary.map((tableSalary) =>
+                tableSalary.toObject()
+              ),
+              salary: mongooseToObject(salary),
+              salaryId: salary._id,
+              user: req.user,
+              pages: pages,
+              count: count,
+              title: "Table Salary",
+            });
+          });
       });
-    });
+    } else {
+      page = 1;
+      const skip = (page - 1) * PAGE_SIZE;
+      Salary.findById(req.params.id).then((salary) => {
+        Tablesalary.find({idS: salary._id}, req.body)
+          .skip(skip)
+          .limit(PAGE_SIZE)
+          .then((tableSalary) => {
+            res.render("tableSalaryfinal", {
+              tableSalary: tableSalary.map((tableSalary) =>
+                tableSalary.toObject()
+              ),
+              salary: mongooseToObject(salary),
+              salaryId: salary._id,
+              user: req.user,
+              pages: pages,
+              count: count,
+              title: "Table Salary",
+            });
+          });
+      });
+    }
   }
 
   // [POST] Create Table Salary
@@ -284,8 +435,6 @@ class salaryController {
               .catch((error) => {});
           }
         });
-        // .then(() => res.redirect("/teacher/salary"))
-        // .catch((error) => {});
       }
     });
   }

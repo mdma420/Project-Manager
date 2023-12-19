@@ -34,5 +34,8 @@
             {{/each}}
         </tbody>
     </table>
+    {{#each pages}}
+      <a href="/announcement/?page={{this}}" data-page-company="{{this}}">{{this}}</a>
+    {{/each}}
 </div> 
 </div>

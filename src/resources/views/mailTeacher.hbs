@@ -26,5 +26,8 @@
             {{/each}}
         </tbody>
     </table>
+    {{#each pages}}
+      <a href="/announcement/mailTeacher/{{@root.teacher}}/?page={{this}}" data-page-company="{{this}}">{{this}}</a>
+    {{/each}}
     </div>
 </div>

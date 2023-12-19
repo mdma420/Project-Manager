@@ -21,7 +21,7 @@
     <th>Day Work</th>
     <th>Day Out</th>
     <th>Allowance</th>
-    <th>Except Social Insurance</th>
+    <th>Income Tax</th>
     <th>Total Salary</th>
     <th>Option</th>
   </tr>
@@ -46,5 +46,10 @@
 {{/each}}
 </tbody>
  </table>
+ <div class="pagination">
+{{#each pages}}
+    <a href="/teacher/tableSalaryfinal/{{@root.salaryId}}/?page={{this}}" data-page-company="{{this}}">{{this}}</a>
+  {{/each}}
+</div>
 </div>
 </div>

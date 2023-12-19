@@ -38,6 +38,11 @@
             {{/each}}
         </tbody>
     </table>
+    <div class="pagination">
+    {{#each pages}}
+      <a href="/tuition/createS/?page={{this}}" data-page-company="{{this}}">{{this}}</a>
+    {{/each}}
+    </div>
     </div>
 </div>
 <div class="form_create_student_q center-form-student">

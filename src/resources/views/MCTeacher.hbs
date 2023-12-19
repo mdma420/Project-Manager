@@ -35,6 +35,11 @@
             {{/each}}
         </tbody>
     </table>
+    <div class="pagination">
+    {{#each pages}}
+      <a href="/teacher/MCTeacher/?page={{this}}" data-page-company="{{this}}">{{this}}</a>
+    {{/each}}
+    </div>
     </div>
 </div>
 <div class="form_create_teacher_q center-form">

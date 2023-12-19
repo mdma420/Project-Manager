@@ -13,6 +13,7 @@ class HomeController {
         res.render("home", {
           reportTuition,
           reportSalary,
+          user: req.user,
           title: "home",
         });
       });

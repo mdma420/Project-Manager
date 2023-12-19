@@ -347,15 +347,58 @@ class TuitionController {
   // -----------------------------------------------------Management Student-------------------------------------------------------//
 
   //[GET] Create Student
-  createS(req, res, next) {
-    Student.find({}).then((student) => {
-      student = student.map((student) => student.toObject());
-      res.render("createStudent", {
-        student,
-        user: req.user,
-        title: "Management Create Student",
-      });
-    });
+  async createS(req, res, next) {
+    const count = await Student.countDocuments();
+    var page = req.query.page;
+    var PAGE_SIZE = 7;
+    var total = Math.ceil(count / PAGE_SIZE + 1);
+    const pages = [];
+    for (let i = 1; i < total; i++) {
+      pages.push(i);
+    }
+
+    if (page) {
+      page = parseInt(page);
+      const skip = (page - 1) * PAGE_SIZE;
+      Student.find({})
+        .skip(skip)
+        .limit(PAGE_SIZE)
+        .then((student) => {
+          student = student.map((student) => student.toObject());
+          res.render("createStudent", {
+            student,
+            user: req.user,
+            pages: pages,
+            count: count,
+            title: "Management Create Student",
+          });
+        });
+    } else {
+      page = 1;
+      const skip = (page - 1) * PAGE_SIZE;
+      Student.find({})
+        .skip(skip)
+        .limit(PAGE_SIZE)
+        .then((student) => {
+          student = student.map((student) => student.toObject());
+          res.render("createStudent", {
+            student,
+            user: req.user,
+            pages: pages,
+            count: count,
+            title: "Management Create Student",
+          });
+        });
+    }
+
+    // Student.find({}).then((student) => {
+    //   student = student.map((student) => student.toObject());
+    //   res.render("createStudent", {
+    //     student,
+    //     user: req.user,
+    //     title: "Management Create Student",
+    //   });
+    // });
   }
 
   //[Post] Create Student
