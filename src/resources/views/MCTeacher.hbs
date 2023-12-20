@@ -43,7 +43,12 @@
     </div>
 </div>
 <div class="form_create_teacher_q center-form">
-    <h2>Create Teacher</h2>
+    
+        <div class="type__Create-teacher">
+        <h2>Create Teacher</h2>
+        <button type="submit">Add new teacher</button>
+        <button><a href="/teacher/MCTeacher">Back</a></button>
+    </div>
     <form method="post" action="/teacher/createTeacher">
     <div class="form_teacher_q">
         <label for="codeTeacher">Code Teacher</label>
@@ -101,11 +106,8 @@
         <label for="basicSalary">Basic Salary</label>
         <input type="text" name="basicSalary" id="basicSalary">
     </div>
-    <div>
-        <button type="submit">Add new teacher</button>
-    </div>
     </form>
-    <button><a href="/teacher/MCTeacher">Back</a></button>
+    
 </div>
 </div>
 <script>

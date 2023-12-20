@@ -19,6 +19,10 @@
     justify-content: space-around;
     align-items: center;
 }
+.table_listRegister-header button {
+    width: 10%;
+    border-radius: 5px;
+}
 .table_listRegister-body {
     width: 100%;
     box-shadow: 0 .4rem .8rem #0005;
@@ -26,6 +30,10 @@
 }
 .table_listRegister-body table {
     width: 100%;
+}
+.table_listRegister-body button {
+    width: 100%;
+    border-radius: 5px;
 }
 .table_listRegister-search {
     width: 60%;
@@ -62,7 +70,7 @@
     height: 100%;
 }
 .input_regisster_q form {
-    width: 50%;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -147,7 +155,17 @@
 .form_btn_updateUser_q {
     display: flex;
     width: 100%;
-    justify-content: center;
+    justify-content: space-around;
+}
+.form_btn_updateUser_q button {
+    width: 30%;
+    border-radius: 6px;
+}
+td {
+    background-color: antiquewhite;
+}
+th {
+    background-color: azure;
 }
 
 //MC Teacher//
@@ -163,6 +181,16 @@
 .table_MC-teacher {
     height: 100%;
     width: 100%;
+}
+.type__Create-teacher {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+}
+.type__Create-teacher button {
+    height: 100%;
+    border-radius: 5px;
 }
 .table_MC-header {
     width: 100%;
@@ -201,13 +229,13 @@
     border: 1px solid #ccc;
     display: none; /* Ban đầu ẩn form */
     width: 60%;
-    height: 80%;
+    height: 90%;
     border-radius: 6px;
   }
   .form_create_teacher_q form {
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 95%;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -276,13 +304,14 @@
     padding: 20px;
     border: 1px solid #ccc;
     display: none; 
-    height: 50%;
+    height: 65%;
+    width: 60%;
     border-radius: 6px;
   }
   .form_create_student_q form {
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 90%;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -292,6 +321,10 @@
     width: 100%;
     align-items: center;
     justify-content: space-between;
+  }
+  .form_student_q button {
+    border-radius: 5px;
+    width: 30%;
   }
   .form_student_q input {
     width: 60%;
@@ -351,6 +384,12 @@
     .table_newStudent-body button {
         width: 100%;
     }
+    .table_listRegister-header {
+        margin-top: 56px;
+    }
+    .table_listRegister-header button {
+        width: 20%;
+    }
 }
 @media screen and (max-width: 768px) {
     .table_listRegister-body {
@@ -365,7 +404,7 @@
     .table_listRegister-search input {
         width: 40%;
     }
-    .table_listRegister-search button {
+    .table_listRegister-header button {
         width: 30%;
     }
     .table_listRegister-body button {
@@ -374,6 +413,7 @@
     .form_regisster_q {
         width: 80%;
     }
+
 }
 @media screen and (max-width: 768px) {
     .table_listRegister-search {
@@ -409,7 +449,6 @@
 @media screen and (max-width: 414px) {
     .table_listRegister-header {
         display: flex;
-        flex-direction: column;
     }
     .table_listRegister-search {
         display: flex;
@@ -444,6 +483,9 @@
         width: 90%;
         height: 70%;
     }
+    .table_listRegister-header button {
+        width: 40%;
+    }
 }
 @media screen and (max-width: 375px) {
     .table_listRegister-search {
@@ -468,5 +510,21 @@
     }
     .table_newStudent-header button {
         width: 40%;
+    }
+    .form_user_q {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .form_user_q label,
+    .form_user_q input {
+        width: 100%;
+    }
+    .btn_create_user_q {
+        width: 100%;
+    }
+    .btn_create_user_q button {
+        height: 80%;
+        width: 80%;
     }
 }

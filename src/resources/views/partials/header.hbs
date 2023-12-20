@@ -33,10 +33,16 @@
             <li><a href="/tuition/createS">Create Student</a></li>
           </ul>
         </div>
-        <div class="drop-down__header">Account
+<div class="drop-down__header">Account
+          {{#if user}}
           <ul class="Account-show">
-            <li><a onclick="logout()">Logout</a></li>
+            <li><a onclick="logout()">Log Out</a></li>
           </ul>
+          {{else}}
+          <ul class="Account-show">
+            <li><a href="/login">Log In</a></li>
+          </ul>
+          {{/if}}
         </div>
       </div>
   </nav>
@@ -115,11 +121,26 @@
               Account
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/login">LogIn</a></li>
+<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Account
+            </a>
+            {{#if user}}
+            <ul class="dropdown-menu">
               <li><a class="dropdown-item" onclick="logout()" >LogOut</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
+            </ul>
+            {{else}}
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/login">LogIn</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+            </ul>
+              {{/if}}
+          </li>
             </ul>
           </li>
         </ul>

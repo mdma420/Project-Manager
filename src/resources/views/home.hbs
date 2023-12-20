@@ -16,7 +16,7 @@
           {{#each reportTuition}}
             <tr class="data_tuition">
               <td class="td-nameTuition">{{this.nameTT}}</td>
-              <td class="td-period">{{moment this.tuitionPeriod1 format ="DD MMM YYYY"}} - {{moment this.tuitionPeriod2 format ="DD MMM YYYY"}}</td>
+              <td class="td-period">{{moment this.tuitionPeriod1 format ="DD/MM/YYYY"}} - {{moment this.tuitionPeriod2 format ="DD/MM/YYYY"}}</td>
               <td class="td-totalTuition">{{this.totalTT}}.vnd</td>
             </tr>
           {{/each}}
@@ -42,7 +42,7 @@
                 {{#each reportSalary}}
                 <tr class="data_salary">
                     <td class="td-nameSalary">{{this.nameSalary}}</td>
-                    <td>{{moment this.salaryPeriod1 format ="DD MMM YYYY"}} - {{moment this.salaryPeriod2 format ="DD MMM YYYY"}}</td>
+                    <td>{{moment this.salaryPeriod1 format ="DD/MM/YYYY"}} - {{moment this.salaryPeriod2 format ="DD/MM/YYYY"}}</td>
                     <td class="td-totalSalary">{{this.totalSalary}}.vnd</td>
                 </tr>
                 {{/each}}

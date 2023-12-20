@@ -20,7 +20,7 @@
                 <td>{{this.nameStudent}}</td>
                 <td>{{this.emailStudent}}</td>
                 <td>{{this.subject}}</td>
-                <td>{{moment this.createdAt format ="DD MMM YYYY"}}</td>
+                <td>{{moment this.createdAt format ="DD/MM/YYYY"}}</td>
             </tr>
             {{/each}}
             {{#each emailTeacher}}
@@ -29,7 +29,7 @@
                 <td>{{this.nameTeacher}}</td>
                 <td>{{this.emailTeacher}}</td>
                 <td>{{this.subject}}</td>
-                <td>{{moment this.createdAt format ="DD MMM YYYY"}}</td>
+                <td>{{moment this.createdAt format ="DD/MM/YYYY"}}</td>
             </tr>
             {{/each}}
         </tbody>
