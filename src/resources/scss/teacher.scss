@@ -186,6 +186,7 @@
 }
 .btn_main-updateTeacher button {
     width: 10%;
+    border-radius: 5px;
 }
 
 
@@ -275,28 +276,30 @@
 }
 .table__Teacher--header h2 {
     font-size: 35px;
+    height: 50%;
 }
 .search_Teacher--input {
    width: 30%;
+   height: 50%;
 }
 .search_Teacher--input input {
     width: 100%;
-    font-size: 30px;
     border-radius: 7px;
+    height: 70%;
 }
 .search_Teacher--select {
    width: 20%;
+   height: 50%;
 }
 .search_Teacher--select select {
     width: 60%;
-    font-size: 20px;
-    height: 4vh;
+    height: 70%;
     border-radius: 7px;
  }
  .search_Teacher--select button {
     width: 35%;
-    font-size: 28px;
     border-radius: 7px;
+    height: 70%;
  }
  .table__Teacher--body table {
     width: 100%;
@@ -346,7 +349,7 @@
     border-radius: 7px;
 }
 .show__Salary--header button {
-    font-size: 20px;
+    font-size: 14px;
     width: 10%;
     border-radius: 6px;
 }
@@ -491,7 +494,6 @@
     align-items: center;
     height: 100vh;
     flex-direction: column;
-    justify-content: center;
 }
 .table__Salaryteacher-show {
     width: 100%;
@@ -499,6 +501,14 @@
 }
 .table__Salaryteacher-header {
     width: 100%;
+    display: flex;
+    justify-content: space-around;
+    height: 10%;
+    align-items: center;
+}
+.table__Salaryteacher-header button {
+    width: 10%;
+    border-radius: 5px;
 }
 .table__Salaryteacher-body {
     width: 100%;
@@ -507,7 +517,8 @@
     width: 100%;
 }
 .table__Salaryteacher-body button {
-    width: 30%;
+    width: 50%;
+    border-radius: 5px;
 }
 .form-createSalary {
     width: 100%;
@@ -539,6 +550,17 @@
 .btn-createSalary button {
     font-size: 20px;
     border-radius: 6px;
+}
+#createSalaryFormContainer {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
 }
 
 //main_detailTB//
@@ -669,6 +691,39 @@
     .main_Teacher {
         margin-top: 50px;
     }
+    .btn__detail--option {
+        width: 50%;
+    }
+    .btn__delete--option {
+        width: 50%;
+    }
+    .btn__delete--option button {
+        width: 100%;
+    }
+    .btn_tableSalary-header {
+        height: 25%;
+    }
+    .btn_tableSalary-header button {
+        width: 20%;
+    }
+    .search_Teacher--select select {
+        height: 70%;
+    }
+    .search_Teacher--select {
+        height: 45%;
+    }
+    .search_Teacher--input {
+        height: 45%;
+    }
+    .table__Teacher--header {
+        margin-top: 55px;
+    }
+    .table__Salaryteacher-header button {
+        width: 15%;
+    }
+    .table__Salaryteacher-show {
+        margin-top: 60px;
+    }
 }
 @media screen and (max-width: 768px) {
     .show__Salary--header button {
@@ -694,6 +749,17 @@
     flex-direction: column;
     align-items: center;
     height: 10%;
+    }
+    .list__tableTuition--option {
+        display: flex;
+    flex-direction: column;
+    }
+    .btn__detail--option ,
+    .btn__delete--option {
+        width: 100%;
+    }
+    .Salary--months {
+        width: 70%;
     }
 }
  @media screen and (max-width: 600px) {
@@ -734,6 +800,38 @@
     }
     .table__Teacher--infor {
         overflow: scroll;
+    }
+    .show__Salary--header button {
+        height: 55%;
+    }
+    .table__Teacher--header {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        height: 30%;
+    }
+    .search_Teacher--input {
+        width: 80%;
+        height: 30%;
+    }
+    .search_Teacher--input input {
+        height: 100%;
+    }
+    .table__Teacher--header h2 {
+        height: 30%;
+        display: flex;
+        align-items: center;
+    }
+    .search_Teacher--select {
+        display: flex;
+        align-items: center;
+        width: 50%;
+    }
+    .table__Salaryteacher-header button {
+        width: 25%;
+    }
+    .btn_tableSalary-header {
+        height: 40%;
     }
  }
  @media screen and (max-width: 414px) {
@@ -793,11 +891,48 @@
     .btn_main-updateTeacher button {
         width: 20%;
     }
+    .show__Salary--header button {
+        width: 35%;
+        font-size: 15px;
+    }
+    .search_Teacher--select {
+        width: 70%;
+    }
+    .table__Teacher--header h2 {
+        font-size: 25px;
+    }
+    .table__Salaryteacher-header button {
+        width: 30%;
+    }
+    .Salary--months {
+        width: 90%;
+        height: 70%;
+    }
+    .form-createSalary {
+        display: flex;
+        flex-direction: column;  
+    }
+    .form-createSalary input ,label {
+        width: 100%;
+    }
+    .form-createSalary label {
+        width: 100%;
+    }
+    .btn_tableSalary-header {
+        width: 30%;
+    }
+    .btn_tableSalary-header button {
+        width: 70%;
+    }
  }
  @media screen and (max-width: 375px) {
       .table-inforTeacher h2 {
         font-size: 20px;
       }
+      .show__Salary--header button {
+        width: 35%;
+        font-size: 15px;
+    }
  }
  @media screen and (max-width: 320px) {
     .show__Salary--header button {
@@ -828,6 +963,19 @@
 }
 .table-inforTeacher {
     width: 95%;
+}
+.show__Salary--header button {
+    font-size: 12px;
+}
+.table__Salaryteacher-header button {
+    width: 40%;
+}
+.btn_tableSalary-header {
+    height: 60%;
+    width: 30%;
+}
+.tableSalary_show-header {
+    margin-top: 6px;
 }
  }
  

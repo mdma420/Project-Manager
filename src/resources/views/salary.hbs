@@ -2,6 +2,7 @@
     <div class="table__Salaryteacher-show">
         <div class="table__Salaryteacher-header">
             <h2>List Table Salary</h2>
+            <button onclick="toggleCreateSalaryForm()">Create Salary</button>
         </div>
         <div class="table__Salaryteacher-body">
         <table>
@@ -40,7 +41,7 @@
         </table>
         </div>
     </div>
-    <div class="Salary--months">
+    <div class="Salary--months" id="createSalaryFormContainer">
         <h2>Create Table salary</h2>
         <form class="type__create--Salary" method="post" action="/teacher/createSalary" width="100%">
             <div class="form-createSalary">
@@ -65,3 +66,9 @@
         </form>
     </div>
 </div>
+<script>
+    function toggleCreateSalaryForm() {
+        var createSalaryFormContainer = document.getElementById('createSalaryFormContainer');
+        createSalaryFormContainer.style.display = (createSalaryFormContainer.style.display === 'none' || createSalaryFormContainer.style.display === '') ? 'block' : 'none';
+    }
+</script>

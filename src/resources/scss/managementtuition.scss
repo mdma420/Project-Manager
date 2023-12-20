@@ -5,10 +5,6 @@
 
   backdrop-filter: blur(7px);
   box-shadow: 0 .4rem .8rem #0005;
-  
-  position: relative;
-  
-  
   }
   .table__Management-fees_header {
     width: 100%;
@@ -18,16 +14,24 @@
     justify-content: space-around;
     align-items: center;
   }
+  .table__Management-fees_header button {
+    width: 5%;
+    border-radius: 5px;
+  }
 .btn__Managementtuition-header {
   display: flex;
   flex-direction: row;
-  width: 20%;
+  width: 60%;
+  justify-content: space-around;
 }
-.btn__Managementtuition-header form {
-  width: 100%;
+.btn__Managementtuition-header input {
+  width: 70%;
+  border-radius: 4px;
 }
 .btn__Managementtuition-header button {
-  width: 100%;
+  width: 20%;
+  border-radius: 5px;
+  height: 40%;
 }
   .table__Management-fees_body {
     width: 95%;
@@ -487,7 +491,10 @@ box-sizing: border-box;
     width: 95%;
   }
   .table__Management_tuition {
-    margin-top: 40px;
+    margin-top: 57px;
+  }
+  .table__Management-fees_header {
+    
   }
 }
   @media screen and (max-width: 768px) {
@@ -528,7 +535,14 @@ box-sizing: border-box;
       overflow: scroll;
     }
     .btn__Managementtuition-header {
-      width: 30%;
+      width: 60%;
+    }
+
+    .btn__Managementtuition-header input {
+      width: 70%;
+    }
+    .table__Management-fees_header button {
+      width: 15%;
     }
   }
   @media screen and (max-width: 600px) {
@@ -560,6 +574,19 @@ box-sizing: border-box;
       width: 45%;
     }
     .table__Info-bill button {
+      width: 20%;
+    }
+    .table__Management-fees_header {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      height: 20%;
+    }
+    .btn__Managementtuition-header {
+      width: 90%;
+    }
+    .btn__Managementtuition-header button {
+      height: 100%;
       width: 20%;
     }
   }
@@ -615,7 +642,7 @@ box-sizing: border-box;
       width: 70%;
     }
     .btn__Managementtuition-header {
-      width: 50%;
+      width: 90%;
     }
   }
   @media screen and (max-width: 375px) {
@@ -663,5 +690,8 @@ box-sizing: border-box;
     }
     .table__Info-bill button {
       width: 30%;
+    }
+    .btn__Managementtuition-header {
+      width: 95%;
     }
   }

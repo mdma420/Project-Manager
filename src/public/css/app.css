@@ -65,9 +65,13 @@ button#add-button {
   height: 70%;
   align-items: center;
   font-size: 20px;
-  width: 20%;
+  width: 50%;
   justify-content: space-around;
   flex-wrap: wrap; }
+
+.input_search_tuition button {
+  border-radius: 4px;
+  width: 40%; }
 
 .input_search_tuition input {
   border-radius: 5px;
@@ -162,8 +166,7 @@ button#add-button {
   height: 100vh;
   background-color: #1b292055;
   backdrop-filter: blur(7px);
-  box-shadow: 0 .4rem .8rem #0005;
-  position: relative; }
+  box-shadow: 0 .4rem .8rem #0005; }
 
 .table__Management-fees_header {
   width: 100%;
@@ -173,16 +176,24 @@ button#add-button {
   justify-content: space-around;
   align-items: center; }
 
+.table__Management-fees_header button {
+  width: 5%;
+  border-radius: 5px; }
+
 .btn__Managementtuition-header {
   display: flex;
   flex-direction: row;
-  width: 20%; }
+  width: 60%;
+  justify-content: space-around; }
 
-.btn__Managementtuition-header form {
-  width: 100%; }
+.btn__Managementtuition-header input {
+  width: 70%;
+  border-radius: 4px; }
 
 .btn__Managementtuition-header button {
-  width: 100%; }
+  width: 20%;
+  border-radius: 5px;
+  height: 40%; }
 
 .table__Management-fees_body {
   width: 95%;
@@ -607,7 +618,7 @@ textarea::selection {
   .form__Invoice {
     width: 95%; }
   .table__Management_tuition {
-    margin-top: 40px; } }
+    margin-top: 57px; } }
 
 @media screen and (max-width: 768px) {
   .input_search_tuition {
@@ -636,7 +647,11 @@ textarea::selection {
   .table__Management-fees_body {
     overflow: scroll; }
   .btn__Managementtuition-header {
-    width: 30%; } }
+    width: 60%; }
+  .btn__Managementtuition-header input {
+    width: 70%; }
+  .table__Management-fees_header button {
+    width: 15%; } }
 
 @media screen and (max-width: 600px) {
   .table__List-header h2 {
@@ -659,6 +674,16 @@ textarea::selection {
   .form-bill label {
     width: 45%; }
   .table__Info-bill button {
+    width: 20%; }
+  .table__Management-fees_header {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 20%; }
+  .btn__Managementtuition-header {
+    width: 90%; }
+  .btn__Managementtuition-header button {
+    height: 100%;
     width: 20%; } }
 
 @media screen and (max-width: 414px) {
@@ -699,7 +724,7 @@ textarea::selection {
   .form-bill label {
     width: 70%; }
   .btn__Managementtuition-header {
-    width: 50%; } }
+    width: 90%; } }
 
 @media screen and (max-width: 375px) {
   button#add-subject {
@@ -735,7 +760,9 @@ textarea::selection {
   .form__Show-receipt label, input, select {
     width: 50%; }
   .table__Info-bill button {
-    width: 30%; } }
+    width: 30%; }
+  .btn__Managementtuition-header {
+    width: 95%; } }
 
 .main__Reporting-tuition {
   background-color: #1b292055;
@@ -945,7 +972,8 @@ textarea::selection {
   align-items: center; }
 
 .btn_main-updateTeacher button {
-  width: 10%; }
+  width: 10%;
+  border-radius: 5px; }
 
 .main__timesheets {
   background: url("http://iuhers.com/wp-content/uploads/2022/11/lneg2.jpg") center/cover no-repeat;
@@ -1029,29 +1057,31 @@ textarea::selection {
   overflow: hidden; }
 
 .table__Teacher--header h2 {
-  font-size: 35px; }
+  font-size: 35px;
+  height: 50%; }
 
 .search_Teacher--input {
-  width: 30%; }
+  width: 30%;
+  height: 50%; }
 
 .search_Teacher--input input {
   width: 100%;
-  font-size: 30px;
-  border-radius: 7px; }
+  border-radius: 7px;
+  height: 70%; }
 
 .search_Teacher--select {
-  width: 20%; }
+  width: 20%;
+  height: 50%; }
 
 .search_Teacher--select select {
   width: 60%;
-  font-size: 20px;
-  height: 4vh;
+  height: 70%;
   border-radius: 7px; }
 
 .search_Teacher--select button {
   width: 35%;
-  font-size: 28px;
-  border-radius: 7px; }
+  border-radius: 7px;
+  height: 70%; }
 
 .table__Teacher--body table {
   width: 100%; }
@@ -1100,7 +1130,7 @@ textarea::selection {
   border-radius: 7px; }
 
 .show__Salary--header button {
-  font-size: 20px;
+  font-size: 14px;
   width: 10%;
   border-radius: 6px; }
 
@@ -1211,15 +1241,22 @@ textarea::selection {
   display: flex;
   align-items: center;
   height: 100vh;
-  flex-direction: column;
-  justify-content: center; }
+  flex-direction: column; }
 
 .table__Salaryteacher-show {
   width: 100%;
   height: 60%; }
 
 .table__Salaryteacher-header {
-  width: 100%; }
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  height: 10%;
+  align-items: center; }
+
+.table__Salaryteacher-header button {
+  width: 10%;
+  border-radius: 5px; }
 
 .table__Salaryteacher-body {
   width: 100%; }
@@ -1228,7 +1265,8 @@ textarea::selection {
   width: 100%; }
 
 .table__Salaryteacher-body button {
-  width: 30%; }
+  width: 50%;
+  border-radius: 5px; }
 
 .form-createSalary {
   width: 100%;
@@ -1260,6 +1298,17 @@ textarea::selection {
 .btn-createSalary button {
   font-size: 20px;
   border-radius: 6px; }
+
+#createSalaryFormContainer {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc; }
 
 .main_detailTB {
   background-color: #1b292055;
@@ -1364,7 +1413,29 @@ textarea::selection {
   .main_reportSalary {
     margin-top: 50px; }
   .main_Teacher {
-    margin-top: 50px; } }
+    margin-top: 50px; }
+  .btn__detail--option {
+    width: 50%; }
+  .btn__delete--option {
+    width: 50%; }
+  .btn__delete--option button {
+    width: 100%; }
+  .btn_tableSalary-header {
+    height: 25%; }
+  .btn_tableSalary-header button {
+    width: 20%; }
+  .search_Teacher--select select {
+    height: 70%; }
+  .search_Teacher--select {
+    height: 45%; }
+  .search_Teacher--input {
+    height: 45%; }
+  .table__Teacher--header {
+    margin-top: 55px; }
+  .table__Salaryteacher-header button {
+    width: 15%; }
+  .table__Salaryteacher-show {
+    margin-top: 60px; } }
 
 @media screen and (max-width: 768px) {
   .show__Salary--header button {
@@ -1383,7 +1454,15 @@ textarea::selection {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 10%; } }
+    height: 10%; }
+  .list__tableTuition--option {
+    display: flex;
+    flex-direction: column; }
+  .btn__detail--option,
+  .btn__delete--option {
+    width: 100%; }
+  .Salary--months {
+    width: 70%; } }
 
 @media screen and (max-width: 600px) {
   .show__Salary--header button {
@@ -1411,7 +1490,31 @@ textarea::selection {
   .tableSalary-header_btn button {
     width: 60%; }
   .table__Teacher--infor {
-    overflow: scroll; } }
+    overflow: scroll; }
+  .show__Salary--header button {
+    height: 55%; }
+  .table__Teacher--header {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 30%; }
+  .search_Teacher--input {
+    width: 80%;
+    height: 30%; }
+  .search_Teacher--input input {
+    height: 100%; }
+  .table__Teacher--header h2 {
+    height: 30%;
+    display: flex;
+    align-items: center; }
+  .search_Teacher--select {
+    display: flex;
+    align-items: center;
+    width: 50%; }
+  .table__Salaryteacher-header button {
+    width: 25%; }
+  .btn_tableSalary-header {
+    height: 40%; } }
 
 @media screen and (max-width: 414px) {
   .show__Salary--header h2 {
@@ -1453,11 +1556,37 @@ textarea::selection {
   .form-updateTeacher input {
     width: 100%; }
   .btn_main-updateTeacher button {
-    width: 20%; } }
+    width: 20%; }
+  .show__Salary--header button {
+    width: 35%;
+    font-size: 15px; }
+  .search_Teacher--select {
+    width: 70%; }
+  .table__Teacher--header h2 {
+    font-size: 25px; }
+  .table__Salaryteacher-header button {
+    width: 30%; }
+  .Salary--months {
+    width: 90%;
+    height: 70%; }
+  .form-createSalary {
+    display: flex;
+    flex-direction: column; }
+  .form-createSalary input, label {
+    width: 100%; }
+  .form-createSalary label {
+    width: 100%; }
+  .btn_tableSalary-header {
+    width: 30%; }
+  .btn_tableSalary-header button {
+    width: 70%; } }
 
 @media screen and (max-width: 375px) {
   .table-inforTeacher h2 {
-    font-size: 20px; } }
+    font-size: 20px; }
+  .show__Salary--header button {
+    width: 35%;
+    font-size: 15px; } }
 
 @media screen and (max-width: 320px) {
   .show__Salary--header button {
@@ -1479,7 +1608,16 @@ textarea::selection {
   .table__Teacher--infor {
     height: 100%; }
   .table-inforTeacher {
-    width: 95%; } }
+    width: 95%; }
+  .show__Salary--header button {
+    font-size: 12px; }
+  .table__Salaryteacher-header button {
+    width: 40%; }
+  .btn_tableSalary-header {
+    height: 60%;
+    width: 30%; }
+  .tableSalary_show-header {
+    margin-top: 6px; } }
 
 .main__announcement {
   background-color: #1b292055;
@@ -1628,7 +1766,8 @@ textarea::selection {
 
 .table__sendMail--header {
   display: flex;
-  width: 50%; }
+  width: 50%;
+  height: 13%; }
 
 .table__sendMail--body {
   width: 50%;
@@ -1707,6 +1846,16 @@ textarea::selection {
     flex-direction: column;
     align-items: start; }
   .form-noti input {
+    width: 100%; }
+  .table__sendMail--header {
+    height: 25%; } }
+
+@media screen and (max-width: 375px) {
+  .table__sendMail--body textarea {
+    height: 90%; }
+  .table__sendMail--header {
+    height: 29%; }
+  .table__sendMail--body input {
     width: 100%; } }
 
 @media screen and (max-width: 320px) {
