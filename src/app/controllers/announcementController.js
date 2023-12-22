@@ -14,7 +14,7 @@ class SettingController {
     const count = await Email.countDocuments();
     const countT = await EmailT.countDocuments();
     var page = req.query.page;
-    var PAGE_SIZE = 5;
+    var PAGE_SIZE = 10;
     var total = Math.ceil((count + countT) / PAGE_SIZE + 1);
     const pages = [];
     for (let i = 1; i < total; i++) {

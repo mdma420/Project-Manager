@@ -145,7 +145,7 @@ class TuitionController {
   async student(req, res, next) {
     const count = await TuitionStudent.countDocuments({idTT: req.params.id});
     var page = req.query.page;
-    var PAGE_SIZE = 5;
+    var PAGE_SIZE = 7;
     var total = Math.ceil(count / PAGE_SIZE + 1);
     const pages = [];
     for (let i = 1; i < total; i++) {
@@ -203,7 +203,7 @@ class TuitionController {
   async studentfinal(req, res, next) {
     const count = await TuitionStudent.countDocuments({idTT: req.params.id});
     var page = req.query.page;
-    var PAGE_SIZE = 5;
+    var PAGE_SIZE = 7;
     var total = Math.ceil(count / PAGE_SIZE + 1);
     const pages = [];
     for (let i = 1; i < total; i++) {
