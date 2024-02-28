@@ -11,6 +11,7 @@ const emailTeacher = require("../models/emailTeacher");
 class SettingController {
   // [GET] instructions all
   async announcement(req, res, next) {
+    console.log("test");
     const count = await Email.countDocuments();
     const countT = await EmailT.countDocuments();
     var page = req.query.page;
